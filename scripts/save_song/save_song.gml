@@ -17,7 +17,7 @@ function save_song() {
 	    playing = 0
 	    fsave = filename_name(cursong.filename)
 	    if (!directory_exists_lib(songfolder)) songfolder = songs_directory
-	    fn = string(get_save_filename_ext("Note Block Songs (*.nbs)|*.nbs", fsave + condstr(filename_ext(cursong.filename) != ".nbs", ".nbs"), songfolder, condstr(language !=1, "Save song", "保存歌曲")))
+	    fn = string(get_save_filename_ext(localize_ko("Note Block Songs (*.nbs)|*.nbs"), fsave + condstr(filename_ext(cursong.filename) != ".nbs", ".nbs"), songfolder, condstr(language !=1, localize_ko("Save song"), "保存歌曲")))
 		log(string_char_at(fn, string_length(fn) - 3))
 	    if (fn = "") return 0
 	}
@@ -163,9 +163,9 @@ function save_song() {
 	if (!save_succeeded) {
 		if (!backup) {
 			var error_text = condstr(language != 1,
-				"The song could not be saved.\n\nCheck that the destination is writable and has enough free disk space, then try again. Your changes are still open in Note Block Studio.",
+				localize_ko("The song could not be saved.\n\nCheck that the destination is writable and has enough free disk space, then try again. Your changes are still open in Note Block Studio."),
 				"歌曲无法保存。\n\n请确认保存位置可写且磁盘有足够的可用空间，然后重试。你的更改仍保留在 Note Block Studio 中。")
-			var error_title = condstr(language != 1, "Save failed", "保存失败")
+			var error_title = condstr(language != 1, localize_ko("Save failed"), "保存失败")
 			try {
 				message(error_text, error_title)
 			} catch (e) {
@@ -184,10 +184,10 @@ function save_song() {
 		if (autosave) tonextsave = autosavemins;
 		add_to_recent(fn);
 		if (asave) {	
-			if (language != 1) set_msg("Song auto saved");
+			if (language != 1) set_msg(localize_ko("Song auto saved"));
 			else set_msg("歌曲自动保存");
 		} else {
-			if (language != 1) set_msg("Song saved");
+			if (language != 1) set_msg(localize_ko("Song saved"));
 			else set_msg("歌曲已保存");
 		}
 	} else {

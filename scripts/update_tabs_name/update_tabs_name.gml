@@ -13,7 +13,7 @@ function update_tabs_name(){
 										language != 1, 
 										
 										// String
-										"Unsaved song", 
+										localize_ko("Unsaved song"), 
 										
 										// Alternative String
 										"新文件"

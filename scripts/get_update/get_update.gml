@@ -14,7 +14,7 @@ function get_update() {
 			// Download was interrupted, may have been successful or not (if connection was interrupted)
 			update = 5
 			if (file_get_size(update_file) == total_size) {
-				if (language != 1) message("Download complete! Click OK to begin installing the update.", "Note Block Studio")
+				if (language != 1) message(localize_ko("Download complete! Click OK to begin installing the update."), "Note Block Studio")
 				else message("下载完成！点击“OK”来安装更新。", "Note Block Studio")
 				// At this point, the game is paused until the user dismisses the message
 				var launch_error = windows_update_launch(update_file)
@@ -26,8 +26,8 @@ function get_update() {
 					var launch_caption = ""
 					if (language != 1) {
 						launch_message = launch_error == 1223
-							? "Installation was canceled. Do you want to open the Note Block Studio website and update manually?"
-							: "Failed to start the update installer (Windows error " + string(launch_error) + "). Do you want to open the Note Block Studio website and update manually?"
+							? localize_ko("Installation was canceled. Do you want to open the Note Block Studio website and update manually?")
+							: localize_ko("Failed to start the update installer (Windows error ") + string(launch_error) + localize_ko("). Do you want to open the Note Block Studio website and update manually?")
 						launch_caption = "Update not started"
 					} else {
 						launch_message = launch_error == 1223
@@ -45,7 +45,7 @@ function get_update() {
 				}
 			} else {
 				if (language != 1) {
-				if (question("Failed to download update. Do you want to open the Note Block Studio website and update manually?", "Failed")) {
+				if (question(localize_ko("Failed to download update. Do you want to open the Note Block Studio website and update manually?"), localize_ko("Failed"))) {
 					if (check_prerelease) open_url(link_releases)
 					else open_url(link_website)
 				}

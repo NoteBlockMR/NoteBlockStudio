@@ -20,30 +20,30 @@ function pattern_import() {
 	if (songs[song].selected != 0) return 0
 	if (fn == "") {
 		if (!directory_exists_lib(patternfolder)) patternfolder = pattern_directory
-		fn = string(get_open_filename_ext("Note Block Pattern (*.nbp)|*.nbp", "", patternfolder, condstr(language != 1, "Load pattern", "打开分段")))
+		fn = string(get_open_filename_ext(localize_ko("Note Block Pattern (*.nbp)|*.nbp"), "", patternfolder, condstr(language != 1, localize_ko("Load pattern"), "打开分段")))
 	}
 	if (fn == "" || !file_exists_lib(fn)) return 0
 
 	var file_ext = string_lower(filename_ext(fn))
 	if (file_ext != ".nbp") {
-		message(condstr(language != 1, "Error: This file is not a pattern.", "错误：该文件不是分段文件。"), condstr(language != 1, "Error", "错误"))
+		message(condstr(language != 1, localize_ko("Error: This file is not a pattern."), "错误：该文件不是分段文件。"), condstr(language != 1, localize_ko("Error"), "错误"))
 		return 0
 	}
 
 	buffer = buffer_import(fn)
 	if (buffer < 0) {
-		message(condstr(language != 1, "Error: This pattern could not be opened.", "错误：无法打开此分段文件。"), condstr(language != 1, "Error", "错误"))
+		message(condstr(language != 1, localize_ko("Error: This pattern could not be opened."), "错误：无法打开此分段文件。"), condstr(language != 1, localize_ko("Error"), "错误"))
 		return 0
 	}
 
 	song_pat_version = buffer_read_byte()
 	if (song_pat_version > pat_version) {
 		buffer_delete(buffer)
-		message(condstr(language != 1, "This pattern was created in a newer version of Note Block Studio and cannot be opened safely.", "此分段文件由新版 Note Block Studio 创建，无法安全打开。"), condstr(language != 1, "Error", "错误"))
+		message(condstr(language != 1, localize_ko("This pattern was created in a newer version of Note Block Studio and cannot be opened safely."), "此分段文件由新版 Note Block Studio 创建，无法安全打开。"), condstr(language != 1, localize_ko("Error"), "错误"))
 		return -1
 	}
 	if (song_pat_version < pat_version && show_oldwarning) {
-		message(condstr(language != 1, "Warning: You are opening an older NBP file. Saving this file will make it incompatible with older Note Block Studio versions.", "警告：你正在打开旧版的 NBP 文件。保存此文件会使其与旧版 Note Block Studio 不兼容。"), condstr(language != 1, "Warning", "警告"))
+		message(condstr(language != 1, localize_ko("Warning: You are opening an older NBP file. Saving this file will make it incompatible with older Note Block Studio versions."), "警告：你正在打开旧版的 NBP 文件。保存此文件会使其与旧版 Note Block Studio 不兼容。"), condstr(language != 1, localize_ko("Warning"), "警告"))
 	}
 
 	var pat_length = buffer_read_short()
@@ -83,13 +83,13 @@ function pattern_import() {
 	if (song_pat_version >= 2) {
 		var resolve_result = custom_instruments_resolve(pattern_instruments)
 		if (!resolve_result.ok) {
-			message(condstr(language != 1, "This pattern needs " + string(resolve_result.needed_count) + " new custom instruments, but this song only has room for " + string(resolve_result.available_count) + ".\n\nNo notes were imported.", "此分段需要添加 " + string(resolve_result.needed_count) + " 个自定义音色，但当前歌曲只能再添加 " + string(resolve_result.available_count) + " 个。\n\n未导入任何音符。"), condstr(language != 1, "Import Pattern", "导入分段"))
+			message(condstr(language != 1, localize_ko("This pattern needs ") + string(resolve_result.needed_count) + localize_ko(" new custom instruments, but this song only has room for ") + string(resolve_result.available_count) + localize_ko(".\n\nNo notes were imported."), "此分段需要添加 " + string(resolve_result.needed_count) + " 个自定义音色，但当前歌曲只能再添加 " + string(resolve_result.available_count) + " 个。\n\n未导入任何音符。"), condstr(language != 1, localize_ko("Import Pattern"), "导入分段"))
 			return -1
 		}
 		instrument_map = resolve_result.instrument_map
 		imported_instrument_count = resolve_result.added_count
 	} else if (check_custom_instrument(selection_code) != 0) {
-		message(condstr(language != 1, "This older pattern refers to custom instruments that are not loaded in this song.", "此旧版分段文件使用了当前歌曲中未加载的自定义音色。"), condstr(language != 1, "Error", "错误"))
+		message(condstr(language != 1, localize_ko("This older pattern refers to custom instruments that are not loaded in this song."), "此旧版分段文件使用了当前歌曲中未加载的自定义音色。"), condstr(language != 1, localize_ko("Error"), "错误"))
 		return -1
 	}
 
@@ -115,7 +115,7 @@ function pattern_import() {
 	copied_note_count = songs[song].selected
 	copied_source_name = filename_name(fn)
 	copied_custom_instruments = selection_get_custom_instruments()
-	set_msg(condstr(language != 1, "Imported " + string(copied_note_count) + " notes and " + string(imported_instrument_count) + " custom instruments from " + copied_source_name, "从 " + copied_source_name + " 导入了 " + string(copied_note_count) + " 个音符和 " + string(imported_instrument_count) + " 个自定义音色"))
+	set_msg(condstr(language != 1, localize_ko("Imported ") + string(copied_note_count) + localize_ko(" notes and ") + string(imported_instrument_count) + localize_ko(" custom instruments from ") + copied_source_name, "从 " + copied_source_name + " 导入了 " + string(copied_note_count) + " 个音符和 " + string(imported_instrument_count) + " 个自定义音色"))
 
 	return true
 }

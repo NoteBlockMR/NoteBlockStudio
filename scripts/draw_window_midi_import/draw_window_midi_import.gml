@@ -17,48 +17,48 @@ function draw_window_midi_import() {
 	}
 	if (language != 1) {
 	draw_theme_font(font_main_bold)
-	draw_text_dynamic(x1 + 8, y1 + 8, "MIDI Import")
+	draw_text_dynamic(x1 + 8, y1 + 8, localize_ko("MIDI Import"))
 	draw_theme_font(font_main)
-	if (draw_checkbox(x1 + 32, y1 + 32, w_midi_removesilent, "Remove silent parts at beginning", "Whether to remove any silent parts\nat the beginning of the song.") && wmenu = 0) {w_midi_removesilent=!w_midi_removesilent midi_songlength = (midi_micsecqn * ((midi_maxpos - midi_minpos * w_midi_removesilent) / (midi_tempo & $7FFF))) / 1000000}
-	if (draw_checkbox(x1 + 32, y1 + 32 + 20, w_midi_name, "Name layers...", "If the layers should be given names\ndepending on the data in the MIDI file.") && wmenu = 0) w_midi_name=!w_midi_name
-	if (draw_radiobox(x1 + 52, y1 + 32 + 40, w_midi_name_patch, "...after patches", "If the layers should be named\nafter the instruments in the MIDI file.", !w_midi_name) && wmenu = 0) w_midi_name_patch = 1
-	if (draw_radiobox(x1 + 52, y1 + 32 + 60, !w_midi_name_patch, "...channel numbers", "If the layers should be named\nafter the channels in the MIDI file.", !w_midi_name) && wmenu = 0) w_midi_name_patch = 0
-	if (draw_checkbox(x1 + 260, y1 + 32, w_midi_tempo, "Same tempo as in file", "Set the song's tempo to match\nthe one of the MIDI file.") && wmenu = 0) w_midi_tempo=!w_midi_tempo
-	if (draw_checkbox(x1 + 410, y1 + 32, w_midi_tempo_changer, "Tempo changes", "Whether to add tempo changes found in the MIDI file.\nTempo changes are not supported in-game and in most NBS-compatible tools.") && wmenu = 0) {w_midi_tempo_changer=!w_midi_tempo_changer}
-	if (draw_checkbox(x1 + 260, y1 + 52, w_midi_note_duration, "Note Duration", "Whether to include the note duration as a stereo trail of notes.\nChoose individual parts in the Note Duration tab.") && wmenu = 0) {
+	if (draw_checkbox(x1 + 32, y1 + 32, w_midi_removesilent, localize_ko("Remove silent parts at beginning"), localize_ko("Whether to remove any silent parts\nat the beginning of the song.")) && wmenu = 0) {w_midi_removesilent=!w_midi_removesilent midi_songlength = (midi_micsecqn * ((midi_maxpos - midi_minpos * w_midi_removesilent) / (midi_tempo & $7FFF))) / 1000000}
+	if (draw_checkbox(x1 + 32, y1 + 32 + 20, w_midi_name, localize_ko("Name layers..."), localize_ko("If the layers should be given names\ndepending on the data in the MIDI file.")) && wmenu = 0) w_midi_name=!w_midi_name
+	if (draw_radiobox(x1 + 52, y1 + 32 + 40, w_midi_name_patch, localize_ko("...after patches"), localize_ko("If the layers should be named\nafter the instruments in the MIDI file."), !w_midi_name) && wmenu = 0) w_midi_name_patch = 1
+	if (draw_radiobox(x1 + 52, y1 + 32 + 60, !w_midi_name_patch, localize_ko("...channel numbers"), localize_ko("If the layers should be named\nafter the channels in the MIDI file."), !w_midi_name) && wmenu = 0) w_midi_name_patch = 0
+	if (draw_checkbox(x1 + 260, y1 + 32, w_midi_tempo, localize_ko("Same tempo as in file"), localize_ko("Set the song's tempo to match\nthe one of the MIDI file.")) && wmenu = 0) w_midi_tempo=!w_midi_tempo
+	if (draw_checkbox(x1 + 410, y1 + 32, w_midi_tempo_changer, localize_ko("Tempo changes"), localize_ko("Whether to add tempo changes found in the MIDI file.\nTempo changes are not supported in-game and in most NBS-compatible tools.")) && wmenu = 0) {w_midi_tempo_changer=!w_midi_tempo_changer}
+	if (draw_checkbox(x1 + 260, y1 + 52, w_midi_note_duration, localize_ko("Note Duration"), "Whether to include the note duration as a stereo trail of notes.\nChoose individual parts in the Note Duration tab.") && wmenu = 0) {
 		w_midi_note_duration = !w_midi_note_duration
 		if (w_midi_note_duration) w_midi_tab = 3
 	}
-	draw_text_dynamic(x1 + 260, y1 + 72, "Max. channel height:")
-	popup_set_window(x1 + 260, y1 + 72, 140, 16, "The maximum allowed layers per channel.\nClick and drag to adjust.")
+	draw_text_dynamic(x1 + 260, y1 + 72, localize_ko("Max. channel height:"))
+	popup_set_window(x1 + 260, y1 + 72, 140, 16, localize_ko("The maximum allowed layers per channel.\nClick and drag to adjust."))
 	w_midi_maxheight = median(1, draw_dragvalue(1, x1 + 380, y1 + 72, w_midi_maxheight, 1), 20)
-	if (draw_checkbox(x1 + 260, y1 + 92, w_midi_octave, "Keep within octave range", "Whether to automatically transpose the notes\nto keep them within the 2 octave range.") && wmenu = 0) w_midi_octave=!w_midi_octave
-	if (draw_checkbox(x1 + 32, y1 + 112, w_midi_vel, "Read note velocity", "Whether to copy the volume data found\nin each MIDI note.") && wmenu = 0) w_midi_vel=!w_midi_vel
-	if (draw_checkbox(x1 + 260, y1 + 112, w_midi_note_duration_fade, "Fade tail velocity", "Linearly change the generated tail notes from the start percentage to the end percentage.\nThe original note head keeps its imported velocity.", !w_midi_note_duration) && wmenu = 0) w_midi_note_duration_fade = !w_midi_note_duration_fade
+	if (draw_checkbox(x1 + 260, y1 + 92, w_midi_octave, localize_ko("Keep within octave range"), localize_ko("Whether to automatically transpose the notes\nto keep them within the 2 octave range.")) && wmenu = 0) w_midi_octave=!w_midi_octave
+	if (draw_checkbox(x1 + 32, y1 + 112, w_midi_vel, localize_ko("Read note velocity"), localize_ko("Whether to copy the volume data found\nin each MIDI note.")) && wmenu = 0) w_midi_vel=!w_midi_vel
+	if (draw_checkbox(x1 + 260, y1 + 112, w_midi_note_duration_fade, localize_ko("Fade tail velocity"), localize_ko("Linearly change the generated tail notes from the start percentage to the end percentage.\nThe original note head keeps its imported velocity."), !w_midi_note_duration) && wmenu = 0) w_midi_note_duration_fade = !w_midi_note_duration_fade
 	fade_locked = !w_midi_note_duration || !w_midi_note_duration_fade
 	if (fade_locked) draw_set_color(c_gray)
-	draw_text_dynamic(x1 + 410, y1 + 111, "Start:")
+	draw_text_dynamic(x1 + 410, y1 + 111, localize_ko("Start:"))
 	if (fade_locked) draw_text_dynamic(x1 + 445, y1 + 111, string(w_midi_note_duration_fade_start))
 	else w_midi_note_duration_fade_start = median(0, draw_dragvalue(23, x1 + 445, y1 + 112, w_midi_note_duration_fade_start, 1), 100)
 	draw_text_dynamic(x1 + 466, y1 + 111, "%")
-	draw_text_dynamic(x1 + 485, y1 + 111, "End:")
+	draw_text_dynamic(x1 + 485, y1 + 111, localize_ko("End:"))
 	if (fade_locked) draw_text_dynamic(x1 + 513, y1 + 111, string(w_midi_note_duration_fade_end))
 	else w_midi_note_duration_fade_end = median(0, draw_dragvalue(24, x1 + 513, y1 + 112, w_midi_note_duration_fade_end, 1), 100)
 	draw_text_dynamic(x1 + 534, y1 + 111, "%")
 	draw_theme_color()
-	popup_set_window(x1 + 408, y1 + 108, 67, 20, "Velocity of the first generated tail note,\nas a percentage of the MIDI note velocity.\nClick and drag to adjust.")
-	popup_set_window(x1 + 483, y1 + 108, 60, 20, "Velocity of the last generated tail note,\nas a percentage of the MIDI note velocity.\nClick and drag to adjust.")
+	popup_set_window(x1 + 408, y1 + 108, 67, 20, localize_ko("Velocity of the first generated tail note,\nas a percentage of the MIDI note velocity.\nClick and drag to adjust."))
+	popup_set_window(x1 + 483, y1 + 108, 60, 20, localize_ko("Velocity of the last generated tail note,\nas a percentage of the MIDI note velocity.\nClick and drag to adjust."))
 	
-	draw_text_dynamic(x1 + 470, y1 + 32 + 20, "Time precision")
-	popup_set_window(x1 + 470, y1 + 32 + 20, 100, 20, "How much to increase the spacing between each note,\nso that more notes can be placed in between.")
-	if (draw_radiobox(x1 + 470, y1 + 32 + 40, w_midi_precision == 0, "1x", "Keep the same spacing found in the MIDI file.") && wmenu = 0) w_midi_precision = 0
-	if (draw_radiobox(x1 + 470, y1 + 32 + 60, w_midi_precision == 1, "2x", "Add twice as much space between each note.") && wmenu = 0) w_midi_precision = 1
-	if (draw_radiobox(x1 + 520, y1 + 32 + 40, w_midi_precision == 3, "4x", "Add four times as much space between each note.") && wmenu = 0) w_midi_precision = 3
-	if (draw_radiobox(x1 + 520, y1 + 32 + 60, w_midi_precision == 7, "8x", "Add eight times as much space between each note.\n(This will create a very long song!)") && wmenu = 0) w_midi_precision = 7
+	draw_text_dynamic(x1 + 470, y1 + 32 + 20, localize_ko("Time precision"))
+	popup_set_window(x1 + 470, y1 + 32 + 20, 100, 20, localize_ko("How much to increase the spacing between each note,\nso that more notes can be placed in between."))
+	if (draw_radiobox(x1 + 470, y1 + 32 + 40, w_midi_precision == 0, "1x", localize_ko("Keep the same spacing found in the MIDI file.")) && wmenu = 0) w_midi_precision = 0
+	if (draw_radiobox(x1 + 470, y1 + 32 + 60, w_midi_precision == 1, "2x", localize_ko("Add twice as much space between each note.")) && wmenu = 0) w_midi_precision = 1
+	if (draw_radiobox(x1 + 520, y1 + 32 + 40, w_midi_precision == 3, "4x", localize_ko("Add four times as much space between each note.")) && wmenu = 0) w_midi_precision = 3
+	if (draw_radiobox(x1 + 520, y1 + 32 + 60, w_midi_precision == 7, "8x", localize_ko("Add eight times as much space between each note.\n(This will create a very long song!)")) && wmenu = 0) w_midi_precision = 7
 	
-	if (draw_checkbox(x1 + 12, y1 + 374, w_midi_remember, "Remember changes", "Whether to use these settings the\nnext time you import a MIDI file.", false, true) && wmenu = 0) w_midi_remember=!w_midi_remember
-	if (draw_button2(x1 + 520, y1 + 368, 72, "Import") && wmenu = 0) {w_midi_tab = 0 window = -1 import_midi() windowalpha = 0 windowclose = 0 windowopen = 0}
-	if (draw_button2(x1 + 520 - 80, y1 + 368, 72, "Cancel", false, true) && wmenu = 0 && (windowopen = 1 || theme != 3)) {songs[song].midifile = "" w_midi_tab = 0 windowclose = 1}
+	if (draw_checkbox(x1 + 12, y1 + 374, w_midi_remember, localize_ko("Remember changes"), localize_ko("Whether to use these settings the\nnext time you import a MIDI file."), false, true) && wmenu = 0) w_midi_remember=!w_midi_remember
+	if (draw_button2(x1 + 520, y1 + 368, 72, localize_ko("Import")) && wmenu = 0) {w_midi_tab = 0 window = -1 import_midi() windowalpha = 0 windowclose = 0 windowopen = 0}
+	if (draw_button2(x1 + 520 - 80, y1 + 368, 72, localize_ko("Cancel"), false, true) && wmenu = 0 && (windowopen = 1 || theme != 3)) {songs[song].midifile = "" w_midi_tab = 0 windowclose = 1}
 	} else {
 	draw_theme_font(font_main_bold)
 	draw_text_dynamic(x1 + 8, y1 + 8, "导入MIDI")
@@ -104,8 +104,8 @@ function draw_window_midi_import() {
 	if (draw_button2(x1 + 520, y1 + 368, 72, "导入") && wmenu = 0) {w_midi_tab = 0 window = -1 import_midi() windowalpha = 0 windowclose = 0 windowopen = 0}
 	if (draw_button2(x1 + 520 - 80, y1 + 368, 72, "取消", false, true) && wmenu = 0 && (windowopen = 1 || theme != 3)) {songs[song].midifile = "" w_midi_tab = 0 windowclose = 1}
 	}
-	if (draw_button2(x1 + 520 - 160, y1 + 368, 72, condstr(language != 1, "Use default", "使用默认值"), false, true) && wmenu = 0) {
-	    if (question(condstr(language != 1, "Are you sure?", "你确定吗？"), condstr(language != 1, "Confirm", "确定"))) { 
+	if (draw_button2(x1 + 520 - 160, y1 + 368, 72, condstr(language != 1, localize_ko("Use default"), "使用默认值"), false, true) && wmenu = 0) {
+	    if (question(condstr(language != 1, localize_ko("Are you sure?"), "你确定吗？"), condstr(language != 1, localize_ko("Confirm"), "确定"))) { 
 	        midi_instruments()
 	        for (a = 0; a < array_length(midi_parts); a += 1) {
 	            midi_parts[a].note_duration = midi_parts[a].channel != 9
@@ -137,9 +137,9 @@ function draw_window_midi_import() {
 	if (w_midi_tab >= tab_count) w_midi_tab = 0
 	b = 8
 	if (language != 1) {
-	str[0] = "Instruments"
-	str[1] = "Percussion"
-	str[2] = "Tracks"
+	str[0] = localize_ko("Instruments")
+	str[1] = localize_ko("Percussion")
+	str[2] = localize_ko("Tracks")
 	str[3] = "Note Duration"
 	} else {
 	str[0] = "乐器"
@@ -223,20 +223,20 @@ function draw_window_midi_import() {
 	if (w_midi_tab = 0) {
 		if (language != 1) {
 	    tabs = 5
-	    tabstr[0] = "Channel"
-	    tabtip[0] = "The number of the channel."
+	    tabstr[0] = localize_ko("Channel")
+	    tabtip[0] = localize_ko("The number of the channel.")
 	    tabw[0] = 50
-	    tabstr[1] = "Patch"
-	    tabtip[1] = "The patch (instrument) of the channel."
+	    tabstr[1] = localize_ko("Patch")
+	    tabtip[1] = localize_ko("The patch (instrument) of the channel.")
 	    tabw[1] = 41
-	    tabstr[2] = "Patch name"
-	    tabtip[2] = "The name of the patch (instrument) of the channel."
+	    tabstr[2] = localize_ko("Patch name")
+	    tabtip[2] = localize_ko("The name of the patch (instrument) of the channel.")
 	    tabw[2] = 260
-	    tabstr[3] = "Instrument"
-	    tabtip[3] = "The instrument the notes in the channel\nshould be translated to."
+	    tabstr[3] = localize_ko("Instrument")
+	    tabtip[3] = localize_ko("The instrument the notes in the channel\nshould be translated to.")
 	    tabw[3] = 130
-	    tabstr[4] = "Octave modifier"
-	    tabtip[4] = "The octave modifier for all sounds in this channel."
+	    tabstr[4] = localize_ko("Octave modifier")
+	    tabtip[4] = localize_ko("The octave modifier for all sounds in this channel.")
 	    tabw[4] = 100
 		} else {
 		tabs = 5
@@ -264,22 +264,22 @@ function draw_window_midi_import() {
 	        draw_text_dynamic(x1 + 12 + 4, y1 + 174 + 20 * a, string(b + 1))
 	        if (b = 9) {
 	            draw_text_dynamic(x1 + 12 + 4 + tabw[0], y1 + 174 + 20 * a, " - ")
-	            if (language != 1) draw_text_dynamic(x1 + 12 + 4 + tabw[0] + tabw[1], y1 + 174 + 20 * a, "Percussion")
+	            if (language != 1) draw_text_dynamic(x1 + 12 + 4 + tabw[0] + tabw[1], y1 + 174 + 20 * a, localize_ko("Percussion"))
 	            else draw_text_dynamic(x1 + 12 + 4 + tabw[0] + tabw[1], y1 + 174 + 20 * a, "打击乐")
-	            if (language != 1) draw_text_dynamic(x1 + 12 + 4 + tabw[0] + tabw[1] + tabw[2], y1 + 174 + 20 * a, "See \"Percussion\" tab")
+	            if (language != 1) draw_text_dynamic(x1 + 12 + 4 + tabw[0] + tabw[1] + tabw[2], y1 + 174 + 20 * a, localize_ko("See \"Percussion\" tab"))
 	            else draw_text_dynamic(x1 + 12 + 4 + tabw[0] + tabw[1] + tabw[2], y1 + 174 + 20 * a, "请查看“打击乐”页面")
 	            draw_text_dynamic(x1 + 12 + 4 + tabw[0] + tabw[1] + tabw[2] + tabw[3], y1 + 174 + 20 * a, "-")
 	        } else {
 	            draw_text_dynamic(x1 + 12 + 4 + tabw[0], y1 + 174 + 20 * a, string(midi_channelpatch[b] + 1))
 				if (midi_channelpatch[b] < 128) draw_text_dynamic(x1 + 12 + 4 + tabw[0] + tabw[1], y1 + 174 + 20 * a, midi_ins[midi_channelpatch[b], 0])
-				else draw_text_dynamic(x1 + 12 + 4 + tabw[0] + tabw[1], y1 + 174 + 20 * a, condstr(language != 1, "Unknown", "未知"))
+				else draw_text_dynamic(x1 + 12 + 4 + tabw[0] + tabw[1], y1 + 174 + 20 * a, condstr(language != 1, localize_ko("Unknown"), "未知"))
 	            if (midi_channelins[b] = -1) {
 	                draw_set_color(c_gray)
-	                if (language != 1) draw_text_dynamic(x1 + 12 + 4 + tabw[0] + tabw[1] + tabw[2], y1 + 174 + 20 * a, "Ignore")
+	                if (language != 1) draw_text_dynamic(x1 + 12 + 4 + tabw[0] + tabw[1] + tabw[2], y1 + 174 + 20 * a, localize_ko("Ignore"))
 	                else draw_text_dynamic(x1 + 12 + 4 + tabw[0] + tabw[1] + tabw[2], y1 + 174 + 20 * a, "无")
 	            } else {
 	                draw_text_dynamic(x1 + 12 + 4 + tabw[0] + tabw[1] + tabw[2], y1 + 174 + 20 * a, songs[song].instrument_list[| midi_channelins[b]].name)
-	                if (language != 1) popup_set_window(x1 + 8 + tabw[0] + tabw[1] + tabw[2], y1 + 170 + 20 * a, tabw[3] - 20, 20, "Click to play this sound")
+	                if (language != 1) popup_set_window(x1 + 8 + tabw[0] + tabw[1] + tabw[2], y1 + 170 + 20 * a, tabw[3] - 20, 20, localize_ko("Click to play this sound"))
 	                else popup_set_window(x1 + 8 + tabw[0] + tabw[1] + tabw[2], y1 + 170 + 20 * a, tabw[3] - 20, 20, "点击预览声音")
 	                if (mouse_rectangle(x1 + 8 + tabw[0] + tabw[1] + tabw[2], y1 + 170 + 20 * a, tabw[3] - 20, 20) && wmenu = 0) {
 	                    curs = cr_handpoint
@@ -289,7 +289,7 @@ function draw_window_midi_import() {
 	                }
 	            }
 	            if (draw_abutton(x1 + 8 + tabw[0] + tabw[1] + tabw[2] + tabw[3] - 20, y1 + 172 + 20 * a) && wmenu = 0) {
-	                if (language != 1) str = check(midi_channelins[b] = -1) + "Ignore|"
+	                if (language != 1) str = check(midi_channelins[b] = -1) + localize_ko("Ignore|")
 	                else str = check(midi_channelins[b] = -1) + "无|"
 	                for (c = 0; c < ds_list_size(songs[song].instrument_list); c += 1) {
 	                    var ins = songs[song].instrument_list[| c];
@@ -298,7 +298,7 @@ function draw_window_midi_import() {
 	                menu = show_menu_ext("midiimport_ins", x1 + 8 + tabw[0] + tabw[1] + tabw[2], y1 + 190 + 20 * a, str)
 	                menu.menub = b
 	            }
-	            if (language != 1) str = "None"
+	            if (language != 1) str = localize_ko("None")
 	            else str = "无"
 	            if (midi_channeloctave[b]<>0) {
 	                str = condstr(midi_channeloctave[b] > 0, " + ") + string(midi_channeloctave[b])
@@ -329,17 +329,17 @@ function draw_window_midi_import() {
 	} else if (w_midi_tab = 1) {
 		if (language != 1) {
 	    tabs = 4
-	    tabstr[0] = "Note"
-	    tabtip[0] = "The note which represents the sound."
+	    tabstr[0] = localize_ko("Note")
+	    tabtip[0] = localize_ko("The note which represents the sound.")
 	    tabw[0] = 50
-	    tabstr[1] = "Sound name"
-	    tabtip[1] = "The name of the sound."
+	    tabstr[1] = localize_ko("Sound name")
+	    tabtip[1] = localize_ko("The name of the sound.")
 	    tabw[1] = 220
-	    tabstr[2] = "Instrument"
-	    tabtip[2] = "The instrument the sound\nshould be translated to."
+	    tabstr[2] = localize_ko("Instrument")
+	    tabtip[2] = localize_ko("The instrument the sound\nshould be translated to.")
 	    tabw[2] = 210
-	    tabstr[3] = "Pitch"
-	    tabtip[3] = "The pitch of the output."
+	    tabstr[3] = localize_ko("Pitch")
+	    tabtip[3] = localize_ko("The pitch of the output.")
 	    tabw[3] = 100
 		} else {
 		tabs = 4
@@ -365,7 +365,7 @@ function draw_window_midi_import() {
 	            draw_text_dynamic(x1 + 12 + 4 + tabw[0], y1 + 174 + 20 * a, midi_drum[midi_percnote[b], 0])
 	            if (midi_percins[b] > -1) {
 	                draw_text_dynamic(x1 + 12 + 4 + tabw[0] + tabw[1], y1 + 174 + 20 * a, songs[song].instrument_list[| midi_percins[b]].name)
-	                if (language != 1) popup_set_window(x1 + 8 + tabw[0] + tabw[1], y1 + 170 + 20 * a, tabw[2] - 20, 20, "Click to play this sound")
+	                if (language != 1) popup_set_window(x1 + 8 + tabw[0] + tabw[1], y1 + 170 + 20 * a, tabw[2] - 20, 20, localize_ko("Click to play this sound"))
 	                else popup_set_window(x1 + 8 + tabw[0] + tabw[1], y1 + 170 + 20 * a, tabw[2] - 20, 20, "点击预览声音")
 	                if (mouse_rectangle(x1 + 8 + tabw[0] + tabw[1], y1 + 170 + 20 * a, tabw[2] - 20, 20) && wmenu = 0) {
 	                    curs = cr_handpoint
@@ -375,11 +375,11 @@ function draw_window_midi_import() {
 	                }
 	            } else {
 	                draw_set_color(c_gray)
-	                if (language != 1) draw_text_dynamic(x1 + 12 + 4 + tabw[0] + tabw[1], y1 + 174 + 20 * a, "Ignore")
+	                if (language != 1) draw_text_dynamic(x1 + 12 + 4 + tabw[0] + tabw[1], y1 + 174 + 20 * a, localize_ko("Ignore"))
 	                else draw_text_dynamic(x1 + 12 + 4 + tabw[0] + tabw[1], y1 + 174 + 20 * a, "无视")
 	            }
 	            if (draw_abutton(x1 + 8 + tabw[0] + tabw[1] + tabw[2] - 19, y1 + 172 + 20 * a) && wmenu = 0) {
-	                if (language != 1) str = check(midi_percins[b] = -1) + "Ignore|"
+	                if (language != 1) str = check(midi_percins[b] = -1) + localize_ko("Ignore|")
 	                else str = check(midi_percins[b] = -1) + "无|"
 	                for (c = 0; c < ds_list_size(songs[song].instrument_list); c += 1) {
 	                    var ins = songs[song].instrument_list[| c];
@@ -394,7 +394,7 @@ function draw_window_midi_import() {
 	                str = ""
 	                key = 0
 	                oct = 0
-	                if (language != 1) str += "Octave 0|\\|"
+	                if (language != 1) str += localize_ko("Octave 0|\\|")
 	                else str += "0 八度|\\|"
 	                while (1) {
 	                    str += check(midi_percpitch[b] = key) + condstr(key < 33 || key > 57, "(outside)$") + get_keyname(key, 1) + "|"
@@ -402,7 +402,7 @@ function draw_window_midi_import() {
 	                    if (key = 88) break
 	                    if ((key - 3) mod 12 = 0) {
 	                        oct += 1
-	                        if (language != 1) str += "/|Octave " + string(oct) + "|\\|"
+	                        if (language != 1) str += localize_ko("/|Octave ") + string(oct) + "|\\|"
 	                        else str += "/|" + string(oct) + " 八度|\\|"
 	                    }
 	                }
@@ -423,14 +423,14 @@ function draw_window_midi_import() {
 	} else if (w_midi_tab = 2) {
 		if (language != 1) {
 	    tabs = 3
-	    tabstr[0] = "Track number"
-	    tabtip[0] = "The number of the track."
+	    tabstr[0] = localize_ko("Track number")
+	    tabtip[0] = localize_ko("The number of the track.")
 	    tabw[0] = 79
-	    tabstr[1] = "Track name"
-	    tabtip[1] = "The name of the track."
+	    tabstr[1] = localize_ko("Track name")
+	    tabtip[1] = localize_ko("The name of the track.")
 	    tabw[1] = 300
-	    tabstr[2] = "Amount of events"
-	    tabtip[2] = "The amount of events in the track."
+	    tabstr[2] = localize_ko("Amount of events")
+	    tabtip[2] = localize_ko("The amount of events in the track.")
 	    tabw[2] = 200
 		} else {
 		tabs = 3

@@ -1,5 +1,5 @@
 function load_reference_audio(){
-	var fn = string(get_open_filename_ext("Supported sounds (*.ogg;*.wav)|*.ogg;*.wav", "", songfolder, condstr(language != 1, "Load reference audio", "打开参考音频")))
+	var fn = string(get_open_filename_ext(localize_ko("Supported sounds (*.ogg;*.wav)|*.ogg;*.wav"), "", songfolder, condstr(language != 1, localize_ko("Load reference audio"), "打开参考音频")))
 	if (fn = "" || !file_exists_lib(fn)) return 0
 	audio_destroy_stream(songs[song].reference_audio)
 	audio_free_buffer_sound(songs[song].reference_audio)
@@ -24,7 +24,7 @@ function load_reference_audio(){
 	}
 	songs[song].reference_audio_buffer = global.__temp_audio_buffer__
 	if (songs[song].reference_audio < 0) {
-		if (language != 1) message("Couldn't load the file", "Error")
+		if (language != 1) message(localize_ko("Couldn't load the file"), localize_ko("Error"))
 		else message("文件加载失败", "错误")
 		songs[song].reference_audio_file = ""
 		songs[song].reference_audio = -1

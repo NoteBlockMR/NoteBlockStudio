@@ -21,7 +21,7 @@ function draw_dragvalue() {
 	        draw_text_dynamic(xx, yy, str)
 	    }
 	} else {
-	    if (language != 1) draw_text_dynamic(xx, yy, "No limit")
+	    if (language != 1) draw_text_dynamic(xx, yy, localize_ko("No limit"))
 	    else draw_text_dynamic(xx, yy, "无限")
 	}
 	if (lock) return v

@@ -22,7 +22,7 @@ function blocks_set_instruments() {
 	}
 	
 	if (invalid_ins) {
-		if (language = 0) message("Notes with invalid instrument values exist in this song, they will be replaced with Harp.", "Load Song")
+		if (language != 1) message(localize_ko("Notes with invalid instrument values exist in this song, they will be replaced with Harp."), localize_ko("Load Song"))
 		else message("歌曲内存在有非法音色值的音符，这些音符会被 Harp 替换。", "打开歌曲")
 	}
 

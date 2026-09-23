@@ -78,6 +78,6 @@ function selection_load(argument0, argument1, argument2, argument3) {
 	songs[song].selection_h = h + 1
 	selection_code_update()
 	selection_expand_layers()
-	if (invalid_instrument) set_msg(condstr(language != 1, "Some notes used unavailable instruments and were changed to Harp", "部分音符使用了不可用的音色，已替换为 Harp"))
+	if (invalid_instrument) set_msg(condstr(language != 1, localize_ko("Some notes used unavailable instruments and were changed to Harp"), "部分音符使用了不可用的音色，已替换为 Harp"))
 	return !invalid_instrument
 }

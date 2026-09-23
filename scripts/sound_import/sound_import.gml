@@ -26,7 +26,7 @@ function find_asset_indexes() {
 
 	if (!directory_exists(mc_install_path)) {
 		if (!check_exists) {
-			if (language != 1) message("No Minecraft installation was found\nat the selected location!", "Sound import");
+			if (language != 1) message(localize_ko("No Minecraft installation was found\nat the selected location!"), localize_ko("Sound import"));
 			else message("在所选位置未找到有Minecraft安装！", "音效导入");
 		}
 		return [];
@@ -95,7 +95,7 @@ function load_asset_index(copy = false) {
 	if (selected_asset_list == "") return;
 	var asset_index_path = assets_dir + "indexes" + condstr(os_type = os_windows, "\\", "/") + selected_asset_list + ".json";
 	if (!file_exists(asset_index_path)) {
-		if (language != 1) message("The file for the specified asset index could not be found!", "Note Block Studio")
+		if (language != 1) message(localize_ko("The file for the specified asset index could not be found!"), "Note Block Studio")
 		else message("未找到该索引所指向的文件！", "Note Block Studio")
 		return;
 	}
@@ -114,7 +114,7 @@ function load_asset_index(copy = false) {
 	
 	if (copy && directory_exists_lib(sounds_mc_subdir)) {
 		var isreplace = 0
-		if (language != 1) isreplace = message_yesnocancel("An existing folder with imported Minecraft sounds has been found in your Sounds folder. Would you like to replace it?", "Warning")
+		if (language != 1) isreplace = message_yesnocancel(localize_ko("An existing folder with imported Minecraft sounds has been found in your Sounds folder. Would you like to replace it?"), localize_ko("Warning"))
 		else isreplace = message_yesnocancel("在您的Sounds文件夹中发现已经存在一个包含已导入Minecraft音效的文件夹，您想要覆盖它吗？", "警告")
 		if (!isreplace) {
 			return;
@@ -247,7 +247,7 @@ function sound_import_download() {
 	
 						if (directory_exists_lib(sounds_mc_subdir)) {
 							var isreplace = 0
-							if (language != 1) isreplace = message_yesnocancel("An existing folder with imported Minecraft sounds has been found in your Sounds folder. Would you like to replace it?", "Warning")
+							if (language != 1) isreplace = message_yesnocancel(localize_ko("An existing folder with imported Minecraft sounds has been found in your Sounds folder. Would you like to replace it?"), localize_ko("Warning"))
 							else isreplace = message_yesnocancel("在您的Sounds文件夹中发现已经存在一个包含已导入Minecraft音效的文件夹，您想要覆盖它吗？", "警告")
 							if (!isreplace) {
 								sound_import_download_stage = 0
@@ -313,7 +313,7 @@ function sound_import_download() {
 				}
 			} else {
 				if (language != 1) {
-					message("The file could not be downloaded! Please try again.", "Note Block Studio");
+					message(localize_ko("The file could not be downloaded! Please try again."), "Note Block Studio");
 				} else {
 					message("下载失败！请重试。", "Note Block Studio");
 				}

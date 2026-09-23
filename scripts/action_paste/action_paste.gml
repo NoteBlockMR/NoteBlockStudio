@@ -11,7 +11,7 @@ function action_paste(argument0, argument1) {
 	if (cross_song) {
 		var resolve_result = custom_instruments_resolve(copied_custom_instruments)
 		if (!resolve_result.ok) {
-			message(condstr(language != 1, "This selection needs " + string(resolve_result.needed_count) + " new custom instruments, but this song only has room for " + string(resolve_result.available_count) + ".\n\nNo notes were pasted.", "此选区需要添加 " + string(resolve_result.needed_count) + " 个自定义音色，但当前歌曲只能再添加 " + string(resolve_result.available_count) + " 个。\n\n未粘贴任何音符。"), condstr(language != 1, "Paste", "粘贴"))
+			message(condstr(language != 1, localize_ko("This selection needs ") + string(resolve_result.needed_count) + localize_ko(" new custom instruments, but this song only has room for ") + string(resolve_result.available_count) + localize_ko(".\n\nNo notes were pasted."), "此选区需要添加 " + string(resolve_result.needed_count) + " 个自定义音色，但当前歌曲只能再添加 " + string(resolve_result.available_count) + " 个。\n\n未粘贴任何音符。"), condstr(language != 1, localize_ko("Paste"), "粘贴"))
 			return 0
 		}
 		instrument_map = resolve_result.instrument_map
@@ -42,7 +42,7 @@ function action_paste(argument0, argument1) {
 	songs[song].changed = 1
 
 	if (cross_song) {
-		set_msg(condstr(language != 1, "Copied " + string(copied_note_count) + " notes and " + string(copied_instrument_count) + " custom instruments from " + copied_source_name, "从 " + copied_source_name + " 复制了 " + string(copied_note_count) + " 个音符和 " + string(copied_instrument_count) + " 个自定义音色"))
+		set_msg(condstr(language != 1, localize_ko("Copied ") + string(copied_note_count) + localize_ko(" notes and ") + string(copied_instrument_count) + localize_ko(" custom instruments from ") + copied_source_name, "从 " + copied_source_name + " 复制了 " + string(copied_note_count) + " 个音符和 " + string(copied_instrument_count) + " 个自定义音色"))
 	}
 
 

@@ -12,7 +12,7 @@ function menu_macos_init(){
 		var edit_delete_inactive = ((text_editing && text_focus_readonly) || (!text_editing && current_song.selected = 0))
 		var edit_select_all_inactive = (!text_editing && current_song.totalblocks = 0)
 		if (language != 1) {
-			macos_create_menu_ext("Help", "help", icon_menubar(icons.HELP) + "Tutorial videos|\\|Part 1: Composing note block music|Part 2: Opening MIDI files|Part 3: Importing songs into Minecraft|Part 4: Editing songs made in Minecraft     |-|F1$View all|/|-|" + icon_menubar(icons.INTERNET) + "Website...|GitHub...|Discord server...|Report a bug...|Donate...|-|Changelist...|About...")
+			macos_create_menu_ext(localize_ko("Help"), "help", icon_menubar(icons.HELP) + localize_ko("Tutorial videos|\\|Part 1: Composing note block music|Part 2: Opening MIDI files|Part 3: Importing songs into Minecraft|Part 4: Editing songs made in Minecraft     |-|F1$View all|/|-|") + icon_menubar(icons.INTERNET) + localize_ko("Website...|GitHub...|Discord server...|Report a bug...|Donate...|-|Changelist...|About..."))
 			str = ""
 			customstr = ""
 			insmenu = 1
@@ -30,13 +30,13 @@ function menu_macos_init(){
 						}
 				}
 				if (a % 25 == 0 && a > 1 && a < ds_list_size(current_song.instrument_list) - 1) {
-					customstr += "-|More...|\\|"
+					customstr += localize_ko("-|More...|\\|")
 					insmenu++
 				}
 			}
-			if (!isplayer) macos_create_menu_ext("Settings", "settings", "Instrument|\\|" + str + condstr(customstr != "", "-|") + customstr + string_repeat("/|", insmenu) +
-				                icon_menubar(icons.INSTRUMENTS)+"Instrument settings...|Import sounds from Minecraft...|/|-|" + icon_menubar(icons.INFORMATION) + "Song info...|" + icon_menubar(icons.PROPERTIES) + "Song properties...|Song stats...|-|" + icon_menubar(icons.MIDI_INPUT) + "MIDI device manager")
-			else macos_create_menu_ext("Settings", "settingsp", icon_menubar(icons.INFORMATION) + "Song info...|" + "Song stats...")
+			if (!isplayer) macos_create_menu_ext(localize_ko("Settings"), "settings", localize_ko("Instrument|\\|") + str + condstr(customstr != "", "-|") + customstr + string_repeat("/|", insmenu) +
+				                icon_menubar(icons.INSTRUMENTS)+localize_ko("Instrument settings...|Import sounds from Minecraft...|/|-|") + icon_menubar(icons.INFORMATION) + localize_ko("Song info...|") + icon_menubar(icons.PROPERTIES) + localize_ko("Song properties...|Song stats...|-|") + icon_menubar(icons.MIDI_INPUT) + localize_ko("MIDI device manager"))
+			else macos_create_menu_ext(localize_ko("Settings"), "settingsp", icon_menubar(icons.INFORMATION) + localize_ko("Song info...|") + localize_ko("Song stats..."))
 			if (!isplayer) {
 				str = ""
 				customstr = ""
@@ -44,53 +44,53 @@ function menu_macos_init(){
 				for (a = 0; a < ds_list_size(current_song.instrument_list); a += 1) {
 				    var ins = current_song.instrument_list[| a];
 				    if (ins.user)
-				        customstr += "...to " + clean(ins.name) + "|"
+				        customstr += localize_ko("...to ") + clean(ins.name) + "|"
 				    else
-				        str += "...to " + clean(ins.name) + "|"
+				        str += localize_ko("...to ") + clean(ins.name) + "|"
 					if (a % 25 == 0 && a > 1 && a < ds_list_size(current_song.instrument_list) - 1) {
-						customstr += "-|More...|\\|"
+						customstr += localize_ko("-|More...|\\|")
 						insmenu++
 					}
 				}
 				// title is "Edit" + no_wide_space, otherwise fails
-				macos_create_menu_ext("Edit​", "edit", inactive(edit_undo_inactive) + icon_menubar(icons.UNDO - edit_undo_inactive) + get_hotkey_menubar("undo") + "$Undo|"+
-				                            inactive(edit_redo_inactive) + icon_menubar(icons.REDO - edit_redo_inactive) + get_hotkey_menubar("redo") + "$Redo|-|"+
-				                            inactive(edit_copy_inactive) + icon_menubar(icons.COPY - edit_copy_inactive) + get_hotkey_menubar("copy") + "$Copy|"+
-				                            inactive(edit_cut_inactive) + icon_menubar(icons.CUT - edit_cut_inactive) + get_hotkey_menubar("cut") + "$Cut|"+
-				                            inactive(edit_paste_inactive) + icon_menubar(icons.PASTE - edit_paste_inactive) + get_hotkey_menubar("paste") + "$Paste|"+
-				                            inactive(edit_delete_inactive) + icon_menubar(icons.DELETE - edit_delete_inactive) + get_hotkey_menubar("delete") + "$Delete|-|"+
-				                            inactive(edit_select_all_inactive) + get_hotkey_menubar("select_all") + "$Select all|"+
-				                            inactive(current_song.selected = 0) + "Deselect all|"+
-				                            inactive(current_song.selected = 0 && current_song.totalblocks = 0) + get_hotkey_menubar("invert_selection") + "$Invert selection|-|"+
-				                            inactive(current_song.instrument.num_blocks = 0) + "Select all " + clean(current_song.instrument.name) + "|"+
-				                            inactive(current_song.instrument.num_blocks = current_song.totalblocks) + "Select all but " + clean(current_song.instrument.name) + "|-|"+
+				macos_create_menu_ext(localize_ko("Edit​"), "edit", inactive(edit_undo_inactive) + icon_menubar(icons.UNDO - edit_undo_inactive) + get_hotkey_menubar("undo") + localize_ko("$Undo|")+
+				                            inactive(edit_redo_inactive) + icon_menubar(icons.REDO - edit_redo_inactive) + get_hotkey_menubar("redo") + localize_ko("$Redo|-|")+
+				                            inactive(edit_copy_inactive) + icon_menubar(icons.COPY - edit_copy_inactive) + get_hotkey_menubar("copy") + localize_ko("$Copy|")+
+				                            inactive(edit_cut_inactive) + icon_menubar(icons.CUT - edit_cut_inactive) + get_hotkey_menubar("cut") + localize_ko("$Cut|")+
+				                            inactive(edit_paste_inactive) + icon_menubar(icons.PASTE - edit_paste_inactive) + get_hotkey_menubar("paste") + localize_ko("$Paste|")+
+				                            inactive(edit_delete_inactive) + icon_menubar(icons.DELETE - edit_delete_inactive) + get_hotkey_menubar("delete") + localize_ko("$Delete|-|")+
+				                            inactive(edit_select_all_inactive) + get_hotkey_menubar("select_all") + localize_ko("$Select all|")+
+				                            inactive(current_song.selected = 0) + localize_ko("Deselect all|")+
+				                            inactive(current_song.selected = 0 && current_song.totalblocks = 0) + get_hotkey_menubar("invert_selection") + localize_ko("$Invert selection|-|")+
+				                            inactive(current_song.instrument.num_blocks = 0) + localize_ko("Select all ") + clean(current_song.instrument.name) + "|"+
+				                            inactive(current_song.instrument.num_blocks = current_song.totalblocks) + localize_ko("Select all but ") + clean(current_song.instrument.name) + "|-|"+
 				                            inactive(current_song.selected = 0) + get_hotkey_menubar("action_1") + "$" + get_mode_actions(1) + "|"+
 				                            inactive(current_song.selected = 0) + get_hotkey_menubar("action_2") + "$" + get_mode_actions(2) + "|"+
 				                            inactive(current_song.selected = 0) + get_hotkey_menubar("action_3") + "$" + get_mode_actions(3) + "|"+
 				                            inactive(current_song.selected = 0) + get_hotkey_menubar("action_4") + "$" + get_mode_actions(4) + "|"+
 													condstr((editmode != m_key), inactive(current_song.selected = 0) + get_hotkey_menubar("action_5") + "$" + get_mode_actions(5) + "|") +
 													condstr((editmode != m_key), inactive(current_song.selected = 0) + get_hotkey_menubar("action_6") + "$" + get_mode_actions(6) + "|") +
-				                            inactive(current_song.selected = 0) + "Change instrument...|\\|" + str + condstr(customstr != "", "-|") + customstr + string_repeat("/|", insmenu) + "-|" +
-				                            inactive(current_song.selected = 0 || current_song.selection_l = 0) + "Expand selection|"+
-				                            inactive(current_song.selected = 0 || current_song.selection_l = 0) + "Compress selection|"+
-				                            inactive(current_song.selected = 0 || current_song.selection_l = 0) + "Macros...|\\||"+ 
-											get_hotkey_menubar("tremolo") + "$Tremolo...|"+
-											get_hotkey_menubar("stereo") + "$Stereo...|"+
-											get_hotkey_menubar("arpeggio") + "$Arpeggio...|"+
-											get_hotkey_menubar("portamento") + "$Portamento...|"+
-											get_hotkey_menubar("vibrato") + "$Vibrato|"+
-											get_hotkey_menubar("stagger") + "$Stagger...|"+
-											get_hotkey_menubar("chorus") + "$Chorus|"+
-											get_hotkey_menubar("volume_lfo") + "$Volume LFO|"+
-											get_hotkey_menubar("fade_in") + "$Fade in|"+
-											get_hotkey_menubar("fade_out") + "$Fade out|"+
-											get_hotkey_menubar("replace_key") + "$Replace key|"+
-											get_hotkey_menubar("set_velocity") + "$Set velocity...|"+
-											get_hotkey_menubar("set_panning") + "$Set panning...|"+
-											get_hotkey_menubar("set_pitch") + "$Set pitch...|"+
-											get_hotkey_menubar("reset_properties") + "$Reset all properties|"+
+				                            inactive(current_song.selected = 0) + localize_ko("Change instrument...|\\|") + str + condstr(customstr != "", "-|") + customstr + string_repeat("/|", insmenu) + "-|" +
+				                            inactive(current_song.selected = 0 || current_song.selection_l = 0) + localize_ko("Expand selection|")+
+				                            inactive(current_song.selected = 0 || current_song.selection_l = 0) + localize_ko("Compress selection|")+
+				                            inactive(current_song.selected = 0 || current_song.selection_l = 0) + localize_ko("Macros...|\\||")+ 
+											get_hotkey_menubar("tremolo") + localize_ko("$Tremolo...|")+
+											get_hotkey_menubar("stereo") + localize_ko("$Stereo...|")+
+											get_hotkey_menubar("arpeggio") + localize_ko("$Arpeggio...|")+
+											get_hotkey_menubar("portamento") + localize_ko("$Portamento...|")+
+											get_hotkey_menubar("vibrato") + localize_ko("$Vibrato|")+
+											get_hotkey_menubar("stagger") + localize_ko("$Stagger...|")+
+											get_hotkey_menubar("chorus") + localize_ko("$Chorus|")+
+											get_hotkey_menubar("volume_lfo") + localize_ko("$Volume LFO|")+
+											get_hotkey_menubar("fade_in") + localize_ko("$Fade in|")+
+											get_hotkey_menubar("fade_out") + localize_ko("$Fade out|")+
+											get_hotkey_menubar("replace_key") + localize_ko("$Replace key|")+
+											get_hotkey_menubar("set_velocity") + localize_ko("$Set velocity...|")+
+											get_hotkey_menubar("set_panning") + localize_ko("$Set panning...|")+
+											get_hotkey_menubar("set_pitch") + localize_ko("$Set pitch...|")+
+											get_hotkey_menubar("reset_properties") + localize_ko("$Reset all properties|")+
 											"/|-|"+
-				                            inactive(current_song.selected = 0) + "Transpose notes outside octave range")
+				                            inactive(current_song.selected = 0) + localize_ko("Transpose notes outside octave range"))
 			}
 			str = ""
 			for (b = 0; b < 11; b += 1) {
@@ -98,23 +98,23 @@ function menu_macos_init(){
 				c = floor(date_second_span(recent_song_time[b], date_current_datetime()))
 				str += string_truncate(clean(filename_name(recent_song[b])), 310) + "|"
 			}
-			if (!isplayer) macos_create_menu_ext("File", "file", icon_menubar(icons.NEW)+get_hotkey_menubar("new_song") + "$New song|"+
-				                        icon_menubar(icons.OPEN)+get_hotkey_menubar("open_song") + "$Open song...|Recent songs...|\\|" + str + condstr(recent_song[0] != "", "-|Clear recent songs") + condstr(recent_song[0] = "", "^!No recent songs") + "|/|-|"+
-				                        icon_menubar(icons.SAVE)+get_hotkey_menubar("save_song") + "$Save song|"+
-				                        icon_menubar(icons.SAVE_AS)+"Save song as a new file...|"+
-										"Save options...|Restore unsaved files...|-|"+
-										"Import...|\\|" + 
-										inactive(current_song.selected != 0)+"Pattern...|"+
+			if (!isplayer) macos_create_menu_ext(localize_ko("File"), "file", icon_menubar(icons.NEW)+get_hotkey_menubar("new_song") + localize_ko("$New song|")+
+				                        icon_menubar(icons.OPEN)+get_hotkey_menubar("open_song") + localize_ko("$Open song...|Recent songs...|\\|") + str + condstr(recent_song[0] != "", localize_ko("-|Clear recent songs")) + condstr(recent_song[0] = "", localize_ko("^!No recent songs")) + "|/|-|"+
+				                        icon_menubar(icons.SAVE)+get_hotkey_menubar("save_song") + localize_ko("$Save song|")+
+				                        icon_menubar(icons.SAVE_AS)+localize_ko("Save song as a new file...|")+
+										localize_ko("Save options...|Restore unsaved files...|-|")+
+										localize_ko("Import...|\\|") + 
+										inactive(current_song.selected != 0)+localize_ko("Pattern...|")+
 										"MIDI...|"+
-										"Reference audio...|Background image...|/|"+
-										"Export...|\\|" +
-										inactive(current_song.totalblocks = 0 || ds_list_size(current_song.instrument_list) <= first_custom_index) + icon_menubar(icons.INSTRUMENTS) + "Song with custom sounds...|" +
-										inactive(current_song.selected = 0)+"Pattern...|" +
-										inactive(current_song.totalblocks = 0) + "Audio track...|"+
-										inactive(current_song.totalblocks = 0) + "Schematic...|"+
-										inactive(current_song.totalblocks = 0) + "Track schematic...|"+
-										inactive(current_song.totalblocks = 0) + "Data pack...")
-			else macos_create_menu_ext("File", "filep", icon_menubar(icons.OPEN)+get_hotkey_menubar("open_song") + "$Open song...|Recent songs...|\\|" + str + condstr(recent_song[0] != "", "-|Clear recent songs") + condstr(recent_song[0] = "", "^!No recent songs") + "|/|-|"+"Import from MIDI...|Import from schematic...|Import background image...|-|" + get_hotkey_menubar("exit") + "$Exit")
+										localize_ko("Reference audio...|Background image...|/|")+
+										localize_ko("Export...|\\|") +
+										inactive(current_song.totalblocks = 0 || ds_list_size(current_song.instrument_list) <= first_custom_index) + icon_menubar(icons.INSTRUMENTS) + localize_ko("Song with custom sounds...|") +
+										inactive(current_song.selected = 0)+localize_ko("Pattern...|") +
+										inactive(current_song.totalblocks = 0) + localize_ko("Audio track...|")+
+										inactive(current_song.totalblocks = 0) + localize_ko("Schematic...|")+
+										inactive(current_song.totalblocks = 0) + localize_ko("Track schematic...|")+
+										inactive(current_song.totalblocks = 0) + localize_ko("Data pack..."))
+			else macos_create_menu_ext(localize_ko("File"), "filep", icon_menubar(icons.OPEN)+get_hotkey_menubar("open_song") + localize_ko("$Open song...|Recent songs...|\\|") + str + condstr(recent_song[0] != "", localize_ko("-|Clear recent songs")) + condstr(recent_song[0] = "", localize_ko("^!No recent songs")) + "|/|-|"+localize_ko("Import from MIDI...|Import from schematic...|Import background image...|-|") + get_hotkey_menubar("exit") + localize_ko("$Exit"))
 					
 		} else {
 			macos_create_menu_ext("帮助", "help", icon_menubar(icons.HELP) + "教程视频|\\|第 1 集：编写音符盒乐曲|第 2 集：打开 MIDI 文件|第 3 集：将乐曲导入进 Minecraft|第 4 集：编辑在 Minecraft 中创作的乐曲     |-|F1$观看所有|/|-|" + icon_menubar(icons.INTERNET) + "官方网站......|GitHub......|Discord 服务器......|反馈 bug......|QQ 群......|捐赠......|-|更新历史......|关于......")
@@ -178,14 +178,14 @@ function menu_macos_init(){
 				                            inactive(current_song.selected = 0 || current_song.selection_l = 0) + "扩展选区|"+
 				                            inactive(current_song.selected = 0 || current_song.selection_l = 0) + "压缩选区|"+
 				                            inactive(current_song.selected = 0 || current_song.selection_l = 0) + "快捷键......|\\||"+ 
-											get_hotkey_menubar("tremolo") + "$Tremolo...|"+
-											get_hotkey_menubar("stereo") + "$Stereo...|"+
-											get_hotkey_menubar("arpeggio") + "$Arpeggio...|"+
-											get_hotkey_menubar("portamento") + "$Portamento...|"+
-											get_hotkey_menubar("vibrato") + "$Vibrato|"+
-											get_hotkey_menubar("stagger") + "$Stagger...|"+
-											get_hotkey_menubar("chorus") + "$Chorus|"+
-											get_hotkey_menubar("volume_lfo") + "$Volume LFO|"+
+											get_hotkey_menubar("tremolo") + localize_ko("$Tremolo...|")+
+											get_hotkey_menubar("stereo") + localize_ko("$Stereo...|")+
+											get_hotkey_menubar("arpeggio") + localize_ko("$Arpeggio...|")+
+											get_hotkey_menubar("portamento") + localize_ko("$Portamento...|")+
+											get_hotkey_menubar("vibrato") + localize_ko("$Vibrato|")+
+											get_hotkey_menubar("stagger") + localize_ko("$Stagger...|")+
+											get_hotkey_menubar("chorus") + localize_ko("$Chorus|")+
+											get_hotkey_menubar("volume_lfo") + localize_ko("$Volume LFO|")+
 											get_hotkey_menubar("fade_in") + "$淡入|"+
 											get_hotkey_menubar("fade_out") + "$淡出|"+
 											get_hotkey_menubar("replace_key") + "$替换音|"+

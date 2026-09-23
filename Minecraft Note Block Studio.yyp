@@ -566,6 +566,7 @@
     {"id":{"name":"schematic_export","path":"scripts/schematic_export/schematic_export.yy",},"order":8,},
     {"id":{"name":"branch_export_old","path":"scripts/branch_export_old/branch_export_old.yy",},"order":9,},
     {"id":{"name":"lang_en_us","path":"scripts/lang_en_us/lang_en_us.yy",},"order":0,},
+    {"id":{"name":"localize_ko","path":"scripts/localize_ko/localize_ko.yy",},"order":1,},
     {"id":{"name":"schematic_height","path":"scripts/schematic_height/schematic_height.yy",},"order":10,},
     {"id":{"name":"spr_inputbox_n_middle_hires","path":"sprites/spr_inputbox_n_middle_hires/spr_inputbox_n_middle_hires.yy",},"order":4,},
     {"id":{"name":"schematic_length","path":"scripts/schematic_length/schematic_length.yy",},"order":11,},

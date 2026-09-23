@@ -3,8 +3,8 @@
 function pack_instruments() {
 	var fn, tempdir, ins, src, dst, count;
 	log(songs[song].song_name)
-	if (language != 1) fn = string(get_save_filename_ext("ZIP archive (*.zip)|*.zip", condstr(songs[song].filename == "", "", filename_change_ext(songs[song].filename, "") + " - ") + "Instruments.zip", "", "Pack instruments to ZIP file"));
-	else fn = string(get_save_filename_ext("ZIP archive (*.zip)|*.zip", condstr(songs[song].filename == "", "", filename_change_ext(songs[song].filename, "") + " - ") + "Instruments.zip", "", "导出音色至 ZIP 文件"));
+	if (language != 1) fn = string(get_save_filename_ext(localize_ko("ZIP archive (*.zip)|*.zip"), condstr(songs[song].filename == "", "", filename_change_ext(songs[song].filename, "") + " - ") + "Instruments.zip", "", localize_ko("Pack instruments to ZIP file")));
+	else fn = string(get_save_filename_ext(localize_ko("ZIP archive (*.zip)|*.zip"), condstr(songs[song].filename == "", "", filename_change_ext(songs[song].filename, "") + " - ") + "Instruments.zip", "", "导出音色至 ZIP 文件"));
 	if (fn = "") return 0;
 	fn = enforce_extension(fn, ".zip")
 	
@@ -36,7 +36,7 @@ function pack_instruments() {
 	if (os_type = os_macosx) execute_program("ditto", "-c -k \"" + game_save_id + "temp" + "\" \"" + fn + "\"", true);
 	else execute_program(get_7z_exc_name(), "a -tzip \"" + fn + "\" \"" + game_save_id + "temp" + condstr(os_type = os_windows, "\\", "/") + "*\"", true)
 	directory_delete_lib(tempdir);
-	if (language != 1) message(string(count) + " instrument" + condstr(count > 1, "s were", " was") + " saved!", "Pack instruments");
+	if (language != 1) message(string(count) + localize_ko(" instrument") + condstr(count > 1 && language != 2, localize_ko("s were"), localize_ko(" was")) + localize_ko(" saved!"), localize_ko("Pack instruments"));
 	else message(string(count) + "个音色已保存！", "导出音色");
 	
 }

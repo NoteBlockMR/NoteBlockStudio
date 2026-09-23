@@ -1,7 +1,7 @@
 function branch_export_old() {
 	// branch_export()
 	var fn, a, b, o, z, sch_len, nblocks, nblockins, nblockvel, zvel, pass, tags, sch_layer1, sch_layer2, sch_layer3, entries
-	fn = string(get_save_filename_ext("Minecraft Schematics (*.schematic)|*.schematic", filename_new_ext(songs[song].filename, ""), "", "Export Schematic"))
+	fn = string(get_save_filename_ext(localize_ko("Minecraft Schematics (*.schematic)|*.schematic"), filename_new_ext(songs[song].filename, ""), "", localize_ko("Export Schematic")))
 	if (fn = "") return 0
 	//fn = string_replace_all(fn, ".schematic", "")
 	//fn += ".schematic"
@@ -210,7 +210,7 @@ function branch_export_old() {
 							nblocks ++
 						}
 					} else {
-					message("Error: Some notes are out of range!\nFix the fine pitch, or change it to a custom instrument with a higher/lower sound.", "Error")
+					message(localize_ko("Error: Some notes are out of range!\nFix the fine pitch, or change it to a custom instrument with a higher/lower sound."), localize_ko("Error"))
 					window = w_branch_export
 					return 0
 				}
@@ -559,7 +559,7 @@ function branch_export_old() {
 	schematic_save(mySchematic, fn);
 	schematic_destroy(mySchematic);
 	schematic_end();
-	message("Schematic saved!", "Schematic Export")
+	message(localize_ko("Schematic saved!"), localize_ko("Schematic Export"))
 	window = w_branch_export
 
 

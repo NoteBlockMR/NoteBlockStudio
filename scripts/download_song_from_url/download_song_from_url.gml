@@ -13,7 +13,7 @@ function download_song_from_url() {
 			song_total_size = async_load[? "contentLength"];
 			
 			if (song_total_size > max_song_download_size) {
-				message("This file is too large to be opened via a URL! Please try downloading and manually opening the song.", "Error");
+				message(localize_ko("This file is too large to be opened via a URL! Please try downloading and manually opening the song."), localize_ko("Error"));
 				song_download_data = -1; // Cancel
 				game_end();
 			} else {
@@ -73,7 +73,7 @@ function download_song_from_url() {
 				files_delete_lib(song_download_file);
 			} else {
 				if (language != 1) {
-					message("The song could not be downloaded! Please try again with a different song.", "Note Block Studio");
+					message(localize_ko("The song could not be downloaded! Please try again with a different song."), "Note Block Studio");
 				} else {
 					message("歌曲下载失败！请更换歌曲重试。", "Note Block Studio");
 				}

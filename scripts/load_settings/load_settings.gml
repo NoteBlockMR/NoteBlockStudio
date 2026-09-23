@@ -73,6 +73,7 @@ function load_settings() {
 	percentvel =         ini_read_real(  "preferences", "percentvel",         percentvel)
 	addpitch =           ini_read_real(  "preferences", "addpitch",           addpitch)
 	language =           ini_read_real(  "preferences", "language",           language)
+	if (language != 0 && language != 1 && language != 2) language = 0
 	acrylic =            ini_read_real(  "preferences", "acrylic",            acrylic)
 	taskbar =            ini_read_real(  "preferences", "taskbar",            taskbar)
 	remove_effect =      ini_read_real(  "preferences", "remove_effect",      remove_effect)

@@ -1,0 +1,1195 @@
+# English GML string literal (escaped)\tKorean GML string literal (escaped)
+Harp	하프
+Double Bass	더블 베이스
+Bass Drum	베이스 드럼
+Snare Drum	스네어 드럼
+Click	클릭
+Guitar	기타
+Flute	플루트
+Bell	종
+Chime	차임
+Xylophone	실로폰
+Iron Xylophone	철 실로폰
+Cow Bell	카우벨
+Didgeridoo	디저리두
+Bit	비트
+Banjo	밴조
+Pling	플링
+Trumpet	트럼펫
+Exposed Trumpet	약간 녹슨 트럼펫
+Weathered Trumpet	녹슨 트럼펫
+Oxidized Trumpet	산화된 트럼펫
+Orange	주황색
+Magenta	자홍색
+Light Blue	하늘색
+Yellow	노란색
+Lime	연두색
+Pink	분홍색
+Gray	회색
+Light Gray	회백색
+Cyan	청록색
+Purple	보라색
+Blue	파란색
+Brown	갈색
+Green	초록색
+Red	빨간색
+Black	검은색
+White	흰색
+Air	공기
+Stone	돌
+Grass Block	잔디 블록
+Dirt	흙
+Cobblestone	조약돌
+Wood Planks	나무 판자
+Bedrock	기반암
+Sand	모래
+Gravel	자갈
+Gold Ore	금 광석
+Iron Ore	철 광석
+Coal Ore	석탄 광석
+Wood	나무
+Leaves	나뭇잎
+Sponge	스펀지
+Glass	유리
+Lapis Lazuli Ore	청금석 광석
+Lapis Lazuli Block	청금석 블록
+Dispenser	발사기
+Sandstone	사암
+Note Block	소리 블록
+Bed	침대
+Powered Rail	전동 레일
+Detector Rail	감지 레일
+Sticky Piston	끈끈이 피스톤
+Cobweb	거미줄
+Piston	피스톤
+Wool	양털
+Block of Gold	금 블록
+Block of Iron	철 블록
+Bricks	벽돌
+Bookshelf	책장
+Moss Stone	이끼 낀 돌
+Obsidian	흑요석
+Monster Spawner	몬스터 생성기
+Chest	상자
+Diamond Ore	다이아몬드 광석
+Block of Diamond	다이아몬드 블록
+Crafting Table	제작대
+Farmland	경작지
+Furnace	화로
+Burning Furnace	불붙은 화로
+Redstone Ore	레드스톤 광석
+Glowing Redstone Ore	빛나는 레드스톤 광석
+Snow	눈
+Ice	얼음
+Clay	점토
+Pumpkin	호박
+Netherrack	네더랙
+Soul Sand	영혼 모래
+Glowstone	발광석
+Jack - o'Lantern	잭오랜턴
+Cake	케이크
+Stained Glass	색유리
+Stained glass	색유리
+Monster Egg	벌레 먹은 블록
+Stone Bricks	석재 벽돌
+Brown Mushroom	갈색 버섯
+Red Mushroom	빨간색 버섯
+Melon	수박
+Mycelium	균사체
+Nether Brick	네더 벽돌
+End Stone	엔드 돌
+Redstone Lamp (inactive)	레드스톤 조명 (꺼짐)
+Redstone Lamp (active)	레드스톤 조명 (켜짐)
+Wooden Slab	나무 반 블록
+Emerald Ore	에메랄드 광석
+Block of Emerald	에메랄드 블록
+Command Block	명령 블록
+Beacon	신호기
+Daylight Sensor	햇빛 감지기
+Block of Redstone	레드스톤 블록
+Nether Quartz Ore	네더 석영 광석
+Block of Quartz	석영 블록
+Terracotta	테라코타
+Colored Terracotta	색 테라코타
+Leaves (Acacia / Dark Oak)	나뭇잎 (아카시아 / 짙은 참나무)
+Wood (Acacia / Dark Oak)	나무 (아카시아 / 짙은 참나무)
+Slime Block	슬라임 블록
+Prismarine	프리즈머린
+Sea Lantern	바다 랜턴
+Hay Bale	건초 더미
+Block of Coal	석탄 블록
+Packed Ice	꽁꽁 언 얼음
+Red Sandstone	붉은 사암
+Purpur Block	퍼퍼 블록
+Purpur Pillar	퍼퍼 기둥
+End Bricks	엔드 석재 벽돌
+Grass Path	잔디 길
+Repeating Command Block	반복형 명령 블록
+Chain Command Block	연쇄형 명령 블록
+Frosted Ice	살얼음
+Magma Block	마그마 블록
+Nether Wart Block	네더 사마귀 블록
+Red Nether Brick	붉은 네더 벽돌
+Bone Block	뼈 블록
+Concrete	콘크리트
+Concrete Powder	콘크리트 가루
+Tremolo	트레몰로
+Stereo	스테레오
+Arpeggio	아르페지오
+Portamento	포르타멘토
+Vibrato	비브라토
+Stagger	엇갈리기
+Chorus	코러스
+Volume LFO	음량 LFO
+Fade in	페이드 인
+Fade out	페이드 아웃
+Replace key	음 높이 바꾸기
+Set velocity	세기 설정
+Set panning	패닝 설정
+Set pitch	미세 음정 설정
+Reset all properties	모든 속성 초기화
+Unsaved song	저장하지 않은 곡
+Unsaved Song	저장하지 않은 곡
+Untitled song	제목 없는 곡
+Blackout mode	검은 배경 모드
+ON	켜짐
+OFF	꺼짐
+Fullscreen	전체 화면
+Remove section	구간 삭제
+Jump to beginning of section	구간 시작으로 이동
+Jump to ending of section	구간 끝으로 이동
+Select all blocks in section	구간의 모든 블록 선택
+Start playing in section	구간 시작부터 재생
+Stop playing after section	구간 끝에서 재생 정지
+...to	...변경:
+More...	더 보기...
+Copy	복사
+Cut	잘라내기
+Paste	붙여넣기
+Delete	삭제
+Select all	모두 선택
+Deselect all	선택 해제
+Invert selection	선택 반전
+Select all to the right	오른쪽 모두 선택
+Select all to the right ->	오른쪽 모두 선택 ->
+Select all to the left	왼쪽 모두 선택
+Select all to the left <-	왼쪽 모두 선택 <-
+Select all but 	다음 악기 제외 선택: 
+Change instrument...	악기 변경...
+Expand selection	선택 영역 늘리기
+Compress selection	선택 영역 줄이기
+Macros...	매크로...
+Transpose notes outside octave range	범위를 벗어난 음 조옮김
+Window scale	창 배율
+Rainbow mode	무지개 모드
+Max framerate	최대 프레임 속도
+Max. frame rate	최대 프레임 속도
+Expand workspace	작업 영역 확장
+Return	돌아가기
+The name for this layer	이 레이어의 이름
+The name of this layer.	이 레이어의 이름입니다.
+Layer	레이어
+Volume of this layer: 	레이어 음량: 
+%\n(Click and drag to change)	%\n(드래그하여 변경)
+\n(Click and drag to change)	\n(드래그하여 변경)
+Center	중앙
+Stereo pan: 	스테레오 패닝: 
+MONO	모노
+Lock this layer	레이어 잠금
+Solo this layer	이 레이어만 재생
+Select all note blocks in this layer\n(Hold Ctrl to select multiple layers)	레이어의 모든 소리 블록 선택\n(Ctrl을 누르면 여러 레이어 선택)
+Select all note blocks in this layer\n(Click and drag to select multiple; click again to deselect)	레이어의 모든 소리 블록 선택\n(드래그하면 여러 레이어 선택, 다시 클릭하면 해제)
+Add empty layer here	여기에 빈 레이어 추가
+Add empty layer here\n(Click and drag to add multiple layers)	여기에 빈 레이어 추가\n(드래그하면 여러 레이어 추가)
+Remove this layer	레이어 삭제
+Remove this layer\n(Click and drag to remove multiple layers)	레이어 삭제\n(드래그하면 여러 레이어 삭제)
+Shift layer up	레이어 위로 이동
+Shift layer down	레이어 아래로 이동
+Shift layer up\n(Click and drag to shift multiple layers)	레이어 위로 이동\n(드래그하면 여러 레이어 이동)
+Shift layer down\n(Click and drag to shift multiple layers)	레이어 아래로 이동\n(드래그하면 여러 레이어 이동)
+File	파일
+New song	새 곡
+Open song	곡 열기
+Recent songs...	최근 곡...
+Clear recent songs	최근 곡 목록 지우기
+No recent songs	최근 곡 없음
+Save song	곡 저장
+Save song as a new file...	다른 이름으로 저장...
+Save options	저장 옵션
+Restore unsaved files...	저장하지 않은 파일 복구...
+Import pattern...	패턴 가져오기...
+Export pattern...	패턴 내보내기...
+Import from MIDI	MIDI 가져오기
+Import from schematic...	스키매틱 가져오기...
+Import from Schematic	스키매틱 가져오기
+Export as MP3...	MP3로 내보내기...
+Export as schematic...	스키매틱으로 내보내기...
+Export as branch schematic...	분기 스키매틱으로 내보내기...
+Export as data pack...	데이터 팩으로 내보내기...
+Exit	종료
+Edit	편집
+Edit​	편집​
+Settings	설정
+Instrument	악기
+Instrument settings...	악기 설정...
+Instrument Settings	악기 설정
+Song info...	곡 정보...
+Song properties...	곡 속성...
+Song stats...	곡 통계...
+MIDI device manager	MIDI 장치 관리
+Preferences	환경 설정
+Help	도움말
+Tutorial videos	사용법 동영상
+View all	모두 보기
+Website	웹사이트
+Discord server...	Discord 서버...
+Report a bug...	버그 신고...
+Donate	후원
+Changelist	변경 내역
+About	프로그램 정보
+Play / Pause song	재생 / 일시 정지
+Stop song	재생 정지
+Rewind song	뒤로 감기
+Fast-forward song	빨리 감기
+Record key presses	키 입력 녹음
+Toggle looping	반복 재생 전환
+Toggle metronome	메트로놈 전환
+Edit note key	음 높이 편집
+Edit note velocity	음표 세기 편집
+Edit note panning	음표 패닝 편집
+Edit note pitch	미세 음정 편집
+Change instrument to 	악기 변경: 
+Less instruments	악기 접기
+More instruments...	더 많은 악기...
+Undo	실행 취소
+Redo	다시 실행
+Undo the last change	마지막 변경 취소
+Redo the last undo	취소한 작업 다시 실행
+Copy the selected note blocks	선택한 소리 블록 복사
+Cut the selected note blocks	선택한 소리 블록 잘라내기
+Paste the copied note blocks	복사한 소리 블록 붙여넣기
+Delete the selected note blocks	선택한 소리 블록 삭제
+View song info	곡 정보 보기
+Edit song properties	곡 속성 편집
+Edit instruments	악기 편집
+Watch tutorial videos	사용법 동영상 보기
+Visit the Note Block Studio website	Note Block Studio 웹사이트 방문
+Master Volume: 	전체 음량: 
+Fully compatible	완전 호환
+This song is compatible with both schematics and data packs.\n(Click for more info.)	스키매틱과 데이터 팩에 모두 호환되는 곡입니다.\n(클릭하면 자세히 보기)
+Data pack only	데이터 팩 전용
+This song is only compatible with data packs.\n(Click for more info.)	데이터 팩에만 호환되는 곡입니다.\n(클릭하면 자세히 보기)
+Resource pack only	리소스 팩 필요
+This song is compatible with data packs using a resource pack.\n(Click for more info.)	리소스 팩을 사용하는 데이터 팩에 호환되는 곡입니다.\n(클릭하면 자세히 보기)
+Instrument: 	악기: 
+Key: 	음 높이: 
+Tick: 	틱: 
+Layer: 	레이어: 
+Selected: 	선택: 
+None	없음
+Velocity: 	세기: 
+Panning: 	패닝: 
+Pitch: 	미세 음정: 
+ cents	 센트
+Next auto-save: 	다음 자동 저장: 
+Sounds: 	소리: 
+MIDI devices: 	MIDI 장치: 
+No connected MIDI devices	연결된 MIDI 장치 없음
+Song Position	곡 재생 위치
+Position of the marker in bars, beats and sixteenths.	마커 위치를 마디, 박자, 16분음표로 표시합니다.
+Tempo of the song (measured in beats per minute).\nClick and drag to change. Click to enter value. Right-click for more options.	곡의 템포 (분당 박자 수).\n드래그하여 변경, 클릭하여 입력, 우클릭하여 추가 옵션을 봅니다.
+Tempo of the song (measured in ticks per second).\nClick and drag to change. Click to enter value. Right-click for more options.	곡의 템포 (초당 틱 수).\n드래그하여 변경, 클릭하여 입력, 우클릭하여 추가 옵션을 봅니다.
+Tip: click the tempo box\nto enter a value!	팁: 템포 상자를 클릭하면\n값을 입력할 수 있습니다!
+Ticks per second (t/s)	초당 틱 수 (t/s)
+Beats per minute (BPM)	분당 박자 수 (BPM)
+Tempo tapper	탭으로 템포 설정
+Way to go!	잘하셨습니다!
+Update	업데이트
+Downloading update...	업데이트 다운로드 중...
+No limit	제한 없음
+Could not find file:	파일을 찾을 수 없습니다:
+Could not find file:\n	파일을 찾을 수 없습니다:\n
+Error	오류
+Warning	경고
+Confirm	확인
+Are you sure?	계속하시겠습니까?
+Are you sure? This cannot be undone.	계속하시겠습니까? 되돌릴 수 없습니다.
+Transpose selected notes so that they fall within Minecraft's 2 octaves?	선택한 음표를 마인크래프트의 2옥타브 범위 안으로 조옮김할까요?
+Transpose notes so that they fall within Minecraft's 2 octaves?	음표를 마인크래프트의 2옥타브 범위 안으로 조옮김할까요?
+Transpose notes	조옮김
+Version 	버전 
+ is available! Do you want to download it?	을 사용할 수 있습니다! 다운로드할까요?
+Update available!	업데이트 가능!
+Download complete! Click OK to begin installing the update.	다운로드 완료! 확인을 누르면 업데이트를 설치합니다.
+Failed to download update. Do you want to open the Note Block Studio website and update manually?	업데이트 다운로드에 실패했습니다. 웹사이트를 열어 직접 업데이트할까요?
+Failed	실패
+Could not access file directory. Try running in administrator mode or re-install.	파일 폴더에 접근할 수 없습니다. 관리자 권한으로 실행하거나 다시 설치해 보세요.
+Export MP3	MP3 내보내기
+There was an error when saving as MP3.\nError code: 	MP3 저장 중 오류가 발생했습니다.\n오류 코드: 
+MP3 saved! Do you want to open it?	MP3를 저장했습니다! 열어 볼까요?
+MP3 Export	MP3 내보내기
+Data Pack Export	데이터 팩 내보내기
+Data Pack Folder	데이터 팩 폴더
+Data pack saved!	데이터 팩을 저장했습니다!
+To play the song in-game, use:	게임에서 곡을 재생하려면 다음 명령을 사용하세요:
+To play the song using a command block or function, use:	명령 블록이나 함수로 재생하려면 다음 명령을 사용하세요:
+(Replace @p with the player(s) you want to play the song to.)	(@p를 곡을 들려줄 플레이어로 바꾸세요.)
+If you wish to uninstall it from your world, run:	월드에서 제거하려면 다음 명령을 실행하세요:
+and then remove it from the 'datapacks' folder.	그런 다음 'datapacks' 폴더에서 삭제하세요.
+Save extra notes for data pack	데이터 팩의 추가 음역 저장
+Extra Note Blocks	추가 소리 블록
+Resource pack saved successfully!	리소스 팩을 저장했습니다!
+Saved	저장 완료
+Replaces instrument blocks with note block textures.	악기 블록을 소리 블록 텍스처로 바꿉니다.
+Note Block Textures	소리 블록 텍스처
+File not found!	파일을 찾을 수 없습니다!
+Do you want to save the song?	곡을 저장할까요?
+Do you want to save the song before quitting?	종료하기 전에 곡을 저장할까요?
+Do you want to save the changes made in 	다음 곡의 변경 사항을 저장할까요? 
+Do you want to save the song (tab 	곡을 저장할까요? (탭 
+ (tab 	 (탭 
+) before quitting?	) — 종료 전 저장
+ before quitting?	 — 종료 전 저장
+Load sound file	소리 파일 불러오기
+Couldn't load the file 	파일을 불러오지 못했습니다: 
+Couldn't load the file	파일을 불러오지 못했습니다
+! Error: 	! 오류: 
+Load instruments from song	곡에서 악기 불러오기
+This file does not contain any custom instruments.	이 파일에는 사용자 지정 악기가 없습니다.
+Pack instruments to ZIP file	악기를 ZIP으로 묶기
+Pack instruments	악기 묶기
+Load song	곡 불러오기
+Load Song	곡 불러오기
+Error: This file cannot be opened in this program.	오류: 이 프로그램에서 열 수 없는 파일입니다.
+Warning: You are opening an older NBS file. Saving this file will make it incompatible with older Note Block Studio versions.	이전 형식의 NBS 파일입니다. 저장하면 이전 버전의 Note Block Studio에서 열 수 없게 됩니다.
+Warning: You are opening an NBS file created in a later version of Note Block Studio.\nPlease save the song as a version 	더 최신 버전의 Note Block Studio에서 만든 NBS 파일입니다.\n저장 옵션에서 다음 버전 이하로 저장하세요: 
+ file or lower via the Save Options menu.	 이하.
+This song uses custom instruments. However, some sounds could not be loaded:	이 곡은 사용자 지정 악기를 사용하지만 다음 소리를 불러오지 못했습니다:
+This song uses custom instruments. However, some sounds could not be loaded:\n\n	이 곡은 사용자 지정 악기를 사용하지만 다음 소리를 불러오지 못했습니다:\n\n
+Make sure that you have put the sounds in the \"Sounds\" folder. Open Instrument settings?	소리 파일이 \"Sounds\" 폴더에 있는지 확인하세요. 악기 설정을 열까요?
+\nMake sure that you have put the sounds in the \"Sounds\" folder. Open Instrument settings?	\n소리 파일이 \"Sounds\" 폴더에 있는지 확인하세요. 악기 설정을 열까요?
+Save pattern	패턴 저장
+Load pattern	패턴 불러오기
+Error: This file is not a pattern.	오류: 패턴 파일이 아닙니다.
+Error: This pattern could not be opened.	오류: 패턴을 열 수 없습니다.
+Warning: You are opening an older NBP file. Saving this file will make it incompatible with older Note Block Studio versions.	이전 형식의 NBP 파일입니다. 저장하면 이전 버전의 Note Block Studio에서 열 수 없게 됩니다.
+Warning: You are opening an NBP file created in a later version of Note Block Studio. It may crash when opening.	더 최신 버전에서 만든 NBP 파일입니다. 여는 중 오류가 발생할 수 있습니다.
+There are more custom instruments in the pattern than what is loaded in the song!	패턴에 곡보다 많은 사용자 지정 악기가 있습니다!
+Song saved	곡을 저장했습니다
+Song auto saved	곡을 자동 저장했습니다
+Error loading MIDI file:\n\nFirst 4 bytes must be MThd.\n\nContinue anyway?	MIDI 불러오기 오류:\n\n처음 4바이트는 MThd여야 합니다.\n\n계속할까요?
+Error loading MIDI file:\n\nHeader size must be 00 00 00 06	MIDI 불러오기 오류:\n\n헤더 크기는 00 00 00 06이어야 합니다.
+Error loading MIDI file:\n\nFormat not supported.	MIDI 불러오기 오류:\n\n지원하지 않는 형식입니다.
+Error loading MIDI file:\n\nTrack chunk must begin with MTrk.	MIDI 불러오기 오류:\n\n트랙 청크는 MTrk로 시작해야 합니다.
+Error loading MIDI file:\n\nUnknown MIDI event	MIDI 불러오기 오류:\n\n알 수 없는 MIDI 이벤트입니다.
+There must be exactly two layers worth of note blocks in every applicable tick!	적용할 각 틱에 소리 블록이 정확히 두 레이어에 있어야 합니다!
+ notes were edited.	개 음표를 수정했습니다.
+NOTE: Since this block is outside the 2 octave limit, you won't be able to import it into Minecraft without a resource pack.\n\nThis warning will never be shown again.	이 블록은 2옥타브 범위를 벗어나므로 마인크래프트에서 사용하려면 리소스 팩이 필요합니다.\n\n이 경고는 다시 표시하지 않습니다.
+NOTE: Since this block has a custom instrument, you won't be able to import it into Minecraft without mods or resource packs.\n\nThis warning will never be shown again.	이 블록은 사용자 지정 악기이므로 마인크래프트에서 사용하려면 모드나 리소스 팩이 필요합니다.\n\n이 경고는 다시 표시하지 않습니다.
+Transpose one octave up	한 옥타브 올리기
+Transpose one octave down	한 옥타브 내리기
+Transpose up	반음 올리기
+Transpose down	반음 내리기
+Increase velocity by 10	세기 10 증가
+Decrease velocity by 10	세기 10 감소
+Increase velocity	세기 증가
+Decrease velocity	세기 감소
+Reset velocity	세기 초기화
+Pan right by 10	오른쪽으로 패닝 10
+Pan left by 10	왼쪽으로 패닝 10
+Pan right	오른쪽으로 패닝
+Pan left	왼쪽으로 패닝
+Reset panning	패닝 초기화
+Detune +10 cents	음정 +10센트
+Detune -10 cents	음정 -10센트
+Detune +1 cent	음정 +1센트
+Detune -1 cent	음정 -1센트
+Reset pitch	미세 음정 초기화
+Export Branch Schematic	분기 스키매틱 내보내기
+Error: Some notes are out of range!\nFix the fine pitch, or change it to a custom instrument with a higher/lower sound.	오류: 음역을 벗어난 음표가 있습니다!\n미세 음정을 수정하거나 음역이 맞는 사용자 지정 악기로 바꾸세요.
+The exported schematic is currently only compatible with Minecraft: Java Edition 1.12 and below. To import it in 1.13 and above, please use the export to structure block function.\n\nThis warning will never be shown again.	스키매틱은 마인크래프트 자바 에디션 1.12 이하에서만 호환됩니다. 1.13 이상에서는 구조물 블록으로 내보내기를 사용하세요.\n\n이 경고는 다시 표시하지 않습니다.
+Minecraft Compatibility	마인크래프트 호환성
+Some note blocks are outside of Minecraft's 2 octave limit. Do you want to export a Schematic anyway, ignoring the affected blocks?	마인크래프트의 2옥타브 범위를 벗어난 음표가 있습니다. 해당 음표를 제외하고 스키매틱을 내보낼까요?
+Some note blocks have a custom instrument assigned to them. Export anyway?	사용자 지정 악기를 사용하는 음표가 있습니다. 그래도 내보낼까요?
+Some note blocks have fine pitch tuning, which isn't supported in note blocks. Export anyway?	소리 블록이 지원하지 않는 미세 음정이 있습니다. 그래도 내보낼까요?
+The tempo of the song is not compatible with Minecraft. As a result, the playback speed of the song in-game will differ from the one in the program.	마인크래프트와 호환되지 않는 템포입니다. 게임에서의 재생 속도가 프로그램과 달라집니다.
+Tempo	템포
+There are no blocks to export!	내보낼 블록이 없습니다!
+Export Schematic	스키매틱 내보내기
+Schematic saved!	스키매틱을 저장했습니다!
+Schematic Export	스키매틱 내보내기
+Schematic export	스키매틱 내보내기
+Schematic import	스키매틱 가져오기
+Failed to load Schematic.\n\nERROR: Not a Schematic file.	스키매틱을 불러오지 못했습니다.\n\n오류: 스키매틱 파일이 아닙니다.
+Failed to load Schematic.\n\nERROR: Invalid size.	스키매틱을 불러오지 못했습니다.\n\n오류: 크기가 잘못되었습니다.
+Failed to load Schematic.\n\nERROR: No Blocks array found.	스키매틱을 불러오지 못했습니다.\n\n오류: Blocks 배열이 없습니다.
+Failed to load Schematic.\n\nERROR: No Data array found.	스키매틱을 불러오지 못했습니다.\n\n오류: Data 배열이 없습니다.
+Couldn't find any note blocks in the Schematic!	스키매틱에서 소리 블록을 찾을 수 없습니다!
+The Schematic did not include any supported inputs.\nSupported inputs are:\n\n* Buttons\n* Levers	지원하는 입력 장치가 없습니다.\n지원하는 입력 장치:\n\n* 버튼\n* 레버
+None of the note blocks in the Schematic could be added. This could be to none of them being connected to any inputs (buttons or levers).	스키매틱의 소리 블록을 추가할 수 없습니다. 버튼이나 레버에 연결되어 있는지 확인하세요.
+The Schematic contained more than one input.\n\nAs a result, the songs of the inputs have been put after each other.	스키매틱에 입력 장치가 여러 개 있습니다.\n\n각 입력의 곡을 순서대로 이어 붙였습니다.
+Version Local Release	로컬 빌드 버전
+ - Released 	 - 출시일 
+\n\nThis program is a continuation of\n Minecraft Note Block Studio, \ncreated by David Andrei. \n\nThis product is not affiliated with\nMojang Studios, Microsoft Studios\nor the game Minecraft.	\n\n이 프로그램은 David Andrei가 만든\nMinecraft Note Block Studio의\n후속 프로젝트입니다.\n\nMojang Studios, Microsoft Studios 및\n마인크래프트와 공식적인 관련이 없습니다.
+Branch Export	분기 내보내기
+Branch export	분기 내보내기
+Design	설계
+Blocks	블록
+Remember changes	설정 기억
+Whether to use these settings the\nnext time you export a branch.	다음에 분기를 내보낼 때도\n이 설정을 사용합니다.
+Layout:	배치:
+All	모두
+Exports all notes.	모든 음표를 내보냅니다.
+Only exports notes which have no panning values.	패닝 값이 없는 음표만 내보냅니다.
+Left	왼쪽
+Right	오른쪽
+Only exports notes that have left stereo values.	왼쪽 패닝의 음표만 내보냅니다.
+Only exports notes that have right stereo values.	오른쪽 패닝의 음표만 내보냅니다.
+Polyphony:	동시 발음 수:
+Main layer:	주 레이어:
+Chord layer 1:	화음 레이어 1:
+Chord layer 2:	화음 레이어 2:
+Enable velocity	세기 반영
+Whether to position the note blocks differently due to their velocity.\nIt's recommended that each layer's velocity should be the same when polyphony is higher than 1.	세기에 따라 소리 블록 위치를 조정합니다.\n동시 발음 수가 1보다 크면 레이어별 세기를 같게 설정하는 것이 좋습니다.
+Export circuitry	회로 내보내기
+Whether to export the ground, repeaters, and redstone.	바닥, 중계기와 레드스톤을 내보냅니다.
+Size:	크기:
+Range:	범위:
+Start Tick	시작 틱
+End Tick	끝 틱
+The name of the instrument.	악기 이름입니다.
+Block	블록
+The ID of the block that should be placed\nbelow note blocks of the instrument.	이 악기의 소리 블록 아래에 놓을\n블록의 ID입니다.
+Block name	블록 이름
+The name of the block that should be\nplaced below note blocks of the instrument.	이 악기의 소리 블록 아래에 놓을\n블록의 이름입니다.
+Block for circuitry:	회로용 블록:
+The block that should be used for the circuitry.	회로에 사용할 블록입니다.
+Export	내보내기
+Please enter a range!	범위를 입력하세요!
+Starting tick must be lower than ending tick!	시작 틱은 끝 틱보다 작아야 합니다!
+The ending tick is larger than the song!\nThe size of the song is 	끝 틱이 곡 길이를 넘습니다!\n곡 길이: 
+Use default	기본값 사용
+General	일반
+Interface	인터페이스
+Appearance	외관
+Usability	사용 편의
+Playback	재생
+Language	언어
+Theme	테마
+Dark mode	다크 모드
+Dark	어둡게
+Light	밝게
+Classic	클래식
+Fluent	Fluent
+Aqua	Aqua
+Icon	아이콘
+Fruity icon	macOS 스타일 아이콘
+Advanced	고급
+Startup	시작
+Updates	업데이트
+Auto-saving	자동 저장
+Enable auto-saving	자동 저장 사용
+Interval:       minute	간격:       분
+Whether the song should automatically\nbe saved every now and then.	일정한 간격으로 곡을\n자동 저장합니다.
+The amount of minutes between each auto-save.	자동 저장 간격 (분)입니다.
+Show greeting window	시작 화면 표시
+Whether to show the greeting window\nwhen the program is opened.	프로그램을 시작할 때\n시작 화면을 표시합니다.
+Check for updates	업데이트 확인
+Whether to check for any updates\nwhen the program is opened.	프로그램 시작 시\n업데이트를 확인합니다.
+Check for development versions	개발 버전 확인
+Whether to check for development versions in addition to stable releases.\nDevelopment versions contain the latest improvements, but may be potentially unstable.	안정 버전 외에 개발 버전도 확인합니다.\n개발 버전에는 최신 개선 사항이 있지만 불안정할 수 있습니다.
+Auto-play downloaded songs	다운로드한 곡 자동 재생
+Whether to start playing downloaded songs\nautomatically after opening them.	다운로드한 곡을 열면\n자동으로 재생합니다.
+Show warning when opening older songs	이전 형식의 곡을 열 때 경고
+Whether to show a warning when opening a song\nsaved in an older version of Note Block Studio.	이전 버전의 Note Block Studio에서\n저장한 곡을 열 때 경고합니다.
+Song folder	곡 폴더
+Song folder: 	곡 폴더: 
+Pattern folder	패턴 폴더
+Pattern folder: 	패턴 폴더: 
+Select song folder	곡 폴더 선택
+Select patterns folder	패턴 폴더 선택
+Select the directory where saving/loading should be opened in.	곡을 저장하거나 불러올 기본 폴더를 선택합니다.
+Select the directory where patterns can be imported/exported to.	패턴을 가져오거나 내보낼 기본 폴더를 선택합니다.
+Change	변경
+Reset	초기화
+OK	확인
+Cancel	취소
+Yes	예
+No	아니요
+Close song	곡 닫기
+Close other songs	다른 곡 닫기
+Close songs to the right	오른쪽 곡 닫기
+Transparency effects	투명 효과
+Whether to show transparency effects on the interface.\n(Only applies to the Fluent theme.)	인터페이스에 투명 효과를 사용합니다.\n(Fluent 테마 전용)
+Whether to use darker colors on the interface.\n(Only applies to the Fluent theme.)	인터페이스에 어두운 색을 사용합니다.\n(Fluent 테마 전용)
+Scale:               %	배율:               %
+Optimize for high resolutions	고해상도 최적화
+Whether to use higher resolution textures on the interface.\n	인터페이스에 고해상도 텍스처를 사용합니다.\n
+(May reduce performance and reduce readability at lower resolutions.)	(성능이 떨어지거나 저해상도에서 읽기 어려워질 수 있습니다.)
+(Only applies to the Fluent theme.)	(Fluent 테마 전용)
+Whether to use the a fruity themed icon instead of the regular icon.	기본 아이콘 대신 macOS 스타일 아이콘을 사용합니다.
+Whether to show the advanced interfaces settings.	고급 인터페이스 설정을 표시합니다.
+Turn off background blurring	배경 흐림 끄기
+Turn off background dimming	배경 어둡게 처리 끄기
+Turn off editing area background	편집 영역 배경 끄기
+Whether to turn off the blurring effect on the background image.	배경 이미지의 흐림 효과를 끕니다.
+Whether to turn off the dimming effect on the background image.	배경 이미지를 어둡게 처리하지 않습니다.
+Whether to turn off the background of the editing area.	편집 영역의 배경을 표시하지 않습니다.
+Navigation sound	조작 효과음
+Whether to play sound effects when navigating the interface.\n(Only applies to the Fluent theme.)	인터페이스 조작 시 효과음을 재생합니다.\n(Fluent 테마 전용)
+Enable taskbar indicator	작업 표시줄 진행률
+Whether to display the song\nprogress on the taskbar.	작업 표시줄에 곡의\n재생 진행률을 표시합니다.
+Enable Discord Rich Presence	Discord 활동 표시
+Whether to display info about your current\nsong in your Discord status activity.	현재 곡 정보를 Discord\n활동 상태에 표시합니다.
+Show piano	피아노 표시
+Whether the piano should be visible.	피아노 건반을 표시합니다.
+Show layer boxes	레이어 상자 표시
+Whether the layer boxes should be shown\non the left side of the workspace.	작업 영역 왼쪽에\n레이어 상자를 표시합니다.
+Show layer volumes	레이어 음량 표시
+Whether to show the volume of layers.	레이어의 음량을 표시합니다.
+Show key numbers	음표 번호 표시
+Whether to show the amount of right-clicks required\nfor each note block.	소리 블록의 음을 맞추는 데 필요한\n우클릭 횟수를 표시합니다.
+Whether to show the amount of right-clicks required\non each key inside the 2 octave range.	2옥타브 범위 내 각 건반에\n필요한 우클릭 횟수를 표시합니다.
+Show octave numbers	옥타브 번호 표시
+Whether the number of the octave the note block\nis in should be shown.	소리 블록의 옥타브\n번호를 표시합니다.
+Use colored note blocks	악기별 색상 사용
+If the instruments should be identified with\ndifferent colors.	악기를 서로 다른 색으로\n구분합니다.
+Show instrument icons	악기 아이콘 표시
+If the instruments should be identified with\ntheir respective icons.	악기를 각각의 아이콘으로\n구분합니다.
+Use different shapes for each instrument	악기별 모양 사용
+If the instruments should be identified\nwith different shapes.	악기를 서로 다른 모양으로\n구분합니다.
+Add glow	발광 효과
+Whether to add a glowing effect to each note block.	소리 블록에 빛나는 효과를 추가합니다.
+Show effect on removal	삭제 효과 표시
+Whether to show a fading border\nwhen removing a note block.	소리 블록을 삭제할 때\n사라지는 테두리 효과를 표시합니다.
+Highlight incompatible note blocks	호환되지 않는 블록 강조
+Whether to show a red outline on note blocks with\ncustom instruments or outside the 2 octave range.	사용자 지정 악기나 2옥타브 범위를 벗어난\n소리 블록에 빨간 테두리를 표시합니다.
+Selection highlight intensity:         %	선택 강조 강도:         %
+Show key names	음 이름 표시
+If the names of the keys should be shown.	건반의 음 이름을 표시합니다.
+Use flat symbol	플랫 기호 사용
+Whether to use the flat symbol (b) instead of\nthe sharp symbol (#) on keynames.	음 이름에 샤프 (#) 대신\n플랫 (b) 기호를 사용합니다.
+Show keyboard shortcuts	단축키 표시
+Show the keyboard shortcuts of the keys.	건반의 키보드 단축키를 표시합니다.
+Highlight out-of-range keys	음역 밖 건반 강조
+Whether to show a red tint on keys\noutside of the 2 octave range.	2옥타브 범위를 벗어난 건반을\n빨간색으로 표시합니다.
+Show note chart when hovering over keys	건반 위에 음표 표 표시
+Whether to show a note chart\nwhen hovering over the keys.	건반에 마우스를 올리면\n음표 표를 표시합니다.
+Keys to show:	표시할 건반 수:
+The amount of keys to show. A high number may\nslow down the program on old computers.	표시할 건반 수입니다. 너무 많으면\n오래된 컴퓨터에서 느려질 수 있습니다.
+Mouse wheel	마우스 휠
+Use mouse wheel to change instrument	휠로 악기 변경
+Use mouse wheel to change key	휠로 음 높이 변경
+Use mouse wheel to scroll through the song	휠로 곡 스크롤
+Use the mouse wheel to toggle between\nthe available instruments.	마우스 휠로\n악기를 변경합니다.
+Use the mouse wheel to toggle\nbetween the keys on the piano.	마우스 휠로\n피아노의 음 높이를 변경합니다.
+Use the mouse wheel to scroll through\nthe song horizontally or vertically.	마우스 휠로 곡을\n가로나 세로로 스크롤합니다.
+Scroll speed:	스크롤 속도:
+The number of ticks or layers scrolled with each mouse wheel step.\nThis setting does not affect macOS trackpads.	휠 한 칸당 이동할 틱 또는 레이어 수입니다.\nmacOS 트랙패드에는 적용되지 않습니다.
+Set selected key to pressed one	누른 건반의 음 선택
+If the selected key should be set\nto the one pressed using the keyboard.	키보드로 누른 건반의 음을\n선택한 음으로 설정합니다.
+Change note properties when scrolling over notes	음표 위에서 휠로 속성 변경
+Whether scrolling when hovering over a note should change its key,\nvelocity, panning or pitch, according to the currently selected edit mode.	음표 위에서 휠을 굴리면 현재 편집 모드에 따라\n음 높이, 세기, 패닝 또는 미세 음정을 변경합니다.
+Apply hovered layer's volume and panning to note preview sounds	미리듣기에 해당 레이어의 음량·패닝 적용
+Whether the preview sound's volume and panning should be\nrelative to the layer the mouse is hovering over.	마우스가 있는 레이어의 음량과 패닝을\n미리듣기 소리에 적용합니다.
+Follow marker when playing	재생 마커 따라가기
+Automatically scroll along with the\nmarker when playing the song.	재생 중 마커를 따라\n자동으로 스크롤합니다.
+Frame by frame	프레임 단위
+Page by page	페이지 단위
+Tick by tick	틱 단위
+Scroll with the marker every frame.	매 프레임마다 마커를 따라 스크롤합니다.
+Scroll with the marker every page.	페이지마다 마커를 따라 스크롤합니다.
+Scroll with the marker every tick.	매 틱마다 마커를 따라 스크롤합니다.
+Whether to always start playing\nat the start of the active section.	항상 활성 구간의\n시작부터 재생합니다.
+Whether to stop playing when the\nmarker passes the active section.	마커가 활성 구간을 지나면\n재생을 멈춥니다.
+Disable stereo	스테레오 끄기
+Disables stereo playback.	스테레오 재생을 끕니다.
+Use more audio channels	오디오 채널 확장
+Whether to increase the number\nof sounds that can play at once.	동시에 재생할 수 있는\n소리 수를 늘립니다.
+Show number of active sounds	재생 중인 소리 수 표시
+Displays the number of sounds that are\ncurrently playing in the status bar.	상태 표시줄에 현재\n재생 중인 소리 수를 표시합니다.
+Tempo unit	템포 단위
+Display song tempos in beats per minute.	템포를 분당 박자 수로 표시합니다.
+Display song tempos in ticks per second.	템포를 초당 틱 수로 표시합니다.
+Enable visualizer	시각 효과 사용
+Visualizer	시각 효과
+Visualizer type	시각 효과 유형
+Arc	호
+Bounce	튀기기
+Fall	떨어지기
+Fountain	분수
+Piano Roll	피아노 롤
+Rise	떠오르기
+Use Arc visualizer.	호 모양 시각 효과를 사용합니다.
+Use Bounce visualizer.	튀어 오르는 시각 효과를 사용합니다.
+Use Fall visualizer.	떨어지는 시각 효과를 사용합니다.
+Use Fountain visualizer.	분수 시각 효과를 사용합니다.
+Use Piano Roll visualizer.	피아노 롤 시각 효과를 사용합니다.
+Use Rise visualizer.	떠오르는 시각 효과를 사용합니다.
+Use Rittai Onkyou visualizer.	입체 음향 시각 효과를 사용합니다.
+Use the 90s theme.	90년대 테마를 사용합니다.
+Use the aqua theme.	Aqua 테마를 사용합니다.
+Use the dark mode.	다크 모드를 사용합니다.
+Use the dark theme.	어두운 테마를 사용합니다.
+Use the fluent theme.	Fluent 테마를 사용합니다.
+Use the light mode.	라이트 모드를 사용합니다.
+Run the program at 120FPS.	초당 120프레임으로 실행합니다.
+Run the program at 144FPS.	초당 144프레임으로 실행합니다.
+Run the program at 30FPS.	초당 30프레임으로 실행합니다.
+Run the program at 60FPS.	초당 60프레임으로 실행합니다.
+Run the program with unlimited FPS.\nMay cause very high CPU usage. Use this option with caution!	프레임 제한 없이 실행합니다.\nCPU 사용량이 크게 증가할 수 있습니다!
+Unlimited	무제한
+Makes the workspace background solid black, so you can\nremove in your video editor when recording the screen.	작업 영역 배경을 검게 만들어\n화면 녹화 후 영상 편집기에서 제거할 수 있게 합니다.
+Rainbow mode affects background	배경에도 무지개 모드 적용
+Whether to make rainbow mode affect background too.	배경에도 무지개 모드를 적용합니다.
+Click to change the theme's accent color.	클릭하여 테마 강조색을 변경합니다.
+Set accent color	강조색 설정
+RGB color	RGB 색상
+Set red amount.	빨간색 값을 설정합니다.
+Set green amount.	초록색 값을 설정합니다.
+Set blue amount.	파란색 값을 설정합니다.
+Color	색상
+Information	정보
+Song Properties	곡 속성
+Song Stats	곡 통계
+Properties	속성
+Song name:	곡 이름:
+Song author:	제작자:
+Original song author:	원곡 작곡가:
+Description:	설명:
+The name of the song.	곡 이름입니다.
+The name of the creator of the song.	곡 제작자의 이름입니다.
+The name of the creator of the original song\n(Leave empty if you composed the song yourself.)	원곡 작곡가의 이름입니다.\n(직접 작곡한 경우 비워 두세요.)
+Enter a description for your song.	곡 설명을 입력하세요.
+Time signature:	박자표:
+The time signature of the song.	곡의 박자표입니다.
+Enable looping	반복 재생
+Times to loop:	반복 횟수:
+Loop start tick:	반복 시작 틱:
+Loop end tick:	반복 끝 틱:
+Loop start:	반복 시작:
+(infinite)	(무한 반복)
+Loop to bar end	마디 끝까지 반복
+Loops to the end of the bar/measure.	마디 끝까지 반복합니다.
+Tick the song will jump to at the end of playback	재생이 끝나면 돌아갈 틱
+Work stats	작업 통계
+Minutes spent:\nLeft clicks:\nRight clicks:\nBlocks created:\nBlocks deleted:	작업 시간 (분):\n왼쪽 클릭:\n오른쪽 클릭:\n생성한 블록:\n삭제한 블록:
+Note blocks:	소리 블록:
+Tracks: 	트랙: 
+Total: 	합계: 
+Name	이름
+Sound	소리
+Instruments	악기
+Add	추가
+Remove	삭제
+Import	가져오기
+Preview	미리듣기
+Load instrument	악기 불러오기
+Custom instrument #	사용자 지정 악기 #
+The name of this instrument.	이 악기의 이름입니다.
+The sound file of this instrument.	이 악기의 소리 파일입니다.
+The default key pitch of the sound file.	소리 파일의 기본 음 높이입니다.
+The sound file for this instrument cannot be changed.	이 악기의 소리 파일은 변경할 수 없습니다.
+No sound file has been selected\nfor this instrument.	이 악기의 소리 파일을\n선택하지 않았습니다.
+This sound file could not be found.	이 소리 파일을 찾을 수 없습니다.
+Click to play this sound	클릭하여 소리 재생
+These settings only apply to this song. To import the settings from another\nsong, click \"Import\". The sound files must be located in the \"Sounds\" folder.	이 설정은 현재 곡에만 적용됩니다. 다른 곡의 설정을 불러오려면\n\"가져오기\"를 누르세요. 소리 파일은 \"Sounds\" 폴더에 있어야 합니다.
+This will remove 	삭제할 항목 수: 
+ note	개 음표
+ using this instrument and cannot be undone. Confirm?	 (이 악기 사용). 되돌릴 수 없습니다. 계속할까요?
+Resource pack	리소스 팩
+Use sounds.json	sounds.json 사용
+Refresh Resource Packs	리소스 팩 새로고침
+Load note block sound paths and pitch shifts defined by the selected resource pack.	선택한 리소스 팩의 소리 블록 경로와 음정 설정을 불러옵니다.
+Couldn't parse resource pack sounds.json	리소스 팩의 sounds.json을 읽을 수 없습니다
+MIDI Import	MIDI 가져오기
+Channels	채널
+Channel	채널
+Tracks	트랙
+Percussion	타악기
+Patch	프로그램
+Patch name	악기 이름
+Track name	트랙 이름
+Track number	트랙 번호
+Amount of events	이벤트 수
+The number of the channel.	채널 번호입니다.
+The patch (instrument) of the channel.	채널의 프로그램 (악기)입니다.
+The name of the patch (instrument) of the channel.	채널의 악기 이름입니다.
+The number of the track.	트랙 번호입니다.
+The name of the track.	트랙 이름입니다.
+The amount of events in the track.	트랙의 이벤트 수입니다.
+The instrument the notes in the channel\nshould be translated to.	이 채널의 음표에 사용할\n악기입니다.
+The instrument the sound\nshould be translated to.	이 소리에 사용할\n악기입니다.
+Sound name	소리 이름
+The name of the sound.	소리 이름입니다.
+The note which represents the sound.	소리를 나타내는 음표입니다.
+The pitch of the output.	출력할 음정입니다.
+Note	음표
+Pitch	미세 음정
+Panning	패닝
+Velocity	세기
+Octave modifier	옥타브 조정
+The octave modifier for all sounds in this channel.	이 채널의 모든 소리에 적용할 옥타브 조정 값입니다.
+Read note velocity	음표 세기 읽기
+Whether to copy the volume data found\nin each MIDI note.	MIDI 음표의 세기 데이터를\n가져옵니다.
+Keep within octave range	2옥타브 범위 유지
+Whether to automatically transpose the notes\nto keep them within the 2 octave range.	음표를 자동으로 조옮김하여\n2옥타브 범위 안에 맞춥니다.
+Name layers...	레이어 이름...
+...after patches	...악기 이름으로
+...channel numbers	...채널 번호로
+If the layers should be given names\ndepending on the data in the MIDI file.	MIDI 파일의 데이터에 따라\n레이어 이름을 지정합니다.
+If the layers should be named\nafter the channels in the MIDI file.	MIDI 채널 번호로\n레이어 이름을 지정합니다.
+If the layers should be named\nafter the instruments in the MIDI file.	MIDI 악기 이름으로\n레이어 이름을 지정합니다.
+Spacing:	간격:
+How much to increase the spacing between each note,\nso that more notes can be placed in between.	음표 사이에 다른 음표를 넣을 수 있도록\n간격을 늘리는 배율입니다.
+Keep the same spacing found in the MIDI file.	MIDI 파일의 간격을 유지합니다.
+Add twice as much space between each note.	음표 사이 간격을 두 배로 늘립니다.
+Add four times as much space between each note.	음표 사이 간격을 네 배로 늘립니다.
+Add eight times as much space between each note.\n(This will create a very long song!)	음표 사이 간격을 여덟 배로 늘립니다.\n(곡이 매우 길어집니다!)
+Max. channel height:	채널 최대 높이:
+The maximum allowed layers per channel.\nClick and drag to adjust.	채널당 최대 레이어 수입니다.\n드래그하여 조절합니다.
+Same tempo as in file	파일의 템포 사용
+Set the song's tempo to match\nthe one of the MIDI file.	MIDI 파일과 같은 템포를\n사용합니다.
+Generate song at 10 ticks / second	초당 10틱으로 곡 생성
+Generate song at 5 ticks / second	초당 5틱으로 곡 생성
+Generate song at 2.5 ticks / second	초당 2.5틱으로 곡 생성
+10 ticks / second	초당 10틱
+5 ticks / second	초당 5틱
+2.5 ticks / second	초당 2.5틱
+Remove silent parts at beginning	처음의 무음 구간 제거
+Whether to remove any silent parts\nat the beginning of the song.	곡 시작 부분의\n무음 구간을 제거합니다.
+Compress layers	레이어 압축
+Compress layers to save vertical space.	레이어를 압축하여 세로 공간을 줄입니다.
+Add tempo changer	템포 변경 추가
+Whether to add tempo changes found in the MIDI file.\nTempo changes are not supported in-game and in most NBS-compatible tools.	MIDI 파일의 템포 변경을 가져옵니다.\n게임과 대부분의 NBS 도구는 템포 변경을 지원하지 않습니다.
+Note Duration	음표 길이
+Whether to include the note duration as a stereo trail of notes.	음표 길이를 스테레오 잔향 음표로 표현합니다.
+Fade tail velocity	잔향 음표 세기 조절
+Linearly change the generated tail notes from the start percentage to the end percentage.\nThe original note head keeps its imported velocity.	생성한 잔향 음표의 세기를 시작 비율에서 끝 비율까지 선형으로 조절합니다.\n원래 음표의 세기는 유지합니다.
+Start:	시작:
+End:	끝:
+Velocity of the first generated tail note,\nas a percentage of the MIDI note velocity.\nClick and drag to adjust.	첫 잔향 음표의 세기입니다.\nMIDI 음표 세기에 대한 비율입니다.\n드래그하여 조절합니다.
+Velocity of the last generated tail note,\nas a percentage of the MIDI note velocity.\nClick and drag to adjust.	마지막 잔향 음표의 세기입니다.\nMIDI 음표 세기에 대한 비율입니다.\n드래그하여 조절합니다.
+See \"Percussion\" tab	\"타악기\" 탭 참고
+Generate song out of MIDI file	MIDI 파일에서 곡 생성
+Song generated	곡을 생성했습니다
+Whether to use these settings the\nnext time you import a MIDI file.	다음에 MIDI 파일을 가져올 때도\n이 설정을 사용합니다.
+Audio Export	오디오 내보내기
+Audio export	오디오 내보내기
+Export audio track	오디오 트랙 내보내기
+Audio track	오디오 트랙
+Output format	출력 형식
+Sampling rate	샘플링 주파수
+1 (mono)	1 (모노)
+2 (stereo)	2 (스테레오)
+Export the track with a single channel.	모노 채널로 트랙을 내보냅니다.
+Export the track with two channels.	스테레오 채널로 트랙을 내보냅니다.
+Include locked layers	잠긴 레이어 포함
+Whether to export locked layers in the audio track.	잠긴 레이어도 오디오에 포함합니다.
+Some sounds could be not be loaded and will be missing from the exported track:\n\n	다음 소리를 불러오지 못해 내보낼 트랙에서 빠집니다:\n\n
+\nWould you like to export anyway?	\n그래도 내보낼까요?
+An error occurred while exporting the song:\n\n	곡을 내보내는 중 오류가 발생했습니다:\n\n
+Track saved! Do you want to open it?	트랙을 저장했습니다! 열어 볼까요?
+Data Pack	데이터 팩
+Data pack	데이터 팩
+Track Export	트랙 내보내기
+Export Track	트랙 내보내기
+Track schematic	트랙 스키매틱
+Schematic	스키매틱
+Format:	형식:
+Materials	재료
+Repeaters per row:	행당 중계기 수:
+Repeaters:	중계기:
+The amount of repeaters per row in\nthe Schematic. Click and drag to change.	스키매틱의 행당 중계기 수입니다.\n드래그하여 변경합니다.
+Simple walkway	직선 통로
+Circular walkway	왕복 통로
+Generate a simple walkway that stretches\nas far as the length of the song.	곡 길이에 맞는\n직선 통로를 만듭니다.
+Generate a walkway where the\nplayer travels back and forth.	플레이어가 왕복하는\n통로를 만듭니다.
+Create glass floor	유리 바닥 생성
+Whether a glass floor should\nmake all the note blocks visible.	모든 소리 블록이 보이도록\n유리 바닥을 만듭니다.
+Include minecart track	광산 수레 선로 포함
+Include a minecart track that\nautomatically goes along with the song.	곡을 따라 자동으로 이동하는\n광산 수레 선로를 추가합니다.
+Add chest with minecarts	광산 수레 상자 추가
+Whether to add a chest full of minecarts\nat the beginning of the song.	곡 시작 지점에 광산 수레가 담긴\n상자를 추가합니다.
+Include looping option	반복 재생 옵션 포함
+Whether to add a lever that toggles looping.	반복 재생 전환 레버를 추가합니다.
+Whether to include locked layers in the Schematic.	잠긴 레이어도 스키매틱에 포함합니다.
+Whether to use these settings the\nnext time you export a Schematic.	다음에 스키매틱을 내보낼 때도\n이 설정을 사용합니다.
+Block for ground:	바닥용 블록:
+Block for walkway:	통로용 블록:
+The block that should be used for the ground.\nChoosing grass will result with a bunch of animals spawning.	바닥에 사용할 블록입니다.\n잔디를 선택하면 동물이 생성될 수 있습니다.
+The block that should be used for the walkway, \nand everything else that isn't circuitry or ground.	통로와 회로·바닥 외의\n부분에 사용할 블록입니다.
+The Schematic is too big. The maximum size is 2000x2000x256.\nTry changing the \"Repeaters per row\" value to decrease the size.	스키매틱이 너무 큽니다. 최대 크기는 2000x2000x256입니다.\n\"행당 중계기 수\"를 조절하여 크기를 줄이세요.
+Structure saved!	구조물을 저장했습니다!
+Structure Block writes a 1.13-compatible 32-block size header.\nLitematica writes the exact structure dimensions.	구조물 블록은 1.13 호환 32블록 크기 헤더를 기록합니다.\nLitematica는 실제 구조물 크기를 기록합니다.
+Use command blocks	명령 블록 사용
+Whether to use command blocks instead of note blocks for a wider octave range.\n(Extra notes pack required)	소리 블록 대신 명령 블록으로 음역을 넓힙니다.\n(추가 음역 팩 필요)
+Unique name:	고유 이름:
+This name will be used in the command	명령에 사용할 이름입니다
+Namespace:	네임스페이스:
+(optional) Use this to place the functions under a custom namespace.	(선택 사항) 함수를 사용자 지정 네임스페이스에 배치합니다.
+If empty, namespace will be the name of the song.	비워 두면 곡 이름을 네임스페이스로 사용합니다.
+Path:	경로:
+(optional) Path to the song from the main function	(선택 사항) 기본 함수에서 곡까지의 경로
+Path can only contain up to 5 subfolders	경로에 하위 폴더는 최대 5개까지 사용할 수 있습니다
+Export as ZIP	ZIP으로 내보내기
+Whether to export the data pack as a ZIP file.	데이터 팩을 ZIP 파일로 내보냅니다.
+If unchecked, it will be saved as a folder instead.	선택하지 않으면 폴더로 저장합니다.
+Include out-of-range notes	범위 밖 음표 포함
+Whether to include notes that don't fall into the 2 octave range supported by	마인크래프트의 2옥타브 범위 밖 음표도 포함합니다.
+Minecraft. This will require an additional resource pack you can get below.	아래에서 받을 수 있는 추가 리소스 팩이 필요합니다.
+Get extra notes pack	추가 음역 팩 받기
+Get note block textures	소리 블록 텍스처 받기
+Save resource pack	리소스 팩 저장
+Sound source	소리 분류
+Nearby listening	주변 플레이어에게 재생
+Whether to let all players in a given	지정한 범위의 모든 플레이어가
+Radius (in blocks):	반경 (블록):
+Radius in which players will be able to hear the music	플레이어가 음악을 들을 수 있는 반경
+Position in map:	월드 내 위치:
+X value:	X 좌표:
+Z value:	Z 좌표:
+X value	X 좌표
+Z value	Z 좌표
+Command preview:	명령 미리보기:
+Whether to include locked layers in the data pack.	잠긴 레이어도 데이터 팩에 포함합니다.
+Whether to use these settings the\nnext time you export a data pack.	다음에 데이터 팩을 내보낼 때도\n이 설정을 사용합니다.
+Please enter a valid name for the data pack	올바른 데이터 팩 이름을 입력하세요
+Export to Minecraft: Java Edition\nversions 1.13 to 1.20.6.	마인크래프트 자바 에디션\n1.13~1.20.6용으로 내보냅니다.
+Export to Minecraft: Java Edition\nversions 1.21 and above.	마인크래프트 자바 에디션\n1.21 이상용으로 내보냅니다.
+Controlled by Ambient/Environment slider	배경/환경 음량으로 조절
+Controlled by Blocks slider	블록 음량으로 조절
+Controlled by Friendly Creatures slider	친화적 생명체 음량으로 조절
+Controlled by Hostile Creatures slider	적대적 생명체 음량으로 조절
+Controlled by Jukebox/Note Blocks slider	주크박스/소리 블록 음량으로 조절
+Controlled by Master Volume slider	전체 음량으로 조절
+Controlled by Music slider	음악 음량으로 조절
+Controlled by Players slider	플레이어 음량으로 조절
+Controlled by Voice/Speech slider	음성 음량으로 조절
+Controlled by Weather slider	날씨 음량으로 조절
+Due to the limitations of note blocks, the song must meet certain criteria in order\nto be properly imported into Minecraft.	마인크래프트에서 곡을 올바르게 재생하려면\n소리 블록의 제약 조건을 충족해야 합니다.
+All blocks must be within Minecraft's 2 octave range.	모든 블록이 마인크래프트의 2옥타브 범위 안에 있어야 합니다.
+No custom instruments may be used.	사용자 지정 악기를 사용할 수 없습니다.
+The tempo must be either 2.5, 5 or 10 ticks per second.	템포는 초당 2.5, 5 또는 10틱이어야 합니다.
+Using a resource pack, you may extend the supported range to 6 octaves.	리소스 팩을 사용하면 음역을 6옥타브로 확장할 수 있습니다.
+Using a resource pack, you may play custom instruments in Minecraft.	리소스 팩을 사용하면 마인크래프트에서 사용자 지정 악기를 재생할 수 있습니다.
+To play without one, all blocks must be within Minecraft's 2 octave range.	리소스 팩 없이 재생하려면 모든 블록이 2옥타브 범위 안에 있어야 합니다.
+To play without one, no custom instruments must be used.	리소스 팩 없이 재생하려면 사용자 지정 악기를 사용할 수 없습니다.
+Any tempo works when exporting as a data pack.	데이터 팩은 모든 템포를 지원합니다.
+However, the tempos 0.25, 0.5, 1, 1.25, 2, 2.5, 4, 5, 10 and 20 t/s work better.	다만 초당 0.25, 0.5, 1, 1.25, 2, 2.5, 4, 5, 10, 20틱이 더 정확합니다.
+There are no blocks outside the 2 octave range.	2옥타브 범위를 벗어난 블록이 없습니다.
+There is 1 block outside the 2 octave range.	2옥타브 범위를 벗어난 블록이 1개 있습니다.
+ blocks outside the 2 octave range.	개 블록이 2옥타브 범위를 벗어났습니다.
+There are no blocks with custom instruments.	사용자 지정 악기를 쓰는 블록이 없습니다.
+There is 1 block with custom instruments.	사용자 지정 악기를 쓰는 블록이 1개 있습니다.
+ blocks with custom instruments.	개 블록이 사용자 지정 악기를 사용합니다.
+There are 	총 
+The tempo is 	템포: 
+ ticks per second.	틱/초.
+Select affected blocks	해당 블록 선택
+Fix tempo for schematic	스키매틱용 템포 조정
+Optimize tempo for data pack	데이터 팩용 템포 최적화
+Set note velocity	음표 세기 설정
+Set note panning	음표 패닝 설정
+Set note pitch	미세 음정 설정
+Percent	백분율
+Apply the velocity as a percentage\nof each note's current velocity.	현재 음표 세기에 대한\n백분율로 적용합니다.
+Add mode	더하기 모드
+Add the pitch amount to each note,\ninstead of setting it.	설정한 값을 각 음표의\n현재 음정에 더합니다.
+Count	횟수
+Reversed	역방향
+Stereo width	스테레오 폭
+Stereo is done in the inverse direction.	스테레오를 반대 방향으로 적용합니다.
+Portamento is done in the inverse direction.	포르타멘토를 반대 방향으로 적용합니다.
+Just repeats notes.	음표를 단순 반복합니다.
+Automatic fade	자동 페이드
+Manual fade	수동 페이드
+No fading	페이드 없음
+Fade is calculated relative to tick duration of note.	음표의 틱 길이에 맞춰 페이드를 계산합니다.
+Fades in until note changes.	음표가 바뀔 때까지 페이드 인합니다.
+Fades out until note changes.	음표가 바뀔 때까지 페이드 아웃합니다.
+Specify decay and sustain of fade.	페이드의 감쇠와 유지 값을 지정합니다.
+Attack/Decay:	어택/감쇠:
+Sustain:	유지:
+The amount of ticks between repetitions.	반복 사이의 틱 간격입니다.
+This may replace \nlower note blocks!	아래쪽 소리 블록이\n덮어써질 수 있습니다!
+Stagger can only extend downwards!	엇갈리기는 아래쪽으로만 확장할 수 있습니다!
+Must be an integer larger than zero.	0보다 큰 정수여야 합니다.
+Must separate relative keys with pipes.	상대 음 높이를 세로줄 (|)로 구분하세요.
+Please add pipes ( | ) to separate values!	값 사이에 세로줄 ( | )을 넣으세요!
+Values must be between 1 and 100.	값은 1~100 사이여야 합니다.
+Invalid value!	잘못된 값입니다!
+Invalid value!\n\n	잘못된 값입니다!\n\n
+Please enter a valid number!	올바른 숫자를 입력하세요!
+Set Tempo	템포 설정
+Tempo:	템포:
+Tempo (BPM)	템포 (BPM)
+Tempo Changer	템포 변경
+Tempo changes	템포 변경
+Enter the new tempo (in 	새 템포 입력 (단위: 
+beats per minute	분당 박자 수
+ticks per second	초당 틱 수
+Double tempo	템포 두 배
+Double the tempo to apply.	적용할 템포를 두 배로 합니다.
+BPM (T to tap)	BPM (T로 박자 입력)
+Good! Right-clicking the box\nwill show some handy options.	좋습니다! 상자를 우클릭하면\n추가 옵션을 볼 수 있습니다.
+Will always floor to integer if using BPM.	BPM에서는 항상 정수로 내림합니다.
+Sound Stopper	소리 정지
+Add sound stopper	소리 정지 추가
+Set Stopping Range	소리 정지 범위 설정
+Start Layer (inclusive)	시작 레이어 (포함)
+End Layer (inclusive)	끝 레이어 (포함)
+Reference audio	참조 오디오
+Reference	참조
+Load reference audio	참조 오디오 불러오기
+Mute reference audio	참조 오디오 음소거
+Solo reference audio	참조 오디오만 재생
+Remove reference audio\n(Click and drag to remove multiple layers)	참조 오디오 삭제\n(드래그하면 여러 레이어 삭제)
+Volume of reference audio: 	참조 오디오 음량: 
+Reference offset: 	참조 오디오 오프셋: 
+Reference mix	참조 오디오 믹스
+Reference mute	참조 오디오 음소거
+Reference solo	참조 오디오 단독 재생
+Offset (ms): 	오프셋 (ms): 
+ ms\n(Click and drag to change)	 ms\n(드래그하여 변경)
+Background image	배경 이미지
+Open background image	배경 이미지 열기
+Import background image	배경 이미지 가져오기
+Here you can see and select the MIDI devices connected via USB.	USB로 연결된 MIDI 장치를 확인하고 선택할 수 있습니다.
+Refresh	새로고침
+Disable device	장치 사용 안 함
+The name of the device.	장치 이름입니다.
+The instrument that note block added by this device\nwhen recording should have.	녹음 중 이 장치로 입력한 음표에\n사용할 악기입니다.
+That device no longer exists, refreshing...	장치가 연결되어 있지 않습니다. 새로고침 중...
+Import sounds	소리 가져오기
+Import sounds from Minecraft	마인크래프트 소리 가져오기
+Sound import	소리 가져오기
+This assistant will help you get sound files from your Minecraft:	마인크래프트 소리 파일 가져오기를 도와드립니다:
+Java Edition installation	자바 에디션 설치 폴더
+ or from the Mojang server	 또는 Mojang 서버
+Download from Mojang	Mojang에서 다운로드
+Before continuing, ensure you have launched the version you want from	계속하기 전에 원하는 버전을 한 번 실행했는지 확인하세요:
+Before continuing, you will need to fetch the asset indexes of Minecraft	계속하기 전에 마인크래프트 에셋 목록을 가져와야 합니다
+1. Set your Minecraft installation path:	1. 마인크래프트 설치 경로를 설정하세요:
+Select Minecraft installation directory	마인크래프트 설치 폴더 선택
+1. Get asset indexes from Mojang	1. Mojang에서 에셋 목록 가져오기
+Get	가져오기
+2. Select the asset list to copy sounds from:	2. 소리를 가져올 에셋 목록을 선택하세요:
+Select a version from the list, and then click 'Get sounds' to import the	목록에서 버전을 선택한 뒤 '소리 가져오기'를 누르세요:
+Get sounds	소리 가져오기
+Open Sounds folder	Sounds 폴더 열기
+Copying sounds... please wait!	소리 복사 중... 잠시 기다려 주세요!
+ sounds have been copied!	개 소리를 복사했습니다!
+ sounds downloaded	개 소리 다운로드 완료
+ sounds located!	개 소리를 찾았습니다!
+No sounds located! Check your	소리를 찾지 못했습니다!
+Minecraft installation path.	마인크래프트 설치 경로를 확인하세요.
+Please choose one...	선택하세요...
+No Minecraft installation was found\nat the selected location!	선택한 경로에서 마인크래프트\n설치를 찾지 못했습니다!
+The file for the specified asset index could not be found!	지정한 에셋 목록 파일을 찾을 수 없습니다!
+An existing folder with imported Minecraft sounds has been found in your Sounds folder. Would you like to replace it?	Sounds 폴더에 이미 가져온 마인크래프트 소리가 있습니다. 덮어쓸까요?
+By pressing \"Yes\", you agree to the Minecraft EULA and the Microsoft Service Agreement:\nhttps://www.minecraft.net/eula\nhttps://www.microsoft.com/en-us/servicesagreement	\"예\"를 누르면 마인크래프트 EULA와 Microsoft 서비스 계약에 동의하게 됩니다:\nhttps://www.minecraft.net/eula\nhttps://www.microsoft.com/en-us/servicesagreement
+Load settings	설정 불러오기
+Export sounds	소리 내보내기
+Save song with custom sounds	사용자 지정 소리와 함께 곡 저장
+Song with custom sounds	사용자 지정 소리를 포함한 곡
+Save failed	저장 실패
+The song could not be saved!	곡을 저장하지 못했습니다!
+The song could not be saved.\n\nCheck that the destination is writable and has enough free disk space, then try again. Your changes are still open in Note Block Studio.	곡을 저장하지 못했습니다.\n\n저장 위치의 쓰기 권한과 여유 공간을 확인한 뒤 다시 시도하세요. 변경 사항은 Note Block Studio에 그대로 열려 있습니다.
+Some of the song's data will be lost if you save in a previous version! Are you sure?	이전 버전으로 저장하면 일부 데이터가 사라집니다! 계속할까요?
+Includes custom instrument index	사용자 지정 악기 인덱스 포함
+Includes layer panning	레이어 패닝 포함
+Includes note velocity/pan/pitch and looping	음표 세기·패닝·미세 음정·반복 포함
+Includes song length	곡 길이 포함
+Increases custom instrument limit\nAllows custom sounds in subfolders	사용자 지정 악기 수 제한 확장\n하위 폴더의 소리 파일 지원
+Doesn't have any of the above, but works on all versions.	위 기능은 없지만 모든 버전에서 작동합니다.
+Older versions...	이전 버전...
+This song contains more than 18 instruments and cannot be saved in version 	악기가 18개를 초과하여 다음 버전으로 저장할 수 없습니다: 
+. The save version will be changed to 	. 저장 버전을 다음으로 변경합니다: 
+A silent note will be added to extend the length of the song.	곡 길이를 늘리기 위해 무음 음표를 추가합니다.
+This message is shown when the file is opened.	파일을 열 때 이 메시지가 표시됩니다.
+Import Pattern	패턴 가져오기
+This pattern was created in a newer version of Note Block Studio and cannot be opened safely.	더 최신 버전에서 만든 패턴이므로 안전하게 열 수 없습니다.
+This older pattern refers to custom instruments that are not loaded in this song.	이전 형식의 패턴이 현재 곡에 없는 사용자 지정 악기를 참조합니다.
+This pattern needs 	이 패턴에 필요한 새 사용자 지정 악기: 
+This selection needs 	이 선택 영역에 필요한 새 사용자 지정 악기: 
+ new custom instruments, but this song only has room for 	개. 현재 곡에 추가 가능한 악기: 
+.\n\nNo notes were imported.	개.\n\n음표를 가져오지 않았습니다.
+.\n\nNo notes were pasted.	개.\n\n음표를 붙여넣지 않았습니다.
+Copied 	복사한 음표: 
+Imported 	가져온 음표: 
+ notes and 	개, 사용자 지정 악기: 
+ custom instruments from 	개. 원본: 
+Some notes used unavailable instruments and were changed to Harp	사용할 수 없는 악기의 음표를 하프로 변경했습니다
+Notes with invalid instrument values exist in this song, they will be replaced with Harp.	잘못된 악기 값이 있는 음표를 하프로 변경합니다.
+Error: Failed to access file. Note Block Studio may not have permission to access the directory. \nPlease try again using the file browser.	오류: 파일에 접근하지 못했습니다. 폴더 접근 권한이 없을 수 있습니다.\n파일 탐색기를 통해 다시 시도하세요.
+An open-source Minecraft music maker	오픈 소스 마인크래프트 음악 제작 도구
+What do you want to do?	무엇을 하시겠습니까?
+Create a new song	새 곡 만들기
+Load a song	곡 불러오기
+Browse songs made by the community	커뮤니티에서 만든 곡 찾아보기
+Go to noteblock.world	noteblock.world 방문
+Recent songs:	최근 곡:
+Follow OpenNBS:	OpenNBS 소식:
+Watch release video	출시 동영상 보기
+There is an update available!	새 업데이트가 있습니다!
+You are using the latest version!	최신 버전을 사용 중입니다!
+Checking for updates...	업데이트 확인 중...
+Could not check for updates	업데이트를 확인하지 못했습니다
+Download	다운로드
+Open	열기
+Open Folder	폴더 열기
+Open file	파일 열기
+Download complete!	다운로드 완료!
+Downloading song...	곡 다운로드 중...
+The song could not be downloaded! Please try again with a different song.	곡을 다운로드하지 못했습니다! 다른 곡으로 다시 시도하세요.
+The file could not be downloaded! Please try again.	파일을 다운로드하지 못했습니다! 다시 시도하세요.
+Couldn't verify if the file you're trying to open is a valid song!	올바른 곡 파일인지 확인하지 못했습니다!
+This file doesn't look like a valid song!	올바른 곡 파일이 아닌 것 같습니다!
+This file is too large to be opened via a URL! Please try downloading and manually opening the song.	URL로 열기에는 파일이 너무 큽니다! 다운로드한 뒤 직접 열어 주세요.
+An error occurred.	오류가 발생했습니다.
+Auto-recovery	자동 복구
+Note Block Studio quit unexpectedly while you were working on a song. Do you want to recover your work?\n\n(If you click 'No', you'll be prompted to recover it again the next time you open the program.)	작업 중 Note Block Studio가 예기치 않게 종료되었습니다. 작업을 복구할까요?\n\n('아니요'를 선택하면 다음에 프로그램을 열 때 다시 묻습니다.)
+Minecraft Note Block Studio quit unexpectedly while you were working on a song. Do you want to recover your work?	작업 중 Note Block Studio가 예기치 않게 종료되었습니다. 작업을 복구할까요?
+Minecraft Note Block Studio detected you closed the window without saving the song in the last session. Do you want to recover your work?	지난 실행에서 곡을 저장하지 않고 창을 닫았습니다. 작업을 복구할까요?
+Note Block Studio detected that the window scale has been set to 0. It has been reverted to default.\nYou may need to restart Note Block Studio for a smooth experience.	창 배율이 0으로 설정되어 기본값으로 복원했습니다.\n정상적으로 사용하려면 프로그램을 다시 시작해야 할 수 있습니다.
+Note Block Studio encountered an error creating the background sprite. Transparency effects will be disabled.\nThis usually happens when your desktop wallpaper is either too tall or too long.	배경 이미지를 생성하지 못해 투명 효과를 끕니다.\n바탕 화면 이미지가 너무 길거나 높으면 발생할 수 있습니다.
+Program folder redirected	프로그램 폴더 경로 변경
+GameMaker redirects all file access in Note Block Studio's program folder to its user-data folder. The selected file will therefore be loaded from or saved to this folder instead:\n\n	GameMaker는 프로그램 폴더의 파일 접근을 사용자 데이터 폴더로 전환합니다. 선택한 파일은 다음 폴더에서 불러오거나 저장합니다:\n\n
+\n\nTo access the file you intended, choose a location outside Note Block Studio's program folder.	\n\n원하는 파일에 접근하려면 프로그램 폴더 외부의 위치를 선택하세요.
+The \"Open in NBS\" function currently only works in player mode. Please close this instance and try again.	\"Open in NBS\" 기능은 현재 플레이어 모드에서만 작동합니다. 이 창을 닫고 다시 시도하세요.
+Development versions are experimental and may be unstable. To avoid data corruption, it's highly recommended that you install Note Block Studio to a separate directory before enabling this option.\n\nProceed?	개발 버전은 실험적이며 불안정할 수 있습니다. 데이터 손상을 방지하려면 별도 폴더에 설치한 뒤 이 옵션을 사용하는 것을 권장합니다.\n\n계속할까요?
+You're currently running a development version of Note Block Studio. By disabling this option, you will be prompted to downgrade to the latest stable version the next time you open the program.\n\nProceed?	현재 개발 버전을 사용 중입니다. 이 옵션을 끄면 다음 실행 시 최신 안정 버전으로 변경할지 묻습니다.\n\n계속할까요?
+Installation was canceled. Do you want to open the Note Block Studio website and update manually?	설치를 취소했습니다. 웹사이트를 열어 직접 업데이트할까요?
+Failed to start update installer	업데이트 설치 프로그램 실행 실패
+Failed to start the update installer (Windows error 	업데이트 설치 프로그램을 실행하지 못했습니다 (Windows 오류 
+). Do you want to open the Note Block Studio website and update manually?	). 웹사이트를 열어 직접 업데이트할까요?
+Click to open our Open Collective\n page in your browser!	클릭하여 브라우저에서\nOpen Collective 후원 페이지를 여세요!
+Developing Note Block Studio takes a lot of unpaid volunteering time. If you can, please consider supporting us in the future! =)\n\n(You can find that option at any time in Help > Donate.)	Note Block Studio는 많은 자원봉사 시간을 들여 개발합니다. 가능하다면 개발을 후원해 주세요! =)\n\n(도움말 > 후원에서 언제든 참여할 수 있습니다.)
+Changelist (You're running from the IDE!)	변경 내역 (IDE에서 실행 중입니다!)
+Changelist not found!	변경 내역을 찾을 수 없습니다!
+(Development version)	(개발 버전)
+Part 1: Composing note block music	1부: 소리 블록 음악 작곡
+Part 2: Opening MIDI files	2부: MIDI 파일 열기
+Part 3: Importing songs into Minecraft	3부: 마인크래프트에 곡 가져오기
+Part 4: Editing songs made in Minecraft	4부: 마인크래프트에서 만든 곡 편집
+Original created by David Andrei	원작 제작: David Andrei
+Originally created by 	원작 제작: 
+Created by 	제작: 
+Player Mode	플레이어 모드
+ - Player Mode	 - 플레이어 모드
+Playing	재생 중
+Editing 	편집 중: 
+Listening to 	듣는 중: 
+Click anywhere to dismiss	아무 곳이나 클릭하여 닫기
+The following file(s) could not be found:	다음 파일을 찾을 수 없습니다:
+The following file(s) could not be found:\n\n	다음 파일을 찾을 수 없습니다:\n\n
+Some sounds might not play.	일부 소리가 재생되지 않을 수 있습니다.
+\n\nSome sounds might not play.	\n\n일부 소리가 재생되지 않을 수 있습니다.
+The indicated folder doesn't exist!	지정한 폴더가 없습니다!
+Image Files (*.png, *.jpg, *.jpeg)	이미지 파일 (*.png, *.jpg, *.jpeg)
+Note Block Songs (*.nbs)	소리 블록 곡 (*.nbs)
+Note Block Pattern (*.nbp)	소리 블록 패턴 (*.nbp)
+MIDI Sequences (*.mid)	MIDI 시퀀스 (*.mid)
+Minecraft Schematics (*.schematic)	마인크래프트 스키매틱 (*.schematic)
+Minecraft Structures (*.nbt)	마인크래프트 구조물 (*.nbt)
+ZIP archive (*.zip)	ZIP 압축 파일 (*.zip)
+Resource pack (*.zip)	리소스 팩 (*.zip)
+Supported sounds (*.ogg;*.wav)	지원하는 소리 (*.ogg;*.wav)
+Save Popup	저장 알림
+Show Save Popup	저장 알림 표시
+Set selected key	선택한 음 높이 설정
+Use selected	선택한 값 사용
+Select higher	높은 음 선택
+Select higher blocks	높은 음의 블록 선택
+Select lower	낮은 음 선택
+Select lower blocks	낮은 음의 블록 선택
+Shift up	위로 이동
+Shift down	아래로 이동
+Panning: Center	패닝: 중앙
+Reset key shortcuts	건반 단축키 초기화
+Right-click on keys to change their shortcuts.	건반을 우클릭하여 단축키를 변경하세요.
+Tip: Hold Shift while scrolling over a note to change a whole octave,\nor fine-tune its velocity, panning or pitch.	팁: Shift를 누르고 음표 위에서 휠을 굴리면 한 옥타브씩 변경하거나\n세기, 패닝, 미세 음정을 정밀하게 조절합니다.
+Ignore	무시
+Press	누르기
+Whether notes of this type should be\npressed when the marker reaches them.	마커가 도달하면 이 유형의\n음표를 재생합니다.
+ second	초
+ minute	분
+ hour	시간
+ day	일
+ week	주
+ month	개월
+ year	년
+ ago	 전
+ instrument	개 악기
+ was	를
+s were	를
+ saved!	 저장했습니다!
+ (selected)	 (선택됨)
+Unknown	알 수 없음
+Status: 	상태: 
+Length	길이
+Height	높이
+Width	너비
+Spawn height:	생성 높이:
+NOTE: Please use a VOID world as falling blocks will pile up!	낙하하는 블록이 쌓이므로 공허 월드를 사용하세요!
+Time precision	시간 정밀도
+Minecraft version	마인크래프트 버전
+Note blocks	소리 블록
+Instruments loaded	악기를 불러왔습니다
+Pattern	패턴
+Blackout mode => OFF	검은 배경 모드 => 꺼짐
+Blackout mode => ON	검은 배경 모드 => 켜짐
+Rainbow mode => OFF	무지개 모드 => 꺼짐
+Rainbow mode => ON	무지개 모드 => 켜짐
+Fullscreen => OFF	전체 화면 => 꺼짐
+Fullscreen => ON	전체 화면 => 켜짐
+Looping OFF	반복 재생 꺼짐
+Looping ON	반복 재생 켜짐
+the Minecraft Launcher.	마인크래프트 런처에서 실행해야 합니다.
+sounds from that version!	선택한 버전의 소리를 가져옵니다!
+versions from Mojang.	Mojang에서 버전별 목록을 받습니다.
+If enabled, the song will loop at the	이 옵션을 켜면 곡이
+end of playback instead of stopping.	끝나도 멈추지 않고 반복됩니다.
+Whether to loop this song back to	재생이 끝나면 곡을
+the start at the end of playback.	처음부터 다시 재생합니다.
+radius hear the music as well.	음악을 함께 들을 수 있게 합니다.
+folder. You can use '/' to add subfolders.	폴더 내 경로입니다. '/'로 하위 폴더를 지정할 수 있습니다.
+for playing the song inside the game.	게임에서 곡을 재생할 때 사용합니다.
+file has been restored.	개 파일을 복구했습니다.
+files have been restored.	개 파일을 복구했습니다.
+t/s (T to tap)	t/s (T로 박자 입력)
+If you wish to uninstall it from	다음 위치에서 제거하려면
+your world, run: 	월드에서 실행하세요: 
+and then remove it from the 	그런 다음 다음 폴더에서 삭제하세요: 
+'datapacks' folder.	'datapacks' 폴더.
+Added the new instruments introduced in Minecraft 26	마인크래프트 26의 새 악기 추가
+App Store Version	App Store 버전
+Cent shift	센트 이동
+Clipboard	클립보드
+Disables transparency animations on note block sprites	소리 블록의 투명 애니메이션을 끕니다
+Imported from 	가져온 파일: 
+Marker	마커
+NEW!	새 기능!
+Octave	옥타브
+Octave 0	옥타브 0
+Piano	피아노
+Rittai Onkyou	입체 음향
+Running from the GameMaker IDE.	GameMaker IDE에서 실행 중입니다.
+Secret Clipboard Editor	클립보드 편집기
+Songs	곡
+Successfully updated!	업데이트를 완료했습니다!
+Thank you for upgrading to version 	업데이트해 주셔서 감사합니다! 버전: 
+Update checking disabled by user.	사용자가 업데이트 확인을 껐습니다.
+Update checking disabled.	업데이트 확인이 꺼져 있습니다.
+Updates managed by TestFlight app.	TestFlight 앱에서 업데이트를 관리합니다.
+Window	창
+original by 	원작: 
+ block	개 블록
+ placed	 배치 완료
+ files (*	 파일 (*
+Max framerate => 120 FPS	최대 프레임 속도 => 120 FPS
+Max framerate => 144 FPS	최대 프레임 속도 => 144 FPS
+Max framerate => 240 FPS	최대 프레임 속도 => 240 FPS
+Max framerate => 30 FPS	최대 프레임 속도 => 30 FPS
+Max framerate => 60 FPS	최대 프레임 속도 => 60 FPS

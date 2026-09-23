@@ -11,7 +11,7 @@ function draw_window_tempo_tapper() {
 	ltempo = taptempo
 	ins = soundmetronome
 	draw_theme_font(font_main_bold)
-	if (language != 1) draw_text_dynamic(x1 + 8, y1 + 8, "Tempo tapper")
+	if (language != 1) draw_text_dynamic(x1 + 8, y1 + 8, localize_ko("Tempo tapper"))
 	else draw_text_dynamic(x1 + 8, y1 + 8, "速度测量器")
 	draw_theme_font(font_main)
 	if (theme = 0) {
@@ -21,8 +21,8 @@ function draw_window_tempo_tapper() {
 	    draw_rectangle(x1 + 6, y1 + 26, x1 + 134, y1 + 92, 1)
 	}
 	if (language != 1) {
-		if (use_bpm) draw_areaheader(x1 + 10, y1 + 43, 120, 35, "BPM (T to tap)")
-		else draw_areaheader(x1 + 10, y1 + 43, 120, 35, "t/s (T to tap)")
+		if (use_bpm) draw_areaheader(x1 + 10, y1 + 43, 120, 35, localize_ko("BPM (T to tap)"))
+		else draw_areaheader(x1 + 10, y1 + 43, 120, 35, localize_ko("t/s (T to tap)"))
 	} else {
 		if (use_bpm) draw_areaheader(x1 + 10, y1 + 43, 120, 35, "BPM (按 T 打速度)")
 		else draw_areaheader(x1 + 10, y1 + 43, 120, 35, "t/s (按 T 打速度)")
@@ -45,11 +45,11 @@ function draw_window_tempo_tapper() {
 		if (use_bpm) draw_text_dynamic(x1 + 60, y1 + 55, ctempo)
 		else draw_text_dynamic(x1 + 60, y1 + 55, ctempo / 15)
 	}
-	if (language != 1) {if(draw_checkbox(x1 + 15, y1 + 80, tapdouble, "Double tempo", "Double the tempo to apply.", 0, 1)) tapdouble = !tapdouble}
+	if (language != 1) {if(draw_checkbox(x1 + 15, y1 + 80, tapdouble, localize_ko("Double tempo"), localize_ko("Double the tempo to apply."), 0, 1)) tapdouble = !tapdouble}
 	else {if(draw_checkbox(x1 + 15, y1 + 80, tapdouble, "双倍速度", "应用时使速度 x2。", 0, 1)) tapdouble = !tapdouble}
 
 	draw_theme_color()
-	if (draw_button2(x1 + 10, y1 + 98, 60, condstr(language != 1, "OK", "确认")) && (windowopen = 1 || theme != 3)) {
+	if (draw_button2(x1 + 10, y1 + 98, 60, condstr(language != 1, localize_ko("OK"), "确认")) && (windowopen = 1 || theme != 3)) {
 		try {
 			songs[song].real_tempo = (ctempo * (1 + tapdouble)) / 15
 			changed = 1
@@ -60,11 +60,11 @@ function draw_window_tempo_tapper() {
 			update_tempo_changes()
 		}
 		catch(e) {
-			if (language != 1) message("An error occurred.", "Tempo tapper")
+			if (language != 1) message(localize_ko("An error occurred."), localize_ko("Tempo tapper"))
 			else message("发生了一个错误。", "速度测量器")
 		}
 	}
-	if (draw_button2(x1 + 70, y1 + 98, 60, condstr(language != 1, "Cancel", "取消"), false, true)) {
+	if (draw_button2(x1 + 70, y1 + 98, 60, condstr(language != 1, localize_ko("Cancel"), "取消"), false, true)) {
 		taptempo = 0
 		tapping = 0
 		ltime = 0

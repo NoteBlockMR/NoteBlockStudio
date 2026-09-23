@@ -44,7 +44,7 @@ function instrument_load(custom_sounds_path = "") {
 			if (ret < 0) ret = audio_file_decode_ogg(string_replace_all(game_save_id + "data/sounds/" + filename, "/", "\\"), temp_file);
 			log ("wrote to: " + temp_file)
 			if (ret < 0) {
-			    if (obj_controller.language != 1) message("Couldn't load the file " + fn + "! Error: " + string(ret), "Error")
+			    if (obj_controller.language != 1) message(localize_ko("Couldn't load the file ") + fn + localize_ko("! Error: ") + string(ret), localize_ko("Error"))
 			    else message("找不到文件" + fn + "！错误代码：" + string(ret), "错误")
 			    return 0
 			}
@@ -59,7 +59,7 @@ function instrument_load(custom_sounds_path = "") {
 		} else if (string_lower(filename_ext(filename_name(fn))) == ".wav") {
 			sound = wav_load_buffer(fn)
 			if (sound = -1) {
-				if (obj_controller.language != 1) message("Couldn't load the file " + fn, "Error")
+				if (obj_controller.language != 1) message(localize_ko("Couldn't load the file ") + fn, localize_ko("Error"))
 			    else message("找不到文件" + fn, "错误")
 			    return 0
 			}

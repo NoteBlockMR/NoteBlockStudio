@@ -1,7 +1,7 @@
 function instrument_change(ins) {
 	var fn, newfn, relative_filename;
-	if (language != 1) fn = string(get_open_filename_ext("Supported sounds (*.ogg;*.wav)|*.ogg;*.wav", "", sounds_directory, "Load sound file"))
-	else fn = string(get_open_filename_ext("Supported sounds (*.ogg;*.wav)|*.ogg;*.wav", "", sounds_directory, "打开声音文件"))
+	if (language != 1) fn = string(get_open_filename_ext(localize_ko("Supported sounds (*.ogg;*.wav)|*.ogg;*.wav"), "", sounds_directory, localize_ko("Load sound file")))
+	else fn = string(get_open_filename_ext(localize_ko("Supported sounds (*.ogg;*.wav)|*.ogg;*.wav"), "", sounds_directory, "打开声音文件"))
 	if (file_exists_lib(fn)) {
 		var fn_path = string_replace_all(fn, "\\", "/")
 		var sounds_path = string_replace_all(sounds_directory, "\\", "/")

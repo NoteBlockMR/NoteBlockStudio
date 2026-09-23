@@ -7,7 +7,7 @@ function draw_window_about() {
 	y1 = floor(rh / 2 - 205) + windowoffset
 	draw_window(x1, y1, x1 + 580, y1 + 410)
 	draw_theme_font(font_main)
-	if (language != 1) draw_text_dynamic(x1 + 8, y1 + 8, "About")
+	if (language != 1) draw_text_dynamic(x1 + 8, y1 + 8, localize_ko("About"))
 	else draw_text_dynamic(x1 + 8, y1 + 8, "关于")
 	var icon_index = window_icon
 	if (window_icon && fdark) icon_index++
@@ -18,9 +18,9 @@ function draw_window_about() {
 	draw_theme_font(font_main)
 	if (language != 1) {
 	if (NOT_RUN_FROM_IDE != 1){
-		draw_text_dynamic(x1 + 150, y1 + 217, "Version Local Release" + "\n\nThis program is a continuation of\n Minecraft Note Block Studio, \ncreated by David Andrei. \n\nThis product is not affiliated with\nMojang Studios, Microsoft Studios\nor the game Minecraft.")
+		draw_text_dynamic(x1 + 150, y1 + 217, localize_ko("Version Local Release") + localize_ko("\n\nThis program is a continuation of\n Minecraft Note Block Studio, \ncreated by David Andrei. \n\nThis product is not affiliated with\nMojang Studios, Microsoft Studios\nor the game Minecraft."))
 	} else {
-		draw_text_dynamic(x1 + 150, y1 + 217, "Version " + version + " - Released " + version_date + "\n\nThis program is a continuation of\n Minecraft Note Block Studio, \ncreated by David Andrei. \n\nThis product is not affiliated with\nMojang Studios, Microsoft Studios\nor the game Minecraft.")
+		draw_text_dynamic(x1 + 150, y1 + 217, localize_ko("Version ") + version + localize_ko(" - Released ") + version_date + localize_ko("\n\nThis program is a continuation of\n Minecraft Note Block Studio, \ncreated by David Andrei. \n\nThis product is not affiliated with\nMojang Studios, Microsoft Studios\nor the game Minecraft."))
 	}
 	} else {
 	if (NOT_RUN_FROM_IDE != 1){
@@ -79,7 +79,7 @@ function draw_window_about() {
 	draw_set_halign(fa_left)
 	// End credits box
 
-	if (draw_button2(x1 + 8, y1 + 380, 72, condstr(language != 1, "Website", "官方网站"), false, true)) {
+	if (draw_button2(x1 + 8, y1 + 380, 72, condstr(language != 1, localize_ko("Website"), "官方网站"), false, true)) {
 		open_url(link_website)
 	}
 	if (draw_button2(x1 + 84, y1 + 380, 72, condstr(language != 1, "GitHub", "GitHub"), false, true)) {
@@ -94,11 +94,11 @@ function draw_window_about() {
 	if (draw_button2(x1 + 312, y1 + 380, 72, condstr(language != 1, "YouTube", "YouTube"), false, true)) {
 		open_url(link_youtube)
 	}
-	if (draw_button2(x1 + 388, y1 + 380, 72, condstr(language != 1, "Donate", "捐赠"), false, true)) {
+	if (draw_button2(x1 + 388, y1 + 380, 72, condstr(language != 1, localize_ko("Donate"), "捐赠"), false, true)) {
 		open_url(link_donate)
 	}
 
-	if (draw_button2(x1 + 580 - 72 - 8, y1 + 380, 72, condstr(language != 1, "OK", "确定"), false, false) && (windowopen = 1 || theme != 3)) {
+	if (draw_button2(x1 + 580 - 72 - 8, y1 + 380, 72, condstr(language != 1, localize_ko("OK"), "确定"), false, false) && (windowopen = 1 || theme != 3)) {
 		windowclose = 1
 	}
 	if (display_mouse_get_x() - window_get_x() >= 0 && display_mouse_get_y() - window_get_y() >= 0 && display_mouse_get_x() - window_get_x() < 0 + window_width && display_mouse_get_y() - window_get_y() < 0 + window_height) {

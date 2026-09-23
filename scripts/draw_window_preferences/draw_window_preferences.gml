@@ -18,18 +18,18 @@ function draw_window_preferences() {
 	}
 	draw_theme_font(font_main_bold)
 		if (theme = 3) draw_theme_font(font_main)
-	if (language != 1) draw_text_dynamic(x1 + 8 + (theme = 3) * 2, y1 + 8 + (theme = 3), "Preferences")
+	if (language != 1) draw_text_dynamic(x1 + 8 + (theme = 3) * 2, y1 + 8 + (theme = 3), localize_ko("Preferences"))
 	else draw_text_dynamic(x1 + 8 + (theme = 3) * 2, y1 + 8 + (theme = 3), "首选项")
 	draw_theme_font(font_main)
 		if (theme = 3) draw_theme_font(font_main)
 	b = 8 + (theme = 3) * 32
 	if (language != 1) {
-	str[0] = "General"
-	str[1] = "Interface"
+	str[0] = localize_ko("General")
+	str[1] = localize_ko("Interface")
 	if (!isplayer) {
-	str[2] = "Appearance"
-	str[3] = "Usability"
-	str[4] = "Playback"
+	str[2] = localize_ko("Appearance")
+	str[3] = localize_ko("Usability")
+	str[4] = localize_ko("Playback")
 	}
 	} else {
 	str[0] = "通用"
@@ -157,25 +157,25 @@ function draw_window_preferences() {
 	draw_theme_color()
 	if (selected_tab = 0) {
 		if (theme = 3) draw_theme_font(font_info_med)
-	    if (language != 1) draw_areaheader(x1 + 22, y1 + 74 + (theme = 3) * 22, 243, 85, "Startup")
+	    if (language != 1) draw_areaheader(x1 + 22, y1 + 74 + (theme = 3) * 22, 243, 85, localize_ko("Startup"))
 	    else draw_areaheader(x1 + 22, y1 + 74 + (theme = 3) * 22, 243, 85, "启动")
 		if (theme = 3) draw_theme_font(font_main)
 		if (language != 1) {
-			if (draw_checkbox(x1 + 40, y1 + 90 + (theme = 3) * 22, show_welcome, "Show greeting window", "Whether to show the greeting window\nwhen the program is opened.", false, true)) show_welcome=!show_welcome
+			if (draw_checkbox(x1 + 40, y1 + 90 + (theme = 3) * 22, show_welcome, localize_ko("Show greeting window"), localize_ko("Whether to show the greeting window\nwhen the program is opened."), false, true)) show_welcome=!show_welcome
 		} else { 
 			if (draw_checkbox(x1 + 40, y1 + 90 + (theme = 3) * 22, show_welcome, "显示欢迎界面", "打开软件时是否显示欢迎界面。", false, true)) show_welcome=!show_welcome
 		}
 		if (os_type != os_macosx) {
 			if (language != 1) {
-				if (draw_checkbox(x1 + 40, y1 + 110 + (theme = 3) * 22, check_update, "Check for updates", "Whether to check for any updates\nwhen the program is opened.", false, true)) check_update=!check_update
-				if (draw_checkbox(x1 + 60, y1 + 130 + (theme = 3) * 22, check_prerelease, "Check for development versions", "Whether to check for development versions in addition to stable releases.\nDevelopment versions contain the latest improvements, but may be potentially unstable.", !check_update, false)) {
+				if (draw_checkbox(x1 + 40, y1 + 110 + (theme = 3) * 22, check_update, localize_ko("Check for updates"), localize_ko("Whether to check for any updates\nwhen the program is opened."), false, true)) check_update=!check_update
+				if (draw_checkbox(x1 + 60, y1 + 130 + (theme = 3) * 22, check_prerelease, localize_ko("Check for development versions"), localize_ko("Whether to check for development versions in addition to stable releases.\nDevelopment versions contain the latest improvements, but may be potentially unstable."), !check_update, false)) {
 					check_prerelease = !check_prerelease
 					if (!is_prerelease && check_prerelease) {
-						if (!message_yesnocancel("Development versions are experimental and may be unstable. To avoid data corruption, it's highly recommended that you install Note Block Studio to a separate directory before enabling this option.\n\nProceed?", "Warning")) {
+						if (!message_yesnocancel(localize_ko("Development versions are experimental and may be unstable. To avoid data corruption, it's highly recommended that you install Note Block Studio to a separate directory before enabling this option.\n\nProceed?"), localize_ko("Warning"))) {
 							check_prerelease = !check_prerelease // undo button check
 						}
 					} else if (is_prerelease && !check_prerelease) {
-						if (!message_yesnocancel("You're currently running a development version of Note Block Studio. By disabling this option, you will be prompted to downgrade to the latest stable version the next time you open the program.\n\nProceed?", "Warning")) {
+						if (!message_yesnocancel(localize_ko("You're currently running a development version of Note Block Studio. By disabling this option, you will be prompted to downgrade to the latest stable version the next time you open the program.\n\nProceed?"), localize_ko("Warning"))) {
 							check_prerelease = !check_prerelease // undo button uncheck
 						}
 					}
@@ -200,11 +200,11 @@ function draw_window_preferences() {
 		// Auto-saving
 		if (!isplayer) {
 		if (theme = 3) draw_theme_font(font_info_med)
-		if (language != 1) draw_areaheader(x1 + 278, y1 + 74 + (theme = 3) * 22, 200, 85, "Auto-saving")
+		if (language != 1) draw_areaheader(x1 + 278, y1 + 74 + (theme = 3) * 22, 200, 85, localize_ko("Auto-saving"))
 		else draw_areaheader(x1 + 278, y1 + 74 + (theme = 3) * 22, 200, 85, "自动保存")
 		if (theme = 3) draw_theme_font(font_main)
 		as = autosave
-		if (language != 1) {if (draw_checkbox(x1 + 296, y1 + 90 + (theme = 3) * 22, autosave, "Enable auto-saving", "Whether the song should automatically\nbe saved every now and then.", false, true)) autosave=!autosave}
+		if (language != 1) {if (draw_checkbox(x1 + 296, y1 + 90 + (theme = 3) * 22, autosave, localize_ko("Enable auto-saving"), localize_ko("Whether the song should automatically\nbe saved every now and then."), false, true)) autosave=!autosave}
 		else {if (draw_checkbox(x1 + 296, y1 + 90 + (theme = 3) * 22, autosave, "启用自动保存", "歌曲是否每过一段时间自动保存一次。", false, true)) autosave=!autosave}
 		if (as != autosave) {
 		    if (autosave = 0) tonextsave = 0
@@ -212,60 +212,60 @@ function draw_window_preferences() {
 		}
 		if (autosave = 0) {
 		    draw_set_color(c_gray)
-		    if (language != 1) draw_text_dynamic(x1 + 326, y1 + 110 + (theme = 3) * 22, "Interval:       minute" + condstr(autosavemins > 1, "s"))
+		    if (language != 1) draw_text_dynamic(x1 + 326, y1 + 110 + (theme = 3) * 22, localize_ko("Interval:       minute") + condstr(autosavemins > 1, "s"))
 		    else draw_text_dynamic(x1 + 326, y1 + 110 + (theme = 3) * 22, "间隔:            分钟")
 			draw_text_dynamic(x1 + 375, y1 + 110 + (theme = 3) * 22, autosavemins)
 		    draw_theme_color()
 		} else {
-			if (language != 1) draw_text_dynamic(x1 + 326, y1 + 110 + (theme = 3) * 22, "Interval:       minute" + condstr(autosavemins > 1, "s"))
+			if (language != 1) draw_text_dynamic(x1 + 326, y1 + 110 + (theme = 3) * 22, localize_ko("Interval:       minute") + condstr(autosavemins > 1, "s"))
 		    else draw_text_dynamic(x1 + 326, y1 + 110 + (theme = 3) * 22, "间隔:            分钟")
 			as = autosavemins
 			autosavemins = median(1, draw_dragvalue(2, x1 + 375, y1 + 110 + (theme = 3) * 22, autosavemins, 1), 60)
 			if (autosavemins != a) {tonextsave = autosavemins}
 		}
-		if (language != 1) popup_set_window(x1 + 326, y1 + 110 + (theme = 3) * 22, 180, 16, "The amount of minutes between each auto-save.")
+		if (language != 1) popup_set_window(x1 + 326, y1 + 110 + (theme = 3) * 22, 180, 16, localize_ko("The amount of minutes between each auto-save."))
 		else popup_set_window(x1 + 326, y1 + 110 + (theme = 3) * 22, 180, 16, "自动保存中间的间隔。")
 		}
 	
 		
 		if (!isplayer) {
 		if (theme = 3) draw_theme_font(font_info_med)
-		if (language != 1) draw_areaheader(x1 + 22, y1 + 184 + (theme = 3) * 22, 456, 145, "Songs")
+		if (language != 1) draw_areaheader(x1 + 22, y1 + 184 + (theme = 3) * 22, 456, 145, localize_ko("Songs"))
 		else draw_areaheader(x1 + 22, y1 + 184 + (theme = 3) * 22, 456, 145, "歌曲")
 		if (theme = 3) draw_theme_font(font_main)
 		if (language != 1) {
-		if (draw_checkbox(x1 + 40, y1 + 200 + (theme = 3) * 22, show_oldwarning, "Show warning when opening older songs", "Whether to show a warning when opening a song\nsaved in an older version of Note Block Studio.", false, true)) show_oldwarning = !show_oldwarning
-		draw_text_dynamic(x1 + 40, y1 + 230 + (theme = 3) * 22, "Song folder: " + string_truncate(string_replace(songfolder, "/Library/Containers/org.opennbs.onbs/Data", ""), 340), true)
+		if (draw_checkbox(x1 + 40, y1 + 200 + (theme = 3) * 22, show_oldwarning, localize_ko("Show warning when opening older songs"), localize_ko("Whether to show a warning when opening a song\nsaved in an older version of Note Block Studio."), false, true)) show_oldwarning = !show_oldwarning
+		draw_text_dynamic(x1 + 40, y1 + 230 + (theme = 3) * 22, localize_ko("Song folder: ") + string_truncate(string_replace(songfolder, "/Library/Containers/org.opennbs.onbs/Data", ""), 340), true)
 	    popup_set_window(x1 + 40, y1 + 230 + (theme = 3) * 22, 430, 18, songfolder)
-	    if (draw_button2(x1 + 40, y1 + 246 + (theme = 3) * 22, 76, "Open", 0, 1)) {
+	    if (draw_button2(x1 + 40, y1 + 246 + (theme = 3) * 22, 76, localize_ko("Open"), 0, 1)) {
 	        if (!directory_exists_lib(songfolder)) {
-	            message("The indicated folder doesn't exist!", "Error")
+	            message(localize_ko("The indicated folder doesn't exist!"), localize_ko("Error"))
 	        } else {
 	            open_url(songfolder)
 	        }
 	    }
-	    if (draw_button2(x1 + 40 + 84, y1 + 246 + (theme = 3) * 22, 76, "Change", 0, 1)) {
-	        message("Select the directory where saving/loading should be opened in.", "")
-	        a = string(get_save_filename_ext("", "Select song folder", songfolder, "Song folder"))
+	    if (draw_button2(x1 + 40 + 84, y1 + 246 + (theme = 3) * 22, 76, localize_ko("Change"), 0, 1)) {
+	        message(localize_ko("Select the directory where saving/loading should be opened in."), "")
+	        a = string(get_save_filename_ext("", localize_ko("Select song folder"), songfolder, localize_ko("Song folder")))
 	        if (a != "") songfolder = filename_dir(a)
 	    }
-	    if (draw_button2(x1 + 40 + 84 + 84, y1 + 246 + (theme = 3) * 22, 96, "Use default", 0, 1)) songfolder = songs_directory
+	    if (draw_button2(x1 + 40 + 84 + 84, y1 + 246 + (theme = 3) * 22, 96, localize_ko("Use default"), 0, 1)) songfolder = songs_directory
 	
-		draw_text_dynamic(x1 + 40, y1 + 280 + (theme = 3) * 22, "Pattern folder: " + string_truncate(string_replace(patternfolder, "/Library/Containers/org.opennbs.onbs/Data", ""), 340), true)
+		draw_text_dynamic(x1 + 40, y1 + 280 + (theme = 3) * 22, localize_ko("Pattern folder: ") + string_truncate(string_replace(patternfolder, "/Library/Containers/org.opennbs.onbs/Data", ""), 340), true)
 	    popup_set_window(x1 + 40, y1 + 280 + (theme = 3) * 22, 430, 18, patternfolder)
-	    if (draw_button2(x1 + 40, y1 + 296 + (theme = 3) * 22, 76, "Open", 0, 1)) {
+	    if (draw_button2(x1 + 40, y1 + 296 + (theme = 3) * 22, 76, localize_ko("Open"), 0, 1)) {
 	        if (!directory_exists_lib(patternfolder)) {
-	            message("The indicated folder doesn't exist!", "Error")
+	            message(localize_ko("The indicated folder doesn't exist!"), localize_ko("Error"))
 	        } else {
 	            open_url(patternfolder)
 	        }
 	    }
-	    if (draw_button2(x1 + 40 + 84, y1 + 296 + (theme = 3) * 22, 76, "Change", 0, 1)) {
-	        message("Select the directory where patterns can be imported/exported to.", "")
-	        a = string(get_save_filename_ext("", "Select patterns folder", patternfolder, "Pattern folder"))
+	    if (draw_button2(x1 + 40 + 84, y1 + 296 + (theme = 3) * 22, 76, localize_ko("Change"), 0, 1)) {
+	        message(localize_ko("Select the directory where patterns can be imported/exported to."), "")
+	        a = string(get_save_filename_ext("", localize_ko("Select patterns folder"), patternfolder, localize_ko("Pattern folder")))
 	        if (a != "") patternfolder = filename_dir(a)
 	    }
-	    if (draw_button2(x1 + 40 + 84 + 84, y1 + 296 + (theme = 3) * 22, 96, "Use default", 0, 1)) patternfolder = pattern_directory
+	    if (draw_button2(x1 + 40 + 84 + 84, y1 + 296 + (theme = 3) * 22, 96, localize_ko("Use default"), 0, 1)) patternfolder = pattern_directory
 		} else {
 		if (draw_checkbox(x1 + 40, y1 + 200 + (theme = 3) * 22, show_oldwarning, "打开旧版格式时提示", "打开在旧版 Note Block Studio 中保存的文件时是否显示警告。", false, true)) show_oldwarning = !show_oldwarning
 		draw_text_dynamic(x1 + 40, y1 + 230 + (theme = 3) * 22, "歌曲路径: " + string_truncate(string_replace(songfolder, "/Library/Containers/org.opennbs.onbs/Data", ""), 340))
@@ -306,7 +306,7 @@ function draw_window_preferences() {
 			draw_areaheader(x1 + 22, y1 + 354 + (theme = 3) * 22 - 170 * isplayer, 456, 45, "Discord")
 			if (theme = 3) draw_theme_font(font_main)
 			if (language != 1) {
-				if (draw_checkbox(x1 + 40, y1 + 354 + 16 + (theme = 3) * 22 - 170 * isplayer, presence, "Enable Discord Rich Presence", "Whether to display info about your current\nsong in your Discord status activity.", 0, 1)) {
+				if (draw_checkbox(x1 + 40, y1 + 354 + 16 + (theme = 3) * 22 - 170 * isplayer, presence, localize_ko("Enable Discord Rich Presence"), localize_ko("Whether to display info about your current\nsong in your Discord status activity."), 0, 1)) {
 				    presence = !presence
 					if (presence = 1) {
 						np_setpresence_timestamps(date_current_datetime(), 0, false);
@@ -323,25 +323,25 @@ function draw_window_preferences() {
 		}
 	} else if (selected_tab = 1) {
 		if (theme = 3) draw_theme_font(font_info_med)
-	    if (language != 1) draw_areaheader(x1 + 22, y1 + 74 + (theme = 3) * 22, 218, 140, "Theme")
+	    if (language != 1) draw_areaheader(x1 + 22, y1 + 74 + (theme = 3) * 22, 218, 140, localize_ko("Theme"))
 	    else draw_areaheader(x1 + 22, y1 + 74 + (theme = 3) * 22, 218, 140, "主题")
 		if (theme = 3) draw_theme_font(font_main)
 		draw_area(x1 + 40, y1 + (theme = 3) * 22 + 74 + 16 + 5, x1 + 140, y1 + (theme = 3) * 22 + 74 + 16 + 20 + 5)
 		if (draw_abutton(x1 + 140 - 17, y1 + 74 + 17 + (theme = 3) * 22 + 5) && wmenu = 0) {
-	        if (language != 1) menu = show_menu_ext("theme", x1 + 40, y1 + 74 + 16 + 21 + (theme = 3) * 22 + 5, check(theme = 0) + "Aqua|" + check(theme = 2) + "Dark|" + check(theme = 1) + "90s|" + check(theme = 3) + "Fluent")
+	        if (language != 1) menu = show_menu_ext("theme", x1 + 40, y1 + 74 + 16 + 21 + (theme = 3) * 22 + 5, check(theme = 0) + "Aqua|" + check(theme = 2) + localize_ko("Dark|") + check(theme = 1) + "90s|" + check(theme = 3) + "Fluent")
 	        else menu = show_menu_ext("theme", x1 + 40, y1 + 74 + 16 + 21 + (theme = 3) * 22 + 5, check(theme = 0) + "经典|" + check(theme = 2) + "暗黑|" + check(theme = 1) + "复古|" + check(theme = 3) + "Fluent")
 	    }
-	    if (language != 1) draw_text_dynamic(x1 + 43, y1 + 74 + 19 + (theme = 3) * 22 + 5, condstr(theme = 0, "Aqua") + condstr(theme = 2, "Dark") + condstr(theme = 1, "90s") + condstr(theme = 3, "Fluent"))
+	    if (language != 1) draw_text_dynamic(x1 + 43, y1 + 74 + 19 + (theme = 3) * 22 + 5, condstr(theme = 0, "Aqua") + condstr(theme = 2, localize_ko("Dark")) + condstr(theme = 1, "90s") + condstr(theme = 3, "Fluent"))
 	    else draw_text_dynamic(x1 + 43, y1 + 74 + 19 + (theme = 3) * 22 + 5, condstr(theme = 0, "经典") + condstr(theme = 2, "暗黑") + condstr(theme = 1, "复古") + condstr(theme = 3, "Fluent"))
 	    //if (draw_radiobox(x1 + 40, y1 + (theme = 3) * 22 + 164 + 16, theme == 0, "Aqua", "Use the aqua theme.")) {theme = 0 change_theme()}
 		//if (draw_radiobox(x1 + 40, y1 + (theme = 3) * 22 + 164 + 16 + 20, theme == 2, "Dark", "Use the dark theme.")) {theme = 2 change_theme()}
 	    //if (draw_radiobox(x1 + 40, y1 + (theme = 3) * 22 + 164 + 16 + 20 + 20, theme == 1, "90s", "Use the 90s theme.")) {theme = 1 change_theme()}
 	    //if (draw_radiobox(x1 + 40, y1 + (theme = 3) * 22 + 164 + 16 + 20 + 20 + 20, theme == 3, "Fluent", "Use the fluent theme.")) {theme = 3 change_theme()}
 		if (language != 1) {
-		if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 74 + 16 + 20 + 20 + 20 + 20 + 25, blackout, "Blackout mode", "Makes the workspace background solid black, so you can\nremove in your video editor when recording the screen.", false, true)) blackout = !blackout
-		if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 74 + 16 + 20 + 20 + 25, windowsound, "Navigation sound", "Whether to play sound effects when navigating the interface.\n(Only applies to the Fluent theme.)", (theme != 3), true)) windowsound = !windowsound
-		if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 74 + 16 + 20 + 25, fdark, "Dark mode", "Whether to use darker colors on the interface.\n(Only applies to the Fluent theme.)", (theme != 3), true)) {fdark = !fdark if (fdark) window_set_darkmode() else window_unset_darkmode()}
-		if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 74 + 16 + 20 + 20 + 20 + 25, acrylic, "Transparency effects", "Whether to show transparency effects on the interface.\n(Only applies to the Fluent theme.)", theme != 3, true)) {acrylic = !acrylic change_theme()}
+		if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 74 + 16 + 20 + 20 + 20 + 20 + 25, blackout, localize_ko("Blackout mode"), localize_ko("Makes the workspace background solid black, so you can\nremove in your video editor when recording the screen."), false, true)) blackout = !blackout
+		if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 74 + 16 + 20 + 20 + 25, windowsound, localize_ko("Navigation sound"), localize_ko("Whether to play sound effects when navigating the interface.\n(Only applies to the Fluent theme.)"), (theme != 3), true)) windowsound = !windowsound
+		if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 74 + 16 + 20 + 25, fdark, localize_ko("Dark mode"), localize_ko("Whether to use darker colors on the interface.\n(Only applies to the Fluent theme.)"), (theme != 3), true)) {fdark = !fdark if (fdark) window_set_darkmode() else window_unset_darkmode()}
+		if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 74 + 16 + 20 + 20 + 20 + 25, acrylic, localize_ko("Transparency effects"), localize_ko("Whether to show transparency effects on the interface.\n(Only applies to the Fluent theme.)"), theme != 3, true)) {acrylic = !acrylic change_theme()}
 		} else {
 		if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 74 + 16 + 20 + 20 + 20 + 20 + 25, blackout, "全黑模式", "使背景变为纯黑色，可以用于剪辑时扣掉。", false, true)) blackout = !blackout
 		if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 74 + 16 + 20 + 20 + 25, windowsound, "界面音效", "是否在浏览时播放音效。\n（仅限 Fluent 主题）", (theme != 3), true)) windowsound = !windowsound
@@ -365,7 +365,7 @@ function draw_window_preferences() {
 			draw_roundrect_ext(xx - 2, yy - 2, xx + 15, yy + 15, 4, 4, true)
 			draw_set_color(accent[3 + (accentclick = 1) * 3 - (accentclick = 2) * 3])
 			draw_roundrect_ext(xx, yy, xx + 13, yy + 13, 4, 4, false)
-			if (language != 1) popup_set_window(xx - 2, yy - 2, 17, 17, "Click to change the theme's accent color.")
+			if (language != 1) popup_set_window(xx - 2, yy - 2, 17, 17, localize_ko("Click to change the theme's accent color."))
 			else popup_set_window(xx - 2, yy - 2, 17, 17, "点击更改此主题的主题色。")
 			if (mouse_rectangle_click(xx - 2, yy - 2, 17, 17)) {
 				window = w_setaccent
@@ -380,7 +380,7 @@ function draw_window_preferences() {
 		//	if (draw_radiobox(x1 + 40 + 100, y1 + (theme = 3) * 22 + 164 + 16 + 20 + 20, fdark, "Dark", "Use the dark mode.")) fdark = 1
 		//}
 		if (theme = 3) draw_theme_font(font_info_med)
-	    if (language != 1) draw_areaheader(x1+258,y1+74 + (theme = 3) * 22,220,60,"Max. frame rate")
+	    if (language != 1) draw_areaheader(x1+258,y1+74 + (theme = 3) * 22,220,60,localize_ko("Max. frame rate"))
 	    else draw_areaheader(x1+258,y1+74 + (theme = 3) * 22,220,60,"帧率限制")
 		if (theme = 3) draw_theme_font(font_main)
 		draw_area(x1 + 274, y1 + 74 + 16 + (theme = 3) * 22 + 5, x1 + 374, y1 + 74 + 16 + 20 + (theme = 3) * 22 + 5)
@@ -413,10 +413,10 @@ function draw_window_preferences() {
 		//}
 
 		if (theme = 3) draw_theme_font(font_info_med)
-		if (language != 1) draw_areaheader(x1 + 258, y1 + 150 + (theme = 3) * 22, 220, 64, "Window")
+		if (language != 1) draw_areaheader(x1 + 258, y1 + 150 + (theme = 3) * 22, 220, 64, localize_ko("Window"))
 		else draw_areaheader(x1 + 258, y1 + 150 + (theme = 3) * 22, 220, 64, "窗口")
 		if (theme = 3) draw_theme_font(font_main)
-		if (language != 1) draw_text_dynamic(x1 + 276, y1 + 166 + (theme = 3) * 22, "Scale:               %")
+		if (language != 1) draw_text_dynamic(x1 + 276, y1 + 166 + (theme = 3) * 22, localize_ko("Scale:               %"))
 		else draw_text_dynamic(x1 + 276, y1 + 166 + (theme = 3) * 22, "缩放:                %")
 		window_scale = median(50, draw_dragvalue(19, x1 + 332, y1 + 166 + (theme = 3) * 22, window_scale * 100, (1/power(window_scale, 2)) ), 400) / 100
 		if (draw_button2(x1 + 308, y1 + 161 + (theme = 3) * 22, 20, "-", false, true)) {
@@ -450,10 +450,10 @@ function draw_window_preferences() {
 			else if (window_scale < 4) {window_scale = 4}
 		}
 		if (language != 1) {
-		if (draw_button2(x1 + 394, y1 + 161 + (theme = 3) * 22, 72, "Reset", (window_scale == get_default_window_scale()), true)) {
+		if (draw_button2(x1 + 394, y1 + 161 + (theme = 3) * 22, 72, localize_ko("Reset"), (window_scale == get_default_window_scale()), true)) {
 			window_scale = get_default_window_scale()
 		}
-		if (draw_checkbox(x1 + 276, y1 + 195 + (theme = 3) * 22, hires, "Optimize for high resolutions", "Whether to use higher resolution textures on the interface.\n" + condstr(theme = 3, "(May reduce performance and reduce readability at lower resolutions.)", "(Only applies to the Fluent theme.)"), (theme != 3), true)) hires = !hires
+		if (draw_checkbox(x1 + 276, y1 + 195 + (theme = 3) * 22, hires, localize_ko("Optimize for high resolutions"), localize_ko("Whether to use higher resolution textures on the interface.\n") + condstr(theme = 3, localize_ko("(May reduce performance and reduce readability at lower resolutions.)"), localize_ko("(Only applies to the Fluent theme.)")), (theme != 3), true)) hires = !hires
 		} else {
 		if (draw_button2(x1 + 394, y1 + 161 + (theme = 3) * 22, 72, "重置", (window_scale == get_default_window_scale()), true)) {
 			window_scale = get_default_window_scale()
@@ -463,70 +463,70 @@ function draw_window_preferences() {
 		if (theme != 3 || (theme != 2 && !fdark)) draw_set_color(c_black)
 		else draw_set_color(c_white)
 		if (theme = 3) draw_theme_font(font_info_med)
-		if (language != 1) draw_areaheader(x1 + 22, y1 + 239 + (theme = 3) * 22, 220, 65, "Language")
+		if (language != 1) draw_areaheader(x1 + 22, y1 + 239 + (theme = 3) * 22, 220, 65, localize_ko("Language"))
 		else draw_areaheader(x1 + 22, y1 + 239 + (theme = 3) * 22, 220, 65, "语言")
 		if (theme = 3) draw_theme_font(font_main)
 		draw_area(x1 + 40, y1 + (theme = 3) * 22 + 239 + 16 + 5, x1 + 140, y1 + (theme = 3) * 22 + 239 + 16 + 20 + 5)
 		if (draw_abutton(x1 + 140 - 17, y1 + 239 + 17 + (theme = 3) * 22 + 5) && wmenu = 0) {
-	        menu = show_menu_ext("language", x1 + 40, y1 + 239 + 16 + 21 + (theme = 3) * 22 + 5, check(language = 0) + "English|" + check(language = 1) + "简体中文")
+	        menu = show_menu_ext("language", x1 + 40, y1 + 239 + 16 + 21 + (theme = 3) * 22 + 5, check(language = 0) + "English|" + check(language = 1) + "简体中文|" + check(language = 2) + "한국어")
 	    }
-	    draw_text_dynamic(x1 + 43, y1 + 239 + 19 + (theme = 3) * 22 + 5, condstr(language = 0, "English") + condstr(language = 1, "简体中文"))
+	    draw_text_dynamic(x1 + 43, y1 + 239 + 19 + (theme = 3) * 22 + 5, condstr(language = 0, "English") + condstr(language = 1, "简体中文") + condstr(language = 2, "한국어"))
 		if (theme = 3) draw_theme_font(font_info_med)
-		if (language != 1) draw_areaheader(x1 + 258, y1 + 239 + (theme = 3) * 22, 220, 65, "Icon")
+		if (language != 1) draw_areaheader(x1 + 258, y1 + 239 + (theme = 3) * 22, 220, 65, localize_ko("Icon"))
 		else draw_areaheader(x1 + 258, y1 + 239 + (theme = 3) * 22, 220, 65, "图标")
 		if (theme = 3) draw_theme_font(font_main)
-		if (draw_checkbox(x1 + 276, y1 + (theme = 3) * 22 + 239 + 16 + 5 + 4, window_icon, condstr(language != 1, "Fruity icon", "macOS样式图标"), condstr(language != 1, "Whether to use the a fruity themed icon instead of the regular icon.", "使用macOS风格图标替换普通图标。"), false, true)) window_icon = !window_icon
+		if (draw_checkbox(x1 + 276, y1 + (theme = 3) * 22 + 239 + 16 + 5 + 4, window_icon, condstr(language != 1, localize_ko("Fruity icon"), "macOS样式图标"), condstr(language != 1, localize_ko("Whether to use the a fruity themed icon instead of the regular icon."), "使用macOS风格图标替换普通图标。"), false, true)) window_icon = !window_icon
 		if (theme = 3) {
-			if (draw_checkbox(x1 + 420 - 100, y1 + 478 - isplayer * 100 + 5, advancedinterface, condstr(language != 1, "Advanced", "高级设置"), condstr(language != 1, "Whether to show the advanced interfaces settings.", "显示高级界面设置选项。"), false, true)) advancedinterface = !advancedinterface
+			if (draw_checkbox(x1 + 420 - 100, y1 + 478 - isplayer * 100 + 5, advancedinterface, condstr(language != 1, localize_ko("Advanced"), "高级设置"), condstr(language != 1, localize_ko("Whether to show the advanced interfaces settings."), "显示高级界面设置选项。"), false, true)) advancedinterface = !advancedinterface
 			if (advancedinterface) {
 				draw_theme_font(font_info_med)
-				if (language != 1) draw_areaheader(x1 + 22, y1 + 239 + 22 + 65, 456, 65, "Advanced")
+				if (language != 1) draw_areaheader(x1 + 22, y1 + 239 + 22 + 65, 456, 65, localize_ko("Advanced"))
 				else draw_areaheader(x1 + 22, y1 + 239 + 22 + 65, 456, 65, "高级")
 				draw_theme_font(font_main)
-				if (draw_checkbox(x1 + 40, y1 + 239 + 22 + 65 + 21, wpapernoblur, condstr(language != 1, "Turn off background blurring", "关闭背景虚化"), condstr(language != 1, "Whether to turn off the blurring effect on the background image.", "关闭背景图片虚化效果。"), false, true)) wpapernoblur = !wpapernoblur
-				if (draw_checkbox(x1 + 40, y1 + 239 + 22 + 65 + 21 + 20, wpapernodim, condstr(language != 1, "Turn off background dimming", "关闭背景暗化"), condstr(language != 1, "Whether to turn off the dimming effect on the background image.", "关闭背景图片变暗效果。"), false, true)) wpapernodim = !wpapernodim
-				if (draw_checkbox(x1 + 276, y1 + 239 + 22 + 65 + 21, backgroundrainbow, condstr(language != 1, "Rainbow mode affects background", "炫彩模式对背景生效"), condstr(language != 1, "Whether to make rainbow mode affect background too.", "使炫彩模式对背景生效。"), false, true)) backgroundrainbow = !backgroundrainbow
+				if (draw_checkbox(x1 + 40, y1 + 239 + 22 + 65 + 21, wpapernoblur, condstr(language != 1, localize_ko("Turn off background blurring"), "关闭背景虚化"), condstr(language != 1, localize_ko("Whether to turn off the blurring effect on the background image."), "关闭背景图片虚化效果。"), false, true)) wpapernoblur = !wpapernoblur
+				if (draw_checkbox(x1 + 40, y1 + 239 + 22 + 65 + 21 + 20, wpapernodim, condstr(language != 1, localize_ko("Turn off background dimming"), "关闭背景暗化"), condstr(language != 1, localize_ko("Whether to turn off the dimming effect on the background image."), "关闭背景图片变暗效果。"), false, true)) wpapernodim = !wpapernodim
+				if (draw_checkbox(x1 + 276, y1 + 239 + 22 + 65 + 21, backgroundrainbow, condstr(language != 1, localize_ko("Rainbow mode affects background"), "炫彩模式对背景生效"), condstr(language != 1, localize_ko("Whether to make rainbow mode affect background too."), "使炫彩模式对背景生效。"), false, true)) backgroundrainbow = !backgroundrainbow
 				if (!isplayer) {
-					if (draw_checkbox(x1 + 40, y1 + 239 + 22 + 65 + 21 + 20 + 20, noeditingbackground, condstr(language != 1, "Turn off editing area background", "关闭编辑区域背景"), condstr(language != 1, "Whether to turn off the background of the editing area.", "关闭编辑区域背景。"), false, true)) noeditingbackground = !noeditingbackground
+					if (draw_checkbox(x1 + 40, y1 + 239 + 22 + 65 + 21 + 20 + 20, noeditingbackground, condstr(language != 1, localize_ko("Turn off editing area background"), "关闭编辑区域背景"), condstr(language != 1, localize_ko("Whether to turn off the background of the editing area."), "关闭编辑区域背景。"), false, true)) noeditingbackground = !noeditingbackground
 				}
 			}
 		}
 	} else if (selected_tab = 2) {
 		if (language != 1) {
 		if (theme = 3) draw_theme_font(font_info_med)
-	    draw_areaheader(x1 + 22, y1 + 74 + (theme = 3) * 22, 456, 208, "Note blocks")
+	    draw_areaheader(x1 + 22, y1 + 74 + (theme = 3) * 22, 456, 208, localize_ko("Note blocks"))
 		if (theme = 3) draw_theme_font(font_main)
-	    if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 90, use_colors, "Use colored note blocks", "If the instruments should be identified with\ndifferent colors.")) use_colors=!use_colors
-	    if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 110, use_icons, "Show instrument icons", "If the instruments should be identified with\ntheir respective icons.")) use_icons=!use_icons
-		if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 130, use_shapes, "Use different shapes for each instrument", "If the instruments should be identified\nwith different shapes.")) use_shapes=!use_shapes
-	    if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 150, show_numbers, "Show key numbers", "Whether to show the amount of right-clicks required\nfor each note block.")) show_numbers=!show_numbers
-	    if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 170, show_octaves, "Show octave numbers", "Whether the number of the octave the note block\nis in should be shown.")) show_octaves=!show_octaves
-	    if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 190, show_incompatible, "Highlight incompatible note blocks", "Whether to show a red outline on note blocks with\ncustom instruments or outside the 2 octave range.")) show_incompatible=!show_incompatible
-		if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 210, fade, "No fading", "Disables transparency animations on note block sprites")) fade = !fade
-		if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 230, show_layers, "Show layer boxes", "Whether the layer boxes should be shown\non the left side of the workspace.")) show_layers = !show_layers
-		if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 250, remove_effect, "Show effect on removal", "Whether to show a fading border\nwhen removing a note block.")) remove_effect = !remove_effect
-		draw_text_dynamic(x1 + 60, y1 + 268 + (theme = 3) * 22, "Selection highlight intensity:         %")
+	    if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 90, use_colors, localize_ko("Use colored note blocks"), localize_ko("If the instruments should be identified with\ndifferent colors."))) use_colors=!use_colors
+	    if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 110, use_icons, localize_ko("Show instrument icons"), localize_ko("If the instruments should be identified with\ntheir respective icons."))) use_icons=!use_icons
+		if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 130, use_shapes, localize_ko("Use different shapes for each instrument"), localize_ko("If the instruments should be identified\nwith different shapes."))) use_shapes=!use_shapes
+	    if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 150, show_numbers, localize_ko("Show key numbers"), localize_ko("Whether to show the amount of right-clicks required\nfor each note block."))) show_numbers=!show_numbers
+	    if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 170, show_octaves, localize_ko("Show octave numbers"), localize_ko("Whether the number of the octave the note block\nis in should be shown."))) show_octaves=!show_octaves
+	    if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 190, show_incompatible, localize_ko("Highlight incompatible note blocks"), localize_ko("Whether to show a red outline on note blocks with\ncustom instruments or outside the 2 octave range."))) show_incompatible=!show_incompatible
+		if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 210, fade, localize_ko("No fading"), localize_ko("Disables transparency animations on note block sprites"))) fade = !fade
+		if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 230, show_layers, localize_ko("Show layer boxes"), localize_ko("Whether the layer boxes should be shown\non the left side of the workspace."))) show_layers = !show_layers
+		if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 250, remove_effect, localize_ko("Show effect on removal"), localize_ko("Whether to show a fading border\nwhen removing a note block."))) remove_effect = !remove_effect
+		draw_text_dynamic(x1 + 60, y1 + 268 + (theme = 3) * 22, localize_ko("Selection highlight intensity:         %"))
 		selection_alpha = median(10, draw_dragvalue(21, x1 + 218, y1 + 268 + (theme = 3) * 22, selection_alpha * 100, 2), 80) / 100
 
 		if (theme = 3) draw_theme_font(font_info_med)
-	    draw_areaheader(x1 + 22, y1 + 294 + (theme = 3) * 22, 456, 171, "Piano")
+	    draw_areaheader(x1 + 22, y1 + 294 + (theme = 3) * 22, 456, 171, localize_ko("Piano"))
 		if (theme = 3) draw_theme_font(font_main)
-		if (draw_checkbox(x1 + 40, y1 + 310 + (theme = 3) * 22, show_piano, "Show piano", "Whether the piano should be visible.", false, true)) show_piano = !show_piano
-		if (draw_checkbox(x1 + 40, y1 + 350 + (theme = 3) * 22, show_keynames, "Show key names", "If the names of the keys should be shown.")) show_keynames=!show_keynames
-	    if (draw_checkbox(x1 + 40, y1 + 370 + (theme = 3) * 22, show_keynumbers, "Show key numbers", "Whether to show the amount of right-clicks required\non each key inside the 2 octave range.")) show_keynumbers=!show_keynumbers
-	    if (draw_checkbox(x1 + 40, y1 + 390 + (theme = 3) * 22, show_keyboard, "Show keyboard shortcuts", "Show the keyboard shortcuts of the keys.")) show_keyboard=!show_keyboard
-	    if (draw_checkbox(x1 + 40, y1 + 410 + (theme = 3) * 22, show_notechart, "Show note chart when hovering over keys", "Whether to show a note chart\nwhen hovering over the keys.")) show_notechart=!show_notechart
-	    if (draw_checkbox(x1 + 40, y1 + 430 + (theme = 3) * 22, show_outofrange, "Highlight out-of-range keys", "Whether to show a red tint on keys\noutside of the 2 octave range.")) show_outofrange=!show_outofrange
-	    if (draw_checkbox(x1 + 40, y1 + 450 + (theme = 3) * 22, keynames_flat, "Use flat symbol", "Whether to use the flat symbol (b) instead of\nthe sharp symbol (#) on keynames.")) {keynames_flat=!keynames_flat; if (keynames_flat) {keynames = ["A", "Bb", "B", "C", "Db", "D", "Eb", "E", "F", "Gb", "G", "Ab"]} else {keynames = ["A", "A#", "B", "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#"]}}
+		if (draw_checkbox(x1 + 40, y1 + 310 + (theme = 3) * 22, show_piano, localize_ko("Show piano"), localize_ko("Whether the piano should be visible."), false, true)) show_piano = !show_piano
+		if (draw_checkbox(x1 + 40, y1 + 350 + (theme = 3) * 22, show_keynames, localize_ko("Show key names"), localize_ko("If the names of the keys should be shown."))) show_keynames=!show_keynames
+	    if (draw_checkbox(x1 + 40, y1 + 370 + (theme = 3) * 22, show_keynumbers, localize_ko("Show key numbers"), localize_ko("Whether to show the amount of right-clicks required\non each key inside the 2 octave range."))) show_keynumbers=!show_keynumbers
+	    if (draw_checkbox(x1 + 40, y1 + 390 + (theme = 3) * 22, show_keyboard, localize_ko("Show keyboard shortcuts"), localize_ko("Show the keyboard shortcuts of the keys."))) show_keyboard=!show_keyboard
+	    if (draw_checkbox(x1 + 40, y1 + 410 + (theme = 3) * 22, show_notechart, localize_ko("Show note chart when hovering over keys"), localize_ko("Whether to show a note chart\nwhen hovering over the keys."))) show_notechart=!show_notechart
+	    if (draw_checkbox(x1 + 40, y1 + 430 + (theme = 3) * 22, show_outofrange, localize_ko("Highlight out-of-range keys"), localize_ko("Whether to show a red tint on keys\noutside of the 2 octave range."))) show_outofrange=!show_outofrange
+	    if (draw_checkbox(x1 + 40, y1 + 450 + (theme = 3) * 22, keynames_flat, localize_ko("Use flat symbol"), localize_ko("Whether to use the flat symbol (b) instead of\nthe sharp symbol (#) on keynames."))) {keynames_flat=!keynames_flat; if (keynames_flat) {keynames = ["A", "Bb", "B", "C", "Db", "D", "Eb", "E", "F", "Gb", "G", "Ab"]} else {keynames = ["A", "A#", "B", "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#"]}}
 	    if (!show_piano) draw_set_color(c_gray)
-		draw_text_dynamic(x1 + 70, y1 + 328 + (theme = 3) * 22, "Keys to show:")
+		draw_text_dynamic(x1 + 70, y1 + 328 + (theme = 3) * 22, localize_ko("Keys to show:"))
 		if (show_piano) {
 			keysmax = median(20, draw_dragvalue(4, x1 + 150, y1 + 328 + (theme = 3) * 22, keysmax, 2), 50)
 		} else {
 			draw_text_dynamic(x1 + 150, y1 + 328 + (theme = 3) * 22, keysmax)
 		}
 		draw_theme_color()
-	    popup_set_window(x1 + 70, y1 + 328 + (theme = 3) * 22, 150, 21, "The amount of keys to show. A high number may\nslow down the program on old computers.")
+	    popup_set_window(x1 + 70, y1 + 328 + (theme = 3) * 22, 150, 21, localize_ko("The amount of keys to show. A high number may\nslow down the program on old computers."))
 		} else {
 		if (theme = 3) draw_theme_font(font_info_med)
 	    draw_areaheader(x1 + 22, y1 + 74 + (theme = 3) * 22, 456, 208, "音符盒")
@@ -566,27 +566,27 @@ function draw_window_preferences() {
 	} else if (selected_tab = 3) {
 		if (language != 1) {
 		if (theme = 3) draw_theme_font(font_info_med)
-	    draw_areaheader(x1 + 22, y1 + 74 + (theme = 3) * 22, 456, 140, "Mouse wheel")
+	    draw_areaheader(x1 + 22, y1 + 74 + (theme = 3) * 22, 456, 140, localize_ko("Mouse wheel"))
 		if (theme = 3) draw_theme_font(font_main)
-	    if (draw_radiobox(x1 + 40, y1 + 90 + (theme = 3) * 22, mousewheel = 0, "Use mouse wheel to scroll through the song", "Use the mouse wheel to scroll through\nthe song horizontally or vertically.")) mousewheel = 0
-	    if (draw_radiobox(x1 + 40, y1 + 110 + (theme = 3) * 22, mousewheel = 1, "Use mouse wheel to change instrument", "Use the mouse wheel to toggle between\nthe available instruments.")) mousewheel = 1
-	    if (draw_radiobox(x1 + 40, y1 + 130 + (theme = 3) * 22, mousewheel = 2, "Use mouse wheel to change key", "Use the mouse wheel to toggle\nbetween the keys on the piano.")) mousewheel = 2
+	    if (draw_radiobox(x1 + 40, y1 + 90 + (theme = 3) * 22, mousewheel = 0, localize_ko("Use mouse wheel to scroll through the song"), localize_ko("Use the mouse wheel to scroll through\nthe song horizontally or vertically."))) mousewheel = 0
+	    if (draw_radiobox(x1 + 40, y1 + 110 + (theme = 3) * 22, mousewheel = 1, localize_ko("Use mouse wheel to change instrument"), localize_ko("Use the mouse wheel to toggle between\nthe available instruments."))) mousewheel = 1
+	    if (draw_radiobox(x1 + 40, y1 + 130 + (theme = 3) * 22, mousewheel = 2, localize_ko("Use mouse wheel to change key"), localize_ko("Use the mouse wheel to toggle\nbetween the keys on the piano."))) mousewheel = 2
 		if (mousewheel != 0) draw_set_color(c_gray)
-		draw_text_dynamic(x1 + 70, y1 + 150 + (theme = 3) * 22, "Scroll speed:")
+		draw_text_dynamic(x1 + 70, y1 + 150 + (theme = 3) * 22, localize_ko("Scroll speed:"))
 		if (mousewheel = 0) mousewheel_scroll_speed = median(1, draw_dragvalue(22, x1 + 150, y1 + 150 + (theme = 3) * 22, mousewheel_scroll_speed, 1), 10)
 		else draw_text_dynamic(x1 + 150, y1 + 150 + (theme = 3) * 22, mousewheel_scroll_speed)
 		draw_theme_color()
-		popup_set_window(x1 + 70, y1 + 150 + (theme = 3) * 22, 180, 16, "The number of ticks or layers scrolled with each mouse wheel step.\nThis setting does not affect macOS trackpads.")
-	    if (draw_checkbox(x1 + 40, y1 + 178 + (theme = 3) * 22, changepitch, "Change note properties when scrolling over notes", "Whether scrolling when hovering over a note should change its key,\nvelocity, panning or pitch, according to the currently selected edit mode.")) changepitch=!changepitch
-		if (draw_checkbox(x1 + 40, y1 + 198 + (theme = 3) * 22, layerhov_vppreview , "Apply hovered layer's volume and panning to note preview sounds", "Whether the preview sound's volume and panning should be\nrelative to the layer the mouse is hovering over.")) layerhov_vppreview =!layerhov_vppreview
+		popup_set_window(x1 + 70, y1 + 150 + (theme = 3) * 22, 180, 16, localize_ko("The number of ticks or layers scrolled with each mouse wheel step.\nThis setting does not affect macOS trackpads."))
+	    if (draw_checkbox(x1 + 40, y1 + 178 + (theme = 3) * 22, changepitch, localize_ko("Change note properties when scrolling over notes"), localize_ko("Whether scrolling when hovering over a note should change its key,\nvelocity, panning or pitch, according to the currently selected edit mode."))) changepitch=!changepitch
+		if (draw_checkbox(x1 + 40, y1 + 198 + (theme = 3) * 22, layerhov_vppreview , localize_ko("Apply hovered layer's volume and panning to note preview sounds"), localize_ko("Whether the preview sound's volume and panning should be\nrelative to the layer the mouse is hovering over."))) layerhov_vppreview =!layerhov_vppreview
 		//draw_text_dynamic(x1 + 40, y1 + 178, "Tip: Hold Shift while scrolling over a note to change a whole octave,\nor fine-tune its velocity, panning or pitch.")
 		if (theme = 3) draw_theme_font(font_info_med)
-	    draw_areaheader(x1 + 22, y1 + 240 + (theme = 3) * 22, 456, 105, "Piano")
+	    draw_areaheader(x1 + 22, y1 + 240 + (theme = 3) * 22, 456, 105, localize_ko("Piano"))
 		if (theme = 3) draw_theme_font(font_main)
-	    if (draw_checkbox(x1 + 40, y1 + 256 + (theme = 3) * 22, select_lastpressed, "Set selected key to pressed one", "If the selected key should be set\nto the one pressed using the keyboard.")) select_lastpressed=!select_lastpressed
-	    draw_text_dynamic(x1 + 40, y1 + 290 + (theme = 3) * 22, "Right-click on keys to change their shortcuts.")
-	    if (draw_button2(x1 + 40, y1 + 310 + (theme = 3) * 22, 160, "Reset key shortcuts", false, true)) {
-	        if (question("Are you sure?", "Confirm")) init_keys()
+	    if (draw_checkbox(x1 + 40, y1 + 256 + (theme = 3) * 22, select_lastpressed, localize_ko("Set selected key to pressed one"), localize_ko("If the selected key should be set\nto the one pressed using the keyboard."))) select_lastpressed=!select_lastpressed
+	    draw_text_dynamic(x1 + 40, y1 + 290 + (theme = 3) * 22, localize_ko("Right-click on keys to change their shortcuts."))
+	    if (draw_button2(x1 + 40, y1 + 310 + (theme = 3) * 22, 160, localize_ko("Reset key shortcuts"), false, true)) {
+	        if (question(localize_ko("Are you sure?"), localize_ko("Confirm"))) init_keys()
 	    }
 		} else {
 		if (theme = 3) draw_theme_font(font_info_med)
@@ -616,31 +616,31 @@ function draw_window_preferences() {
 	} else if (selected_tab = 4) {
 		if (language != 1) {
 		if (theme = 3) draw_theme_font(font_info_med)
-	    draw_areaheader(x1 + 22, y1 + 74 + (theme = 3) * 22, 456, 145, "Marker")
+	    draw_areaheader(x1 + 22, y1 + 74 + (theme = 3) * 22, 456, 145, localize_ko("Marker"))
 		if (theme = 3) draw_theme_font(font_main)
-	    if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 90, marker_follow, "Follow marker when playing", "Automatically scroll along with the\nmarker when playing the song.")) marker_follow=!marker_follow
-	    if (draw_radiobox(x1 + 70, y1 + (theme = 3) * 22 + 110, marker_pagebypage = 1, "Page by page", "Scroll with the marker every page.", !marker_follow)) marker_pagebypage = 1
-	    if (draw_radiobox(x1 + 70, y1 + (theme = 3) * 22 + 130, marker_pagebypage = 0, "Tick by tick", "Scroll with the marker every tick.", !marker_follow)) marker_pagebypage = 0
-	    if (draw_radiobox(x1 + 70, y1 + (theme = 3) * 22 + 150, marker_pagebypage = 2, "Frame by frame", "Scroll with the marker every frame.", !marker_follow)) marker_pagebypage = 2
-	    if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 170, marker_start, "Start playing in section", "Whether to always start playing\nat the start of the active section.")) marker_start=!marker_start
-	    if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 190, marker_end, "Stop playing after section", "Whether to stop playing when the\nmarker passes the active section.")) marker_end=!marker_end
+	    if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 90, marker_follow, localize_ko("Follow marker when playing"), localize_ko("Automatically scroll along with the\nmarker when playing the song."))) marker_follow=!marker_follow
+	    if (draw_radiobox(x1 + 70, y1 + (theme = 3) * 22 + 110, marker_pagebypage = 1, localize_ko("Page by page"), localize_ko("Scroll with the marker every page."), !marker_follow)) marker_pagebypage = 1
+	    if (draw_radiobox(x1 + 70, y1 + (theme = 3) * 22 + 130, marker_pagebypage = 0, localize_ko("Tick by tick"), localize_ko("Scroll with the marker every tick."), !marker_follow)) marker_pagebypage = 0
+	    if (draw_radiobox(x1 + 70, y1 + (theme = 3) * 22 + 150, marker_pagebypage = 2, localize_ko("Frame by frame"), localize_ko("Scroll with the marker every frame."), !marker_follow)) marker_pagebypage = 2
+	    if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 170, marker_start, localize_ko("Start playing in section"), localize_ko("Whether to always start playing\nat the start of the active section."))) marker_start=!marker_start
+	    if (draw_checkbox(x1 + 40, y1 + (theme = 3) * 22 + 190, marker_end, localize_ko("Stop playing after section"), localize_ko("Whether to stop playing when the\nmarker passes the active section."))) marker_end=!marker_end
 		if (theme = 3) draw_theme_font(font_info_med)
-	    draw_areaheader(x1 + 22, y1 + 244 + (theme = 3) * 22, 218, 120, "Playing")
+	    draw_areaheader(x1 + 22, y1 + 244 + (theme = 3) * 22, 218, 120, localize_ko("Playing"))
 		if (theme = 3) draw_theme_font(font_main)
-	    if (draw_checkbox(x1 + 32, y1 + 244 + 16 + (theme = 3) * 22, realvolume, "Show layer volumes", "Whether to show the volume of layers.")) realvolume=!realvolume
-		if (draw_checkbox(x1 + 32, y1 + 264 + 16 + (theme = 3) * 22, realstereo, "Disable stereo", "Disables stereo playback.")) realstereo = !realstereo
+	    if (draw_checkbox(x1 + 32, y1 + 244 + 16 + (theme = 3) * 22, realvolume, localize_ko("Show layer volumes"), localize_ko("Whether to show the volume of layers."))) realvolume=!realvolume
+		if (draw_checkbox(x1 + 32, y1 + 264 + 16 + (theme = 3) * 22, realstereo, localize_ko("Disable stereo"), localize_ko("Disables stereo playback."))) realstereo = !realstereo
 		//if (draw_checkbox(x1 + 32, y1 + 284 + 16 + (theme = 3) * 22, looptobarend, "Loop to bar end", "Loops to the end of the bar/measure.")) looptobarend = !looptobarend
-		if (draw_checkbox(x1 + 32, y1 + 284 + 16 + (theme = 3) * 22, autoplay, "Auto-play downloaded songs", "Whether to start playing downloaded songs\nautomatically after opening them.")) autoplay = !autoplay
-		if (draw_checkbox(x1 + 32, y1 + 304 + 16 + (theme = 3) * 22, show_soundcount, "Show number of active sounds", "Displays the number of sounds that are\ncurrently playing in the status bar.")) show_soundcount = !show_soundcount
-		if (draw_checkbox(x1 + 32, y1 + 324 + 16 + (theme = 3) * 22, channelstoggle, "Use more audio channels", "Whether to increase the number\nof sounds that can play at once.")) channelstoggle = !channelstoggle
+		if (draw_checkbox(x1 + 32, y1 + 284 + 16 + (theme = 3) * 22, autoplay, localize_ko("Auto-play downloaded songs"), localize_ko("Whether to start playing downloaded songs\nautomatically after opening them."))) autoplay = !autoplay
+		if (draw_checkbox(x1 + 32, y1 + 304 + 16 + (theme = 3) * 22, show_soundcount, localize_ko("Show number of active sounds"), localize_ko("Displays the number of sounds that are\ncurrently playing in the status bar."))) show_soundcount = !show_soundcount
+		if (draw_checkbox(x1 + 32, y1 + 324 + 16 + (theme = 3) * 22, channelstoggle, localize_ko("Use more audio channels"), localize_ko("Whether to increase the number\nof sounds that can play at once."))) channelstoggle = !channelstoggle
 		//if (draw_checkbox(x1 + 32, y1 + 344 + 16 + (theme = 3) * 22, taskbar, "Enable taskbar indicator", "Whether to display the song\nprogress on the taskbar.")) taskbar = !taskbar
 		if (theme = 3) draw_theme_font(font_info_med)
-		draw_areaheader(x1 + 233 + 22, y1 + 244 + (theme = 3) * 22, 223, 60, "Tempo unit")
+		draw_areaheader(x1 + 233 + 22, y1 + 244 + (theme = 3) * 22, 223, 60, localize_ko("Tempo unit"))
 		if (theme = 3) draw_theme_font(font_main)
-		if (draw_radiobox(x1 + 233 + 32, y1 + 244 + 16 + (theme = 3) * 22, !use_bpm, "Ticks per second (t/s)", "Display song tempos in ticks per second.")) use_bpm = 0
-		if (draw_radiobox(x1 + 233 + 32, y1 + 264 + 16 + (theme = 3) * 22, use_bpm, "Beats per minute (BPM)", "Display song tempos in beats per minute.")) use_bpm = 1
+		if (draw_radiobox(x1 + 233 + 32, y1 + 244 + 16 + (theme = 3) * 22, !use_bpm, localize_ko("Ticks per second (t/s)"), localize_ko("Display song tempos in ticks per second."))) use_bpm = 0
+		if (draw_radiobox(x1 + 233 + 32, y1 + 264 + 16 + (theme = 3) * 22, use_bpm, localize_ko("Beats per minute (BPM)"), localize_ko("Display song tempos in beats per minute."))) use_bpm = 1
 		if (theme = 3) draw_theme_font(font_info_med)
-		draw_areaheader(x1 + 233 + 22, y1 + 329 + (theme = 3) * 22, 223, 55 + 23 + 20, "Resource pack")
+		draw_areaheader(x1 + 233 + 22, y1 + 329 + (theme = 3) * 22, 223, 55 + 23 + 20, localize_ko("Resource pack"))
 		if (theme = 3) draw_theme_font(font_main)
 		draw_area(x1 + 233 + 22 + 18, y1 + 329 + (theme = 3) * 22 + 16 + 5, x1 + 233 + 22 + 18 + 100, y1 + 329 + (theme = 3) * 22 + 16 + 5 + 20)
 		var rp_str = ""
@@ -661,11 +661,11 @@ function draw_window_preferences() {
 		}
 		draw_text_dynamic(x1 + 233 + 22 + 18 + 3, y1 + 329 + (theme = 3) * 22 + 19 + 5, display_resource)
 		if (wmenu = 1 && !mouse_check_button(mb_left)) wmenu = 0
-		if (draw_checkbox(x1 + 233 + 22 + 18, y1 + 359 + (theme = 3) * 22 + 19 + 5, resourcepack_sounds_json, "Use sounds.json", "Load note block sound paths and pitch shifts defined by the selected resource pack.")) {
+		if (draw_checkbox(x1 + 233 + 22 + 18, y1 + 359 + (theme = 3) * 22 + 19 + 5, resourcepack_sounds_json, localize_ko("Use sounds.json"), localize_ko("Load note block sound paths and pitch shifts defined by the selected resource pack."))) {
 			resourcepack_sounds_json = !resourcepack_sounds_json
 			set_resourcepack(current_resource)
 		}
-		if (draw_button2(x1 + 233 + 22 + 18, y1 + 379 + (theme = 3) * 22 + 19 + 5, 150, "Refresh Resource Packs", 0, 1)) refresh_resourcepacks()
+		if (draw_button2(x1 + 233 + 22 + 18, y1 + 379 + (theme = 3) * 22 + 19 + 5, 150, localize_ko("Refresh Resource Packs"), 0, 1)) refresh_resourcepacks()
 		} else {
 		if (theme = 3) draw_theme_font(font_info_med)
 	    draw_areaheader(x1 + 22, y1 + 74 + (theme = 3) * 22, 456, 145, "进度条")
@@ -721,7 +721,7 @@ function draw_window_preferences() {
 		}
 	}
 	
-	if (draw_button2(x1 + 420, y1 + 478 - isplayer * 100, 72, condstr(language != 1, "OK", "确定")) || (prevwindow == window && check_ctrl() && keyboard_check_pressed(ord("P")) || (keyboard_check_pressed(188) && os_type = os_macosx))) {
+	if (draw_button2(x1 + 420, y1 + 478 - isplayer * 100, 72, condstr(language != 1, localize_ko("OK"), "确定")) || (prevwindow == window && check_ctrl() && keyboard_check_pressed(ord("P")) || (keyboard_check_pressed(188) && os_type = os_macosx))) {
 		if (theme != 3) {
 			window = 0
 			window_set_cursor(curs)

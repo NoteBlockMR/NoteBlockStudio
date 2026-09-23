@@ -185,7 +185,8 @@ function control_create() {
 	autosavemins = 10
 	backupmins = 1
 	tonextbackup = 0
-	language = 1 * (os_get_language() = "zh" && os_get_region() = "CN")
+	// 0: English, 1: Simplified Chinese, 2: Korean. Saved preferences override this.
+	language = (os_get_language() = "ko") ? 2 : (1 * (os_get_language() = "zh" && os_get_region() = "CN"))
 	presence = 1 // Discord RPC toggle
 	// presencewindow = 0
 	aa = 0
@@ -251,26 +252,26 @@ function control_create() {
 	refresh_resourcepacks()
 	
 	original_instruments = []
-	array_push(original_instruments, new_instrument("Harp",             "harp.ogg",     false, true))
-	array_push(original_instruments, new_instrument("Double Bass",      "dbass.ogg",    false, true))
-	array_push(original_instruments, new_instrument("Bass Drum",        "bdrum.ogg",    false))
-	array_push(original_instruments, new_instrument("Snare Drum",       "sdrum.ogg",    false))
-	array_push(original_instruments, new_instrument("Click",            "click.ogg",    false))
-	array_push(original_instruments, new_instrument("Guitar",           "guitar.ogg",   false, true))
-	array_push(original_instruments, new_instrument("Flute",            "flute.ogg",    false, true))
-	array_push(original_instruments, new_instrument("Bell",             "bell.ogg",     false, true))
-	array_push(original_instruments, new_instrument("Chime",            "icechime.ogg", false, true))
-	array_push(original_instruments, new_instrument("Xylophone",        "xylobone.ogg", false, true))
-	array_push(original_instruments, new_instrument("Iron Xylophone",   "iron_xylophone.ogg", false, true))
-	array_push(original_instruments, new_instrument("Cow Bell",         "cow_bell.ogg", false, true))
-	array_push(original_instruments, new_instrument("Didgeridoo",       "didgeridoo.ogg", false, true))
-	array_push(original_instruments, new_instrument("Bit",              "bit.ogg", false, true))
-	array_push(original_instruments, new_instrument("Banjo",            "banjo.ogg", false, true))
-	array_push(original_instruments, new_instrument("Pling",            "pling.ogg", false, true))
-	array_push(original_instruments, new_instrument("Trumpet",          "trumpet.ogg", false, true))
-	array_push(original_instruments, new_instrument("Exposed Trumpet",  "trumpet_exposed.ogg", false, true))
-	array_push(original_instruments, new_instrument("Weathered Trumpet","trumpet_weathered.ogg", false, true))
-	array_push(original_instruments, new_instrument("Oxidized Trumpet", "trumpet_oxidized.ogg", false, true))
+	array_push(original_instruments, new_instrument(localize_ko("Harp"),             "harp.ogg",     false, true))
+	array_push(original_instruments, new_instrument(localize_ko("Double Bass"),      "dbass.ogg",    false, true))
+	array_push(original_instruments, new_instrument(localize_ko("Bass Drum"),        "bdrum.ogg",    false))
+	array_push(original_instruments, new_instrument(localize_ko("Snare Drum"),       "sdrum.ogg",    false))
+	array_push(original_instruments, new_instrument(localize_ko("Click"),            "click.ogg",    false))
+	array_push(original_instruments, new_instrument(localize_ko("Guitar"),           "guitar.ogg",   false, true))
+	array_push(original_instruments, new_instrument(localize_ko("Flute"),            "flute.ogg",    false, true))
+	array_push(original_instruments, new_instrument(localize_ko("Bell"),             "bell.ogg",     false, true))
+	array_push(original_instruments, new_instrument(localize_ko("Chime"),            "icechime.ogg", false, true))
+	array_push(original_instruments, new_instrument(localize_ko("Xylophone"),        "xylobone.ogg", false, true))
+	array_push(original_instruments, new_instrument(localize_ko("Iron Xylophone"),   "iron_xylophone.ogg", false, true))
+	array_push(original_instruments, new_instrument(localize_ko("Cow Bell"),         "cow_bell.ogg", false, true))
+	array_push(original_instruments, new_instrument(localize_ko("Didgeridoo"),       "didgeridoo.ogg", false, true))
+	array_push(original_instruments, new_instrument(localize_ko("Bit"),              "bit.ogg", false, true))
+	array_push(original_instruments, new_instrument(localize_ko("Banjo"),            "banjo.ogg", false, true))
+	array_push(original_instruments, new_instrument(localize_ko("Pling"),            "pling.ogg", false, true))
+	array_push(original_instruments, new_instrument(localize_ko("Trumpet"),          "trumpet.ogg", false, true))
+	array_push(original_instruments, new_instrument(localize_ko("Exposed Trumpet"),  "trumpet_exposed.ogg", false, true))
+	array_push(original_instruments, new_instrument(localize_ko("Weathered Trumpet"),"trumpet_weathered.ogg", false, true))
+	array_push(original_instruments, new_instrument(localize_ko("Oxidized Trumpet"), "trumpet_oxidized.ogg", false, true))
 	
 	// Navigating sounds
 	str = ""
@@ -315,7 +316,7 @@ function control_create() {
 	with (obj_instrument)
 	    if (!instrument_load())
 	        str += filename + "\n"
-	if (str != "") message("The following file(s) could not be found:\n\n" + str + "\n\nSome sounds might not play.", "Error")
+	if (str != "") message(localize_ko("The following file(s) could not be found:\n\n") + str + localize_ko("\n\nSome sounds might not play."), localize_ko("Error"))
 
 	log("Instruments loaded")
 
@@ -573,7 +574,7 @@ function control_create() {
 	// Import sounds
 	mc_default_path = string_copy(game_save_id, 0, string_last_pos(condstr(os_type = os_windows, "\\", "/"), string_copy(game_save_id, 1, string_length(game_save_id) - 1))) + condstr(os_type != os_macosx, ".") + "minecraft/";
 	if (os_type = os_windows) mc_default_path = string_replace_all(mc_default_path, "/", "\\");
-	if (os_type = os_macosx) mc_default_path = (language != 1 ? "Please choose one..." : "请选择……")
+	if (os_type = os_macosx) mc_default_path = (language != 1 ? localize_ko("Please choose one...") : "请选择……")
 	mc_install_path = mc_default_path;
 	
 	var asset_index_names_keys =   ["pre-1.6", "legacy", "1.7.3", "1.7.4", "1.7.10", "14w25a", 
@@ -644,11 +645,12 @@ function control_create() {
 	if (os_type = os_macosx) macos_enable_system_settings_menu()
 	tonextsave = autosave ? autosavemins : 0; // Defining autosavemins here to avoid the autosave when the first song is loaded after open the game.
 	font_src_dynamic_init()
-	menu_macos_init()
 	switch(language) {
 		default:
 			lang_en_us()
 	}
+	localize_instrument_names()
+	menu_macos_init()
 	if (channelstoggle) channels = 1024
 	else channels = 256
 	audio_channel_num(channels)
@@ -659,14 +661,14 @@ function control_create() {
 	} else {
 		acrylic = 0
 		can_draw_mica = 0
-		if (language != 1) message("Note Block Studio encountered an error creating the background sprite. Transparency effects will be disabled.\nThis usually happens when your desktop wallpaper is either too tall or too long.", "Note Block Studio")
+		if (language != 1) message(localize_ko("Note Block Studio encountered an error creating the background sprite. Transparency effects will be disabled.\nThis usually happens when your desktop wallpaper is either too tall or too long."), "Note Block Studio")
 		else message("Note Block Studio 在创建背景贴图时遇到错误，透明效果将被关闭。\n这种情况一般是由于您的桌面壁纸图片过高或过长。", "Note Block Studio")
 		acrylic_successful = 1
 		save_settings()
 		acrylic_startup_guard_clear()
 	}
 	if (window_scale = 0) {
-		if (language != 1) message("Note Block Studio detected that the window scale has been set to 0. It has been reverted to default.\nYou may need to restart Note Block Studio for a smooth experience.", "Note Block Studio")
+		if (language != 1) message(localize_ko("Note Block Studio detected that the window scale has been set to 0. It has been reverted to default.\nYou may need to restart Note Block Studio for a smooth experience."), "Note Block Studio")
 		else message("Note Block Studio 检测到窗口缩放设置为0，该设置已经被还原。您可能需要重新打开 Note Block Studio 来获得流畅体验。", "Note Block Studio")
 		window_scale = get_default_window_scale()
 		if (os_type = os_macosx){
@@ -780,7 +782,7 @@ function control_create() {
 	
 	if (file_find_first(backup_directory + "*.nbs", 0) != "" && !port_taken && !isplayer) {
 		var isrecover = 0
-		if (language != 1) isrecover = question("Note Block Studio quit unexpectedly while you were working on a song. Do you want to recover your work?\n\n(If you click 'No', you'll be prompted to recover it again the next time you open the program.)", "Auto-recovery")
+		if (language != 1) isrecover = question(localize_ko("Note Block Studio quit unexpectedly while you were working on a song. Do you want to recover your work?\n\n(If you click 'No', you'll be prompted to recover it again the next time you open the program.)"), localize_ko("Auto-recovery"))
 		else isrecover = question("Note Block Studio在您工作时意外关闭了。要恢复您的文档吗？\n\n（如果点击“No”，下次打开软件时将会再次提示恢复。）", "自动恢复")
 		if (isrecover) {
 			// Create restore folder
@@ -807,7 +809,7 @@ function control_create() {
 			file_find_close();
 			
 			// Open restore folder
-			if (language != 1) message(string(restored_count) + " " + condstr(restored_count > 1, "files have been restored.", "file has been restored."), "Auto-recovery");
+			if (language != 1) message(string(restored_count) + " " + condstr(restored_count > 1, localize_ko("files have been restored."), localize_ko("file has been restored.")), localize_ko("Auto-recovery"));
 			else message(string(restored_count) + "个文件已恢复。", "自动恢复");
 			open_url(restore_directory);
 		}

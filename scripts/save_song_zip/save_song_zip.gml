@@ -1,8 +1,8 @@
 function save_song_zip() {
 	var fn, tempdir, ins, src, dst, count, cmd;
 	
-	if (language != 1) fn = string(get_save_filename_ext("ZIP archive (*.zip)|*.zip", condstr(songs[song].filename == "", "", filename_change_ext(songs[song].filename, ".zip")), "", "Save song with custom sounds"));
-	else fn = string(get_save_filename_ext("ZIP archive (*.zip)|*.zip", condstr(songs[song].filename == "", "", filename_change_ext(songs[song].filename, ".zip")), "", "连带自定义音色一起导出"));
+	if (language != 1) fn = string(get_save_filename_ext(localize_ko("ZIP archive (*.zip)|*.zip"), condstr(songs[song].filename == "", "", filename_change_ext(songs[song].filename, ".zip")), "", localize_ko("Save song with custom sounds")));
+	else fn = string(get_save_filename_ext(localize_ko("ZIP archive (*.zip)|*.zip"), condstr(songs[song].filename == "", "", filename_change_ext(songs[song].filename, ".zip")), "", "连带自定义音色一起导出"));
 	if (fn = "") return 0;
 	fn = enforce_extension(fn, ".zip")
 	
@@ -39,10 +39,10 @@ function save_song_zip() {
 	else execute_program(get_7z_exc_name(), "a -tzip \"" + fn + "\" \"" + game_save_id + "temp" + condstr(os_type = os_windows, "\\", "/") + "*\"", true);
 	
 	if (!file_exists_lib(fn)) {
-		if (language != 1) message("The song could not be saved!", "Error");
+		if (language != 1) message(localize_ko("The song could not be saved!"), localize_ko("Error"));
 		else message("导出歌曲失败！", "错误");
 	} else {
-		if (language != 1) set_msg("Song saved");
+		if (language != 1) set_msg(localize_ko("Song saved"));
 		else set_msg("歌曲已保存");
 	}
 

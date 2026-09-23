@@ -18,7 +18,7 @@ function download_song_start(download_url) {
 		var is_nbs = string_last_pos(".nbs", download_url_noparams) == len - 3;
 		var is_zip = string_last_pos(".zip", download_url_noparams) == len - 3;
 		if (!(is_nbs || is_zip)) {
-			if (language != 1) message("Couldn't verify if the file you're trying to open is a valid song!", "Note Block Studio")
+			if (language != 1) message(localize_ko("Couldn't verify if the file you're trying to open is a valid song!"), "Note Block Studio")
 			else message("所打开的文件不属于可以读取的格式！", "Note Block Studio")
 			game_end()
 		} else {

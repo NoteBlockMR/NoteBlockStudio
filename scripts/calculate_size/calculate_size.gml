@@ -2,25 +2,25 @@ function calculate_size() {
 	var a, b, c;
 	if (language != 1) {
 	if (warning_schematic == 0) {
-		message("The exported schematic is currently only compatible with Minecraft: Java Edition 1.12 and below. To import it in 1.13 and above, please use the export to structure block function.\n\nThis warning will never be shown again.", "Warning")
+		message(localize_ko("The exported schematic is currently only compatible with Minecraft: Java Edition 1.12 and below. To import it in 1.13 and above, please use the export to structure block function.\n\nThis warning will never be shown again."), localize_ko("Warning"))
 		warning_schematic = 1
 		save_settings()
 	}
 	if (songs[song].block_outside > 0) {
-	    if (!question("Some note blocks are outside of Minecraft's 2 octave limit. Do you want to export a Schematic anyway, ignoring the affected blocks?", "Minecraft Compatibility")) return 0
+	    if (!question(localize_ko("Some note blocks are outside of Minecraft's 2 octave limit. Do you want to export a Schematic anyway, ignoring the affected blocks?"), localize_ko("Minecraft Compatibility"))) return 0
 	}
 	if (songs[song].block_custom > 0) {
-	    if (!question("Some note blocks have a custom instrument assigned to them. Export anyway?", "Minecraft Compatibility")) return 0
+	    if (!question(localize_ko("Some note blocks have a custom instrument assigned to them. Export anyway?"), localize_ko("Minecraft Compatibility"))) return 0
 	}
 	if (songs[song].block_pitched > 0) {
-	    if (!question("Some note blocks have fine pitch tuning, which isn't supported in note blocks. Export anyway?", "Minecraft Compatibility")) return 0
+	    if (!question(localize_ko("Some note blocks have fine pitch tuning, which isn't supported in note blocks. Export anyway?"), localize_ko("Minecraft Compatibility"))) return 0
 	}
 	if (songs[song].real_tempo != 10 && songs[song].real_tempo != 5 && songs[song].real_tempo != 2.5) {
-	    message("The tempo of the song is not compatible with Minecraft. As a result, the playback speed of the song in-game will differ from the one in the program.", "Tempo")
+	    message(localize_ko("The tempo of the song is not compatible with Minecraft. As a result, the playback speed of the song in-game will differ from the one in the program."), localize_ko("Tempo"))
 	}
 	selection_place(0)
 	if (songs[song].totalblocks - songs[song].block_outside <= 0) {
-	    message("There are no blocks to export!", "Error")
+	    message(localize_ko("There are no blocks to export!"), localize_ko("Error"))
 	    return 0
 	}
 	} else {

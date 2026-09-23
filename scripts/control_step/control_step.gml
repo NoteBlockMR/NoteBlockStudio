@@ -22,8 +22,8 @@ function control_step() {
 	//}
 	if (current_time - pingtime >= 1000){
 	if (presence && obj_presence.ready) {
-		if (NOT_RUN_FROM_IDE != 1) np_setpresence(condstr(songs[song].totalblocks > 0, string_format_thousands(songs[song].totalblocks) + " note" + condstr(songs[song].totalblocks > 1, "s") + " placed"), "Debugging", condstr(window_icon, "note", "noteflat"), "")
-		else np_setpresence(condstr(songs[song].totalblocks > 0, string_format_thousands(songs[song].totalblocks) + " note" + condstr(songs[song].totalblocks > 1, "s") + condstr(!isplayer, " placed")), condstr((songs[song].filename = "" || songs[song].filename = "-player") && !isplayer, "Unsaved song") + condstr(songs[song].filename != "" && songs[song].filename != "-player" && !isplayer, "Editing ") + condstr(((songs[song].filename != "" && songs[song].filename != "-player") || songs[song].midiname != "") && isplayer, "Listening to ") + condstr(songs[song].filename != "-player", filename_name(songs[song].filename)) + condstr((songs[song].filename = "" || songs[song].filename = "-player") && songs[song].midiname != "" && isplayer, songs[song].midiname), condstr(window_icon, "note", "noteflat"), "")
+		if (NOT_RUN_FROM_IDE != 1) np_setpresence(condstr(songs[song].totalblocks > 0, string_format_thousands(songs[song].totalblocks) + localize_ko(" note") + condstr(language != 2 && songs[song].totalblocks > 1, "s") + localize_ko(" placed")), "Debugging", condstr(window_icon, "note", "noteflat"), "")
+		else np_setpresence(condstr(songs[song].totalblocks > 0, string_format_thousands(songs[song].totalblocks) + localize_ko(" note") + condstr(language != 2 && songs[song].totalblocks > 1, "s") + condstr(!isplayer, localize_ko(" placed"))), condstr((songs[song].filename = "" || songs[song].filename = "-player") && !isplayer, localize_ko("Unsaved song")) + condstr(songs[song].filename != "" && songs[song].filename != "-player" && !isplayer, localize_ko("Editing ")) + condstr(((songs[song].filename != "" && songs[song].filename != "-player") || songs[song].midiname != "") && isplayer, localize_ko("Listening to ")) + condstr(songs[song].filename != "-player", filename_name(songs[song].filename)) + condstr((songs[song].filename = "" || songs[song].filename = "-player") && songs[song].midiname != "" && isplayer, songs[song].midiname), condstr(window_icon, "note", "noteflat"), "")
 	} else {
 		np_clearpresence()
 	}
@@ -183,7 +183,7 @@ function control_step() {
                 if (filename_name(songs[sss].filename) != "") {
                     songs[sss].song_backupname = filename_name(filename_change_ext(songs[sss].filename, ".nbs"));
                 } else {
-                    songs[sss].song_backupname = "Unsaved song " + string(songs[sss].song_backupid) + ".nbs"
+                    songs[sss].song_backupname = localize_ko("Unsaved song ") + string(songs[sss].song_backupid) + ".nbs"
                 }
                 save_song(backup_directory + songs[sss].song_backupname, true)
 			}
@@ -195,8 +195,8 @@ function control_step() {
 	if (keyboard_check_pressed(vk_f11)) {
 		fullscreen = !fullscreen
 		if (language != 1) {
-		if (fullscreen) set_msg("Fullscreen => ON")
-		else set_msg("Fullscreen => OFF")
+		if (fullscreen) set_msg(localize_ko("Fullscreen => ON"))
+		else set_msg(localize_ko("Fullscreen => OFF"))
 		} else {
 		if (fullscreen) set_msg("全屏模式 => 开启")
 		else set_msg("全屏模式 => 关闭")
@@ -208,8 +208,8 @@ function control_step() {
 	if (keyboard_check_pressed(vk_f10)) {
 		blackout = !blackout
 		if (language != 1) {
-		if (blackout) set_msg("Blackout mode => ON")
-		else set_msg("Blackout mode => OFF")
+		if (blackout) set_msg(localize_ko("Blackout mode => ON"))
+		else set_msg(localize_ko("Blackout mode => OFF"))
 		} else {
 		if (blackout) set_msg("全黑模式 => 开启")
 		else set_msg("全黑模式 => 关闭")
@@ -261,7 +261,7 @@ function control_step() {
 						if (insname = "Tempo Changer") current_song.tempo = floor(abs(current_song.song_pit[xx, b])) / 15
 						else if (insname = "Toggle Rainbow") {rainbowtoggle = !rainbowtoggle draw_accent_init()}
 						else if (insname = "Sound Stopper") {remove_emitters_all(floor(current_song.song_pit[xx, b]), panning_velocity_to_short(current_song.song_pan[xx, b], current_song.song_vel[xx, b]))}
-						else if (insname = "Show Save Popup") set_msg("Song saved")
+						else if (insname = "Show Save Popup") set_msg(localize_ko("Song saved"))
 						else if (string_count(string_lower("Change Color to #"), string_lower(insname)) = 1) {
 							draw_set_accent(real("0x" + string_copy(insname, 18, 2)), real("0x" + string_copy(insname, 20, 2)), real("0x" + string_copy(insname, 22, 2)))
 							log("Change Color to " + string_copy(insname, 18, 2) + " " + string_copy(insname, 20, 2) + " " + string_copy(insname, 22, 2))

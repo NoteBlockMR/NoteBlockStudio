@@ -18,7 +18,7 @@ function draw_window_edit_sound_stopper() {
 	ppit = songs[song].song_pit[tempo_changer_sel_x, tempo_changer_sel_y]
 	draw_window(x1, y1, x1 + 140, y1 + 130 + 50)
 	draw_theme_font(font_main_bold)
-	if (language != 1) draw_text_dynamic(x1 + 8, y1 + 8, "Set Stopping Range")
+	if (language != 1) draw_text_dynamic(x1 + 8, y1 + 8, localize_ko("Set Stopping Range"))
 	else draw_text_dynamic(x1 + 8, y1 + 8, "设置抑制范围")
 	draw_theme_font(font_main)
 	if (theme = 0) {
@@ -27,17 +27,17 @@ function draw_window_edit_sound_stopper() {
 	    draw_set_color(make_color_rgb(137, 140, 149))
 	    draw_rectangle(x1 + 6, y1 + 26, x1 + 134, y1 + 92 + 50, 1)
 	}
-	if (language != 1) draw_areaheader(x1 + 10, y1 + 40, 120, 35, "Start Layer (inclusive)")
+	if (language != 1) draw_areaheader(x1 + 10, y1 + 40, 120, 35, localize_ko("Start Layer (inclusive)"))
 	else draw_areaheader(x1 + 10, y1 + 40, 120, 35, "起始层（包含）")
-	if (language != 1) sound_stopper_set_start = draw_textarea(59, x1 + 15, y1 + 50, 113, 25, string(sound_stopper_set_start), "Must be an integer larger than zero.") 
+	if (language != 1) sound_stopper_set_start = draw_textarea(59, x1 + 15, y1 + 50, 113, 25, string(sound_stopper_set_start), localize_ko("Must be an integer larger than zero.")) 
 	else sound_stopper_set_start = draw_textarea(59, x1 + 15, y1 + 50, 113, 25, string(sound_stopper_set_start), "必须是一个正整数。") 
-	if (language != 1) draw_areaheader(x1 + 10, y1 + 40 + 50, 120, 35, "End Layer (inclusive)")
+	if (language != 1) draw_areaheader(x1 + 10, y1 + 40 + 50, 120, 35, localize_ko("End Layer (inclusive)"))
 	else draw_areaheader(x1 + 10, y1 + 40 + 50, 120, 35, "终止层（包含）")
-	if (language != 1) sound_stopper_set_until = draw_textarea(60, x1 + 15, y1 + 50 + 50, 113, 25, string(sound_stopper_set_until), "Must be an integer larger than zero.") 
+	if (language != 1) sound_stopper_set_until = draw_textarea(60, x1 + 15, y1 + 50 + 50, 113, 25, string(sound_stopper_set_until), localize_ko("Must be an integer larger than zero.")) 
 	else sound_stopper_set_until = draw_textarea(60, x1 + 15, y1 + 50 + 50, 113, 25, string(sound_stopper_set_until), "必须是一个正整数。") 
 	
 	draw_theme_color()
-	if (draw_button2(x1 + 10, y1 + 98 + 50, 60, condstr(language != 1, "OK", "确定"))) {
+	if (draw_button2(x1 + 10, y1 + 98 + 50, 60, condstr(language != 1, localize_ko("OK"), "确定"))) {
 		try {
 			temp_start = int64(sound_stopper_set_start)
 			temp_until = int64(sound_stopper_set_until)
@@ -56,16 +56,16 @@ function draw_window_edit_sound_stopper() {
 				window = 0
 				windowprogress = 0
 			} else {
-				if (language != 1) message("Invalid value!", "Set Stopping Range")
+				if (language != 1) message(localize_ko("Invalid value!"), localize_ko("Set Stopping Range"))
 				else message("非法数值！", "设置抑制范围")
 			}
 		}
 		catch (e) {
-			if (language != 1) message("Invalid value!\n\n" + string(e), "Set Stopping Range")
+			if (language != 1) message(localize_ko("Invalid value!\n\n") + string(e), localize_ko("Set Stopping Range"))
 			else message("非法数值！\n\n" + string(e), "设置抑制范围")
 		}
 	}
-	if (draw_button2(x1 + 70, y1 + 98 + 50, 60, condstr(language !=1, "Cancel", "取消"), false, true) && (windowopen = 1 || theme != 3)) {
+	if (draw_button2(x1 + 70, y1 + 98 + 50, 60, condstr(language !=1, localize_ko("Cancel"), "取消"), false, true) && (windowopen = 1 || theme != 3)) {
 		windowclose = 1
 	}
 	if (display_mouse_get_x() - window_get_x() >= 0 && display_mouse_get_y() - window_get_y() >= 0 && display_mouse_get_x() - window_get_x() < 0 + window_width && display_mouse_get_y() - window_get_y() < 0 + window_height) {

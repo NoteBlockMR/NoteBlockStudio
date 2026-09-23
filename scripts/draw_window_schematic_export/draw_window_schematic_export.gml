@@ -15,14 +15,14 @@ function draw_window_schematic_export() {
 	draw_theme_color()
 	}
 	draw_theme_font(font_main_bold)
-	if (language != 1) draw_text_dynamic(x1 + 8, y1 + 8, "Schematic Export")
+	if (language != 1) draw_text_dynamic(x1 + 8, y1 + 8, localize_ko("Schematic Export"))
 	else draw_text_dynamic(x1 + 8, y1 + 8, "导出结构")
 	draw_theme_font(font_main)
 
 	b = 8
 	if (language != 1) {
-	str[0] = "Design"
-	str[1] = "Blocks"
+	str[0] = localize_ko("Design")
+	str[1] = localize_ko("Blocks")
 	str[2] = "Sounds"
 	} else {
 	str[0] = "设计"
@@ -31,7 +31,7 @@ function draw_window_schematic_export() {
 	}
 	nsel = -1
 	menun = -1
-	if (language != 1) {if (draw_checkbox(x1 + 12, y1 + 374, sch_exp_remember, "Remember changes", "Whether to use these settings the\nnext time you export a Schematic.", false, true) && wmenu = 0) sch_exp_remember=!sch_exp_remember}
+	if (language != 1) {if (draw_checkbox(x1 + 12, y1 + 374, sch_exp_remember, localize_ko("Remember changes"), localize_ko("Whether to use these settings the\nnext time you export a Schematic."), false, true) && wmenu = 0) sch_exp_remember=!sch_exp_remember}
 	else {if (draw_checkbox(x1 + 12, y1 + 374, sch_exp_remember, "记住我的更改", "下次导出结构时是否使用同样的设定。", false, true) && wmenu = 0) sch_exp_remember=!sch_exp_remember}
 
 	if (theme = 1) draw_window(x1 + 4, y1 + 45, x1 + 496 + 50, y1 + 364)
@@ -97,10 +97,10 @@ function draw_window_schematic_export() {
 	if (selected_tab_sch = 0) {
 		if (language != 1) {
 	    draw_sprite(spr_schematic_exp, sch_exp_layout, x1 + 15, y1 + 56)
-	    draw_text_dynamic(x1 + 16, y1 + 220, "Layout:")
-	    if (draw_radiobox(x1 + 32, y1 + 240, sch_exp_layout = 1, "Simple walkway", "Generate a simple walkway that stretches\nas far as the length of the song.")) sch_exp_layout = 1
-	    if (draw_radiobox(x1 + 32, y1 + 260, sch_exp_layout = 0, "Circular walkway", "Generate a walkway where the\nplayer travels back and forth.")) sch_exp_layout = 0
-	    draw_text_dynamic(x1 + 16, y1 + 280, "Format:")
+	    draw_text_dynamic(x1 + 16, y1 + 220, localize_ko("Layout:"))
+	    if (draw_radiobox(x1 + 32, y1 + 240, sch_exp_layout = 1, localize_ko("Simple walkway"), localize_ko("Generate a simple walkway that stretches\nas far as the length of the song."))) sch_exp_layout = 1
+	    if (draw_radiobox(x1 + 32, y1 + 260, sch_exp_layout = 0, localize_ko("Circular walkway"), localize_ko("Generate a walkway where the\nplayer travels back and forth."))) sch_exp_layout = 0
+	    draw_text_dynamic(x1 + 16, y1 + 280, localize_ko("Format:"))
 		formatstr = condstr(sch_exp_format = 0, ".nbt (Structure Block)") + condstr(sch_exp_format = 1, ".nbt (Litematica)") + condstr(sch_exp_format = 2, ".schematic (1.11-1.12)") + condstr(sch_exp_format = 3, ".schematic (pre 1.11)")
 		draw_area(x1 + 16, y1 + 298, x1 + 166, y1 + 319)
 		if ((draw_abutton(x1 + 148, y1 + 300) || (mouse_rectangle(x1 + 16, y1 + 298, 150, 21) && mouse_check_button_pressed(mb_left))) && wmenu = 0) {
@@ -110,30 +110,30 @@ function draw_window_schematic_export() {
 		draw_theme_font(font_small)
 		draw_text_dynamic(x1 + 21, y1 + 302, formatstr)
 		draw_theme_font(font_main)
-		popup_set_window(x1 + 16, y1 + 298, 170, 21, "Structure Block writes a 1.13-compatible 32-block size header.\nLitematica writes the exact structure dimensions.")
+		popup_set_window(x1 + 16, y1 + 298, 170, 21, localize_ko("Structure Block writes a 1.13-compatible 32-block size header.\nLitematica writes the exact structure dimensions."))
 	    x1 += 20
-		draw_text_dynamic(x1 + 170, y1 + 220, "Repeaters per row:")
+		draw_text_dynamic(x1 + 170, y1 + 220, localize_ko("Repeaters per row:"))
 	    sch_exp_notesperrow = median(5, draw_dragvalue(5, x1 + 300, y1 + 220, sch_exp_notesperrow, 1), 100)
 	    sch_exp_notesperrow = max(5, sch_exp_notesperrow)
-	    popup_set_window(x1 + 170, y1 + 220, 150, 16, "The amount of repeaters per row in\nthe Schematic. Click and drag to change.")
-		if (draw_checkbox(x1 + 170, y1 + 240, sch_exp_includelocked, "Include locked layers", "Whether to include locked layers in the Schematic.", false, true)) sch_exp_includelocked=!sch_exp_includelocked
-	    if (draw_checkbox(x1 + 170, y1 + 260, sch_exp_compress, "Compress layers", "Compress layers to save vertical space.", false, true)) sch_exp_compress=!sch_exp_compress
+	    popup_set_window(x1 + 170, y1 + 220, 150, 16, localize_ko("The amount of repeaters per row in\nthe Schematic. Click and drag to change."))
+		if (draw_checkbox(x1 + 170, y1 + 240, sch_exp_includelocked, localize_ko("Include locked layers"), localize_ko("Whether to include locked layers in the Schematic."), false, true)) sch_exp_includelocked=!sch_exp_includelocked
+	    if (draw_checkbox(x1 + 170, y1 + 260, sch_exp_compress, localize_ko("Compress layers"), localize_ko("Compress layers to save vertical space."), false, true)) sch_exp_compress=!sch_exp_compress
 		if (sch_exp_layout = 0 || sch_exp_layout = 1) {
-	        if (draw_checkbox(x1 + 170, y1 + 280, sch_exp_minecart, "Include minecart track", "Include a minecart track that\nautomatically goes along with the song.", false, true)) sch_exp_minecart=!sch_exp_minecart
-	        if (draw_checkbox(x1 + 170 + 16, y1 + 300, sch_exp_chest, "Add chest with minecarts", "Whether to add a chest full of minecarts\nat the beginning of the song.", !sch_exp_minecart)) sch_exp_chest=!sch_exp_chest
+	        if (draw_checkbox(x1 + 170, y1 + 280, sch_exp_minecart, localize_ko("Include minecart track"), localize_ko("Include a minecart track that\nautomatically goes along with the song."), false, true)) sch_exp_minecart=!sch_exp_minecart
+	        if (draw_checkbox(x1 + 170 + 16, y1 + 300, sch_exp_chest, localize_ko("Add chest with minecarts"), localize_ko("Whether to add a chest full of minecarts\nat the beginning of the song."), !sch_exp_minecart)) sch_exp_chest=!sch_exp_chest
 			if (sch_exp_layout = 0) {
-	            if (draw_checkbox(x1 + 170, y1 + 320, sch_exp_loop, "Include looping option", "Whether to add a lever that toggles looping.", false, true)) sch_exp_loop=!sch_exp_loop
+	            if (draw_checkbox(x1 + 170, y1 + 320, sch_exp_loop, localize_ko("Include looping option"), localize_ko("Whether to add a lever that toggles looping."), false, true)) sch_exp_loop=!sch_exp_loop
 			}
 			if (structure = true) {
-				if (draw_checkbox(x1 + 170, y1 + 320 + (sch_exp_layout = 0) * 20, command_block, "Use command blocks", "Whether to use command blocks instead of note blocks for a wider octave range.\n(Extra notes pack required)", false, true)) command_block=!command_block
+				if (draw_checkbox(x1 + 170, y1 + 320 + (sch_exp_layout = 0) * 20, command_block, localize_ko("Use command blocks"), localize_ko("Whether to use command blocks instead of note blocks for a wider octave range.\n(Extra notes pack required)"), false, true)) command_block=!command_block
 			}
 	    } else {
-	        if (draw_checkbox(x1 + 170, y1 + 290, sch_exp_glass, "Create glass floor", "Whether a glass floor should\nmake all the note blocks visible.")) sch_exp_glass=!sch_exp_glass
+	        if (draw_checkbox(x1 + 170, y1 + 290, sch_exp_glass, localize_ko("Create glass floor"), localize_ko("Whether a glass floor should\nmake all the note blocks visible."))) sch_exp_glass=!sch_exp_glass
 	    }
 		x1 -= 20
-	    draw_text_dynamic(x1 + 380, y1 + 220, "Note blocks:")
-	    draw_text_dynamic(x1 + 380, y1 + 220 + 16 * 1, "Repeaters:")
-	    draw_text_dynamic(x1 + 380, y1 + 220 + 16 * 2, "Size:")
+	    draw_text_dynamic(x1 + 380, y1 + 220, localize_ko("Note blocks:"))
+	    draw_text_dynamic(x1 + 380, y1 + 220 + 16 * 1, localize_ko("Repeaters:"))
+	    draw_text_dynamic(x1 + 380, y1 + 220 + 16 * 2, localize_ko("Size:"))
 	    draw_set_halign(fa_right)
 		if (structure && command_block) {
 			draw_text_dynamic(x1 + 520, y1 + 220, "On export")
@@ -145,10 +145,10 @@ function draw_window_schematic_export() {
 			draw_text_dynamic(x1 + 520, y1 + 220 + 16 * 2, string(schematic_length()) + "x" + string(schematic_width()) + "x" + string(schematic_height()))
 		}
 	    draw_set_halign(fa_left)
-	    draw_text_dynamic(x1 + 380, y1 + 220 + 16 * 3, "Tempo:")
-	    if (draw_radiobox(x1 + 396, y1 + 220 + 16 * 3 + 20, sch_exp_tempo = 0, "10 ticks / second", "Generate song at 10 ticks / second")) sch_exp_tempo = 0
-	    if (draw_radiobox(x1 + 396, y1 + 220 + 16 * 3 + 40, sch_exp_tempo = 1, "5 ticks / second", "Generate song at 5 ticks / second")) sch_exp_tempo = 1
-	    if (draw_radiobox(x1 + 396, y1 + 220 + 16 * 3 + 60, sch_exp_tempo = 2, "2.5 ticks / second", "Generate song at 2.5 ticks / second")) sch_exp_tempo = 2
+	    draw_text_dynamic(x1 + 380, y1 + 220 + 16 * 3, localize_ko("Tempo:"))
+	    if (draw_radiobox(x1 + 396, y1 + 220 + 16 * 3 + 20, sch_exp_tempo = 0, localize_ko("10 ticks / second"), localize_ko("Generate song at 10 ticks / second"))) sch_exp_tempo = 0
+	    if (draw_radiobox(x1 + 396, y1 + 220 + 16 * 3 + 40, sch_exp_tempo = 1, localize_ko("5 ticks / second"), localize_ko("Generate song at 5 ticks / second"))) sch_exp_tempo = 1
+	    if (draw_radiobox(x1 + 396, y1 + 220 + 16 * 3 + 60, sch_exp_tempo = 2, localize_ko("2.5 ticks / second"), localize_ko("Generate song at 2.5 ticks / second"))) sch_exp_tempo = 2
 		if (structure && command_block && draw_checkbox(x1 + 380, y1 + 348, sch_command_tempo_grid, "Snap notes to grid", "Use the song tempo and Tempo Changers, snapped to the selected 10, 5, or 2.5 redstone-tick grid.", false, true)) sch_command_tempo_grid = !sch_command_tempo_grid
 		} else {
 		draw_sprite(spr_schematic_exp, sch_exp_layout, x1 + 15, y1 + 56)
@@ -183,7 +183,7 @@ function draw_window_schematic_export() {
 				if (draw_checkbox(x1 + 170, y1 + 320 + (sch_exp_layout = 0) * 20, command_block, "使用命令方块", "是否使用命令方块代替音符盒以获得更广音域。\n（需要更多音符资源包）", false, true)) command_block=!command_block
 			}
 	    } else {
-	        if (draw_checkbox(x1 + 170, y1 + 290, sch_exp_glass, "Create glass floor", "Whether a glass floor should\nmake all the note blocks visible.")) sch_exp_glass=!sch_exp_glass
+	        if (draw_checkbox(x1 + 170, y1 + 290, sch_exp_glass, localize_ko("Create glass floor"), localize_ko("Whether a glass floor should\nmake all the note blocks visible."))) sch_exp_glass=!sch_exp_glass
 	    }
 		x1 -= 20
 	    draw_text_dynamic(x1 + 380, y1 + 220, "音符盒:")
@@ -219,14 +219,14 @@ function draw_window_schematic_export() {
 	    }
 		if (language != 1) {
 	    tabs = 3
-	    tabstr[0] = "Instrument"
-	    tabtip[0] = "The name of the instrument."
+	    tabstr[0] = localize_ko("Instrument")
+	    tabtip[0] = localize_ko("The name of the instrument.")
 	    tabw[0] = 252
-	    tabstr[1] = "Block"
-	    tabtip[1] = "The ID of the block that should be placed\nbelow note blocks of the instrument."
+	    tabstr[1] = localize_ko("Block")
+	    tabtip[1] = localize_ko("The ID of the block that should be placed\nbelow note blocks of the instrument.")
 	    tabw[1] = 60
-	    tabstr[2] = "Block name"
-	    tabtip[2] = "The name of the block that should be\nplaced below note blocks of the instrument."
+	    tabstr[2] = localize_ko("Block name")
+	    tabtip[2] = localize_ko("The name of the block that should be\nplaced below note blocks of the instrument.")
 	    tabw[2] = 220
 		} else {
 		tabs = 3
@@ -269,9 +269,9 @@ function draw_window_schematic_export() {
 	    }
 	    draw_theme_color()
 		if (language != 1) {
-	    draw_text_dynamic(x1 + 16, y1 + 270, "Block for walkway:")
-	    draw_text_dynamic(x1 + 16, y1 + 300, "Block for circuitry:")
-	    draw_text_dynamic(x1 + 16, y1 + 330, "Block for ground:")
+	    draw_text_dynamic(x1 + 16, y1 + 270, localize_ko("Block for walkway:"))
+	    draw_text_dynamic(x1 + 16, y1 + 300, localize_ko("Block for circuitry:"))
+	    draw_text_dynamic(x1 + 16, y1 + 330, localize_ko("Block for ground:"))
 		} else {
 		draw_text_dynamic(x1 + 16, y1 + 270, "过道所用方块:")
 	    draw_text_dynamic(x1 + 16, y1 + 300, "电路所用方块:")
@@ -286,7 +286,7 @@ function draw_window_schematic_export() {
 	        menun = 1
 	        menua = 0
 	    }
-	    if (language != 1) popup_set_window(x1 + 200, y1 + 265, 140, 21, "The block that should be used for the walkway, \nand everything else that isn't circuitry or ground.")
+	    if (language != 1) popup_set_window(x1 + 200, y1 + 265, 140, 21, localize_ko("The block that should be used for the walkway, \nand everything else that isn't circuitry or ground."))
 	    else popup_set_window(x1 + 200, y1 + 265, 140, 21, "用于过道和除电路和地面的方块。")
 	    draw_theme_color()
 	    draw_text_dynamic(x1 + 204, y1 + 264 + 4, block_get_name(sch_exp_walkway_block, sch_exp_walkway_data))
@@ -299,7 +299,7 @@ function draw_window_schematic_export() {
 	        menun = 1
 	        menua = 1
 	    }
-	    if (language != 1) popup_set_window(x1 + 200, y1 + 265 + 30, 140, 21, "The block that should be used for the circuitry.")
+	    if (language != 1) popup_set_window(x1 + 200, y1 + 265 + 30, 140, 21, localize_ko("The block that should be used for the circuitry."))
 	    else popup_set_window(x1 + 200, y1 + 265 + 30, 140, 21, "为电路用的方块。")
 	    draw_theme_color()
 	    draw_text_dynamic(x1 + 204, y1 + 264 + 4 + 30, block_get_name(sch_exp_circuit_block, sch_exp_circuit_data))
@@ -312,7 +312,7 @@ function draw_window_schematic_export() {
 	        menun = 1
 	        menua = 2
 	    }
-	    if (language != 1) popup_set_window(x1 + 200, y1 + 265 + 60, 140, 21, "The block that should be used for the ground.\nChoosing grass will result with a bunch of animals spawning.")
+	    if (language != 1) popup_set_window(x1 + 200, y1 + 265 + 60, 140, 21, localize_ko("The block that should be used for the ground.\nChoosing grass will result with a bunch of animals spawning."))
 	    else popup_set_window(x1 + 200, y1 + 265 + 60, 140, 21, "为地面用的方块。选草方块会刷新很多生物。")
 	    draw_theme_color()
 	    draw_text_dynamic(x1 + 204, y1 + 264 + 4 + 60, block_get_name(sch_exp_ground_block, sch_exp_ground_data))
@@ -321,23 +321,23 @@ function draw_window_schematic_export() {
 		else draw_text_dynamic(x1 + 16, y1 + 62, condstr(language != 1, "Sound-source assignment is used by Structure exports with command blocks.", "声源分配仅用于启用命令方块的结构导出。"))
 	}
 	if (language != 1) {
-	if (draw_button2(x1 + 470, y1 + 368, 72, "Export") && wmenu = 0) {
+	if (draw_button2(x1 + 470, y1 + 368, 72, localize_ko("Export")) && wmenu = 0) {
 		    if (sch_exp_totalblocks[sch_exp_includelocked] <= 0) {
-		        message("There are no blocks to export!", "Schematic export")
+		        message(localize_ko("There are no blocks to export!"), localize_ko("Schematic export"))
 		    } else if ((!structure || !command_block) && (schematic_length() >= 2000 || schematic_width() >= 2000 || schematic_height() >= 256)) {
-	        message("The Schematic is too big. The maximum size is 2000x2000x256.\nTry changing the \"Repeaters per row\" value to decrease the size.", "Error")
+	        message(localize_ko("The Schematic is too big. The maximum size is 2000x2000x256.\nTry changing the \"Repeaters per row\" value to decrease the size."), localize_ko("Error"))
 	    } else {
 	        schematic_export()
 	    }
 	}
-	if (draw_button2(x1 + 470 - 80 * 1, y1 + 368, 72, "Cancel", false, true) && wmenu = 0 && (windowopen = 1 || theme != 3)) {
+	if (draw_button2(x1 + 470 - 80 * 1, y1 + 368, 72, localize_ko("Cancel"), false, true) && wmenu = 0 && (windowopen = 1 || theme != 3)) {
 		windowclose = 1
 	}
-	if (draw_button2(x1 + 470 - 80 * 2, y1 + 368, 72, "Use default", false, true) && wmenu = 0) {
-	    if (question("Are you sure?", "Confirm")) reset_schematic_export(1)
+	if (draw_button2(x1 + 470 - 80 * 2, y1 + 368, 72, localize_ko("Use default"), false, true) && wmenu = 0) {
+	    if (question(localize_ko("Are you sure?"), localize_ko("Confirm"))) reset_schematic_export(1)
 	}
 	if (structure = true) {
-		if (draw_button2(x1 + 470 - 80 * 4, y1 + 368, 152, "Get extra notes pack", !command_block, true)) {
+		if (draw_button2(x1 + 470 - 80 * 4, y1 + 368, 152, localize_ko("Get extra notes pack"), !command_block, true)) {
 			datapack_getextranotes()
 		}
 	}
@@ -438,17 +438,17 @@ function draw_window_schematic_export() {
 	        sm = 0
 	        for (a = 0; a < b; a += 1) {
 	            if (block[a, 0] = 35) {
-	                str += "Wool|\\|"
+	                str += localize_ko("Wool|\\|")
 	                for (c = 0; c < 16; c += 1) str += check(sch_exp_ins_block[menub] = 35 && sch_exp_ins_data[menub] = c) + "35, " + string(c) + "$" + block_get_name(35, c) + "|"
 	                str += "/|"
 	                a += 16
 	            } else if (block[a, 0] = 95) {
-	                str += "Stained glass|\\|"
+	                str += localize_ko("Stained glass|\\|")
 	                for (c = 0; c < 16; c += 1) str += check(sch_exp_ins_block[menub] = 95 && sch_exp_ins_data[menub] = c) + "95, " + string(c) + "$" + block_get_name(95, c) + "|"
 	                str += "/|"
 	                a += 16
 	            } else if (block[a, 0] = 159) {
-	                str += "Colored Terracotta|\\|"
+	                str += localize_ko("Colored Terracotta|\\|")
 	                for (c = 0; c < 16; c += 1) str += check(sch_exp_ins_block[menub] = 159 && sch_exp_ins_data[menub] = c) + "159, " + string(c) + "$" + block_get_name(159, c) + "|"
 	                str += "/|"
 	                a += 16
@@ -457,7 +457,7 @@ function draw_window_schematic_export() {
 	            }
 	            d++
 	            if (d % 25 = 0 && a < b - 1) {
-	                if (language != 1) str += "-|More...|\\|"
+	                if (language != 1) str += localize_ko("-|More...|\\|")
 	                else str += "-|更多......|\\|"
 	                sm++
 	            }
@@ -486,17 +486,17 @@ function draw_window_schematic_export() {
 	        sm = 0
 	        for (a = 0; a < b; a += 1) {
 	            if (block[a, 0] = 35) {
-	                str += "Wool|\\|"
+	                str += localize_ko("Wool|\\|")
 	                for (c = 0; c < 16; c += 1) str += check(c1 = 35 && c2 = c) + "35, " + string(c) + "$" + block_get_name(35, c) + "|"
 	                str += "/|"
 	                a += 16
 	            } else if (block[a, 0] = 95) {
-	                str += "Stained Glass|\\|"
+	                str += localize_ko("Stained Glass|\\|")
 	                for (c = 0; c < 16; c += 1) str += check(c1 = 95 && c2 = c) + "95, " + string(c) + "$" + block_get_name(95, c) + "|"
 	                str += "/|"
 	                a += 16
 	            } else if (block[a, 0] = 159) {
-	                str += "Colored Terracotta|\\|"
+	                str += localize_ko("Colored Terracotta|\\|")
 	                for (c = 0; c < 16; c += 1) str += check(c1 = 159 && c2 = c) + "159, " + string(c) + "$" + block_get_name(159, c) + "|"
 	                str += "/|"
 	                a += 16
@@ -505,7 +505,7 @@ function draw_window_schematic_export() {
 	            }
 	            d++
 	            if (d%25 = 0  && a < b - 1) {
-	                if (language != 1) str += "-|More...|\\|"
+	                if (language != 1) str += localize_ko("-|More...|\\|")
 	                else str += "-|更多......|\\|"
 	                sm++
 	            }

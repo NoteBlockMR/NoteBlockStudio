@@ -36,26 +36,26 @@ function set_resourcepack(pack_name){
 	obj_controller.minecraft_export_pack_root = pack_root
 	obj_controller.minecraft_export_sounds_json = catalog_sounds_json
 	if (is_struct(catalog_sounds_json)) minecraft_export_set_sound_catalog(catalog_sounds_json, "minecraft", "Resource pack: " + pack_name)
-	swap_instrument(0, "Harp", "harp2", "harp", dir_no_path, using_directory, sounds_json)
-	swap_instrument(1, "Double Bass", "bassattack", "dbass", dir_no_path, using_directory, sounds_json)
-	swap_instrument(2, "Bass Drum", "bd", "bdrum", dir_no_path, using_directory, sounds_json)
-	swap_instrument(3, "Snare Drum", "snare", "sdrum", dir_no_path, using_directory, sounds_json)
-	swap_instrument(4, "Click", "hat", "click", dir_no_path, using_directory, sounds_json)
-	swap_instrument(5, "Guitar", "guitar", "guitar", dir_no_path, using_directory, sounds_json)
-	swap_instrument(6, "Flute", "flute", "flute", dir_no_path, using_directory, sounds_json)
-	swap_instrument(7, "Bell", "bell", "bell", dir_no_path, using_directory, sounds_json)
-	swap_instrument(8, "Chime", "icechime", "icechime", dir_no_path, using_directory, sounds_json)
-	swap_instrument(9, "Xylophone", "xylobone", "xylobone", dir_no_path, using_directory, sounds_json)
-	swap_instrument(10, "Iron Xylophone", "iron_xylophone", "iron_xylophone", dir_no_path, using_directory, sounds_json)
-	swap_instrument(11, "Cow Bell", "cow_bell", "cow_bell", dir_no_path, using_directory, sounds_json)
-	swap_instrument(12, "Didgeridoo", "didgeridoo", "didgeridoo", dir_no_path, using_directory, sounds_json)
-	swap_instrument(13, "Bit", "bit", "bit", dir_no_path, using_directory, sounds_json)
-	swap_instrument(14, "Banjo", "banjo", "banjo", dir_no_path, using_directory, sounds_json)
-	swap_instrument(15, "Pling", "pling", "pling", dir_no_path, using_directory, sounds_json)
-	swap_instrument(16, "Trumpet", "trumpet", "trumpet", dir_no_path, using_directory, sounds_json)
-	swap_instrument(17, "Exposed Trumpet", "trumpet_exposed", "trumpet_exposed", dir_no_path, using_directory, sounds_json)
-	swap_instrument(18, "Weathered Trumpet", "trumpet_weathered", "trumpet_weathered", dir_no_path, using_directory, sounds_json)
-	swap_instrument(19, "Oxidized Trumpet", "trumpet_oxidized", "trumpet_oxidized", dir_no_path, using_directory, sounds_json)
+	swap_instrument(0, localize_ko("Harp"), "harp2", "harp", dir_no_path, using_directory, sounds_json)
+	swap_instrument(1, localize_ko("Double Bass"), "bassattack", "dbass", dir_no_path, using_directory, sounds_json)
+	swap_instrument(2, localize_ko("Bass Drum"), "bd", "bdrum", dir_no_path, using_directory, sounds_json)
+	swap_instrument(3, localize_ko("Snare Drum"), "snare", "sdrum", dir_no_path, using_directory, sounds_json)
+	swap_instrument(4, localize_ko("Click"), "hat", "click", dir_no_path, using_directory, sounds_json)
+	swap_instrument(5, localize_ko("Guitar"), "guitar", "guitar", dir_no_path, using_directory, sounds_json)
+	swap_instrument(6, localize_ko("Flute"), "flute", "flute", dir_no_path, using_directory, sounds_json)
+	swap_instrument(7, localize_ko("Bell"), "bell", "bell", dir_no_path, using_directory, sounds_json)
+	swap_instrument(8, localize_ko("Chime"), "icechime", "icechime", dir_no_path, using_directory, sounds_json)
+	swap_instrument(9, localize_ko("Xylophone"), "xylobone", "xylobone", dir_no_path, using_directory, sounds_json)
+	swap_instrument(10, localize_ko("Iron Xylophone"), "iron_xylophone", "iron_xylophone", dir_no_path, using_directory, sounds_json)
+	swap_instrument(11, localize_ko("Cow Bell"), "cow_bell", "cow_bell", dir_no_path, using_directory, sounds_json)
+	swap_instrument(12, localize_ko("Didgeridoo"), "didgeridoo", "didgeridoo", dir_no_path, using_directory, sounds_json)
+	swap_instrument(13, localize_ko("Bit"), "bit", "bit", dir_no_path, using_directory, sounds_json)
+	swap_instrument(14, localize_ko("Banjo"), "banjo", "banjo", dir_no_path, using_directory, sounds_json)
+	swap_instrument(15, localize_ko("Pling"), "pling", "pling", dir_no_path, using_directory, sounds_json)
+	swap_instrument(16, localize_ko("Trumpet"), "trumpet", "trumpet", dir_no_path, using_directory, sounds_json)
+	swap_instrument(17, localize_ko("Exposed Trumpet"), "trumpet_exposed", "trumpet_exposed", dir_no_path, using_directory, sounds_json)
+	swap_instrument(18, localize_ko("Weathered Trumpet"), "trumpet_weathered", "trumpet_weathered", dir_no_path, using_directory, sounds_json)
+	swap_instrument(19, localize_ko("Oxidized Trumpet"), "trumpet_oxidized", "trumpet_oxidized", dir_no_path, using_directory, sounds_json)
 	if (!is_undefined(catalog_sounds_json)) resourcepack_auto_map_custom_sounds(pack_root, catalog_sounds_json)
 	//for (var i = 0; i < array_length(songs); i++) {
 	//	for (var j = 0; j < 16; j++) {
@@ -488,7 +488,7 @@ function swap_instrument(index, ins_name, sound_name, vanilla_name, dir_no_path,
 				if (file_exists(temp_file)) file_delete(temp_file)
 				var ret = audio_file_decode_ogg(sound_file, temp_file);
 				if (ret < 0) {
-				    if (obj_controller.language != 1) message("Couldn't load the file " + sound_file + "! Error: " + string(ret), "Error")
+				    if (obj_controller.language != 1) message(localize_ko("Couldn't load the file ") + sound_file + localize_ko("! Error: ") + string(ret), localize_ko("Error"))
 				    else message("找不到文件" + sound_file + "！错误代码：" + string(ret), "错误")
 				}
 
@@ -519,7 +519,7 @@ function swap_instrument(index, ins_name, sound_name, vanilla_name, dir_no_path,
 				if (file_exists(temp_file)) file_delete(temp_file)
 				var ret = audio_file_decode_ogg(sounds_directory + vanilla_name + ".ogg", temp_file);
 				if (ret < 0) {
-				    if (obj_controller.language != 1) message("Couldn't load the file " + sounds_directory + vanilla_name + ".ogg" + "! Error: " + string(ret), "Error")
+				    if (obj_controller.language != 1) message(localize_ko("Couldn't load the file ") + sounds_directory + vanilla_name + ".ogg" + localize_ko("! Error: ") + string(ret), localize_ko("Error"))
 				    else message("找不到文件" + sounds_directory + vanilla_name + ".ogg" + "！错误代码：" + string(ret), "错误")
 				}
 

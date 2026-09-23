@@ -3,9 +3,9 @@ function draw_text_dynamic(x, y, string, force = false){
 	var text_entry = text_dynamic_text_get(string)
 	var draw_string = text_entry.text
 
-	// Skip drawing dynamic text when using English
+	// ASCII can use the fast path in English. Korean and other Unicode text need fallback fonts.
 	var o = obj_controller
-	if (!force && o.language != 1) {
+	if (!force && o.language = 0 && string_byte_length(draw_string) = string_length(draw_string)) {
 		if (!o.hires || o.theme != 3) draw_text(x, y, draw_string);
 		else draw_text_transformed(x, y, draw_string, 0.25, 0.25, 0);
 		return;

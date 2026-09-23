@@ -21,7 +21,7 @@ function update_window_caption(song){
 									language != 1, 
 									
 									// String
-									"Unsaved song", 
+									localize_ko("Unsaved song"), 
 									
 									// Alternative String
 									"新文件"
@@ -73,7 +73,7 @@ function update_window_caption(song){
 									isplayer, 
 									
 									// String
-									" - Player Mode"
+									localize_ko(" - Player Mode")
 									
 								)
 								

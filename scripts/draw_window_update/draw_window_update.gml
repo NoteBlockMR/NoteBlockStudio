@@ -6,7 +6,7 @@ function draw_window_update() {
 	if (window = w_update && theme != 3) windowopen = 1
 	fullstr = changelogstr
 	if (fullstr = 0) {
-		if (language != 1) message("Changelist not found!", "Note Block Studio")
+		if (language != 1) message(localize_ko("Changelist not found!"), "Note Block Studio")
 		else message("找不到更新历史！", "Note Block Studio")
 		if (window = w_update) {
 	        window = w_greeting
@@ -23,10 +23,10 @@ function draw_window_update() {
 	
 	if (language != 1) {
 	if (NOT_RUN_FROM_IDE != 1) {
-		draw_text_dynamic(x1 + 8, y1 + 8, "Changelist (You're running from the IDE!)")
+		draw_text_dynamic(x1 + 8, y1 + 8, localize_ko("Changelist (You're running from the IDE!)"))
 	} else {
-		if (window = w_update) draw_text_dynamic(x1 + 8, y1 + 8, "Update")
-		else draw_text_dynamic(x1 + 8, y1 + 8, "Changelist")
+		if (window = w_update) draw_text_dynamic(x1 + 8, y1 + 8, localize_ko("Update"))
+		else draw_text_dynamic(x1 + 8, y1 + 8, localize_ko("Changelist"))
 	}
 	} else {
 	if (NOT_RUN_FROM_IDE != 1) {
@@ -41,24 +41,24 @@ function draw_window_update() {
 	
 	// Refresh changelog button (debug)
 	if (NOT_RUN_FROM_IDE != 1) {
-		if (draw_button2(x1 + 500 - 144 - 16, y1 + 8 + 24, 72, "Open file", false, true)) {
+		if (draw_button2(x1 + 500 - 144 - 16, y1 + 8 + 24, 72, localize_ko("Open file"), false, true)) {
 			open_url(bundled_data_directory + "changelog.txt");
 		}
-		if (draw_button2(x1 + 500 - 72 - 8, y1 + 8 + 24, 72, "Refresh", false, true)) {
+		if (draw_button2(x1 + 500 - 72 - 8, y1 + 8 + 24, 72, localize_ko("Refresh"), false, true)) {
 			changelogstr = load_text(bundled_data_directory + "changelog.txt");
 		}
 	}
 	
 	if (language != 1) {
 		if (window = w_update) {
-			draw_text_dynamic(x1 + 32, y1 + 32, "Thank you for upgrading to version " + version + "!")
+			draw_text_dynamic(x1 + 32, y1 + 32, localize_ko("Thank you for upgrading to version ") + version + "!")
 		}
 	} else {
 		if (window = w_update) {
 			draw_text_dynamic(x1 + 32, y1 + 32, "感谢你更新到 " + version + " 版本！")
 		}
 	}
-	if (draw_button2(x1 + 500 - 120 - 8, y1 + 8, 120, language != 1 ? "Watch release video" : "观看更新视频", false, true)) {
+	if (draw_button2(x1 + 500 - 120 - 8, y1 + 8, 120, language != 1 ? localize_ko("Watch release video") : "观看更新视频", false, true)) {
 		if (language != 1) {
 			open_url("https://youtu.be/gya4NAQunEc");
 		} else {
@@ -82,10 +82,10 @@ function draw_window_update() {
 	}
 	draw_theme_font(font_main)
 	draw_scrollbar(update_scrollbar, x1 + 470 + theme_offset, y1 + 60, 12, 22, n, 0, 1)
-	if (draw_button2(x1 + 16, y1 + 365, 96, condstr(language != 1, "Older versions...", "查看更旧版本…"), false, true)) {
+	if (draw_button2(x1 + 16, y1 + 365, 96, condstr(language != 1, localize_ko("Older versions..."), "查看更旧版本…"), false, true)) {
 		open_url(link_changelog)
 	}
-	if (draw_button2(x1 + 487 - 72 + theme_offset, y1 + 365, 72, condstr(language != 1, "OK", "确认")) && (windowopen = 1 || theme != 3)) {
+	if (draw_button2(x1 + 487 - 72 + theme_offset, y1 + 365, 72, condstr(language != 1, localize_ko("OK"), "确认")) && (windowopen = 1 || theme != 3)) {
 	    if (window = w_update) {
 	        window = w_greeting
 			save_settings() // Save new version number

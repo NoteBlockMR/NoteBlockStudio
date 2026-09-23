@@ -18,7 +18,7 @@ function draw_window_edit_tempo_changer() {
 	ppit = songs[song].song_pit[tempo_changer_sel_x, tempo_changer_sel_y]
 	draw_window(x1, y1, x1 + 140, y1 + 130)
 	draw_theme_font(font_main_bold)
-	if (language != 1) draw_text_dynamic(x1 + 8, y1 + 8, "Set Tempo")
+	if (language != 1) draw_text_dynamic(x1 + 8, y1 + 8, localize_ko("Set Tempo"))
 	else draw_text_dynamic(x1 + 8, y1 + 8, "设置速度")
 	draw_theme_font(font_main)
 	if (theme = 0) {
@@ -27,13 +27,13 @@ function draw_window_edit_tempo_changer() {
 	    draw_set_color(make_color_rgb(137, 140, 149))
 	    draw_rectangle(x1 + 6, y1 + 26, x1 + 134, y1 + 92, 1)
 	}
-	if (language != 1) draw_areaheader(x1 + 10, y1 + 40, 120, 35, "Tempo (BPM)")
+	if (language != 1) draw_areaheader(x1 + 10, y1 + 40, 120, 35, localize_ko("Tempo (BPM)"))
 	else draw_areaheader(x1 + 10, y1 + 40, 120, 35, "速度（BPM）")
-	if (language != 1) tempo_changer_set_tempo = draw_textarea(59, x1 + 15, y1 + 50, 113, 25, string(tempo_changer_set_tempo), "Must be an integer larger than zero.") 
+	if (language != 1) tempo_changer_set_tempo = draw_textarea(59, x1 + 15, y1 + 50, 113, 25, string(tempo_changer_set_tempo), localize_ko("Must be an integer larger than zero.")) 
 	else tempo_changer_set_tempo = draw_textarea(59, x1 + 15, y1 + 50, 113, 25, string(tempo_changer_set_tempo), "必须是一个正整数。") 
 	
 	draw_theme_color()
-	if (draw_button2(x1 + 10, y1 + 98, 60, condstr(language != 1, "OK", "确定"))) {
+	if (draw_button2(x1 + 10, y1 + 98, 60, condstr(language != 1, localize_ko("OK"), "确定"))) {
 		try {
 			temp_tempo = int64(tempo_changer_set_tempo)
 			if (temp_tempo > 0 && temp_tempo < 32768) {
@@ -50,16 +50,16 @@ function draw_window_edit_tempo_changer() {
 				windowprogress = 0
 				update_tempo_changes()
 			} else {
-				if (language != 1) message("Invalid value!", "Set Tempo")
+				if (language != 1) message(localize_ko("Invalid value!"), localize_ko("Set Tempo"))
 				else message("非法数值！", "设置速度")
 			}
 		}
 		catch (e) {
-			if (language != 1) message("Invalid value!", "Set Tempo")
+			if (language != 1) message(localize_ko("Invalid value!"), localize_ko("Set Tempo"))
 			else message("非法数值！", "设置速度")
 		}
 	}
-	if (draw_button2(x1 + 70, y1 + 98, 60, condstr(language !=1, "Cancel", "取消"), false, true) && (windowopen = 1 || theme != 3)) {
+	if (draw_button2(x1 + 70, y1 + 98, 60, condstr(language !=1, localize_ko("Cancel"), "取消"), false, true) && (windowopen = 1 || theme != 3)) {
 		windowclose = 1
 	}
 	if (display_mouse_get_x() - window_get_x() >= 0 && display_mouse_get_y() - window_get_y() >= 0 && display_mouse_get_x() - window_get_x() < 0 + window_width && display_mouse_get_y() - window_get_y() < 0 + window_height) {

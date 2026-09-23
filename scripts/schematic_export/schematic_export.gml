@@ -4,8 +4,8 @@ function schematic_export() {
 	var REPEATER, TORCHON, TORCHOFF, WIRE, LADDER, RAIL, POWEREDRAIL, noteblocks, noteblockx, noteblocky, noteblockz, noteblocknote, noteblockins, noteblockpit, command_plan, export_end;
 	structure = (sch_exp_format <= 1)
 	sch_exp_minecraft_old = (sch_exp_format = 3)
-	if (!structure) fn = string(get_save_filename_ext("Minecraft Schematics (*.schematic)|*.schematic", filename_new_ext(songs[song].filename, "") + ".schematic", "", "Export Schematic"))
-	else fn = string(get_save_filename_ext("Minecraft Structures (*.nbt)|*.nbt", filename_new_ext(string_replace_all(string_lower(songs[song].filename), " ", "_"), "") + ".nbt", "", "Export Schematic"))
+	if (!structure) fn = string(get_save_filename_ext(localize_ko("Minecraft Schematics (*.schematic)|*.schematic"), filename_new_ext(songs[song].filename, "") + ".schematic", "", localize_ko("Export Schematic")))
+	else fn = string(get_save_filename_ext(localize_ko("Minecraft Structures (*.nbt)|*.nbt"), filename_new_ext(string_replace_all(string_lower(songs[song].filename), " ", "_"), "") + ".nbt", "", localize_ko("Export Schematic")))
 	if (fn = "") return 0
 	if (!structure) fn = enforce_extension(fn, ".schematic")
 	else fn = enforce_extension(fn, ".nbt")
@@ -1107,7 +1107,7 @@ function schematic_export() {
 		if (is_struct(command_plan)) minecraft_export_log_report(command_plan, o.sch_command_source, "Standard command-block structure")
 	    instance_destroy()
 	}
-	if (o.language != 1) message("Schematic saved!", "Schematic Export")
+	if (o.language != 1) message(localize_ko("Schematic saved!"), localize_ko("Schematic Export"))
 	else message("Schematic 已保存！", "导出 Schematic")
 	window = w_schematic_export
 

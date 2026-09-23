@@ -17,17 +17,17 @@ function confirm() {
 	if (songs[songid].changed && !isplayer) {
 	    if (songs[songid].filename = "") {
 	        if (!gameend)
-	            a = message_yesnocancel("Do you want to save the song (tab " + string(songid + 1) +")?", "Confirm")
+	            a = message_yesnocancel(localize_ko("Do you want to save the song (tab ") + string(songid + 1) +")?", localize_ko("Confirm"))
 	        else
-	            a = question("Do you want to save the song (tab " + string(songid + 1) +") before quitting?", "Confirm")
+	            a = question(localize_ko("Do you want to save the song (tab ") + string(songid + 1) +localize_ko(") before quitting?"), localize_ko("Confirm"))
 	        if (a = 1)
 	            if (!save_song(""))
 	                return -1
 	    } else {
 	        if (!gameend)
-	            a = message_yesnocancel("Do you want to save the changes made in " + filename_name(songs[songid].filename) + " (tab " + string(songid + 1) +")?", "Confirm")
+	            a = message_yesnocancel(localize_ko("Do you want to save the changes made in ") + filename_name(songs[songid].filename) + localize_ko(" (tab ") + string(songid + 1) +")?", localize_ko("Confirm"))
 	        else
-	            a = question("Do you want to save the changes made in " + filename_name(songs[songid].filename) + " (tab " + string(songid + 1) +") before quitting?", "Confirm")
+	            a = question(localize_ko("Do you want to save the changes made in ") + filename_name(songs[songid].filename) + localize_ko(" (tab ") + string(songid + 1) +localize_ko(") before quitting?"), localize_ko("Confirm"))
 	        if (a = 1)
 	            if (!save_song(songs[songid].filename))
 	                return -1

@@ -4,7 +4,7 @@ function open_song_nbs(fn, sounds_path = "", safeopen, replace) {
 	
 	buffer = buffer_import(fn)
 	if (buffer < 0) {
-		message((language == 0) ? "Error: Failed to access file. Note Block Studio may not have permission to access the directory. \nPlease try again using the file browser." : "错误：访问文件失败。Note Block Studio 可能没有权限访问该目录。\n请通过文件浏览器重试。", (language == 0) ? "Error" : "错误")
+		message((language != 1) ? localize_ko("Error: Failed to access file. Note Block Studio may not have permission to access the directory. \nPlease try again using the file browser.") : "错误：访问文件失败。Note Block Studio 可能没有权限访问该目录。\n请通过文件浏览器重试。", (language != 1) ? localize_ko("Error") : "错误")
 		return -1
 	}
 	
@@ -17,10 +17,10 @@ function open_song_nbs(fn, sounds_path = "", safeopen, replace) {
 	
 	if (byte1 = 0 && byte2 = 0) {
 		newsong.song_nbs_version = buffer_read_byte()
-		if (language != 1) {if (show_oldwarning && newsong.song_nbs_version < nbs_version && !isplayer) message("Warning: You are opening an older NBS file. Saving this file will make it incompatible with older Note Block Studio versions.","Warning")}
+		if (language != 1) {if (show_oldwarning && newsong.song_nbs_version < nbs_version && !isplayer) message(localize_ko("Warning: You are opening an older NBS file. Saving this file will make it incompatible with older Note Block Studio versions."),localize_ko("Warning"))}
 		else {if (show_oldwarning && newsong.song_nbs_version < nbs_version && !isplayer) message("警告：你正在打开旧版的 NBS 文件。保存此文件会使其与旧版 Note Block Studio 不兼容。","警告")}
 		if newsong.song_nbs_version > nbs_version {
-			if (language != 1) message("Warning: You are opening an NBS file created in a later version of Note Block Studio.\nPlease save the song as a version " + string(nbs_version) + " file or lower via the Save Options menu.","Error")
+			if (language != 1) message(localize_ko("Warning: You are opening an NBS file created in a later version of Note Block Studio.\nPlease save the song as a version ") + string(nbs_version) + localize_ko(" file or lower via the Save Options menu."),localize_ko("Error"))
 			else message("警告：你正在打开在新版 Note Block Studio 里保存的文件。\n请用保存选项菜单将其保存到" + string(nbs_version) + "版本或以下。","错误")
 			return -1
 		}
@@ -33,10 +33,10 @@ function open_song_nbs(fn, sounds_path = "", safeopen, replace) {
 		}
 	} else {
 		if (safeopen) {
-			message("This file doesn't look like a valid song!", "Error")
+			message(localize_ko("This file doesn't look like a valid song!"), localize_ko("Error"))
 			return
 		}
-		if (language != 1) {if (show_oldwarning && !isplayer) message("Warning: You are opening an older NBS file. Saving this file will make it incompatible with older Note Block Studio versions.","Warning")}
+		if (language != 1) {if (show_oldwarning && !isplayer) message(localize_ko("Warning: You are opening an older NBS file. Saving this file will make it incompatible with older Note Block Studio versions."),localize_ko("Warning"))}
 		else {if (show_oldwarning && !isplayer) message("警告：你正在打开旧版的 NBS 文件。保存此文件会使其与旧版 Note Block Studio 不兼容。","警告")}
 		newsong.song_nbs_version = 0
 		custom_index_diff = 0
@@ -202,7 +202,7 @@ function open_song_nbs(fn, sounds_path = "", safeopen, replace) {
 	}
 
 	if (str != "")
-	    if (language != 1) {if (question("This song uses custom instruments. However, some sounds could not be loaded:\n\n" + str+"\nMake sure that you have put the sounds in the \"Sounds\" folder. Open Instrument settings?", "Error")) window = w_instruments}
+	    if (language != 1) {if (question(localize_ko("This song uses custom instruments. However, some sounds could not be loaded:\n\n") + str+localize_ko("\nMake sure that you have put the sounds in the \"Sounds\" folder. Open Instrument settings?"), localize_ko("Error"))) window = w_instruments}
 	    else {if (question("此歌曲使用自定义音色。但是一些音色未能被加载：\n\n" + str+"\n确保您已将声音文件放到“Sounds”文件夹。打开音色设置吗？", "错误")) window = w_instruments}
 	if (is_struct(minecraft_export_sounds_json)) resourcepack_auto_map_custom_sounds(minecraft_export_pack_root, minecraft_export_sounds_json)
 	buffer_delete(buffer)

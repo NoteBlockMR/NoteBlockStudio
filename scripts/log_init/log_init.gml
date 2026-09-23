@@ -9,7 +9,7 @@ function log_init() {
 	var f = file_text_open_write(log_file);
 	if (f < 0)
 	{
-	    message("Could not access file directory. Try running in administrator mode or re-install.", "Note Block Studio")
+	    message(localize_ko("Could not access file directory. Try running in administrator mode or re-install."), "Note Block Studio")
 	    return false
 	}
 
