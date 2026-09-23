@@ -7,7 +7,7 @@ function pattern_export() {
 		playing = 0
 		fsave = filename_change_ext(filename_name(filename), ".nbp")
 		if (!directory_exists_lib(patternfolder)) patternfolder = pattern_directory
-		fn = string(get_save_filename_ext("Note Block Pattern (*.nbp)|*.nbp", fsave, patternfolder, condstr(language !=1, "Save pattern", "保存分段")))
+		fn = string(get_save_filename_ext(localize_ko("Note Block Pattern (*.nbp)|*.nbp"), fsave, patternfolder, condstr(language !=1, localize_ko("Save pattern"), "保存分段")))
 	    if (fn = "") return 0
 	}
 	buffer = buffer_create(8, buffer_grow, 1)
@@ -22,7 +22,7 @@ function pattern_export() {
 	// The selection code will be decompressed to keep the file compatible with older versions
 	buffer_write_string(try_decompress_selection(selection_code))
 	//	show_debug_message("selection_code " + string(selection_code))
-	
+
 	for (a = 0; a < selection_l; a ++) {
 		buffer_write_byte(selection_colfirst[a])
 	//		show_debug_message("selection_colfirst " + string(a) + " " + string(selection_colfirst[a]))

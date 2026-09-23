@@ -11,7 +11,7 @@ function save_song() {
 	    playing = 0
 	    fsave = filename_name(filename)
 	    if (!directory_exists_lib(songfolder)) songfolder = songs_directory
-	    fn = string(get_save_filename_ext("Note Block Songs (*.nbs)|*.nbs", fsave + condstr(filename_ext(filename) != ".nbs", ".nbs"), songfolder, condstr(language !=1, "Save song", "保存歌曲")))
+	    fn = string(get_save_filename_ext(localize_ko("Note Block Songs (*.nbs)|*.nbs"), fsave + condstr(filename_ext(filename) != ".nbs", ".nbs"), songfolder, condstr(language !=1, localize_ko("Save song"), "保存歌曲")))
 		show_debug_message(string_char_at(fn, string_length(fn) - 3))
 	    if (fn = "") return 0
 	}
@@ -124,7 +124,7 @@ function save_song() {
 		changed = false
 		if (autosave) tonextsave = autosavemins
 		add_to_recent(fn)
-		if (language != 1) set_msg("Song saved")
+		if (language != 1) set_msg(localize_ko("Song saved"))
 		else set_msg("歌曲已保存")
 	} else {
 		tonextbackup = backupmins

@@ -6,11 +6,11 @@ function load_instruments(argument0) {
 	fn = argument0
 	if (fn = "") {
 	    if (!directory_exists_lib(songfolder)) songfolder = songs_directory
-	    fn = string(get_open_filename_ext("Note Block Songs (*.nbs)|*.nbs", "", songfolder, "Load instruments from song"))
+	    fn = string(get_open_filename_ext(localize_ko("Note Block Songs (*.nbs)|*.nbs"), "", songfolder, localize_ko("Load instruments from song")))
 	}
 	if (fn = "" || !file_exists_lib(fn)) return 0
 	buffer = buffer_import(fn)
-	
+
 	if (buffer_read_short() == 0) {
 		nbsver = buffer_read_byte()
 	} else {
@@ -19,7 +19,7 @@ function load_instruments(argument0) {
 
 	// Future version
 	if (nbsver > nbs_version) {
-		message("Warning: You are opening an NBS file created in a later version of Note Block Studio.\nPlease save the song as a version " + string(nbs_version) + " file or lower via the Save Options menu.","Error")
+		message(localize_ko("Warning: You are opening an NBS file created in a later version of Note Block Studio.\nPlease save the song as a version ") + string(nbs_version) + localize_ko(" file or lower via the Save Options menu."),localize_ko("Error"))
 		return -1
 	}
 
@@ -64,7 +64,7 @@ function load_instruments(argument0) {
 	    }
 	}
 	if (buffer_is_eof()) {
-		message("This file does not contain any custom instruments.", "Error")
+		message(localize_ko("This file does not contain any custom instruments."), localize_ko("Error"))
 		return 0
 	}
 
@@ -76,14 +76,14 @@ function load_instruments(argument0) {
 		if (nbsver >= 2) buffer_read_byte()	// Layer stereo
 	}
 	if (buffer_is_eof()) {
-		message("This file does not contain any custom instruments.", "Error")
+		message(localize_ko("This file does not contain any custom instruments."), localize_ko("Error"))
 		return 0
 	}
 
 	// Instruments
 	a = buffer_read_byte()
 	if (a = 0) {
-	    message("This file does not contain any custom instruments.", "Error")
+	    message(localize_ko("This file does not contain any custom instruments."), localize_ko("Error"))
 	    return 0
 	}
 	for (b = 0; b < a; b++) {

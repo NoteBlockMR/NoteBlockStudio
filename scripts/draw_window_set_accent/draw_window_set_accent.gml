@@ -9,7 +9,7 @@ function draw_window_set_accent() {
 	y1 = floor(rh / 2 - 220) + windowoffset
 	draw_window(x1, y1, x1 + 280, y1 + 440)
 	draw_theme_font(font_main_bold)
-	if (language != 1) draw_text_dynamic(x1 + 8, y1 + 8, "Set accent color")
+	if (language != 1) draw_text_dynamic(x1 + 8, y1 + 8, localize_ko("Set accent color"))
 	else draw_text_dynamic(x1 + 8, y1 + 8, "设置主题颜色")
 	if (resetcolor) {
 		rr = accent1
@@ -75,32 +75,32 @@ function draw_window_set_accent() {
 	draw_set_color(col)
 	draw_rectangle(x1 + 20, y1 + 43 + 225 + 10 + 20, x1 + 141, y1 + 43 + 225 + 10 + 20 + 20, 0)
 	draw_set_color(c_white)
-	if (language != 1) draw_text_dynamic(x1 + 20 + 60, y1 + 43 + 225 + 10 + 20 + 4, "Preview")
+	if (language != 1) draw_text_dynamic(x1 + 20 + 60, y1 + 43 + 225 + 10 + 20 + 4, localize_ko("Preview"))
 	else draw_text_dynamic(x1 + 20 + 60, y1 + 43 + 225 + 10 + 20 + 4, "预览")
 	draw_set_color(make_color_hsv((hsv[0] / 360) * 255, hsv[1] * 2.55, hsv[2] * 2.55 - hsv[2] * 2.55 * 0.5 * (hsv[1] >= 50) + hsv[2] * 2.55 * (hsv[1] < 50)))
 	draw_rectangle(x1 + 142, y1 + 43 + 225 + 10 + 20, x1 + 260, y1 + 43 + 225 + 10 + 20 + 20, 0)
 	draw_set_color(col)
-	if (language != 1) draw_text_dynamic(x1 + 142 + 60, y1 + 43 + 225 + 10 + 20 + 4, "Preview")
+	if (language != 1) draw_text_dynamic(x1 + 142 + 60, y1 + 43 + 225 + 10 + 20 + 4, localize_ko("Preview"))
 	else draw_text_dynamic(x1 + 142 + 60, y1 + 43 + 225 + 10 + 20 + 4, "预览")
 	draw_set_color(make_color_rgb(9, 9, 9))
 	draw_rectangle(x1 + 20, y1 + 43 + 225 + 10 + 20 + 21, x1 + 141, y1 + 43 + 225 + 10 + 20 + 20 + 21, 0)
 	draw_set_color(col)
-	if (language != 1) draw_text_dynamic(x1 + 20 + 60, y1 + 43 + 225 + 10 + 20 + 4 + 21, "Preview")
+	if (language != 1) draw_text_dynamic(x1 + 20 + 60, y1 + 43 + 225 + 10 + 20 + 4 + 21, localize_ko("Preview"))
 	else draw_text_dynamic(x1 + 20 + 60, y1 + 43 + 225 + 10 + 20 + 4 + 21, "预览")
 	draw_set_color(make_color_rgb(221, 221, 221))
 	draw_rectangle(x1 + 142, y1 + 43 + 225 + 10 + 20 + 21, x1 + 260, y1 + 43 + 225 + 10 + 20 + 20 + 21, 0)
 	draw_set_color(col)
-	if (language != 1) draw_text_dynamic(x1 + 142 + 60, y1 + 43 + 225 + 10 + 20 + 4 + 21, "Preview")
+	if (language != 1) draw_text_dynamic(x1 + 142 + 60, y1 + 43 + 225 + 10 + 20 + 4 + 21, localize_ko("Preview"))
 	else draw_text_dynamic(x1 + 142 + 60, y1 + 43 + 225 + 10 + 20 + 4 + 21, "预览")
 	draw_theme_color()
 	draw_set_halign(fa_left)
-	if (language != 1) draw_areaheader(x1 + 10, y1 + 353, 220, 35, "RGB color")
+	if (language != 1) draw_areaheader(x1 + 10, y1 + 353, 220, 35, localize_ko("RGB color"))
 	else draw_areaheader(x1 + 10, y1 + 353, 220, 35, "RGB 调色")
 
 	if (language != 1) {
-	dr = draw_textarea(60, x1 + 20, y1 + 360, 71, 25, string(rr), "Set red amount.")
-	dg = draw_textarea(61, x1 + 20 + 85, y1 + 360, 71, 25, string(gg), "Set green amount.")
-	db = draw_textarea(62, x1 + 20 + 170, y1 + 360, 71, 25, string(bb), "Set blue amount.")
+	dr = draw_textarea(60, x1 + 20, y1 + 360, 71, 25, string(rr), localize_ko("Set red amount."))
+	dg = draw_textarea(61, x1 + 20 + 85, y1 + 360, 71, 25, string(gg), localize_ko("Set green amount."))
+	db = draw_textarea(62, x1 + 20 + 170, y1 + 360, 71, 25, string(bb), localize_ko("Set blue amount."))
 	} else {
 	dr = draw_textarea(60, x1 + 20, y1 + 360, 71, 25, string(rr), "设置红色值。")
 	dg = draw_textarea(61, x1 + 20 + 85, y1 + 360, 71, 25, string(gg), "设置绿色值。")
@@ -126,8 +126,8 @@ function draw_window_set_accent() {
 	}
 
 	draw_theme_color()
-	if (draw_button2(x1 + 10, y1 + 408, 72, condstr(language != 1, "Use default", "使用默认值")) && wmenu = 0) {
-	    if ((language == 0 && question("Are you sure?", "Confirm")) || (language == 1 && question("你确定吗？", "确定"))) {
+	if (draw_button2(x1 + 10, y1 + 408, 72, condstr(language != 1, localize_ko("Use default"), "使用默认值")) && wmenu = 0) {
+	    if ((language != 1 && question(localize_ko("Are you sure?"), localize_ko("Confirm"))) || (language == 1 && question("你确定吗？", "确定"))) {
 			accent1 = 0
 			accent2 = 120
 			accent3 = 215
@@ -135,8 +135,8 @@ function draw_window_set_accent() {
 			resetcolor = true
 		}
 	}
-	if (draw_button2(x1 + 104, y1 + 408, 72, condstr(language != 1, "Cancel", "取消"))) {window = w_preferences}
-	if (draw_button2(x1 + 198, y1 + 408, 72, condstr(language != 1, "OK", "确定")) && windowopen = 1) {
+	if (draw_button2(x1 + 104, y1 + 408, 72, condstr(language != 1, localize_ko("Cancel"), "取消"))) {window = w_preferences}
+	if (draw_button2(x1 + 198, y1 + 408, 72, condstr(language != 1, localize_ko("OK"), "确定")) && windowopen = 1) {
 		try {
 			accent1 = real(rr)
 			accent2 = real(gg)
@@ -145,7 +145,7 @@ function draw_window_set_accent() {
 			window = w_preferences
 		}
 		catch(e) {
-			if (language != 1) message("Please enter a valid number!", "Set accent color")
+			if (language != 1) message(localize_ko("Please enter a valid number!"), localize_ko("Set accent color"))
 			else message("请输入一个有效的数字！", "设置主题颜色")
 		}
 	}

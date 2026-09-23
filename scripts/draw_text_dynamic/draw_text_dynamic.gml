@@ -1,13 +1,13 @@
 function draw_text_dynamic(x, y, string, force = false){
 	// draw_text_dynamic()
 
-	// Skip drawing dynamic text when using English
-	if (!force && obj_controller.language != 1) {
+	// Keep the ASCII fast path; Hangul also needs a font when selecting Korean from English.
+	if (!force && obj_controller.language = 0 && string_byte_length(string) = string_length(string)) {
 		if (!obj_controller.hires || obj_controller.theme != 3) draw_text(x, y, string);
 		else draw_text_transformed(x, y, string, 0.25, 0.25, 0);
 		return;
 	}
-	
+
 	/*
 	// Disable dynamic text on Chinese (use Source Han Sans for everything)
 	if (obj_controller.language == 1) {
@@ -16,14 +16,14 @@ function draw_text_dynamic(x, y, string, force = false){
 	draw_text(x, y - 2 * (obj_controller.language == 1), string);
 	return;
 	*/
-	
+
 	var width = 0;
 	var lines = 0;
 	var linewidth = [0];
 	var totalwidth = 0;
 	var longline = 0;
 	var halign = draw_get_halign();
-	var char, char_code, is_ascii, y_offset, font_changed;
+	var char, char_code, char_group, is_ascii, y_offset, font_changed;
 	var is_ascii_prev = -1
 	draw_set_halign(fa_left)
 	if (halign != fa_left) {
@@ -31,13 +31,15 @@ function draw_text_dynamic(x, y, string, force = false){
 			char = string_char_at(string, i)
 			char_code = ord(char)
 			is_ascii = char_code <= 127
-			font_changed = is_ascii != is_ascii_prev
+			// Distinguish Hangul from baked Chinese glyphs at font boundaries.
+			char_group = is_korean_codepoint(char_code) ? 2 : is_ascii
+			font_changed = char_group != is_ascii_prev
 			if (font_changed) {
-				draw_theme_font(obj_controller.currentfont, !is_ascii, true)
+				draw_character_font(obj_controller.currentfont, char_code, true)
 			}
 			linewidth[lines] += string_width(char)
 			if (char = "\n") {lines += 1 array_push(linewidth, 0)}
-			is_ascii_prev = is_ascii
+			is_ascii_prev = char_group
 		}
 		for (var i = 0; i <= lines; i += 1) {
 			if (linewidth[i] >= linewidth[longline]) longline = i
@@ -50,12 +52,14 @@ function draw_text_dynamic(x, y, string, force = false){
 		char = string_char_at(string, i)
 		char_code = ord(char)
 		is_ascii = char_code <= 127
-		font_changed = is_ascii != is_ascii_prev
+		// Distinguish Hangul from baked Chinese glyphs at font boundaries.
+		char_group = is_korean_codepoint(char_code) ? 2 : is_ascii
+		font_changed = char_group != is_ascii_prev
 		if (font_changed) {
-			draw_theme_font(obj_controller.currentfont, !is_ascii)
+			draw_character_font(obj_controller.currentfont, char_code)
 		}
 		y_offset = lines * 16
-		
+
 		if (!obj_controller.hires || obj_controller.theme != 3) {
 			if (halign = fa_left) draw_text (x + width, y - 1 * !is_ascii + y_offset, char)
 			else if (halign = fa_center) draw_text (x - floor(linewidth[lines] / 2) + width, y - 1 * !is_ascii + y_offset, char)
@@ -67,7 +71,7 @@ function draw_text_dynamic(x, y, string, force = false){
 		}
 		width += string_width(char) / (1 + (obj_controller.hires || obj_controller.theme != 3) * (obj_controller.theme = 3) + 2 * ((obj_controller.hires || obj_controller.theme != 3) && is_ascii) * (obj_controller.theme = 3))
 		if (char = "\n") {lines += 1 width = 0}
-		is_ascii_prev = is_ascii
+		is_ascii_prev = char_group
 	}
 	draw_set_halign(halign)
 	draw_theme_font(obj_controller.currentfont)

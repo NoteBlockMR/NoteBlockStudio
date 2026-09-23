@@ -2,8 +2,8 @@ function schematic_export() {
 	// schematic_export()
 	var fn, a, b, c, d, p, xx, yy, zz, len, wid, hei, o, chestx, chesty, chestz, signx, signy, signz, nblocks, layers, cyy, y1, insnum, ins;
 	var REPEATER, TORCHON, TORCHOFF, WIRE, LADDER, RAIL, POWEREDRAIL, noteblocks, noteblockx, noteblocky, noteblockz, noteblocknote, noteblockins, noteblockpit;
-	if (!structure) fn = string(get_save_filename_ext("Minecraft Schematics (*.schematic)|*.schematic", filename_new_ext(filename, "") + ".schematic", "", "Export Schematic"))
-	else fn = string(get_save_filename_ext("Minecraft Structures (*.nbt)|*.nbt", filename_new_ext(string_replace_all(string_lower(filename), " ", "_"), "") + ".nbt", "", "Export Schematic"))
+	if (!structure) fn = string(get_save_filename_ext(localize_ko("Minecraft Schematics (*.schematic)|*.schematic"), filename_new_ext(filename, "") + ".schematic", "", localize_ko("Export Schematic")))
+	else fn = string(get_save_filename_ext(localize_ko("Minecraft Structures (*.nbt)|*.nbt"), filename_new_ext(string_replace_all(string_lower(filename), " ", "_"), "") + ".nbt", "", localize_ko("Export Schematic")))
 	if (fn = "") return 0
 	//fn = string_replace_all(fn, ".schematic", "")
 	//fn += ".schematic"
@@ -61,7 +61,7 @@ function schematic_export() {
 	        hei = schematic_height()
 	    }
 	    noteblocks = 0
-    
+
 	    // Reset
 	    for (a = 0; a < len; a += 1) {
 	        for (b = 0; b < wid; b += 1) {
@@ -71,7 +71,7 @@ function schematic_export() {
 	            }
 	        }
 	    }
-    
+
 	    // Create floor
 	    for (a = 0; a < len; a += 1) {
 	        for (b = 0; b < wid; b += 1) {
@@ -138,18 +138,18 @@ function schematic_export() {
 	        // Back
 	        block_circuit(0, yy + 1, hei - 2)
 	        block_other(0, yy + 1, hei - 1, WIRE, 0)
-        
+
 	        block_circuit(0, yy, hei - 2)
 	        block_other(0, yy, hei - 1, WIRE, 0)
-        
+
 	        block_circuit(0, yy - 1, hei - 2)
 	        block_other(0, yy - 1, hei - 1, WIRE, 0)
 	        block_other(0, yy - 2, hei - 2, TORCHON, 1)
-        
+
 	        block_circuit(0, yy - 2, hei - 4)
 	        block_other(0, yy - 2, hei - 3, WIRE, 15)
 	        block_other(0, yy - 3, hei - 4, TORCHOFF, 1)
-        
+
 	        // Create vertical transmission
 	        d = 0
 	        for (a = layers - 1; a >= 0; a -= 1) {
@@ -210,7 +210,7 @@ function schematic_export() {
 	                            nblockins[nblocks] = -1
 	                            nblockkey[nblocks] = 0
 	                            nblockpit[nblocks] = 0
-	                            nblocks += 1 
+	                            nblocks += 1
 	                        }
 	                    } else if (!o.sch_exp_compress) {
 	                        nblockins[nblocks] = -1
@@ -477,7 +477,7 @@ function schematic_export() {
 	                            nblockins[nblocks] = -1
 	                            nblockkey[nblocks] = 0
 	                            nblockpit[nblocks] = 0
-	                            nblocks += 1 
+	                            nblocks += 1
 	                        }
 	                    } else if (!o.sch_exp_compress) {
 	                        nblockins[nblocks] = -1
@@ -581,10 +581,10 @@ function schematic_export() {
 	            }
 	        }
 	    }
-    
+
 	    // Write to file
 	    buffer = buffer_create(8, buffer_grow, 1)
-		
+
 		if (!obj_controller.structure) {
 	    TAG_Compound("Schematic")
 	    TAG_Short("Height", hei)
@@ -643,8 +643,8 @@ function schematic_export() {
 	            TAG_Int("y", signz - 1)
 	            TAG_Int("z", signx)
 	            if (o.sch_exp_minecraft_old) {
-	                TAG_String("Text1", "Looping ON") 
-	                TAG_String("Text2", "") 
+	                TAG_String("Text1", "Looping ON")
+	                TAG_String("Text2", "")
 	                TAG_String("Text3", "")
 	                TAG_String("Text4", "Looping OFF")
 	            } else {
@@ -1039,7 +1039,7 @@ function schematic_export() {
 	    gzzip(temp_file, fn)
 	    instance_destroy()
 	}
-	if (o.language != 1) message("Schematic saved!", "Schematic Export")
+	if (o.language != 1) message(localize_ko("Schematic saved!"), localize_ko("Schematic Export"))
 	else message("Schematic 已保存！", "导出 Schematic")
 	window = w_schematic_export
 

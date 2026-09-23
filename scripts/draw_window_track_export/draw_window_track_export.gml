@@ -15,21 +15,21 @@ function draw_window_track_export() {
 	draw_theme_color()
 	}
 	draw_theme_font(font_main_bold)
-	if (language != 1) draw_text_dynamic(x1 + 8, y1 + 8, "Track Export")
+	if (language != 1) draw_text_dynamic(x1 + 8, y1 + 8, localize_ko("Track Export"))
 	else draw_text_dynamic(x1 + 8, y1 + 8, "导出直轨")
 	draw_theme_font(font_main)
 
 	b = 8
 	if (language != 1) {
-	str[0] = "Design"
-	str[1] = "Blocks"
+	str[0] = localize_ko("Design")
+	str[1] = localize_ko("Blocks")
 	} else {
 	str[0] = "设计"
 	str[1] = "方块"
 	}
 	nsel = -1
 	menun = -1
-	if (language != 1) {if (draw_checkbox(x1 + 12, y1 + 374, sch_exp_remember, "Remember changes", "Whether to use these settings the\nnext time you export a Schematic.", false, true) && wmenu = 0) sch_exp_remember=!sch_exp_remember}
+	if (language != 1) {if (draw_checkbox(x1 + 12, y1 + 374, sch_exp_remember, localize_ko("Remember changes"), localize_ko("Whether to use these settings the\nnext time you export a Schematic."), false, true) && wmenu = 0) sch_exp_remember=!sch_exp_remember}
 	else {if (draw_checkbox(x1 + 12, y1 + 374, sch_exp_remember, "记住我的更改", "下次导出 Schematic 时是否使用同样的设定。", false, true) && wmenu = 0) sch_exp_remember=!sch_exp_remember}
 
 	if (theme = 1) draw_window(x1 + 4, y1 + 45, x1 + 496 + 50, y1 + 364)
@@ -49,7 +49,7 @@ function draw_window_track_export() {
 	}
 	if (theme = 0 || theme = 3) {
 	    draw_set_color(c_white)
-	    if (theme != 3) draw_rectangle(x1 + 6, y1 + 46, x1 + 494 + 50, y1 + 362, 0) 
+	    if (theme != 3) draw_rectangle(x1 + 6, y1 + 46, x1 + 494 + 50, y1 + 362, 0)
 	    draw_set_color(make_color_rgb(137, 140, 149))
 	    if (theme != 3) draw_rectangle(x1 + 6, y1 + 46, x1 + 494 + 50, y1 + 362, 1)
 	    draw_set_color(c_white)
@@ -75,7 +75,7 @@ function draw_window_track_export() {
 	    draw_text_dynamic(x1 + stabx + 8, y1 + 28, str[selected_tab_sch])
 	}else{
 		draw_set_color(c_dark)
-	    draw_rectangle(x1 + 6, y1 + 46, x1 + 494 + 50, y1 + 362, 0) 
+	    draw_rectangle(x1 + 6, y1 + 46, x1 + 494 + 50, y1 + 362, 0)
 	    draw_set_color(make_color_rgb(137, 140, 149))
 	    draw_rectangle(x1 + 6, y1 + 46, x1 + 494 + 50, y1 + 362, 1)
 	    draw_set_color(c_dark)
@@ -94,22 +94,22 @@ function draw_window_track_export() {
 	if (selected_tab_sch = 0) {
 		if (language != 1) {
 	    draw_sprite(spr_schematic_exp, sch_exp_layout, x1 + 15, y1 + 56)
-	    draw_text_dynamic(x1 + 16, y1 + 220, "Layout:")
-	    draw_radiobox(x1 + 32, y1 + 240, sch_exp_layout = 1, "Simple walkway", "Generate a simple walkway that stretches\nas far as the length of the song.", 1)
+	    draw_text_dynamic(x1 + 16, y1 + 220, localize_ko("Layout:"))
+	    draw_radiobox(x1 + 32, y1 + 240, sch_exp_layout = 1, localize_ko("Simple walkway"), localize_ko("Generate a simple walkway that stretches\nas far as the length of the song."), 1)
 	    draw_text_dynamic(x1 + 16, y1 + 280, "For Minecraft version:")
 	    draw_radiobox(x1 + 32, y1 + 300, 1, "1.13+ (Structure Block)", "Create a Structure block file that is compatible with 1.13+.\nOnly the default block choice is supported.", 1)
-		if (draw_checkbox(x1 + 170, y1 + 240, sch_exp_includelocked, "Include locked layers", "Whether to include locked layers in the Schematic.", false, true)) sch_exp_includelocked=!sch_exp_includelocked
-		if (draw_checkbox(x1 + 170, y1 + 260 + (sch_exp_layout = 0) * 20, command_block, "Use command blocks", "Whether to use command blocks instead of note blocks for a wider octave range.\n(Extra notes pack required)", false, true)) command_block=!command_block
-	    draw_text_dynamic(x1 + 380, y1 + 220, "Note blocks:")
-	    draw_text_dynamic(x1 + 380, y1 + 220 + 16 * 1, "Repeaters:")
-	    draw_text_dynamic(x1 + 380, y1 + 220 + 16 * 2, "Size:")
+		if (draw_checkbox(x1 + 170, y1 + 240, sch_exp_includelocked, localize_ko("Include locked layers"), localize_ko("Whether to include locked layers in the Schematic."), false, true)) sch_exp_includelocked=!sch_exp_includelocked
+		if (draw_checkbox(x1 + 170, y1 + 260 + (sch_exp_layout = 0) * 20, command_block, localize_ko("Use command blocks"), localize_ko("Whether to use command blocks instead of note blocks for a wider octave range.\n(Extra notes pack required)"), false, true)) command_block=!command_block
+	    draw_text_dynamic(x1 + 380, y1 + 220, localize_ko("Note blocks:"))
+	    draw_text_dynamic(x1 + 380, y1 + 220 + 16 * 1, localize_ko("Repeaters:"))
+	    draw_text_dynamic(x1 + 380, y1 + 220 + 16 * 2, localize_ko("Size:"))
 	    draw_set_halign(fa_right)
 	    draw_text_dynamic(x1 + 520, y1 + 220, string(max(0, sch_exp_totalblocks[sch_exp_includelocked])))
 	    draw_text_dynamic(x1 + 520, y1 + 220 + 16 * 1, string(66 + enda * 9))
 	    draw_text_dynamic(x1 + 520, y1 + 220 + 16 * 2, string(39 + enda * 2) + "x" + string(98) + "x" + string(19))
 	    draw_set_halign(fa_left)
-	    draw_text_dynamic(x1 + 380, y1 + 220 + 16 * 3, "Tempo:")
-	    draw_radiobox(x1 + 396, y1 + 220 + 16 * 3 + 20, 1, "10 ticks / second", "Generate song at 10 ticks / second", 1)
+	    draw_text_dynamic(x1 + 380, y1 + 220 + 16 * 3, localize_ko("Tempo:"))
+	    draw_radiobox(x1 + 396, y1 + 220 + 16 * 3 + 20, 1, localize_ko("10 ticks / second"), localize_ko("Generate song at 10 ticks / second"), 1)
 		} else {
 		draw_sprite(spr_schematic_exp, sch_exp_layout, x1 + 15, y1 + 56)
 	    draw_text_dynamic(x1 + 16, y1 + 220, "分布:")
@@ -142,14 +142,14 @@ function draw_window_track_export() {
 	    }
 		if (language != 1) {
 	    tabs = 3
-	    tabstr[0] = "Instrument"
-	    tabtip[0] = "The name of the instrument."
+	    tabstr[0] = localize_ko("Instrument")
+	    tabtip[0] = localize_ko("The name of the instrument.")
 	    tabw[0] = 252
-	    tabstr[1] = "Block"
-	    tabtip[1] = "The ID of the block that should be placed\nbelow note blocks of the instrument."
+	    tabstr[1] = localize_ko("Block")
+	    tabtip[1] = localize_ko("The ID of the block that should be placed\nbelow note blocks of the instrument.")
 	    tabw[1] = 60
-	    tabstr[2] = "Block name"
-	    tabtip[2] = "The name of the block that should be\nplaced below note blocks of the instrument."
+	    tabstr[2] = localize_ko("Block name")
+	    tabtip[2] = localize_ko("The name of the block that should be\nplaced below note blocks of the instrument.")
 	    tabw[2] = 220
 		} else {
 		tabs = 3
@@ -192,13 +192,13 @@ function draw_window_track_export() {
 	    }
 	    draw_theme_color()
 		if (language != 1) {
-	    draw_text_dynamic(x1 + 16, y1 + 270, "Block for walkway:")
-	    draw_text_dynamic(x1 + 16, y1 + 300, "Block for circuitry:")
+	    draw_text_dynamic(x1 + 16, y1 + 270, localize_ko("Block for walkway:"))
+	    draw_text_dynamic(x1 + 16, y1 + 300, localize_ko("Block for circuitry:"))
 		} else {
 		draw_text_dynamic(x1 + 16, y1 + 270, "过道所用方块:")
 	    draw_text_dynamic(x1 + 16, y1 + 300, "电路所用方块:")
 		}
-    
+
 	    draw_set_color(c_white)
 		if(theme = 2 || (fdark && theme = 3)) draw_set_color(c_dark)
 	    draw_rectangle(x1 + 200, y1 + 265, x1 + 200 + 140, y1 + 265 + 21, 0)
@@ -207,11 +207,11 @@ function draw_window_track_export() {
 	        menun = 1
 	        menua = 0
 	    }
-	    if (language != 1) popup_set_window(x1 + 200, y1 + 265, 140, 21, "The block that should be used for the walkway, \nand everything else that isn't circuitry or ground.")
+	    if (language != 1) popup_set_window(x1 + 200, y1 + 265, 140, 21, localize_ko("The block that should be used for the walkway, \nand everything else that isn't circuitry or ground."))
 	    else popup_set_window(x1 + 200, y1 + 265, 140, 21, "用于过道和除电路和地面的方块。")
 	    draw_theme_color()
 	    draw_text_dynamic(x1 + 204, y1 + 264 + 4, block_get_name(sch_exp_walkway_block, sch_exp_walkway_data))
-    
+
 	    draw_set_color(c_white)
 		if(theme = 2 || (fdark && theme = 3)) draw_set_color(c_dark)
 	    draw_rectangle(x1 + 200, y1 + 265 + 30, x1 + 200 + 140, y1 + 265 + 21 + 30, 0)
@@ -220,26 +220,26 @@ function draw_window_track_export() {
 	        menun = 1
 	        menua = 1
 	    }
-	    if (language != 1) popup_set_window(x1 + 200, y1 + 265 + 30, 140, 21, "The block that should be used for the circuitry.")
+	    if (language != 1) popup_set_window(x1 + 200, y1 + 265 + 30, 140, 21, localize_ko("The block that should be used for the circuitry."))
 	    else popup_set_window(x1 + 200, y1 + 265 + 30, 140, 21, "为电路用的方块。")
 	    draw_theme_color()
 	    draw_text_dynamic(x1 + 204, y1 + 264 + 4 + 30, block_get_name(sch_exp_circuit_block, sch_exp_circuit_data))
 	}
 	if (language != 1) {
-	if (draw_button2(x1 + 470, y1 + 368, 72, "Export") && wmenu = 0) {
+	if (draw_button2(x1 + 470, y1 + 368, 72, localize_ko("Export")) && wmenu = 0) {
 	    if (sch_exp_totalblocks[sch_exp_includelocked] <= 0) {
-	        message("There are no blocks to export!", "Schematic export")
+	        message(localize_ko("There are no blocks to export!"), localize_ko("Schematic export"))
 	    } else if (schematic_length() >= 2000 || schematic_width() >= 2000 || schematic_height() >= 256) {
-	        message("The Schematic is too big. The maximum size is 2000x2000x256.\nTry changing the \"Repeaters per row\" value to decrease the size.", "Error")
+	        message(localize_ko("The Schematic is too big. The maximum size is 2000x2000x256.\nTry changing the \"Repeaters per row\" value to decrease the size."), localize_ko("Error"))
 	    } else {
 	        track_export()
 	    }
 	}
-	if (draw_button2(x1 + 470 - 80 * 1, y1 + 368, 72, "Cancel") && wmenu = 0 && (windowopen = 1 || theme != 3)) {
+	if (draw_button2(x1 + 470 - 80 * 1, y1 + 368, 72, localize_ko("Cancel")) && wmenu = 0 && (windowopen = 1 || theme != 3)) {
 		windowclose = 1
 	}
-	if (draw_button2(x1 + 470 - 80 * 2, y1 + 368, 72, "Use default") && wmenu = 0) {
-	    if (question("Are you sure?", "Confirm")) reset_schematic_export(1)
+	if (draw_button2(x1 + 470 - 80 * 2, y1 + 368, 72, localize_ko("Use default")) && wmenu = 0) {
+	    if (question(localize_ko("Are you sure?"), localize_ko("Confirm"))) reset_schematic_export(1)
 	}
 	} else {
 	if (draw_button2(x1 + 470, y1 + 368, 72, "导出") && wmenu = 0) {
@@ -330,17 +330,17 @@ function draw_window_track_export() {
 	        sm = 0
 	        for (a = 0; a < b; a += 1) {
 	            if (block[a, 0] = 35) {
-	                str += "Wool|\\|"
+	                str += localize_ko("Wool|\\|")
 	                for (c = 0; c < 16; c += 1) str += check(sch_exp_ins_block[menub] = 35 && sch_exp_ins_data[menub] = c) + "35, " + string(c) + "$" + block_get_name(35, c) + "|"
 	                str += "/|"
 	                a += 16
 	            } else if (block[a, 0] = 95) {
-	                str += "Stained glass|\\|"
+	                str += localize_ko("Stained glass|\\|")
 	                for (c = 0; c < 16; c += 1) str += check(sch_exp_ins_block[menub] = 95 && sch_exp_ins_data[menub] = c) + "95, " + string(c) + "$" + block_get_name(95, c) + "|"
 	                str += "/|"
 	                a += 16
 	            } else if (block[a, 0] = 159) {
-	                str += "Colored Terracotta|\\|"
+	                str += localize_ko("Colored Terracotta|\\|")
 	                for (c = 0; c < 16; c += 1) str += check(sch_exp_ins_block[menub] = 159 && sch_exp_ins_data[menub] = c) + "159, " + string(c) + "$" + block_get_name(159, c) + "|"
 	                str += "/|"
 	                a += 16
@@ -349,7 +349,7 @@ function draw_window_track_export() {
 	            }
 	            d++
 	            if (d % 25 = 0 && a < b - 1) {
-	                if (language != 1) str += "-|More...|\\|"
+	                if (language != 1) str += localize_ko("-|More...|\\|")
 	                else str += "-|更多......|\\|"
 	                sm++
 	            }
@@ -378,17 +378,17 @@ function draw_window_track_export() {
 	        sm = 0
 	        for (a = 0; a < b; a += 1) {
 	            if (block[a, 0] = 35) {
-	                str += "Wool|\\|"
+	                str += localize_ko("Wool|\\|")
 	                for (c = 0; c < 16; c += 1) str += check(c1 = 35 && c2 = c) + "35, " + string(c) + "$" + block_get_name(35, c) + "|"
 	                str += "/|"
 	                a += 16
 	            } else if (block[a, 0] = 95) {
-	                str += "Stained Glass|\\|"
+	                str += localize_ko("Stained Glass|\\|")
 	                for (c = 0; c < 16; c += 1) str += check(c1 = 95 && c2 = c) + "95, " + string(c) + "$" + block_get_name(95, c) + "|"
 	                str += "/|"
 	                a += 16
 	            } else if (block[a, 0] = 159) {
-	                str += "Colored Terracotta|\\|"
+	                str += localize_ko("Colored Terracotta|\\|")
 	                for (c = 0; c < 16; c += 1) str += check(c1 = 159 && c2 = c) + "159, " + string(c) + "$" + block_get_name(159, c) + "|"
 	                str += "/|"
 	                a += 16
@@ -397,7 +397,7 @@ function draw_window_track_export() {
 	            }
 	            d++
 	            if (d%25 = 0  && a < b - 1) {
-	                if (language != 1) str += "-|More...|\\|"
+	                if (language != 1) str += localize_ko("-|More...|\\|")
 	                else str += "-|更多......|\\|"
 	                sm++
 	            }

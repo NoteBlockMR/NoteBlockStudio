@@ -15,15 +15,15 @@ function pattern_import() {
 	if (selected != 0) return 0
 	if (fn = "") {
 	    if (!directory_exists_lib(patternfolder)) patternfolder = pattern_directory
-	    fn = string(get_open_filename_ext("Note Block Pattern (*.nbp)|*.nbp", "", patternfolder, condstr(language != 1, "Load pattern", "打开分段")))
+	    fn = string(get_open_filename_ext(localize_ko("Note Block Pattern (*.nbp)|*.nbp"), "", patternfolder, condstr(language != 1, localize_ko("Load pattern"), "打开分段")))
 	}
 	if (fn = "" || !file_exists_lib(fn)) return 0
 
 	file_ext = filename_ext(fn)
-	if (file_ext != ".nbp") {message(condstr(language != 1, "Error: This file is not a pattern.", "错误：该文件不是分段文件。"), condstr(language != 1, "Error", "错误")) return 0}
+	if (file_ext != ".nbp") {message(condstr(language != 1, localize_ko("Error: This file is not a pattern."), "错误：该文件不是分段文件。"), condstr(language != 1, localize_ko("Error"), "错误")) return 0}
 	if (file_ext = ".nbp") {
 		buffer = buffer_import(fn)
-	
+
 		song_pat_version = buffer_read_byte()
 	//	show_debug_message("song_pat_version " + string(song_pat_version))
 		var pat_length = buffer_read_short()
@@ -33,9 +33,9 @@ function pattern_import() {
 		selection_l_temp = selection_l
 		selection_l = buffer_read_short()
 	//	show_debug_message("selection_l " + string(selection_l))
-		if (language != 1) {if (song_pat_version < pat_version && show_oldwarning) message("Warning: You are opening an older NBP file. Saving this file will make it incompatible with older Note Block Studio versions.","Warning")}
+		if (language != 1) {if (song_pat_version < pat_version && show_oldwarning) message(localize_ko("Warning: You are opening an older NBP file. Saving this file will make it incompatible with older Note Block Studio versions."),localize_ko("Warning"))}
 		else {if (song_pat_version < pat_version && show_oldwarning) message("警告：你正在打开旧版的 NBP 文件。保存此文件会使其与旧版 Note Block Studio 不兼容。","警告")}
-		if (language != 1) {if song_pat_version > pat_version message("Warning: You are opening an NBP file created in a later version of Note Block Studio. It may crash when opening.","Warning")}
+		if (language != 1) {if song_pat_version > pat_version message(localize_ko("Warning: You are opening an NBP file created in a later version of Note Block Studio. It may crash when opening."),localize_ko("Warning"))}
 		else {if song_pat_version > pat_version message("警告：你正在打开在新版 Note Block Studio 里保存的文件。打开时可能会崩溃。","警告")}
 		temp_str = buffer_read_string()
 		if check_custom_instrument(temp_str) = 0 {
@@ -43,7 +43,7 @@ function pattern_import() {
 			selection_copied = temp_str
 			selection_extend_length(pat_length)
 			selection_extend_height(pat_height)
-	
+
 			for (a = 0; a < selection_l; a += 1) {
 				temp_colfirst[a] = buffer_read_byte_signed()
 			    selection_colfirst[a] = temp_colfirst[a]
@@ -55,7 +55,7 @@ function pattern_import() {
 			selection_load(loadx, loady, selection_copied, false)
 		} else {
 			selection_l = selection_l_temp
-			if (language != 1) message("There are more custom instruments in the pattern than what is loaded in the song!", "Error")
+			if (language != 1) message(localize_ko("There are more custom instruments in the pattern than what is loaded in the song!"), localize_ko("Error"))
 			else message("分段内含有比歌曲内更多的自定义音色！", "错误")
 			return -1
 		}

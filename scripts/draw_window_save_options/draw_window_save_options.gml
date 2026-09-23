@@ -9,7 +9,7 @@ function draw_window_save_options() {
 	y1 = floor(rh / 2 - 90) + windowoffset
 	draw_window(x1, y1, x1 + 140, y1 + 162)
 	draw_theme_font(font_main_bold)
-	if (language != 1) draw_text_dynamic(x1 + 8, y1 + 8, "Save options")
+	if (language != 1) draw_text_dynamic(x1 + 8, y1 + 8, localize_ko("Save options"))
 	else draw_text_dynamic(x1 + 8, y1 + 8, "保存选项")
 	draw_theme_font(font_main)
 	if (theme = 0) {
@@ -19,7 +19,7 @@ function draw_window_save_options() {
 	    draw_rectangle(x1 + 6, y1 + 26, x1 + 134, y1 + 132, 1)
 	}
 	draw_theme_color()
-	
+
 	min_version = 0
 	if (user_instruments > 18) {
 		min_version = 5
@@ -28,15 +28,15 @@ function draw_window_save_options() {
 
 	if (language != 1) {
 	//if (draw_radiobox(x1 + 15, y1 + 20, save_version = 6, "v6", "Added UTF-8 support, includes the TPS / BPM setting (In development)", min_version > 6 || true)) save_version = 6
-	if (draw_radiobox(x1 + 15, y1 + 35, save_version = 5, "v5", "Increases custom instrument limit\nAllows custom sounds in subfolders", min_version > 5)) save_version = 5
-	if (draw_radiobox(x1 + 15, y1 + 50, save_version = 4, "v4", "Includes note velocity/pan/pitch and looping", min_version > 4)) save_version = 4
-	if (draw_radiobox(x1 + 15, y1 + 65, save_version = 3, "v3", "Includes song length", min_version > 3)) save_version = 3
-	if (draw_radiobox(x1 + 15, y1 + 80, save_version = 2, "v2", "Includes layer panning", min_version > 2)) save_version = 2
-	if (draw_radiobox(x1 + 15, y1 + 95, save_version = 1, "v1", "Includes custom instrument index", min_version > 1)) save_version = 1
-	if (draw_radiobox(x1 + 15, y1 + 110, save_version = 0, "Classic", "Doesn't have any of the above, but works on all versions.", min_version > 0)) save_version = 0
+	if (draw_radiobox(x1 + 15, y1 + 35, save_version = 5, "v5", localize_ko("Increases custom instrument limit\nAllows custom sounds in subfolders"), min_version > 5)) save_version = 5
+	if (draw_radiobox(x1 + 15, y1 + 50, save_version = 4, "v4", localize_ko("Includes note velocity/pan/pitch and looping"), min_version > 4)) save_version = 4
+	if (draw_radiobox(x1 + 15, y1 + 65, save_version = 3, "v3", localize_ko("Includes song length"), min_version > 3)) save_version = 3
+	if (draw_radiobox(x1 + 15, y1 + 80, save_version = 2, "v2", localize_ko("Includes layer panning"), min_version > 2)) save_version = 2
+	if (draw_radiobox(x1 + 15, y1 + 95, save_version = 1, "v1", localize_ko("Includes custom instrument index"), min_version > 1)) save_version = 1
+	if (draw_radiobox(x1 + 15, y1 + 110, save_version = 0, localize_ko("Classic"), localize_ko("Doesn't have any of the above, but works on all versions."), min_version > 0)) save_version = 0
 
-	if (draw_button2(x1 + 40, y1 + 135, 60, "OK") && (windowopen = 1 || theme != 3)) {
-		if save_version != nbs_version question("Some of the song's data will be lost if you save in a previous version! Are you sure?", "Confirm")
+	if (draw_button2(x1 + 40, y1 + 135, 60, localize_ko("OK")) && (windowopen = 1 || theme != 3)) {
+		if save_version != nbs_version question(localize_ko("Some of the song's data will be lost if you save in a previous version! Are you sure?"), localize_ko("Confirm"))
 		changed = 1
 		windowclose = 1
 		}

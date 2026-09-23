@@ -4,10 +4,10 @@ function datapack_export() {
 	o = obj_controller
 
 	if (language != 1) {
-	if (o.dat_usezip) fn = string(get_save_filename_ext("ZIP archive (*.zip)|*.zip", dat_name + ".zip", "", "Data Pack Export"))
-	else fn = string(get_save_filename_ext("Data Pack Folder", dat_name, "", "Data Pack Export"))
+	if (o.dat_usezip) fn = string(get_save_filename_ext(localize_ko("ZIP archive (*.zip)|*.zip"), dat_name + ".zip", "", localize_ko("Data Pack Export")))
+	else fn = string(get_save_filename_ext(localize_ko("Data Pack Folder"), dat_name, "", localize_ko("Data Pack Export")))
 	} else {
-	if (o.dat_usezip) fn = string(get_save_filename_ext("ZIP archive (*.zip)|*.zip", dat_name + ".zip", "", "导出数据包"))
+	if (o.dat_usezip) fn = string(get_save_filename_ext(localize_ko("ZIP archive (*.zip)|*.zip"), dat_name + ".zip", "", "导出数据包"))
 	if (o.dat_usezip) fn = fn + condstr(filename_ext(fn) != ".zip", ".zip")
 	else fn = string(get_save_filename_ext("数据包目录", dat_name, "", "导出数据包"))
 	}
@@ -23,7 +23,7 @@ function datapack_export() {
 		var path = dat_getpath(o.dat_path)
 		var objective = "nbs_" + string_copy(string_lettersdigits(o.dat_name), 1, 10)
 		var tag = objective
-		
+
 		// https://minecraft.wiki/w/Pack_format
 		var pack_format = (o.dat_mcversion == 0) ? 41 : 48
 		// https://minecraft.wiki/w/Java_Edition_1.21#Command_format_2
@@ -36,7 +36,7 @@ function datapack_export() {
 		var functiondir
 		var inputString
 		var add_teams = (o.dat_visualizer && o.dat_glow)
-	
+
 		if namespace = "" {
 			path = ""
 			namespace = name
@@ -48,42 +48,42 @@ function datapack_export() {
 			path += "/" + name
 			functionpath = namespace+":"+path+"/"
 		}
-	
+
 		// Create folder structure
 		tempdir = data_directory + "TempDatapack\\"
 		if (directory_exists_lib(tempdir)) {
 			directory_delete_lib(tempdir)
 		}
 		functiondir = dat_makefolders(path, namespace, function_registry)
-	
+
 		//pack.mcmeta
 		inputString = "{\n\t\"pack\": {\n\t\t\"pack_format\": " + string(pack_format) + ",\n\t\t\"description\": \"" + o.dat_name + "\\nMade with Note Block Studio\"\n\t}\n}"
 		dat_writefile(inputString, tempdir + "pack.mcmeta")
-	
+
 		//Minecraft folder:
-	
+
 		//load.json
 		inputString = "{\"values\": [\"" + functionpath + "load\"]}"
 		dat_writefile(inputString, tempdir + "data\\minecraft\\tags\\" + function_registry + "\\load.json")
-	
+
 		//tick.json
 		inputString = "{\"values\": [\"" + functionpath + "tick\"]}"
 		dat_writefile(inputString, tempdir + "data\\minecraft\\tags\\" + function_registry + "\\tick.json")
-	
+
 		//Song folder:
-	
+
 		//load.mcfunction
 		inputString = "scoreboard objectives add " + objective + " dummy" + br
 		inputString += "scoreboard objectives add " + objective + "_t dummy" + br
 		inputString += "scoreboard players set speed " + objective + " " + string(playspeed)
 		dat_writefile(inputString, functiondir + "load.mcfunction")
-	
+
 		//tick.mcfunction
 		inputString = "execute as @a[tag=" + tag + "] run scoreboard players operation @s " + objective + " += speed " + objective + br
 		if(o.dat_enableradius) inputString += "execute as @a[tag=" + tag + "] run function " + functionpath + "tree/" + rootfunction
 		else inputString += "execute as @a[tag=" + tag + "] at @s run function " + functionpath + "tree/" + rootfunction
 		dat_writefile(inputString, functiondir + "tick.mcfunction")
-	
+
 		//play.mcfunction
 		inputString = "tag @s add " + tag + br
 		inputString += "scoreboard players set @s " + objective + "_t -1" + br
@@ -91,11 +91,11 @@ function datapack_export() {
 			inputString += "function " + functionpath + "add_teams"
 		}
 		dat_writefile(inputString, functiondir + "play.mcfunction")
-	
+
 		//pause.mcfunction
 		inputString = "tag @s remove " + tag
 		dat_writefile(inputString, functiondir + "pause.mcfunction")
-	
+
 		//stop.mcfunction
 		inputString = "tag @s remove " + tag + br
 		inputString += "scoreboard players reset @s " + objective + br
@@ -104,7 +104,7 @@ function datapack_export() {
 			inputString += br + "function " + functionpath + "remove_teams"
 		}
 		dat_writefile(inputString, functiondir + "stop.mcfunction")
-	
+
 		//uninstall.mcfunction
 		inputString = "tag @e remove " + tag + br
 		inputString += "scoreboard objectives remove " + objective + br
@@ -120,7 +120,7 @@ function datapack_export() {
 		}
 		inputString += "tellraw @s [\"\",{\"text\":\"[NBS] \",\"color\":\"gold\",\"bold\":true},{\"text\":\"Data pack \",\"color\":\"yellow\"},{\"text\":\"" + filename_name(fn) + "\",\"color\":\"gold\",\"underlined\":true},{\"text\":\" uninstalled successfully. You may now remove it from your data pack folder.\",\"color\":\"yellow\"}]"
 		dat_writefile(inputString, functiondir + "uninstall.mcfunction")
-	
+
 		if (add_teams) {
 			//add_teams.mcfunction
 			inputString = "team add nbs_1" + br
@@ -158,7 +158,7 @@ function datapack_export() {
 			inputString += "team modify nbs_16 color gold" + br
 			inputString += "team modify nbs_17 color white"
 			dat_writefile(inputString, functiondir + "add_teams.mcfunction")
-		
+
 			//remove_teams.mcfunction
 			inputString = "team remove nbs_1" + br
 			inputString += "team remove nbs_2" + br
@@ -179,22 +179,22 @@ function datapack_export() {
 			inputString += "team remove nbs_17"
 			dat_writefile(inputString, functiondir + "remove_teams.mcfunction")
 		}
-	
+
 		//Generate binary tree and notes
 		dat_generate(functionpath, functiondir, objective)
-	
+
 		// Execute shell command to create ZIP, or to move temp folder to location
 		if (o.dat_usezip) {
 			ExecuteShell("7za a -tzip \"" + fn + "\" \"" + data_directory + "TempDatapack\\*\"", true, true)
 		} else {
 			ExecuteShell("\"" + data_directory + "move.bat\" \"" + fn + "\\\"", true, true)
 		}
-	
+
 		directory_delete_lib(tempdir)
 		instance_destroy()
 	}
 
-	if (language != 1) message("Data pack saved!" + br + br + br + "To play the song in-game, use:" + br + br + "/function " + functionpath + "play" + br + "/function " + functionpath + "pause" + br + "/function " + functionpath + "stop" + br + br + br + "To play the song using a command block or function, use:" + br + br + "/execute as @p at @s run function " + functionpath + "play" + br + br + "(Replace @p with the player(s) you want to play the song to.)" + br + br + br + "If you wish to uninstall it from your world, run:" + br + br + "/function " + functionpath + "uninstall" + br + br + "and then remove it from the 'datapacks' folder.","Data Pack Export")
+	if (language != 1) message(localize_ko("Data pack saved!") + br + br + br + localize_ko("To play the song in-game, use:") + br + br + "/function " + functionpath + "play" + br + "/function " + functionpath + "pause" + br + "/function " + functionpath + "stop" + br + br + br + localize_ko("To play the song using a command block or function, use:") + br + br + "/execute as @p at @s run function " + functionpath + "play" + br + br + localize_ko("(Replace @p with the player(s) you want to play the song to.)") + br + br + br + localize_ko("If you wish to uninstall it from your world, run:") + br + br + "/function " + functionpath + "uninstall" + br + br + localize_ko("and then remove it from the 'datapacks' folder."),localize_ko("Data Pack Export"))
 	else message("数据包已保存！" + br + br + "如想在游戏内播放，使用命令：" + br + br + "/function " + functionpath + "play" + br + "/function " + functionpath + "pause" + br + "/function " + functionpath + "stop" + br + br + "如果你想从你的世界中卸载它，" + br + "使用命令：" + br + br + "/function " + functionpath + "uninstall" + br + br + "然后从“datapacks”文件夹" + br + "取出就行了。","导出数据包")
 	window = w_datapack_export
 

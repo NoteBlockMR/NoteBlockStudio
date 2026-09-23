@@ -3,25 +3,25 @@ function seconds_to_str(argument0) {
 	c = argument0
 	if (language != 1) {
 		if (c < 60) {
-			str = string(c) + " second" + condstr(c != 1, "s") + " ago"
+			str = string(c) + localize_ko(" second") + condstr(language = 0 && c != 1, "s") + localize_ko(" ago")
 		} else if (c < 60 * 60) {
 			c = floor(c / 60)
-			str = string(c) + " minute" + condstr(c != 1, "s") + " ago"
+			str = string(c) + localize_ko(" minute") + condstr(language = 0 && c != 1, "s") + localize_ko(" ago")
 		} else if (c < 60 * 60 * 24) {
 			c = floor(c / (60 * 60))
-			str = string(c) + " hour" + condstr(c != 1, "s") + " ago"
+			str = string(c) + localize_ko(" hour") + condstr(language = 0 && c != 1, "s") + localize_ko(" ago")
 		} else if (c < 60 * 60 * 24 * 7) {
 			c = floor(c / (60 * 60 * 24))
-			str = string(c) + " day" + condstr(c != 1, "s") + " ago"
+			str = string(c) + localize_ko(" day") + condstr(language = 0 && c != 1, "s") + localize_ko(" ago")
 		} else if (c < 60 * 60 * 24 * 31) {
 			c = floor(c / (60 * 60 * 24 * 7))
-			str = string(c) + " week" + condstr(c != 1, "s") + " ago"
+			str = string(c) + localize_ko(" week") + condstr(language = 0 && c != 1, "s") + localize_ko(" ago")
 		} else if (c < 60 * 60 * 24 * 31 * 12) {
 			c = floor(c / (60 * 60 * 24 * 31))
-			str = string(c) + " month" + condstr(c != 1, "s") + " ago"
+			str = string(c) + localize_ko(" month") + condstr(language = 0 && c != 1, "s") + localize_ko(" ago")
 		} else {
 			c = floor(c / (60 * 60 * 24 * 31 * 12))
-			str = string(c) + " year" + condstr(c != 1, "s") + " ago"
+			str = string(c) + localize_ko(" year") + condstr(language = 0 && c != 1, "s") + localize_ko(" ago")
 		}
 	} else {
 		if (c < 60) {

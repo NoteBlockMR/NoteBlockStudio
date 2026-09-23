@@ -17,7 +17,7 @@ function selection_transpose() {
 	        }
 	    }
 	}
-	message(string(am) + " notes were edited.", "Transpose notes")
+	message(string(am) + localize_ko(" notes were edited."), localize_ko("Transpose notes"))
 	selection_code_update()
 	history_set(h_selectchange, selection_x, selection_y, selection_code, selection_x, selection_y, str)
 

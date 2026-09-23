@@ -69,7 +69,7 @@ function control_create() {
 	surface_depth_disable(true)
 	donate_banner = 1
 	donate_banner_time = -1
-	
+
 	font_table =
 	[
 		[ // normal fonts
@@ -93,7 +93,7 @@ function control_create() {
 			[ fnt_wslui_med,     fnt_wslui_med_hires,           fnt_src_med_hires           ]  // font_med
 		]
 	]
-	
+
 	// Wallpaper
 	wpaper = 0
 	wpaperexist = 0
@@ -136,7 +136,8 @@ function control_create() {
 	tonextsave = 0
 	backupmins = 1
 	tonextbackup = 0
-	language = 1 * (os_get_language() = "zh" && os_get_region() = "CN")
+	// 0: English, 1: Simplified Chinese, 2: Korean. Saved settings take priority.
+	language = (os_get_language() = "ko") ? 2 : (1 * (os_get_language() = "zh" && os_get_region() = "CN"))
 	presence = 1 // Discord RPC toggle
 	// presencewindow = 0
 	aa = 0
@@ -177,7 +178,7 @@ function control_create() {
 	timesignature = 4
 	randomise()
 	song_backupid = string(floor(random(800000)))
-	song_backupname = "Unsaved song " + song_backupid + ".nbs"
+	song_backupname = localize_ko("Unsaved song ") + song_backupid + ".nbs"
 	if (!directory_exists_lib(backup_directory)) {
 		directory_create_lib(backup_directory);
 	}
@@ -251,7 +252,7 @@ function control_create() {
 
 	mousewheel = 0
 	changepitch = 1
-	
+
 	keynames = ["A", "A#", "B", "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#"];
 	keynames_flat = 0
 
@@ -439,23 +440,23 @@ function control_create() {
 	// Instruments
 	instrument_list = ds_list_create()
 
-	ds_list_add(instrument_list, new_instrument("Harp",          "harp.ogg",     false, true))
-	ds_list_add(instrument_list, new_instrument("Double Bass",   "dbass.ogg",    false, true))
-	ds_list_add(instrument_list, new_instrument("Bass Drum",     "bdrum.ogg",    false))
-	ds_list_add(instrument_list, new_instrument("Snare Drum",    "sdrum.ogg",    false))
-	ds_list_add(instrument_list, new_instrument("Click",         "click.ogg",    false))
-	ds_list_add(instrument_list, new_instrument("Guitar",        "guitar.ogg",   false, true))
-	ds_list_add(instrument_list, new_instrument("Flute",         "flute.ogg",    false, true))
-	ds_list_add(instrument_list, new_instrument("Bell",          "bell.ogg",     false, true))
-	ds_list_add(instrument_list, new_instrument("Chime",         "icechime.ogg", false, true))
-	ds_list_add(instrument_list, new_instrument("Xylophone",     "xylobone.ogg", false, true))
-	ds_list_add(instrument_list, new_instrument("Iron Xylophone","iron_xylophone.ogg", false, true))
-	ds_list_add(instrument_list, new_instrument("Cow Bell",      "cow_bell.ogg", false, true))
-	ds_list_add(instrument_list, new_instrument("Didgeridoo",    "didgeridoo.ogg", false, true))
-	ds_list_add(instrument_list, new_instrument("Bit",           "bit.ogg", false, true))
-	ds_list_add(instrument_list, new_instrument("Banjo",         "banjo.ogg", false, true))
-	ds_list_add(instrument_list, new_instrument("Pling",         "pling.ogg", false, true))
-	
+	ds_list_add(instrument_list, new_instrument(localize_ko("Harp"),          "harp.ogg",     false, true))
+	ds_list_add(instrument_list, new_instrument(localize_ko("Double Bass"),   "dbass.ogg",    false, true))
+	ds_list_add(instrument_list, new_instrument(localize_ko("Bass Drum"),     "bdrum.ogg",    false))
+	ds_list_add(instrument_list, new_instrument(localize_ko("Snare Drum"),    "sdrum.ogg",    false))
+	ds_list_add(instrument_list, new_instrument(localize_ko("Click"),         "click.ogg",    false))
+	ds_list_add(instrument_list, new_instrument(localize_ko("Guitar"),        "guitar.ogg",   false, true))
+	ds_list_add(instrument_list, new_instrument(localize_ko("Flute"),         "flute.ogg",    false, true))
+	ds_list_add(instrument_list, new_instrument(localize_ko("Bell"),          "bell.ogg",     false, true))
+	ds_list_add(instrument_list, new_instrument(localize_ko("Chime"),         "icechime.ogg", false, true))
+	ds_list_add(instrument_list, new_instrument(localize_ko("Xylophone"),     "xylobone.ogg", false, true))
+	ds_list_add(instrument_list, new_instrument(localize_ko("Iron Xylophone"),"iron_xylophone.ogg", false, true))
+	ds_list_add(instrument_list, new_instrument(localize_ko("Cow Bell"),      "cow_bell.ogg", false, true))
+	ds_list_add(instrument_list, new_instrument(localize_ko("Didgeridoo"),    "didgeridoo.ogg", false, true))
+	ds_list_add(instrument_list, new_instrument(localize_ko("Bit"),           "bit.ogg", false, true))
+	ds_list_add(instrument_list, new_instrument(localize_ko("Banjo"),         "banjo.ogg", false, true))
+	ds_list_add(instrument_list, new_instrument(localize_ko("Pling"),         "pling.ogg", false, true))
+
 	// Navigating sounds
 	soundinvoke = create(obj_instrument)
 	soundinvoke.key = 45
@@ -498,20 +499,20 @@ function control_create() {
 	with (obj_instrument)
 	    if (!instrument_load())
 	        str += filename + "\n"
-	if (str != "") message("The following file(s) could not be found:\n\n" + str + "\n\nSome sounds might not play.", "Error")
+	if (str != "") message(localize_ko("The following file(s) could not be found:\n\n") + str + localize_ko("\n\nSome sounds might not play."), localize_ko("Error"))
 
 	log("Instruments loaded")
 
 	// Minecraft
 	selected_tab_mc = 0
-	
+
 	// Import sounds
 	mc_default_path = string_copy(game_save_id, 0, string_last_pos("\\", string_copy(game_save_id, 1, string_length(game_save_id) - 1))) + ".minecraft\\";
 	mc_install_path = mc_default_path;
-	
+
 	var asset_index_names_keys = ["pre-1.6", "legacy", "1.7.3", "1.7.4", "1.7.10", "14w25a", "14w31a", "1.8", "1.9", "1.9-aprilfools", "1.10", "1.11", "1.12", "1.13", "1.13.1", "1.14", "1.14-af", "1.15", "1.16", "1.17", "1.18", "1.19", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "_"];
 	var asset_index_names_values = ["Pre-1.6", "1.6-1.7", "1.7.3", "1.7.4", "1.7.10", "14w25a", "1.8 Pre-Release 1", "1.8", "1.9", "1.RV-Pre1", "1.10", "1.11", "1.12", "1.13", "1.13.1", "1.14", "3D Shareware v1.34", "1.15", "1.16", "1.17", "1.18", "1.19", "22w42a", "1.19.3", "1.19.4", "23w14a", "1.20", "23w31a", "1.20.2 Pre-Release 1", "1.20.2", "23w42a", "23w43a", "23w45a", "1.20.3", "24w06a", "24w09a", "24w11a", "1.20.5", "1.21", "1.21.2", "1.21.4", "1.21.4+"];
-	
+
 	sound_import_asset_index_names = ds_map_create();
 	sound_import_asset_index_names_sort = ds_list_create(); // TODO: convert this to an array when array_get_index() is available
 
@@ -566,6 +567,7 @@ function control_create() {
 		default:
 			lang_en_us()
 	}
+	localize_instrument_names()
 	if (channelstoggle) channels = 1024
 	else channels = 256
 	audio_channel_num(channels)
@@ -580,7 +582,7 @@ function control_create() {
 	} else {
 		acrylic = 0
 		can_draw_mica = 0
-		if (language != 1) show_message("Note Block Studio encountered an error creating the background sprite. Transparency effects will be disabled.\nThis usually happens when your desktop wallpaper is either too tall or too long.")
+		if (language != 1) show_message(localize_ko("Note Block Studio encountered an error creating the background sprite. Transparency effects will be disabled.\nThis usually happens when your desktop wallpaper is either too tall or too long."))
 		else show_message("Note Block Studio 在创建背景贴图时遇到错误，透明效果将被关闭。\n这种情况一般是由于您的桌面壁纸图片过高或过长。")
 	}
 	if (show_welcome) window = w_greeting
@@ -617,7 +619,7 @@ function control_create() {
 	    update_success = 1
 		donate_banner = 1 // Enable donate banner after each update
 	}
-	
+
 	// Download song
 	protocol_data = pointer_null;
 	song_download_data = pointer_null;
@@ -631,10 +633,10 @@ function control_create() {
 	if (file_exists_lib(update_file)) {
 		files_delete_lib(update_file)
 	}
-	
+
 	// Register as nbs:// url protocol handler
 	register_url_protocol()
-	
+
 	// Init wallpaper
 	change_theme()
 
@@ -643,14 +645,14 @@ function control_create() {
 	// Implemented in a better way that takes multiple instances into account.
 	if (file_find_first(backup_directory + "*.nbs", 0) != "" && !port_taken && !isplayer) {
 		var isrecover = 0
-		if (language != 1) isrecover = question("Note Block Studio quit unexpectedly while you were working on a song. Do you want to recover your work?\n\n(If you click 'No', you'll be prompted to recover it again the next time you open the program.)", "Auto-recovery")
+		if (language != 1) isrecover = question(localize_ko("Note Block Studio quit unexpectedly while you were working on a song. Do you want to recover your work?\n\n(If you click 'No', you'll be prompted to recover it again the next time you open the program.)"), localize_ko("Auto-recovery"))
 		else isrecover = question("Note Block Studio在您工作时意外关闭了。要恢复您的文档吗？\n\n（如果点击“No”，下次打开软件时将会再次提示恢复。）", "自动恢复")
 		if (isrecover) {
 			// Create restore folder
 			if (!directory_exists_lib(restore_directory)) {
 				directory_create_lib(restore_directory);
 			}
-			
+
 			// Copy files to a new, safe location
 			var file_to_restore = file_find_first(backup_directory + "*.nbs", 0);
 			var restored_count = 0;
@@ -660,7 +662,7 @@ function control_create() {
 				file_to_restore = file_find_next();
 			}
 			file_find_close();
-			
+
 			// Delete original songs (only after everything has been copied!)
 			var file_to_delete = file_find_first(backup_directory + "*.nbs", 0);
 			while (file_to_delete != "") {
@@ -668,9 +670,9 @@ function control_create() {
 				file_to_delete = file_find_next();
 			}
 			file_find_close();
-			
+
 			// Open restore folder
-			if (language != 1) show_message(string(restored_count) + " " + condstr(restored_count > 1, "files have been restored.", "file has been restored."));
+			if (language != 1) show_message(string(restored_count) + " " + condstr(restored_count > 1, localize_ko("files have been restored."), localize_ko("file has been restored.")));
 			else show_message(string(restored_count) + "个文件已恢复。");
 			open_url(restore_directory);
 		}
@@ -681,32 +683,32 @@ function control_create() {
 	if (p_num > 1) {
 		for (var i = 1; i <= p_num; i++) {
 			var arg = parameter_string(i);
-			
+
 			if (arg == "-player") continue;
 			if (arg == "-game" || string_count("\\GMS2TEMP\\", arg) > 0) continue; // GMS runner
-			
+
 			// URL protocol
 			if (arg == "--protocol-launcher") {
 				if (p_num >= i + 1) {
 					protocol_data = parameter_string(i + 1);
 				}
-			
+
 			// File drop, etc.
 			} else if (string_replace(arg, " ", "") != "") {
 				show_debug_message(arg)
 				filename = arg;
 				song_backupname = filename_name(filename_change_ext(filename, ".nbs"));
 			}
-			
+
 		}
 	}
-	
+
 	var args = ""
 	for (var i = 0; i <= parameter_count(); i++) {
 		args = args + parameter_string(i) + " ";
 	}
 	log("Run with command line args: " + args);
-	
+
 	// Download song
 	if (protocol_data != pointer_null) {
 		var download_url = string_replace(protocol_data, "nbs://", "")

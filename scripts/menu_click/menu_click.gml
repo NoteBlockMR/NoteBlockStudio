@@ -16,7 +16,7 @@ function menu_click(argument0) {
 	        for (c = 0; c < b; c += 1) {
 	            if (sel = 3 + c && recent_song[c] != "") {
 	                if (!file_exists_lib(recent_song[c])) {
-	                    if (language != 1) message("Could not find file:\n" + recent_song[c], "Error")
+	                    if (language != 1) message(localize_ko("Could not find file:\n") + recent_song[c], localize_ko("Error"))
 	                    else message("找不到文件：\n" + recent_song[c], "错误")
 	                    for (d = 0; d < 10; d += 1) {
 	                        if (recent_song[d] = recent_song[c]) {
@@ -107,7 +107,7 @@ function menu_click(argument0) {
 	        if (sel = 34 + insoffset) window = w_setpitch
 	        if (sel = 35 + insoffset) macro_reset()
 	        if (sel = 36 + insoffset) {
-	            if (language != 1) {if (question("Transpose selected notes so that they fall within Minecraft's 2 octaves?", "Transpose notes")) selection_transpose()}
+	            if (language != 1) {if (question(localize_ko("Transpose selected notes so that they fall within Minecraft's 2 octaves?"), localize_ko("Transpose notes"))) selection_transpose()}
 	            else {if (question("转换音符使其在 Minecraft 的 2 八度以内吗？", "转换音符")) selection_transpose()}
 	        }
 	        break
@@ -161,7 +161,7 @@ function menu_click(argument0) {
 	        if (sel = 34 + insoffset) window = w_setpitch
 	        if (sel = 35 + insoffset) macro_reset()
 	        if (sel = 36 + insoffset) {
-	            if (language != 1) {if (question("Transpose selected notes so that they fall within Minecraft's 2 octaves?", "Transpose notes")) selection_transpose()}
+	            if (language != 1) {if (question(localize_ko("Transpose selected notes so that they fall within Minecraft's 2 octaves?"), localize_ko("Transpose notes"))) selection_transpose()}
 	            else {if (question("转换音符使其在 Minecraft 的 2 八度以内吗？", "转换音符")) selection_transpose()}
 	        }
 	        break
@@ -198,7 +198,7 @@ function menu_click(argument0) {
 			if (sel = 7) open_url(link_github)
 			if (sel = 8) open_url(link_discord)
 	        if (sel = 9) open_url(link_report)
-			if (language == 0) {
+			if (language != 1) {
 		        if (sel = 10) open_url(link_donate)
 		        if (sel = 11) window = w_changelist
 		        if (sel = 12) window = w_about
@@ -308,7 +308,7 @@ function menu_click(argument0) {
 	        for (c = 0; c < b; c += 1) {
 	            if (sel = 2 + c && recent_song[c] != "") {
 	                if (!file_exists_lib(recent_song[c])) {
-	                    if (language != 1) message("Could not find file:\n" + recent_song[c], "Error")
+	                    if (language != 1) message(localize_ko("Could not find file:\n") + recent_song[c], localize_ko("Error"))
 	                    else message("找不到文件：\n" + recent_song[c], "错误")
 	                    for (d = 0; d < 10; d += 1) {
 	                        if (recent_song[d] = recent_song[c]) {
@@ -359,7 +359,11 @@ function menu_click(argument0) {
 			break
 		}
 		case "language": {
+			if (sel < 0 || sel > 2) break
 			language = sel
+			lang_en_us()
+			localize_instrument_names()
+			save_settings()
 			break
 		}
 		case "audio_exp_format": {

@@ -2,7 +2,7 @@ function track_export() {
 	// track_export()
 	var fn, a, b, c, d, p, xx, yy, zz, len, wid, hei, o, chestx, chesty, chestz, signx, signy, signz, nblocks, layers, cyy, y1, x1, insnum, ins, repeats, remain, replen, blockamount, nbamount, cpan, cpanvol, cvol, blocktagpos;
 	var REPEATER, TORCHON, TORCHOFF, WIRE, LADDER, RAIL, POWEREDRAIL, SLAB, noteblocks, noteblockx, noteblocky, noteblockz, noteblocknote, noteblockins, noteblockpit;
-	fn = string(get_save_filename_ext("Minecraft Structures (*.nbt)|*.nbt", filename_new_ext(string_replace_all(string_lower(filename), " ", "_"), "") + ".nbt", "", "Export Track"))
+	fn = string(get_save_filename_ext(localize_ko("Minecraft Structures (*.nbt)|*.nbt"), filename_new_ext(string_replace_all(string_lower(filename), " ", "_"), "") + ".nbt", "", localize_ko("Export Track")))
 	if (fn = "") return 0
 	o = obj_controller
 	window = -1
@@ -67,10 +67,10 @@ function track_export() {
 		signx = 2
 		signy = yy
 		signz = hei - 1
-		
+
 	    // Write to file
 	    buffer = buffer_create(8, buffer_grow, 1)
-		
+
 		TAG_Compound("")
 		TAG_Int("DataVersion", 1519)
 		TAG_List("size", 3, 3)
@@ -263,7 +263,7 @@ function track_export() {
 			TAG_Int("state", insnum * 26 + 19)
 	        TAG_End()
 			totalblocksc++
-    
+
 	    // Create walkway
 	    for (a = 0; a < 3; a += 1) {
 	        for (b = 2; b < len + 2; b += 1) {
@@ -281,34 +281,34 @@ function track_export() {
 		block_circuit_track(0, yy + 1, hei - 2)
 		block_other_track(0, yy + 1, hei - 1, WIRE, 0)
 		block_other_track(0, yy, hei - 2, TORCHON, 1)
-			
+
 		block_other_track(0, yy, hei - 3, WIRE, 0)
 		block_circuit_track(0, yy, hei - 4)
 		block_other_track(0, yy + 1, hei - 4, TORCHOFF, 2)
-			
+
 		block_other_track(0, yy + 1, hei - 5, WIRE, 0)
 		block_circuit_track(0, yy + 1, hei - 6)
-			
+
 		for (a = 0; a < 13; a++) {
 			block_repeater_track(1 + 2 * a, yy + 1, hei - 5 - a, 0, 2, 0)
 			block_other_track(2 + 2 * a, yy + 1, hei - 5 - a, WIRE, 0)
 			block_circuit_track(1 + 2 * a, yy + 1, hei - 6 - a)
 			block_circuit_track(2 + 2 * a, yy + 1, hei - 6 - a)
 		}
-			
+
 		for (a = 0; a < 4; a++) {
 			block_repeater_track(27 + a * 2, yy + 1, hei - 18, 0, 2, 0)
 			block_circuit_track(27 + a * 2, yy + 1, hei - 19)
 			block_circuit_track(28 + a * 2, yy + 1, hei - 18)
 		}
-			
+
 		for (a = 0; a < 11; a++) {
 			block_circuit_track(34, yy - a, hei - 19)
 			block_other_track(34, yy - a, hei - 18, WIRE, 0)
 			block_circuit_track(34, yy + 2 + a, hei - 19)
 			block_other_track(34, yy + 2 + a, hei - 18, WIRE, 0)
 		}
-			
+
 		for (a = 0; a < 12; a++) {
 			block_circuit_track(34, yy - 11 - a, hei - 18)
 			if (a != 4) block_other_track(34, yy - 11 - a, hei - 17, WIRE, 0)
@@ -317,7 +317,7 @@ function track_export() {
 			if (a != 4) block_other_track(34, yy + 13 + a, hei - 17, WIRE, 0)
 			else block_repeater_track(34, yy + 13 + a, hei - 17, 0, 3, 0)
 		}
-			
+
 		for (a = 0; a < 12; a++) {
 			block_circuit_track(34, yy - 23 - a, hei - 17)
 			if (a != 8) block_other_track(34, yy - 23 - a, hei - 16, WIRE, 0)
@@ -326,14 +326,14 @@ function track_export() {
 			if (a != 8) block_other_track(34, yy + 25 + a, hei - 16, WIRE, 0)
 			else block_repeater_track(34, yy + 25 + a, hei - 16, 0, 3, 0)
 		}
-			
+
 		for (a = 0; a < 12; a++) {
 			block_circuit_track(34, yy - 35 - a, hei - 16)
 			block_other_track(34, yy - 35 - a, hei - 15, WIRE, 0)
 			block_circuit_track(34, yy + 37 + a, hei - 16)
 			block_other_track(34, yy + 37 + a, hei - 15, WIRE, 0)
 		}
-			
+
 		block_circuit_track(35, yy - 11, hei - 18)
 		block_circuit_track(36, yy - 11, hei - 18)
 		block_circuit_track(37, yy - 11, hei - 18)
@@ -363,7 +363,7 @@ function track_export() {
 		block_circuit_track(35, yy + 1, hei - 19)
 		block_circuit_track(36, yy + 1, hei - 18)
 		block_circuit_track(37, yy + 1, hei - 19)
-			
+
 		block_other_track(36, yy - 11, hei - 17, WIRE, 0)
 		block_other_track(37, yy - 11, hei - 17, WIRE, 0)
 		block_other_track(36, yy - 11 - 12, hei - 16, WIRE, 0)
@@ -381,7 +381,7 @@ function track_export() {
 		block_other_track(36, yy + 11 + 12 + 12 + 12 + 2, hei - 14, WIRE, 0)
 		block_other_track(37, yy + 11 + 12 + 12 + 12 + 2, hei - 14, WIRE, 0)
 		block_other_track(37, yy + 1, hei - 18, WIRE, 0)
-			
+
 		block_repeater_track(35, yy - 11, hei - 17, 2, 2, 0)
 		block_repeater_track(35, yy - 11 - 12, hei - 16, 1, 2, 0)
 		block_repeater_track(35, yy - 11 - 12 - 12, hei - 15, 0, 2, 0)
@@ -391,7 +391,7 @@ function track_export() {
 		block_repeater_track(35, yy + 11 + 12 + 12 + 2, hei - 15, 0, 2, 0)
 		block_repeater_track(35, yy + 11 + 12 + 12 + 12 + 2, hei - 15, 0, 2, 0)
 		block_repeater_track(35, yy + 1, hei - 18, 2, 2, 0)
-			
+
 		for (a = 0; a < 4; a++) {
 			for (b = 0; b < 13; b++) {
 				block_other_track(37 + (b mod 2 = 0), yy - 11 - 12 * a, hei - 17 + b + a, SLAB, 2)
@@ -406,7 +406,7 @@ function track_export() {
 				block_repeater_track(39, yy + 11 + 12 * a + 2, hei - 16 + 4 * b + a, 0, 2, 0)
 			}
 		}
-			
+
 		for (b = 0; b < 13; b++) {
 			block_other_track(37 + (b mod 2 = 0), yy + 1, hei - 18 + b, SLAB, 2)
 			block_other_track(37 + (b mod 2 = 0), yy + 1, hei - 17 + b, WIRE, 2)
@@ -415,7 +415,7 @@ function track_export() {
 			block_circuit_track(39, yy + 1, hei - 18 + 4 * b)
 			block_repeater_track(39, yy + 1, hei - 17 + 4 * b, 0, 2, 0)
 		}
-		
+
 		// Add note blocks
 		xx = -1 + 40
 		var circ, rep, dir, turn, lturnx, lturny, lturndel, adds;
@@ -1175,7 +1175,7 @@ function track_export() {
 		    xx += 2 * dir
 		    turn = 0
 		}
-    
+
 			var soundname, soundpitch, soundnote;
 			for (a = 0; a < noteblocks; a += 1) {
 				TAG_Compound("nbt") // the non-command-block setting still needs this part because of magic
@@ -1198,7 +1198,7 @@ function track_export() {
 	            TAG_End()
 				totalblocksc++
 	        }
-			
+
 		TAG_End()
 		blockamount = totalblocksc
 		buffer_seek(buffer, buffer_seek_start, blocktagpos)
@@ -1210,7 +1210,7 @@ function track_export() {
 	    gzzip(temp_file, fn)
 	    instance_destroy()
 	}
-	if (o.language != 1) message("Structure saved!", "Track Export")
+	if (o.language != 1) message(localize_ko("Structure saved!"), localize_ko("Track Export"))
 	else message("结构已保存！", "导出直轨")
 	window = w_track_export
 

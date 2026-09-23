@@ -1,16 +1,16 @@
 function save_song_zip() {
 	var fn, tempdir, ins, src, dst, count;
-	
-	if (language != 1) fn = string(get_save_filename_ext("ZIP archive (*.zip)|*.zip", condstr(filename == "", "", filename_change_ext(filename, ".zip")), "", "Save song with custom sounds"));
-	else fn = string(get_save_filename_ext("ZIP archive (*.zip)|*.zip", condstr(filename == "", "", filename_change_ext(filename, ".zip")), "", "连带自定义音色一起导出"));
+
+	if (language != 1) fn = string(get_save_filename_ext(localize_ko("ZIP archive (*.zip)|*.zip"), condstr(filename == "", "", filename_change_ext(filename, ".zip")), "", localize_ko("Save song with custom sounds")));
+	else fn = string(get_save_filename_ext(localize_ko("ZIP archive (*.zip)|*.zip"), condstr(filename == "", "", filename_change_ext(filename, ".zip")), "", "连带自定义音色一起导出"));
 	if (fn = "") return 0;
-	
+
 	tempdir = data_directory + "Temp\\";
 	if (directory_exists_lib(tempdir)) {
 		directory_delete_lib(tempdir);
 	}
 	directory_create_lib(tempdir);
-	
+
 	// Save instruments
 	count = 0;
 	for (var i = first_custom_index; i <= ds_list_size(instrument_list) - 1; i++) {
@@ -30,22 +30,22 @@ function save_song_zip() {
 			count++;
 		}
 	}
-	
+
 	// Save song
 	save_song(tempdir + "song.nbs", true);
-	
+
 	ExecuteShell("7za a -tzip \"" + fn + "\" \"" + data_directory + "Temp\\*\"", true, true);
-	
+
 	if (!file_exists_lib(fn)) {
-		if (language != 1) message("The song could not be saved!", "Error");
+		if (language != 1) message(localize_ko("The song could not be saved!"), localize_ko("Error"));
 		else message("导出歌曲失败！", "错误");
 	} else {
-		if (language != 1) set_msg("Song saved");
+		if (language != 1) set_msg(localize_ko("Song saved"));
 		else set_msg("歌曲已保存");
 	}
 
 	directory_delete_lib(tempdir);
-	
+
 	// if (language != 1) message(string(count) + " instrument" + condstr(count > 1, "s were", " was") + " saved!", "Pack instruments");
 	// else message(string(count) + "个音色已保存！", "导出音色");
 }

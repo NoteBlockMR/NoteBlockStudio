@@ -6,7 +6,7 @@ function draw_window_greeting() {
 	curs = cr_default
 	x1 = floor(rw / 2 - 350)
 	y1 = floor(rh / 2 - 210) + windowoffset
-	
+
 	if (donate_banner) {
 		x1 += 700;
 		y1 += 210 - 100;
@@ -21,7 +21,7 @@ function draw_window_greeting() {
 			curs = cr_handpoint;
 			if (mouse_check_button_released(mb_left)) {
 				if (hover_x) { // X button
-					if (language != 1) show_message("Developing Note Block Studio takes a lot of unpaid volunteering time. If you can, please consider supporting us in the future! =)\n\n(You can find that option at any time in Help > Donate.)");
+					if (language != 1) show_message(localize_ko("Developing Note Block Studio takes a lot of unpaid volunteering time. If you can, please consider supporting us in the future! =)\n\n(You can find that option at any time in Help > Donate.)"));
 					else show_message("开发Note Block Studio完全基于我们用爱发电。如果情况允许，请考虑在以后小小的支持我们一下！(～￣▽￣)～\n\n（您可以随时在帮助 > 捐赠中找到该选项。）")
 					donate_banner_time = date_inc_month(date_current_datetime(), 1);
 					donate_banner = 0;
@@ -34,7 +34,7 @@ function draw_window_greeting() {
 		x1 -= 700;
 		y1 -= 210 - 100;
 	}
-	
+
 	draw_window(x1, y1, x1 + 700, y1 + 430)
 	draw_sprite_ext(spr_logo, window_icon, x1 + 64, y1 + 50, 1, 1, 0, c_white, draw_get_alpha())
 	draw_theme_font(font_info_med_bold)
@@ -42,33 +42,33 @@ function draw_window_greeting() {
 	draw_theme_font(font_main_bold)
 	var dev_label_offset = (is_prerelease) ? 15 : 0
 	if (RUN_FROM_IDE != 1) {
-		if (language != 1) draw_text_center(x1 + 132, y1 + 248 + dev_label_offset, "Running from the GameMaker IDE.")
-		else draw_text_center(x1 + 132, y1 + 248 + dev_label_offset, "在 IDE 中运行")	
+		if (language != 1) draw_text_center(x1 + 132, y1 + 248 + dev_label_offset, localize_ko("Running from the GameMaker IDE."))
+		else draw_text_center(x1 + 132, y1 + 248 + dev_label_offset, "在 IDE 中运行")
 	} else if (check_update) {
 		if (update_success) {
 	        draw_set_color(c_lime)
-			if (language != 1) draw_text_center(x1 + 132, y1 + 248 + dev_label_offset, "Successfully updated!")
+			if (language != 1) draw_text_center(x1 + 132, y1 + 248 + dev_label_offset, localize_ko("Successfully updated!"))
 	        else draw_text_center(x1 + 132, y1 + 248 + dev_label_offset, "更新成功！")
 	    } else {
 		    if (update = -1) {
 		        draw_set_color(c_red)
-				if (language != 1) draw_text_center(x1 + 132, y1 + 248 + dev_label_offset, "Could not check for updates")
+				if (language != 1) draw_text_center(x1 + 132, y1 + 248 + dev_label_offset, localize_ko("Could not check for updates"))
 		        else draw_text_center(x1 + 132, y1 + 248 + dev_label_offset, "检查更新失败")
 		    }
 		    else if (update = 0) {
 		        //draw_set_color(c_gray)
-				if (language != 1) draw_text_center(x1 + 132, y1 + 248 + dev_label_offset, "Checking for updates...")
+				if (language != 1) draw_text_center(x1 + 132, y1 + 248 + dev_label_offset, localize_ko("Checking for updates..."))
 		        else draw_text_center(x1 + 132, y1 + 248 + dev_label_offset, "正在检查更新……")
 		    }
 		    else if (update = 1) {
 		        draw_set_color(33023)
-				if (language != 1) draw_text_center(x1 + 132, y1 + 248 + dev_label_offset, "There is an update available!")
+				if (language != 1) draw_text_center(x1 + 132, y1 + 248 + dev_label_offset, localize_ko("There is an update available!"))
 		        else draw_text_center(x1 + 132, y1 + 248 + dev_label_offset, "有新版本！")
 		    }
 		    else if (update = 2) {
 		        draw_set_color(c_green)
 				if (theme == 2) draw_set_color(c_lime)
-				if (language != 1) draw_text_center(x1 + 132, y1 + 248 + dev_label_offset, "You are using the latest version!")
+				if (language != 1) draw_text_center(x1 + 132, y1 + 248 + dev_label_offset, localize_ko("You are using the latest version!"))
 		        else draw_text_center(x1 + 132, y1 + 248 + dev_label_offset, "已为最新版本！")
 		    }
 		}
@@ -80,17 +80,17 @@ function draw_window_greeting() {
 	draw_theme_font(font_main)
 	draw_theme_color()
 	if (RUN_FROM_IDE != 1) {
-		if (language != 1) draw_text_center(x1 + 132, y1 + 233, "Version Local Release")
+		if (language != 1) draw_text_center(x1 + 132, y1 + 233, localize_ko("Version Local Release"))
 		else draw_text_center(x1 + 132, y1 + 233, "本地版本")
 	} else {
-		if (language != 1) draw_text_center(x1 + 132, y1 + 233, "Version " + version + " - Released " + version_date)
+		if (language != 1) draw_text_center(x1 + 132, y1 + 233, localize_ko("Version ") + version + localize_ko(" - Released ") + version_date)
 		else draw_text_center(x1 + 132, y1 + 233, "版本 " + version + " - 发布于 " + version_date)
 	}
 	if (is_prerelease) {
-		if (language != 1) draw_text_center(x1 + 132, y1 + 248, "(Development version)")
+		if (language != 1) draw_text_center(x1 + 132, y1 + 248, localize_ko("(Development version)"))
 		else draw_text_center(x1 + 132, y1 + 248, "（开发版本）")
 	}
-	if (language != 1) draw_text_center(x1 + 132, y1 + 280 + dev_label_offset, "An open-source Minecraft music maker")
+	if (language != 1) draw_text_center(x1 + 132, y1 + 280 + dev_label_offset, localize_ko("An open-source Minecraft music maker"))
 	else draw_text_center(x1 + 132, y1 + 280 + dev_label_offset, "一个开源的 Minecraft 音乐制作软件")
 	draw_set_color(make_color_rgb(62, 144, 255))
 	draw_text_url(x1 + 132, y1 + 296 + dev_label_offset, "noteblock.studio", link_website)
@@ -99,7 +99,7 @@ function draw_window_greeting() {
 	//else draw_text_center(x1 + 132, y1 + 340 + dev_label_offset, "原作者 David Andrei")
 	//draw_text_url(x1 + 132, y1 + 356 + dev_label_offset, "stuffbydavid.com", "https://www.stuffbydavid.com")
 	var theme_pipe_offset = (theme != 3) * 2 // move |'s to the left by 2px to compensate for wider font
-	if (language != 1) draw_text_center(x1 + 132, y1 + 340 + dev_label_offset, "Follow OpenNBS:")
+	if (language != 1) draw_text_center(x1 + 132, y1 + 340 + dev_label_offset, localize_ko("Follow OpenNBS:"))
 	else draw_text_center(x1 + 132, y1 + 340 + dev_label_offset, "关注 OpenNBS：")
 	draw_text_url(x1 + 80, y1 + 356 + dev_label_offset, "Discord", link_discord)
 	draw_text_dynamic(x1 + 104 - theme_pipe_offset, y1 + 356 + dev_label_offset, "|")
@@ -111,10 +111,10 @@ function draw_window_greeting() {
 	draw_text_dynamic(x1 + 131 - (language == 1) * 22 - theme_pipe_offset, y1 + 372 + dev_label_offset, "|")
 	if (language == 1) draw_text_url(x1 + 133, y1 + 372 + dev_label_offset, "QQ 群", link_qq_group)
 	if (language == 1) draw_text_dynamic(x1 + 131 + 22 - theme_pipe_offset, y1 + 372 + dev_label_offset, "|")
-	if (language != 1) draw_text_url(x1 + 156, y1 + 372 + dev_label_offset, "Donate", link_donate)
+	if (language != 1) draw_text_url(x1 + 156, y1 + 372 + dev_label_offset, localize_ko("Donate"), link_donate)
 	else draw_text_url(x1 + 156 + 15, y1 + 372 + dev_label_offset, "捐赠", link_donate)
 	draw_set_color(c_white)
-	
+
 	if (fdark && theme = 3) draw_set_color(0)
 	draw_line(x1 + 270, y1 + 24, x1 + 270, y1 + 396)
 	draw_set_alpha(0.25)
@@ -124,7 +124,7 @@ function draw_window_greeting() {
 	draw_set_alpha(1)
 	if (theme = 3) draw_set_alpha(windowalpha)
 	draw_theme_color()
-	if (language != 1) draw_text_dynamic(x1 + 290, y1 + 20, "What do you want to do?")
+	if (language != 1) draw_text_dynamic(x1 + 290, y1 + 20, localize_ko("What do you want to do?"))
 	else draw_text_dynamic(x1 + 290, y1 + 20, "要做什么？")
 
 	b = x1 + 300
@@ -145,7 +145,7 @@ function draw_window_greeting() {
 			else draw_sprite_ext(spr_bigicons_d_hires, 0, b + (a > 1), c + (a > 1), 0.25, 0.25, 0, -1, draw_get_alpha())
 		}
 	}
-	if (language != 1) draw_text_dynamic(b + 48 + (a > 1), c + 9 + (a > 1), "Create a new song")
+	if (language != 1) draw_text_dynamic(b + 48 + (a > 1), c + 9 + (a > 1), localize_ko("Create a new song"))
 	else draw_text_dynamic(b + 48 + (a > 1), c + 9 + (a > 1), "创建歌曲")
 	if (a = 2 && mouse_check_button_released(mb_left) && (windowopen = 1 || theme != 3)) {
 		if (windowsound && theme = 3) play_sound(soundgoback, 45, 100, 100, 0)
@@ -170,7 +170,7 @@ function draw_window_greeting() {
 			else draw_sprite_ext(spr_bigicons_d_hires, 1, b + (a > 1), c + (a > 1), 0.25, 0.25, 0, -1, draw_get_alpha())
 		}
 	}
-	if (language != 1) draw_text_dynamic(b + 48 + (a > 1), c + 9 + (a > 1), "Load a song")
+	if (language != 1) draw_text_dynamic(b + 48 + (a > 1), c + 9 + (a > 1), localize_ko("Load a song"))
 	else draw_text_dynamic(b + 48 + (a > 1), c + 9 + (a > 1), "打开歌曲")
 	if (a = 2 && mouse_check_button_released(mb_left)) {
 		if (windowsound && theme = 3) play_sound(soundinvoke, 45, 100, 50, 0)
@@ -185,7 +185,7 @@ function draw_window_greeting() {
 	    if (recent_song[a] = "") break
 	    if (a = 0) {
 	        c += 36
-	        if (language != 1) draw_text_dynamic(b - 20, c, "Recent songs:")
+	        if (language != 1) draw_text_dynamic(b - 20, c, localize_ko("Recent songs:"))
 	        else draw_text_dynamic(b - 20, c, "最近歌曲：")
 	        c += 16
 	    }
@@ -196,7 +196,7 @@ function draw_window_greeting() {
 	    if (m > 0 && mouse_check_button_released(mb_left)) {
 			if (windowsound && theme = 3) play_sound(soundinvoke, 45, 100, 50, 0)
 	        if (!file_exists_lib(recent_song[a])) {
-	            if (language != 1) message("Could not find file:\n" + recent_song[a], "Error")
+	            if (language != 1) message(localize_ko("Could not find file:\n") + recent_song[a], localize_ko("Error"))
 	            else message("找不到文件：\n" + recent_song[a], "错误")
 	            for (d = 0; d < 10; d += 1) {
 	                if (recent_song[d] = recent_song[a]) {
@@ -227,7 +227,7 @@ function draw_window_greeting() {
 	if (recent_song[0] = "")
 	 c += 34
 	b = x1 + 300
-	
+
 	// Note Block World button
 	a = mouse_rectangle(b, c, 224 * 1.5, 32)
 	a += (a && (mouse_check_button(mb_left) || mouse_check_button_released(mb_left)))
@@ -244,9 +244,9 @@ function draw_window_greeting() {
 			else draw_sprite_ext(spr_bigicons_d_hires, 6, b + (a > 1), c + (a > 1), 0.25, 0.25, 0, -1, draw_get_alpha())
 		}
 	}
-	if (language != 1) draw_text_dynamic(b + 48 + (a > 1), c + 9 + (a > 1) - 7, "Browse songs made by the community");
+	if (language != 1) draw_text_dynamic(b + 48 + (a > 1), c + 9 + (a > 1) - 7, localize_ko("Browse songs made by the community"));
 	else draw_text_dynamic(b + 48 + (a > 1), c + 9 + (a > 1) - 7, "浏览社区制作的歌曲");
-	
+
 	// New badge
 	draw_set_color(accent[4]);
 	b += (-16);
@@ -256,13 +256,13 @@ function draw_window_greeting() {
 	draw_circle(b + 300 + 10, c, 8, false);
 	draw_set_color(c_white);
 	draw_theme_font(font_main_bold);
-	draw_text_dynamic(b + 300 - 14, c - 6, "NEW!");
+	draw_text_dynamic(b + 300 - 14, c - 6, localize_ko("NEW!"));
 	draw_theme_font(font_main);
 	b -= (-16);
 	c -= 8;
-	
+
 	draw_set_color(c_gray);
-	if (language != 1) draw_text_dynamic(b + 48 + (a > 1), c + 9 + (a > 1) + 7, "Go to noteblock.world");
+	if (language != 1) draw_text_dynamic(b + 48 + (a > 1), c + 9 + (a > 1) + 7, localize_ko("Go to noteblock.world"));
 	else draw_text_dynamic(b + 48 + (a > 1), c + 9 + (a > 1) + 7, "前往 noteblock.world");
 	draw_theme_color();
 	if (a = 2 && mouse_check_button_released(mb_left)) {
@@ -271,7 +271,7 @@ function draw_window_greeting() {
 	    return 1;
 	}
 	c += 44;
-	
+
 	a = mouse_rectangle(b, c, 224, 32)
 	a += (a && (mouse_check_button(mb_left) || mouse_check_button_released(mb_left)))
 	if (!hires || theme != 3) draw_sprite(spr_frame2, a + 3 * theme + 3 * (fdark && theme = 3), b, c)
@@ -287,7 +287,7 @@ function draw_window_greeting() {
 			else draw_sprite_ext(spr_bigicons_d_hires, 2, b + (a > 1), c + (a > 1), 0.25, 0.25, 0, -1, draw_get_alpha())
 		}
 	}
-	if (language != 1) draw_text_dynamic(b + 48 + (a > 1), c + 9 + (a > 1), "Generate song out of MIDI file")
+	if (language != 1) draw_text_dynamic(b + 48 + (a > 1), c + 9 + (a > 1), localize_ko("Generate song out of MIDI file"))
 	else draw_text_dynamic(b + 48 + (a > 1), c + 9 + (a > 1), "从 MIDI 文件生成")
 	if (a = 2 && mouse_check_button_released(mb_left)) {
 		if (windowsound && theme = 3) play_sound(soundinvoke, 45, 100, 50, 0)
@@ -301,7 +301,7 @@ function draw_window_greeting() {
 		window_set_cursor(curs)
 		if (array_length(text_mouseover) = 0) window_set_cursor(cr_default)
 	}
-	if (!isplayer) if (draw_icon(4, x1 + 700 - 40, y1 + 430 - 40, condstr(language != 1, "Player Mode", "播放器模式"), 0, 0, 1)) {
+	if (!isplayer) if (draw_icon(4, x1 + 700 - 40, y1 + 430 - 40, condstr(language != 1, localize_ko("Player Mode"), "播放器模式"), 0, 0, 1)) {
 		isplayer = 1 //Go into player mode if button is pressed in the greeting screen
 		//window_set_size(floor(800 * window_scale), floor(500 * window_scale))
 		if (!port_taken) network_destroy(server_socket)

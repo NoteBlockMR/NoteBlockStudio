@@ -10,7 +10,7 @@ function draw_window_songinfo() {
 	col[2] = 16737419
 
 	str[0] = song_name
-	if (language != 1) {if (str[0] = "") str[0] = "Untitled song"}
+	if (language != 1) {if (str[0] = "") str[0] = localize_ko("Untitled song")}
 	else {if (str[0] = "") str[0] = "无名歌曲"}
 
 	str[1] = song_author
@@ -25,10 +25,10 @@ function draw_window_songinfo() {
 	w6 = string_width_dynamic(str[3])
 	if (language != 1) {
 	draw_theme_font(font_info_med)
-	w1 = string_width_dynamic("Created by ")
-	w3 = string_width_dynamic("Originally created by ")
+	w1 = string_width_dynamic(localize_ko("Created by "))
+	w3 = string_width_dynamic(localize_ko("Originally created by "))
 	draw_theme_font(font_main)
-	w5 = string_width_dynamic("Imported from ")
+	w5 = string_width_dynamic(localize_ko("Imported from "))
 	} else {
 	draw_theme_font(font_info_med)
 	w1 = string_width_dynamic("作者：")
@@ -71,7 +71,7 @@ function draw_window_songinfo() {
 	yy = y1 + 16
 	if (song_author != "") {
 	    yy += 32
-	    if (language != 1) draw_text_dynamic(x1 + floor(w / 2 - w2 / 2), yy, "Created by ")
+	    if (language != 1) draw_text_dynamic(x1 + floor(w / 2 - w2 / 2), yy, localize_ko("Created by "))
 	    else draw_text_dynamic(x1 + floor(w / 2 - w2 / 2), yy, "作者：")
 	    draw_theme_font(font_info_med_bold)
 	    draw_text_dynamic(x1 + floor(w / 2 + w1 / 2) + 1, yy + 1, str[1])
@@ -84,7 +84,7 @@ function draw_window_songinfo() {
 		if (song_author = "") yy += 12
 	    draw_theme_font(font_info_med)
 	    draw_theme_color()
-	    if (language != 1) draw_text_dynamic(x1 + floor(w / 2 - w4 / 2), yy, "Originally created by ")
+	    if (language != 1) draw_text_dynamic(x1 + floor(w / 2 - w4 / 2), yy, localize_ko("Originally created by "))
 	    else draw_text_dynamic(x1 + floor(w / 2 - w4 / 2), yy, "原作者：")
 	    draw_theme_font(font_info_med_bold)
 	    draw_text_dynamic(x1 + floor(w / 2 + w3 / 2) + 1, yy + 1, str[2])
@@ -92,22 +92,22 @@ function draw_window_songinfo() {
 		if (theme = 3) draw_set_color(accent[3])
 	    draw_text_dynamic(x1 + floor(w / 2 + w3 / 2), yy, str[2])
 	}
-	
+
 	draw_theme_color()
 	if (song_midi != "") {
 	    draw_theme_font(font_main)
-		if (language != 1) a = string_width_dynamic("Imported from ")
+		if (language != 1) a = string_width_dynamic(localize_ko("Imported from "))
 		else a = string_width_dynamic("导入自：")
 		draw_theme_font(font_main_bold)
 		b = string_width_dynamic(song_midi)
 		draw_theme_font(font_main_bold)
 		draw_text_dynamic(x1 + floor(w / 2 + a / 2), y1 + h - 34 - 32 * (window = w_songinfoedit), string(song_midi))
 		draw_theme_font(font_main)
-		if (language != 1) draw_text_dynamic(x1 + floor(w / 2 - b / 2), y1 + h - 34 - 32 * (window = w_songinfoedit), "Imported from ")
+		if (language != 1) draw_text_dynamic(x1 + floor(w / 2 - b / 2), y1 + h - 34 - 32 * (window = w_songinfoedit), localize_ko("Imported from "))
 		else draw_text_dynamic(x1 + floor(w / 2 - b / 2), y1 + h - 34 - 32 * (window = w_songinfoedit), "导入自：")
 	}
 	draw_theme_font(font_main)
-	if (language != 1) draw_text_dynamic(x1 + floor(w / 2), y1 + h - 20 - 32 * (window = w_songinfoedit), condstr(window = w_songinfo, "Click anywhere to dismiss") + condstr(window = w_songinfoedit, "This message is shown when the file is opened."))
+	if (language != 1) draw_text_dynamic(x1 + floor(w / 2), y1 + h - 20 - 32 * (window = w_songinfoedit), condstr(window = w_songinfo, localize_ko("Click anywhere to dismiss")) + condstr(window = w_songinfoedit, localize_ko("This message is shown when the file is opened.")))
 	else draw_text_dynamic(x1 + floor(w / 2), y1 + h - 20 - 32 * (window = w_songinfoedit), condstr(window = w_songinfo, "点击任意位置以关闭") + condstr(window = w_songinfoedit, "此信息在打开文件时显示。"))
 	draw_set_halign(fa_left)
 	if (song_desc != "") {
@@ -129,8 +129,8 @@ function draw_window_songinfo() {
 
 	if (window = w_songinfoedit) {
 		if (language != 1) {
-	    if (draw_button2(x1 + floor(w / 2) - 70, y1 + h - 30, 70, "Edit")) window = w_properties
-	    if (draw_button2(x1 + floor(w / 2) + 5, y1 + h - 30, 70, "OK") && (windowopen = 1 || theme != 3)) windowclose = 1
+	    if (draw_button2(x1 + floor(w / 2) - 70, y1 + h - 30, 70, localize_ko("Edit"))) window = w_properties
+	    if (draw_button2(x1 + floor(w / 2) + 5, y1 + h - 30, 70, localize_ko("OK")) && (windowopen = 1 || theme != 3)) windowclose = 1
 		} else {
 	    if (draw_button2(x1 + floor(w / 2) - 70, y1 + h - 30, 70, "修改")) window = w_properties
 	    if (draw_button2(x1 + floor(w / 2) + 5, y1 + h - 30, 70, "确定") && (windowopen = 1 || theme != 3)) windowclose = 1

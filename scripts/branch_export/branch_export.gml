@@ -1,7 +1,7 @@
 function branch_export() {
 	// branch_export()
 	var a, b, c, o
-	var fn = string(get_save_filename_ext("Minecraft Schematics (*.schematic)|*.schematic", filename_new_ext(filename, "") + ".schematic", "", "Export Branch Schematic"))
+	var fn = string(get_save_filename_ext(localize_ko("Minecraft Schematics (*.schematic)|*.schematic"), filename_new_ext(filename, "") + ".schematic", "", localize_ko("Export Branch Schematic")))
 	if (fn = "") return 0
 	o = obj_controller
 	window = -1
@@ -25,7 +25,7 @@ function branch_export() {
 	if sch_exp_circuitry = 1 {
 		// Setup Main Line.
 
-		if sch_exp_velocity = 1 lineloc = 17 else lineloc = 1 
+		if sch_exp_velocity = 1 lineloc = 17 else lineloc = 1
 		schematic_fill(mySchematic, lineloc, 0, 0, lineloc, sch_len - 1, 0, sch_exp_circuit_block, sch_exp_circuit_data)
 
 		// Repeater / Block Pattern
@@ -65,13 +65,13 @@ function branch_export() {
 						break;
 					}
 				} else {
-					message("Error: Some notes are out of range!\nFix the fine pitch, or change it to a custom instrument with a higher/lower sound.", "Error")
+					message(localize_ko("Error: Some notes are out of range!\nFix the fine pitch, or change it to a custom instrument with a higher/lower sound."), localize_ko("Error"))
 					window = w_branch_export
 					return 0
 				}
-			} 
+			}
 			if accepted = 1 {
-				nblocknote[a, ticks] = o.song_key[sch_exp_range_start + b, sch_exp_layer[a]] 
+				nblocknote[a, ticks] = o.song_key[sch_exp_range_start + b, sch_exp_layer[a]]
 				nblockins[a, ticks] = ds_list_find_index(o.instrument_list, o.song_ins[sch_exp_range_start + b, sch_exp_layer[a]])
 				nblockvel[a, ticks] = o.song_vel[sch_exp_range_start + b, sch_exp_layer[a]]
 				nblockkey[a, ticks] = nblocknote[a, ticks] - 33
@@ -106,7 +106,7 @@ function branch_export() {
 					noteblocky[a, c] = 1
 					noteblockz[a, c] = lineloc + offset
 				} else { // Calulate note block Z and X positions, populate them into an array, then lay down the circuitry.
-					zvel = round(32 - nblockvel[a, c]/100 * 32) + 1 
+					zvel = round(32 - nblockvel[a, c]/100 * 32) + 1
 					if zvel <= 18 && zvel >= 16 zvel = 15
 					if zvel > 17 direc = -1 else direc = 1
 					noteblockzvel[a, c] = zvel
@@ -143,7 +143,7 @@ function branch_export() {
 							}
 						}
 						if layer_correction = 1 { // Alter layer 0's position and add connecting redstone.
-							freespace ++ 
+							freespace ++
 							schematic_cell_set(mySchematic, noteblockzvel[0, c], b, 1, sch_exp_circuit_block, sch_exp_circuit_data)
 							schematic_cell_set(mySchematic, noteblockzvel[0, c], b, 2, 55, 0)
 							schematic_cell_set(mySchematic, noteblockzvel[0, c], b + freespace, 1, 25, 0)
@@ -188,7 +188,7 @@ function branch_export() {
 	schematic_save(mySchematic, fn);
 	schematic_destroy(mySchematic);
 	schematic_end();
-	message("Schematic saved!", "Schematic Export")
+	message(localize_ko("Schematic saved!"), localize_ko("Schematic Export"))
 	window = w_branch_export
 
 

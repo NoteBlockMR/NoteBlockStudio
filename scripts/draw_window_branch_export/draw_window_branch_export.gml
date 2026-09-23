@@ -15,21 +15,21 @@ function draw_window_branch_export() {
 	draw_theme_color()
 	}
 	draw_theme_font(font_main_bold)
-	if (language != 1) draw_text_dynamic(x1 + 8, y1 + 8, "Branch Export")
+	if (language != 1) draw_text_dynamic(x1 + 8, y1 + 8, localize_ko("Branch Export"))
 	else draw_text_dynamic(x1 + 8, y1 + 8, "导出分支")
 	draw_theme_font(font_main)
 
 	b = 8
 	if (language != 1) {
-	str[0] = "Design"
-	str[1] = "Blocks"
+	str[0] = localize_ko("Design")
+	str[1] = localize_ko("Blocks")
 	} else {
 	str[0] = "设计"
 	str[1] = "方块"
 	}
 	nsel = -1
 	menun = -1
-	if (language != 1) {if (draw_checkbox(x1 + 12, y1 + 374, sch_br_remember, "Remember changes", "Whether to use these settings the\nnext time you export a branch.", false, true) && wmenu = 0) sch_br_remember=!sch_br_remember}
+	if (language != 1) {if (draw_checkbox(x1 + 12, y1 + 374, sch_br_remember, localize_ko("Remember changes"), localize_ko("Whether to use these settings the\nnext time you export a branch."), false, true) && wmenu = 0) sch_br_remember=!sch_br_remember}
 	else {if (draw_checkbox(x1 + 12, y1 + 374, sch_br_remember, "记住我的更改", "下次导出分支时是否使用同样的设定。", false, true) && wmenu = 0) sch_br_remember=!sch_br_remember}
 
 	if (theme = 1) draw_window(x1 + 4, y1 + 45, x1 + 496 + 50, y1 + 364)
@@ -49,7 +49,7 @@ function draw_window_branch_export() {
 	}
 	if (theme = 0 || theme = 3) {
 	    draw_set_color(c_white)
-	    if (theme != 3) draw_rectangle(x1 + 6, y1 + 46, x1 + 494 + 50, y1 + 362, 0) 
+	    if (theme != 3) draw_rectangle(x1 + 6, y1 + 46, x1 + 494 + 50, y1 + 362, 0)
 	    draw_set_color(make_color_rgb(137, 140, 149))
 	    if (theme != 3) draw_rectangle(x1 + 6, y1 + 46, x1 + 494 + 50, y1 + 362, 1)
 	    draw_set_color(c_white)
@@ -75,7 +75,7 @@ function draw_window_branch_export() {
 	    draw_text_dynamic(x1 + stabx + 8, y1 + 28, str[selected_tab_sch])
 	}else{
 		draw_set_color(c_dark)
-	    draw_rectangle(x1 + 6, y1 + 46, x1 + 494 + 50, y1 + 362, 0) 
+	    draw_rectangle(x1 + 6, y1 + 46, x1 + 494 + 50, y1 + 362, 0)
 	    draw_set_color(make_color_rgb(137, 140, 149))
 	    draw_rectangle(x1 + 6, y1 + 46, x1 + 494 + 50, y1 + 362, 1)
 	    draw_set_color(c_dark)
@@ -94,42 +94,42 @@ function draw_window_branch_export() {
 	if (selected_tab_sch = 0) {
 		if (language != 1) {
 	    draw_sprite(spr_schematic_br, 0, x1 + 15, y1 + 56)
-	    draw_text_dynamic(x1 + 16, y1 + 220, "Layout:")
-		if (draw_radiobox(x1 + 32, y1 + 240, sch_exp_stereo = 4, "All", "Exports all notes.")) sch_exp_stereo = 4
-		if (draw_radiobox(x1 + 32, y1 + 260, sch_exp_stereo = 3, "Center", "Only exports notes which have no panning values.")) sch_exp_stereo = 3
-	    if (draw_radiobox(x1 + 32, y1 + 280, sch_exp_stereo = 2, "Left", "Only exports notes that have left stereo values.")) sch_exp_stereo = 2
-	    if (draw_radiobox(x1 + 32, y1 + 300, sch_exp_stereo = 1, "Right", "Only exports notes that have right stereo values.")) sch_exp_stereo = 1
-	
-		draw_text_dynamic(x1 + 170, y1 + 220, "Polyphony:")
+	    draw_text_dynamic(x1 + 16, y1 + 220, localize_ko("Layout:"))
+		if (draw_radiobox(x1 + 32, y1 + 240, sch_exp_stereo = 4, localize_ko("All"), localize_ko("Exports all notes."))) sch_exp_stereo = 4
+		if (draw_radiobox(x1 + 32, y1 + 260, sch_exp_stereo = 3, localize_ko("Center"), localize_ko("Only exports notes which have no panning values."))) sch_exp_stereo = 3
+	    if (draw_radiobox(x1 + 32, y1 + 280, sch_exp_stereo = 2, localize_ko("Left"), localize_ko("Only exports notes that have left stereo values."))) sch_exp_stereo = 2
+	    if (draw_radiobox(x1 + 32, y1 + 300, sch_exp_stereo = 1, localize_ko("Right"), localize_ko("Only exports notes that have right stereo values."))) sch_exp_stereo = 1
+
+		draw_text_dynamic(x1 + 170, y1 + 220, localize_ko("Polyphony:"))
 		sch_exp_polyphony = median(1, draw_dragvalue(18, x1 + 260, y1 + 220, sch_exp_polyphony, 1), 3)
-	    draw_text_dynamic(x1 + 170, y1 + 240, "Main layer:")
+	    draw_text_dynamic(x1 + 170, y1 + 240, localize_ko("Main layer:"))
 	    sch_exp_layer1 = median(1, draw_dragvalue(15, x1 + 260, y1 + 240, sch_exp_layer1, 1), sch_exp_maxheight[0] + 1)
 		sch_exp_layer_index[0] = sch_exp_layer1
-		draw_text_dynamic(x1 + 170, y1 + 260, "Chord layer 1:")
-		draw_text_dynamic(x1 + 170, y1 + 280, "Chord layer 2:")
+		draw_text_dynamic(x1 + 170, y1 + 260, localize_ko("Chord layer 1:"))
+		draw_text_dynamic(x1 + 170, y1 + 280, localize_ko("Chord layer 2:"))
 		if (sch_exp_polyphony > 1 ) {
 			sch_exp_layer2 = median(1, draw_dragvalue(16, x1 + 260, y1 + 260, sch_exp_layer2, 1), sch_exp_maxheight[0] + 1)
 			sch_exp_layer_index[1] = sch_exp_layer2
 		} else {
-			draw_text_dynamic(x1 + 260, y1 + 260, "None")
+			draw_text_dynamic(x1 + 260, y1 + 260, localize_ko("None"))
 		}
 		if sch_exp_polyphony > 2 {
 			sch_exp_layer3 = median(1, draw_dragvalue(17, x1 + 260, y1 + 280, sch_exp_layer3, 1), sch_exp_maxheight[0] + 1)
 			sch_exp_layer_index[2] = sch_exp_layer3
 		} else {
-			draw_text_dynamic(x1 + 260, y1 + 280, "None")
+			draw_text_dynamic(x1 + 260, y1 + 280, localize_ko("None"))
 		}
-	    if (draw_checkbox(x1 + 170, y1 + 300, sch_exp_velocity, "Enable velocity", "Whether to position the note blocks differently due to their velocity.\nIt's recommended that each layer's velocity should be the same when polyphony is higher than 1.", false, true)) sch_exp_velocity=!sch_exp_velocity
+	    if (draw_checkbox(x1 + 170, y1 + 300, sch_exp_velocity, localize_ko("Enable velocity"), localize_ko("Whether to position the note blocks differently due to their velocity.\nIt's recommended that each layer's velocity should be the same when polyphony is higher than 1."), false, true)) sch_exp_velocity=!sch_exp_velocity
 		if sch_exp_velocity = 1 var schwidth = 35 else schwidth = 1
 		if sch_exp_polyphony > 1 && sch_exp_velocity = 0 var schwidth = 3
-	    if (draw_checkbox(x1 + 170, y1 + 320, sch_exp_circuitry, "Export circuitry", "Whether to export the ground, repeaters, and redstone.", true, true)) sch_exp_circuitry=!sch_exp_circuitry
-		draw_text_dynamic(x1 + 380, y1 + 240 + 16, "Size:")
+	    if (draw_checkbox(x1 + 170, y1 + 320, sch_exp_circuitry, localize_ko("Export circuitry"), localize_ko("Whether to export the ground, repeaters, and redstone."), true, true)) sch_exp_circuitry=!sch_exp_circuitry
+		draw_text_dynamic(x1 + 380, y1 + 240 + 16, localize_ko("Size:"))
 	    draw_set_halign(fa_right)
 	    draw_text_dynamic(x1 + 520, y1 + 240 + 16, string(enda * 2 + 4) + "x" + string(2) + "x" + string(schwidth))
 		draw_set_halign(fa_left)
-		draw_text_dynamic(x1 + 380, y1 + 280, "Range:")
-		sch_exp_range_start = draw_inputbox(55,x1 + 380, y1 + 300,40,sch_exp_range_start,"Start Tick")
-		sch_exp_range_end = draw_inputbox(56,x1 + 425, y1 + 300,40,sch_exp_range_end,"End Tick")
+		draw_text_dynamic(x1 + 380, y1 + 280, localize_ko("Range:"))
+		sch_exp_range_start = draw_inputbox(55,x1 + 380, y1 + 300,40,sch_exp_range_start,localize_ko("Start Tick"))
+		sch_exp_range_end = draw_inputbox(56,x1 + 425, y1 + 300,40,sch_exp_range_end,localize_ko("End Tick"))
 	    draw_set_halign(fa_left)
 		} else {
 		draw_sprite(spr_schematic_br, 0, x1 + 15, y1 + 56)
@@ -138,7 +138,7 @@ function draw_window_branch_export() {
 		if (draw_radiobox(x1 + 32, y1 + 260, sch_exp_stereo = 3, "中间", "只导出没有立体声的音符。")) sch_exp_stereo = 3
 	    if (draw_radiobox(x1 + 32, y1 + 280, sch_exp_stereo = 2, "左部分", "只导出偏向左声道的音符。")) sch_exp_stereo = 2
 	    if (draw_radiobox(x1 + 32, y1 + 300, sch_exp_stereo = 1, "右部分", "只导出偏向右声道的音符。")) sch_exp_stereo = 1
-	
+
 		draw_text_dynamic(x1 + 170, y1 + 220, "复音数：")
 		sch_exp_polyphony = median(1, draw_dragvalue(18, x1 + 260, y1 + 220, sch_exp_polyphony, 1), 3)
 	    draw_text_dynamic(x1 + 170, y1 + 240, "主层数：")
@@ -184,14 +184,14 @@ function draw_window_branch_export() {
 	    }
 		if (language != 1) {
 	    tabs = 3
-	    tabstr[0] = "Instrument"
-	    tabtip[0] = "The name of the instrument."
+	    tabstr[0] = localize_ko("Instrument")
+	    tabtip[0] = localize_ko("The name of the instrument.")
 	    tabw[0] = 252
-	    tabstr[1] = "Block"
-	    tabtip[1] = "The ID of the block that should be placed\nbelow note blocks of the instrument."
+	    tabstr[1] = localize_ko("Block")
+	    tabtip[1] = localize_ko("The ID of the block that should be placed\nbelow note blocks of the instrument.")
 	    tabw[1] = 60
-	    tabstr[2] = "Block name"
-	    tabtip[2] = "The name of the block that should be\nplaced below note blocks of the instrument."
+	    tabstr[2] = localize_ko("Block name")
+	    tabtip[2] = localize_ko("The name of the block that should be\nplaced below note blocks of the instrument.")
 	    tabw[2] = 220
 		} else {
 		tabs = 3
@@ -233,10 +233,10 @@ function draw_window_branch_export() {
 	        xx -= tabw[a] - 1
 	    }
 	    draw_theme_color()
-	
-	    if (language != 1) draw_text_dynamic(x1 + 16, y1 + 300, "Block for circuitry: ")
+
+	    if (language != 1) draw_text_dynamic(x1 + 16, y1 + 300, localize_ko("Block for circuitry: "))
 	    else draw_text_dynamic(x1 + 16, y1 + 300, "电路所用方块：")
-    
+
 	    draw_set_color(c_white)
 		if(theme = 2 || (fdark && theme = 3)) draw_set_color(c_dark)
 	    draw_rectangle(x1 + 200, y1 + 265 + 30, x1 + 200 + 140, y1 + 265 + 21 + 30, 0)
@@ -245,22 +245,22 @@ function draw_window_branch_export() {
 	        menun = 1
 	        menua = 1
 	    }
-	    if (language != 1) popup_set_window(x1 + 200, y1 + 265 + 30, 140, 21, "The block that should be used for the circuitry.")
+	    if (language != 1) popup_set_window(x1 + 200, y1 + 265 + 30, 140, 21, localize_ko("The block that should be used for the circuitry."))
 	    else popup_set_window(x1 + 200, y1 + 265 + 30, 140, 21, "为电路用的方块。")
 	    draw_theme_color()
 	    draw_text_dynamic(x1 + 204, y1 + 264 + 4 + 30, block_get_name(sch_exp_circuit_block, sch_exp_circuit_data))
-	
+
 	}
 	if (language != 1) {
-	if (draw_button2(x1 + 470, y1 + 368, 72, "Export") && wmenu = 0) {
+	if (draw_button2(x1 + 470, y1 + 368, 72, localize_ko("Export")) && wmenu = 0) {
 	    if (sch_exp_totalblocks[sch_exp_includelocked] <= 0) {
-	        message("There are no blocks to export!", "Branch export")
+	        message(localize_ko("There are no blocks to export!"), localize_ko("Branch export"))
 	    } else if sch_exp_range_end = 0 || sch_exp_range_start = "" || sch_exp_range_end = "" {
-			message("Please enter a range!", "Branch export")
+			message(localize_ko("Please enter a range!"), localize_ko("Branch export"))
 		} else if real(sch_exp_range_start) > real(sch_exp_range_end) {
-			message("Starting tick must be lower than ending tick!", "Branch export")
+			message(localize_ko("Starting tick must be lower than ending tick!"), localize_ko("Branch export"))
 		} else if real(sch_exp_range_end) > enda {
-			message("The ending tick is larger than the song!\nThe size of the song is " + string(enda) + ".", "Branch export")
+			message(localize_ko("The ending tick is larger than the song!\nThe size of the song is ") + string(enda) + ".", localize_ko("Branch export"))
 		}
 		else {
 			sch_exp_range_start = real(sch_exp_range_start)
@@ -268,12 +268,12 @@ function draw_window_branch_export() {
 	        branch_export()
 	    }
 	}
-	if (draw_button2(x1 + 470 - 80 * 1, y1 + 368, 72, "Cancel") && wmenu = 0 && (windowopen = 1 || theme != 3)) {
+	if (draw_button2(x1 + 470 - 80 * 1, y1 + 368, 72, localize_ko("Cancel")) && wmenu = 0 && (windowopen = 1 || theme != 3)) {
 		windowclose = 1
 		selected_tab_sch = 0
 	}
-	if (draw_button2(x1 + 470 - 80 * 2, y1 + 368, 72, "Use default") && wmenu = 0) {
-	    if (question("Are you sure?", "Confirm")) reset_schematic_export(1)
+	if (draw_button2(x1 + 470 - 80 * 2, y1 + 368, 72, localize_ko("Use default")) && wmenu = 0) {
+	    if (question(localize_ko("Are you sure?"), localize_ko("Confirm"))) reset_schematic_export(1)
 	}
 	} else {
 	if (draw_button2(x1 + 470, y1 + 368, 72, "导出") && wmenu = 0) {
@@ -374,17 +374,17 @@ function draw_window_branch_export() {
 	        sm = 0
 	        for (a = 0; a < b; a += 1) {
 	            if (block[a, 0] = 35) {
-	                str += "Wool|\\|"
+	                str += localize_ko("Wool|\\|")
 	                for (c = 0; c < 16; c += 1) str += check(sch_exp_ins_block[menub] = 35 && sch_exp_ins_data[menub] = c) + "35, " + string(c) + "$" + block_get_name(35, c) + "|"
 	                str += "/|"
 	                a += 16
 	            } else if (block[a, 0] = 95) {
-	                str += "Stained glass|\\|"
+	                str += localize_ko("Stained glass|\\|")
 	                for (c = 0; c < 16; c += 1) str += check(sch_exp_ins_block[menub] = 95 && sch_exp_ins_data[menub] = c) + "95, " + string(c) + "$" + block_get_name(95, c) + "|"
 	                str += "/|"
 	                a += 16
 	            } else if (block[a, 0] = 159) {
-	                str += "Colored Terracotta|\\|"
+	                str += localize_ko("Colored Terracotta|\\|")
 	                for (c = 0; c < 16; c += 1) str += check(sch_exp_ins_block[menub] = 159 && sch_exp_ins_data[menub] = c) + "159, " + string(c) + "$" + block_get_name(159, c) + "|"
 	                str += "/|"
 	                a += 16
@@ -393,7 +393,7 @@ function draw_window_branch_export() {
 	            }
 	            d++
 	            if (d % 25 = 0 && a < b - 1) {
-	                if (language != 1) str += "-|More...|\\|"
+	                if (language != 1) str += localize_ko("-|More...|\\|")
 	                else str += "-|更多......|\\|"
 	                sm++
 	            }
@@ -422,17 +422,17 @@ function draw_window_branch_export() {
 	        sm = 0
 	        for (a = 0; a < b; a += 1) {
 	            if (block[a, 0] = 35) {
-	                str += "Wool|\\|"
+	                str += localize_ko("Wool|\\|")
 	                for (c = 0; c < 16; c += 1) str += check(c1 = 35 && c2 = c) + "35, " + string(c) + "$" + block_get_name(35, c) + "|"
 	                str += "/|"
 	                a += 16
 	            } else if (block[a, 0] = 95) {
-	                str += "Stained Glass|\\|"
+	                str += localize_ko("Stained Glass|\\|")
 	                for (c = 0; c < 16; c += 1) str += check(c1 = 95 && c2 = c) + "95, " + string(c) + "$" + block_get_name(95, c) + "|"
 	                str += "/|"
 	                a += 16
 	            } else if (block[a, 0] = 159) {
-	                str += "Colored Terracotta|\\|"
+	                str += localize_ko("Colored Terracotta|\\|")
 	                for (c = 0; c < 16; c += 1) str += check(c1 = 159 && c2 = c) + "159, " + string(c) + "$" + block_get_name(159, c) + "|"
 	                str += "/|"
 	                a += 16
@@ -441,7 +441,7 @@ function draw_window_branch_export() {
 	            }
 	            d++
 	            if (d%25 = 0  && a < b - 1) {
-	                if (language != 1) str += "-|More...|\\|"
+	                if (language != 1) str += localize_ko("-|More...|\\|")
 	                else str += "-|更多......|\\|"
 	                sm++
 	            }

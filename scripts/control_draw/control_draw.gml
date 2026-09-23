@@ -7,13 +7,13 @@ function control_draw() {
 	if (1 / currspeed > 100.0) { // Cancel lag compensation if too much time has elapsed (i.e. dragging window, resizing etc.)
 		currspeed = 1.0
 	}
-	
+
 	rw = floor(window_width * (1 / window_scale))
 	rh = floor(window_height * (1 / window_scale))
-	
+
 	var centerx = floor(rw / 2)
 	var centery = floor(rh / 2)
-	
+
 	// Update window scale
 	if (window_scale != prev_scale) {
 		camera_set_view_size(cam_window, rw, rh)
@@ -21,7 +21,7 @@ function control_draw() {
 		msgy = rh * 0.8
 	}
 	prev_scale = window_scale
-	
+
 	if (channelstoggle) channels = 1024
 	else channels = 256
 	audio_channel_num(channels)
@@ -29,17 +29,17 @@ function control_draw() {
 		if (window_icon) window_set_icon_raw(window_handle(), buffer_get_address(icon_buffer), buffer_get_address(icon_size_buffer))
 		else window_reset_icon_raw(window_handle())
 	}
-	
+
 	if (mouse_check_button_pressed(mb_left)) {
 		mousepress_x = mouse_x
 		mousepress_y = mouse_y
 	}
-	
+
 	if (!mouseover) curs = cr_default
 	showmenu = 0
 	cursmarker = 0
 	compx = 160
-	window_set_caption(condstr((song_download_display_name != ""), song_download_display_name, condstr((filename = "" || filename = "-player") && (midiname = "" || !isplayer), condstr(language != 1, "Unsaved song", "新文件")) + condstr(filename != "-player", filename_name(filename)) + condstr((filename = "" || filename = "-player") && midiname != "" && isplayer, midiname) + condstr(changed && filename != "" && filename != "-player", "*")) + " - Note Block Studio" + condstr(isplayer, " - Player Mode"))
+	window_set_caption(condstr((song_download_display_name != ""), song_download_display_name, condstr((filename = "" || filename = "-player") && (midiname = "" || !isplayer), condstr(language != 1, localize_ko("Unsaved song"), "新文件")) + condstr(filename != "-player", filename_name(filename)) + condstr((filename = "" || filename = "-player") && midiname != "" && isplayer, midiname) + condstr(changed && filename != "" && filename != "-player", "*")) + " - Note Block Studio" + condstr(isplayer, localize_ko(" - Player Mode")))
 	// Performance indicator: "(" + string_format(currspeed * 100, 1, 0) + "%) "
 	draw_set_alpha(1)
 	draw_theme_color()
@@ -55,7 +55,7 @@ function control_draw() {
 	if (!isplayer) {
 		work_mins += 1 / (room_speed * 60)  * (1 / currspeed)
 	}
-	
+
 	file_dnd_set_files("*.nbs;*.mid;*.midi;*.nbp", 1, 0, 0)
 	dndfile = file_dnd_get_files()
 
@@ -112,7 +112,7 @@ function control_draw() {
 			if (filename_name(filename) != "") {
 				song_backupname = filename_name(filename_change_ext(filename, ".nbs"));
 			} else {
-				song_backupname = "Unsaved song " + string(song_backupid) + ".nbs"
+				song_backupname = localize_ko("Unsaved song ") + string(song_backupid) + ".nbs"
 			}
 			save_song(backup_directory + song_backupname, true)
 			tonextbackup = backupmins
@@ -123,21 +123,21 @@ function control_draw() {
 	if (keyboard_check_pressed(vk_f11)) {
 		fullscreen = !fullscreen
 		if (language != 1) {
-		if (fullscreen) set_msg("Fullscreen => ON")
-		else set_msg("Fullscreen => OFF")
+		if (fullscreen) set_msg(localize_ko("Fullscreen => ON"))
+		else set_msg(localize_ko("Fullscreen => OFF"))
 		} else {
 		if (fullscreen) set_msg("全屏模式 => 开启")
 		else set_msg("全屏模式 => 关闭")
 		}
 	}
 	}
-	
+
 	// Toggle blackout mode
 	if (keyboard_check_pressed(vk_f10)) {
 		blackout = !blackout
 		if (language != 1) {
-		if (blackout) set_msg("Blackout mode => ON")
-		else set_msg("Blackout mode => OFF")
+		if (blackout) set_msg(localize_ko("Blackout mode => ON"))
+		else set_msg(localize_ko("Blackout mode => OFF"))
 		} else {
 		if (blackout) set_msg("全黑模式 => 开启")
 		else set_msg("全黑模式 => 关闭")
@@ -213,7 +213,7 @@ function control_draw() {
 	        sela = floor((mouse_x - (x1 + 2)) / 32)
 	        selb = floor((mouse_y - (y1 + 34)) / 32)
 	        curs = cr_handpoint
-        
+
 	    }
 	    if (mouse_rectangle(x1 + 2 + floor(marker_pos * 32 - starta * 32) - 8, y1, 16, totalrows * 32 + 32) && mouse_rectangle(x1 + 2, y1 + 2, totalcols * 32, totalrows * 32 + 64) && select = 0 && window = 0) {
 	        cursmarker = 1
@@ -240,12 +240,12 @@ function control_draw() {
 	    }
 	    if (mouse_rectangle(x1 + 2, y1 + 2, totalcols * 32, 32) && window = 0) {
 	        if (select = 0 && playing = 0 && mouse_check_button_pressed(mb_right)) {
-	            if (language != 1) show_menu_ext("section", mouse_x, mouse_y, inactive(!section_exists) + "Remove section|"+
-	                                                inactive(!section_exists || section_start > enda) + "Jump to beginning of section|"+
-	                                                inactive(!section_exists || section_end > enda) + "Jump to ending of section|-|"+
-	                                                inactive(!section_exists) + "Select all blocks in section|-|"+
-	                                                check(marker_start) + "Start playing in section|"+
-	                                                check(marker_end) + "Stop playing after section")
+	            if (language != 1) show_menu_ext("section", mouse_x, mouse_y, inactive(!section_exists) + localize_ko("Remove section|")+
+	                                                inactive(!section_exists || section_start > enda) + localize_ko("Jump to beginning of section|")+
+	                                                inactive(!section_exists || section_end > enda) + localize_ko("Jump to ending of section|-|")+
+	                                                inactive(!section_exists) + localize_ko("Select all blocks in section|-|")+
+	                                                check(marker_start) + localize_ko("Start playing in section|")+
+	                                                check(marker_end) + localize_ko("Stop playing after section"))
 	            else show_menu_ext("section", mouse_x, mouse_y, inactive(!section_exists) + "移除区间|"+
 	                                                inactive(!section_exists || section_start > enda) + "跳到区间开始|"+
 	                                                inactive(!section_exists || section_end > enda) + "跳到区间结束|-|"+
@@ -481,7 +481,7 @@ function control_draw() {
 							c = (layervol[b] /100) * song_vel[xx, b]
 							if layerstereo[b] = 100 {
 								d = song_pan[xx, b]
-							} else { 
+							} else {
 								d = (layerstereo[b] + song_pan[xx, b]) / 2
 							}
 							e = song_pit[xx, b]
@@ -564,7 +564,7 @@ function control_draw() {
 	                } else {
 	                    add_block_manual(starta + sela, startb + selb, instrument, selected_key, selected_vel, selected_pan, selected_pit)
 	                    draw_set_halign(fa_center)
-	                    draw_block(x1 + 2 + 32 * sela, y1 + 34 + 32 * selb, instrument, selected_key, selected_vel, selected_pan, selected_pit, 0.5, 0)    
+	                    draw_block(x1 + 2 + 32 * sela, y1 + 34 + 32 * selb, instrument, selected_key, selected_vel, selected_pan, selected_pit, 0.5, 0)
 						draw_theme_color()
 	                    draw_set_halign(fa_left)
 	                    draw_set_alpha(1)
@@ -590,7 +590,7 @@ function control_draw() {
 				}
 				play_sound(instrument, selected_key, selected_vel, selected_pan, selected_pit)
 			}
-				
+
 		}
 		if (mouse_check_button_pressed(mb_right) && keyboard_check(vk_control)) {selection_remove(starta + sela, startb + selb, starta + sela, startb + selb, 0, 0)}
 	    if (mouse_check_button(mb_right) && !keyboard_check(vk_control)) {
@@ -609,60 +609,60 @@ function control_draw() {
 	            for (a = 0; a < ds_list_size(instrument_list); a += 1) {
 	                var ins = instrument_list[| a];
 	                if (ins.user) {
-	                    if (language != 1) customstr += "...to " + clean(ins.name) + "|"
+	                    if (language != 1) customstr += localize_ko("...to ") + clean(ins.name) + "|"
 	                    else customstr += "...为 " + clean(ins.name) + "|"
 					} else {
-	                    if (language != 1) str += "...to " + clean(ins.name) + "|"
+	                    if (language != 1) str += localize_ko("...to ") + clean(ins.name) + "|"
 	                    else str += "...为 " + clean(ins.name) + "|"
 					}
 					if (a % 25 == 0 && a > 1 && a < ds_list_size(instrument_list) - 1) {
-						if (language != 1) customstr += "-|More...|\\|"
+						if (language != 1) customstr += localize_ko("-|More...|\\|")
 						else customstr += "-|更多......|\\|"
 						insmenu++
 					}
 				}
-	            if (language != 1) menu = show_menu_ext("editext", mouse_x, mouse_y, inactive(selected = 0) + icon(icons.COPY - (selected = 0)) + "Ctrl+C$Copy|"+
-	                                      inactive(selected = 0) + icon(icons.CUT - (selected = 0)) + "Ctrl+X$Cut|"+
-	                                      inactive(selection_copied = "") + icon(icons.PASTE - (selection_copied = "")) + "Ctrl+V$Paste|"+
-	                                      inactive(selected = 0) + icon(icons.DELETE - (selected = 0)) + "Delete$Delete|-|"+
-	                                      inactive(totalblocks = 0) + "Ctrl+A$Select all|"+
-	                                      inactive(selected = 0) + "Deselect all|"+
-	                                      inactive(selected = 0 && totalblocks = 0) + "Ctrl+I$Invert selection|-|"+
-	                                      inactive(totalblocks = 0 || selbx >= enda) + "Select all to the right ->|"+
-	                                      inactive(totalblocks = 0 || selbx <= 0) + "Select all to the left <-|-|"+
-	                                      inactive(instrument.num_blocks = 0) + "Select all " + clean(instrument.name) + "|"+
-	                                      inactive(instrument.num_blocks = totalblocks) + "Select all but " + clean(instrument.name) + "|-|"+
+	            if (language != 1) menu = show_menu_ext("editext", mouse_x, mouse_y, inactive(selected = 0) + icon(icons.COPY - (selected = 0)) + localize_ko("Ctrl+C$Copy|")+
+	                                      inactive(selected = 0) + icon(icons.CUT - (selected = 0)) + localize_ko("Ctrl+X$Cut|")+
+	                                      inactive(selection_copied = "") + icon(icons.PASTE - (selection_copied = "")) + localize_ko("Ctrl+V$Paste|")+
+	                                      inactive(selected = 0) + icon(icons.DELETE - (selected = 0)) + localize_ko("Delete$Delete|-|")+
+	                                      inactive(totalblocks = 0) + localize_ko("Ctrl+A$Select all|")+
+	                                      inactive(selected = 0) + localize_ko("Deselect all|")+
+	                                      inactive(selected = 0 && totalblocks = 0) + localize_ko("Ctrl+I$Invert selection|-|")+
+	                                      inactive(totalblocks = 0 || selbx >= enda) + localize_ko("Select all to the right ->|")+
+	                                      inactive(totalblocks = 0 || selbx <= 0) + localize_ko("Select all to the left <-|-|")+
+	                                      inactive(instrument.num_blocks = 0) + localize_ko("Select all ") + clean(instrument.name) + "|"+
+	                                      inactive(instrument.num_blocks = totalblocks) + localize_ko("Select all but ") + clean(instrument.name) + "|-|"+
 	                                        inactive(selected = 0) + "Ctrl+E$" + get_mode_actions(1) + "|"+
 	                                        inactive(selected = 0) + "Ctrl+D$" + get_mode_actions(2) + "|"+
 	                                        inactive(selected = 0) + "Ctrl+R$" + get_mode_actions(3) + "|"+
 	                                        inactive(selected = 0) + "Ctrl+F$" + get_mode_actions(4) + "|"+
 											condstr((editmode != m_key), inactive(selected = 0) + "Ctrl+T$" + get_mode_actions(5) + "|") +
 											condstr((editmode != m_key), inactive(selected = 0) + "Ctrl+G$" + get_mode_actions(6) + "|") +
-	                                        inactive(selected = 0) + "Change instrument...|\\|" + str + condstr(customstr != "", "-|")  + customstr + string_repeat("/|", insmenu) + "-|" +
-	                                        inactive(selected = 0 || selection_l = 0) + "Expand selection|"+
-	                                        inactive(selected = 0 || selection_l = 0) + "Compress selection|"+
-	                                        inactive(selected = 0 || selection_l = 0) + "Macros...|\\||"+
-											"Ctrl+Shift+A$Tremolo...|"+
-											"Ctrl+Shift+S$Stereo...|"+
-											"Ctrl+Shift+D$Arpeggio...|"+
-											"Ctrl+Shift+F$Portamento...|"+
-											"Ctrl+Shift+G$Vibrato|"+
-											"Ctrl+Shift+H$Stagger...|"+
-											"Ctrl+Shift+J$Chorus|"+
-											"Ctrl+Shift+K$Volume LFO|"+
-											"Ctrl+Shift+Q$Fade in|"+
-											"Ctrl+Shift+W$Fade out|"+
-											"Ctrl+Shift+E$Replace key|"+
-											"Ctrl+Shift+R$Set velocity...|"+
-											"Ctrl+Shift+T$Set panning...|"+
-											"Ctrl+Shift+Y$Set pitch...|"+
-											"Ctrl+Shift+U$Reset all properties|"+
+	                                        inactive(selected = 0) + localize_ko("Change instrument...|\\|") + str + condstr(customstr != "", "-|")  + customstr + string_repeat("/|", insmenu) + "-|" +
+	                                        inactive(selected = 0 || selection_l = 0) + localize_ko("Expand selection|")+
+	                                        inactive(selected = 0 || selection_l = 0) + localize_ko("Compress selection|")+
+	                                        inactive(selected = 0 || selection_l = 0) + localize_ko("Macros...|\\||")+
+											localize_ko("Ctrl+Shift+A$Tremolo...|")+
+											localize_ko("Ctrl+Shift+S$Stereo...|")+
+											localize_ko("Ctrl+Shift+D$Arpeggio...|")+
+											localize_ko("Ctrl+Shift+F$Portamento...|")+
+											localize_ko("Ctrl+Shift+G$Vibrato|")+
+											localize_ko("Ctrl+Shift+H$Stagger...|")+
+											localize_ko("Ctrl+Shift+J$Chorus|")+
+											localize_ko("Ctrl+Shift+K$Volume LFO|")+
+											localize_ko("Ctrl+Shift+Q$Fade in|")+
+											localize_ko("Ctrl+Shift+W$Fade out|")+
+											localize_ko("Ctrl+Shift+E$Replace key|")+
+											localize_ko("Ctrl+Shift+R$Set velocity...|")+
+											localize_ko("Ctrl+Shift+T$Set panning...|")+
+											localize_ko("Ctrl+Shift+Y$Set pitch...|")+
+											localize_ko("Ctrl+Shift+U$Reset all properties|")+
 											"/|-|"+
-	                                        inactive(selected = 0) + "Transpose notes outside octave range|")
+	                                        inactive(selected = 0) + localize_ko("Transpose notes outside octave range|"))
 	            else menu = show_menu_ext("editext", mouse_x, mouse_y, inactive(selected = 0) + icon(icons.COPY - (selected = 0)) + "Ctrl+C$复制|"+
 	                                      inactive(selected = 0) + icon(icons.CUT - (selected = 0)) + "Ctrl+X$剪切|"+
 	                                      inactive(selection_copied = "") + icon(icons.PASTE - (selection_copied = "")) + "Ctrl+V$粘贴|"+
-	                                      inactive(selected = 0) + icon(icons.DELETE - (selected = 0)) + "Delete$删除|-|"+
+	                                      inactive(selected = 0) + icon(icons.DELETE - (selected = 0)) + localize_ko("Delete$删除|-|")+
 	                                      inactive(totalblocks = 0) + "Ctrl+A$全选|"+
 	                                      inactive(selected = 0) + "全不选|"+
 	                                      inactive(selected = 0 && totalblocks = 0) + "Ctrl+I$选择反转|-|"+
@@ -680,14 +680,14 @@ function control_draw() {
 	                                        inactive(selected = 0 || selection_l = 0) + "扩展选区|"+
 	                                        inactive(selected = 0 || selection_l = 0) + "压缩选区|"+
 	                                        inactive(selected = 0 || selection_l = 0) + "快捷键......|\\||"+
-											"Ctrl+Shift+A$Tremolo...|"+
-											"Ctrl+Shift+S$Stereo...|"+
-											"Ctrl+Shift+D$Arpeggio...|"+
-											"Ctrl+Shift+F$Portamento...|"+
-											"Ctrl+Shift+G$Vibrato|"+
-											"Ctrl+Shift+H$Stagger...|"+
-											"Ctrl+Shift+J$Chorus|"+
-											"Ctrl+Shift+K$Volume LFO|"+
+											localize_ko("Ctrl+Shift+A$Tremolo...|")+
+											localize_ko("Ctrl+Shift+S$Stereo...|")+
+											localize_ko("Ctrl+Shift+D$Arpeggio...|")+
+											localize_ko("Ctrl+Shift+F$Portamento...|")+
+											localize_ko("Ctrl+Shift+G$Vibrato|")+
+											localize_ko("Ctrl+Shift+H$Stagger...|")+
+											localize_ko("Ctrl+Shift+J$Chorus|")+
+											localize_ko("Ctrl+Shift+K$Volume LFO|")+
 											"Ctrl+Shift+Q$淡入|"+
 											"Ctrl+Shift+W$淡出|"+
 											"Ctrl+Shift+E$替换音|"+
@@ -731,7 +731,7 @@ function control_draw() {
 	            if (keyboard_check_pressed(ord("P"))) window = w_preferences
 				if keyboard_check_pressed(ord("0")) {
 					window_scale = get_default_window_scale()
-					set_msg(condstr(language = 1, "窗口缩放", "Window scale") + " => " + string(window_scale * 100) + "%")
+					set_msg(condstr(language = 1, "窗口缩放", localize_ko("Window scale")) + " => " + string(window_scale * 100) + "%")
 				}
 	            if (keyboard_check_pressed(187) || (mouse_wheel_up())) {
 					if (window_scale >= 0.5 && window_scale < 0.67) {window_scale = 0.67}
@@ -747,7 +747,7 @@ function control_draw() {
 					else if (window_scale < 3) {window_scale = 3}
 					else if (window_scale < 3.5) {window_scale = 3.5}
 					else if (window_scale < 4) {window_scale = 4}
-					set_msg(condstr(language = 1, "窗口缩放", "Window scale") + " => " + string(window_scale * 100) + "%")
+					set_msg(condstr(language = 1, "窗口缩放", localize_ko("Window scale")) + " => " + string(window_scale * 100) + "%")
 				}
 	            if (keyboard_check_pressed(189) || (mouse_wheel_down())) {
 					if (window_scale <= 4 && window_scale > 3.5) {window_scale = 3.5}
@@ -763,7 +763,7 @@ function control_draw() {
 					else if (window_scale > 0.75) {window_scale = 0.75}
 					else if (window_scale > 0.67) {window_scale = 0.67}
 					else if (window_scale > 0.5) {window_scale = 0.5}
-					set_msg(condstr(language = 1, "窗口缩放", "Window scale") + " => " + string(window_scale * 100) + "%")
+					set_msg(condstr(language = 1, "窗口缩放", localize_ko("Window scale")) + " => " + string(window_scale * 100) + "%")
 				}
 	        }
 	        if (keyboard_check_pressed(vk_delete) && selected > 0 && !isplayer) {
@@ -804,9 +804,9 @@ function control_draw() {
 			rainbowtoggle = !rainbowtoggle
 			if (language != 1) {
 			if (rainbowtoggle) {
-				set_msg("Rainbow mode => ON")
+				set_msg(localize_ko("Rainbow mode => ON"))
 			} else {
-				set_msg("Rainbow mode => OFF")
+				set_msg(localize_ko("Rainbow mode => OFF"))
 				draw_accent_init()
 			}
 			} else {
@@ -820,7 +820,7 @@ function control_draw() {
 		}
 		if (!isplayer) {
 	    if (keyboard_check(vk_control)) {
-		
+
 			//First 9 (only ctrl)
 			if(!keyboard_check(vk_shift)){
 			   for (a = 1; a <= 9; a++) {
@@ -848,74 +848,74 @@ function control_draw() {
 		// Control+Shift Stuff (Macros, Clip Editor)
 		if (keyboard_check(vk_control)) {
 			if (keyboard_check_pressed(ord("P"))&& keyboard_check(vk_shift)) {
-				playing = 0 
+				playing = 0
 				text_exists[59] = 0
 				window = w_clip_editor
 				}
 			if (keyboard_check_pressed(ord("I"))&& keyboard_check(vk_shift)) {
-				playing = 0 
+				playing = 0
 				window = w_tempotapper
 				}
 			// Macro Hotkeys
 			if selected != 0 {
 				if (keyboard_check_pressed(ord("A"))&& keyboard_check(vk_shift)) {
-					playing = 0 
+					playing = 0
 					window = w_tremolo
 					}
 				if (keyboard_check_pressed(ord("S"))&& keyboard_check(vk_shift)) {
-					playing = 0 
+					playing = 0
 					window = w_stereo
 					}
 				if (keyboard_check_pressed(ord("D"))&& keyboard_check(vk_shift)) {
-					playing = 0 
+					playing = 0
 					window = w_arpeggio
 					}
 				if (keyboard_check_pressed(ord("F"))&& keyboard_check(vk_shift)) {
-					playing = 0 
+					playing = 0
 					window = w_portamento
 					}
 				if (keyboard_check_pressed(ord("G"))&& keyboard_check(vk_shift)) {
-					playing = 0 
+					playing = 0
 					macro_vibrato()
 					}
 				if (keyboard_check_pressed(ord("H"))&& keyboard_check(vk_shift)) {
-					playing = 0 
+					playing = 0
 					window = w_stagger
 					}
 				if (keyboard_check_pressed(ord("J"))&& keyboard_check(vk_shift)) {
-					playing = 0 
+					playing = 0
 					macro_chorus()
 					}
 				if (keyboard_check_pressed(ord("K"))&& keyboard_check(vk_shift)) {
-					playing = 0 
+					playing = 0
 					macro_velocitylfo()
 					}
 				if (keyboard_check_pressed(ord("Q"))&& keyboard_check(vk_shift)) {
-					playing = 0 
+					playing = 0
 					macro_fadein()
 					}
 				if (keyboard_check_pressed(ord("W"))&& keyboard_check(vk_shift)) {
-					playing = 0 
+					playing = 0
 					macro_fadeout()
 					}
 				if (keyboard_check_pressed(ord("E"))&& keyboard_check(vk_shift)) {
-					playing = 0 
+					playing = 0
 					macro_replacekey()
 					}
 				if (keyboard_check_pressed(ord("R"))&& keyboard_check(vk_shift)) {
-					playing = 0 
+					playing = 0
 					window = w_setvelocity
 					}
 				if (keyboard_check_pressed(ord("T"))&& keyboard_check(vk_shift)) {
-					playing = 0 
+					playing = 0
 					window = w_setpanning
 					}
 				if (keyboard_check_pressed(ord("Y"))&& keyboard_check(vk_shift)) {
-					playing = 0 
+					playing = 0
 					window = w_setpitch
 					}
 				if (keyboard_check_pressed(ord("U"))&& keyboard_check(vk_shift)) {
-					playing = 0 
+					playing = 0
 					macro_reset()
 					}
 			}
@@ -926,27 +926,27 @@ function control_draw() {
 	    if (refreshrate = 0){
 			game_set_speed(60,gamespeed_fps)
 			refreshrate = 1
-			if (language != 1) set_msg("Max framerate => 60 FPS")
+			if (language != 1) set_msg(localize_ko("Max framerate => 60 FPS"))
 			else set_msg("帧数上限 => 60 FPS")
 		} else if (refreshrate = 1) {
 			game_set_speed(120,gamespeed_fps)
 			refreshrate = 2
-			if (language != 1) set_msg("Max framerate => 120 FPS")
+			if (language != 1) set_msg(localize_ko("Max framerate => 120 FPS"))
 			else set_msg("帧数上限 => 120 FPS")
 		} else if (refreshrate = 2) {
 			game_set_speed(144,gamespeed_fps)
 			refreshrate = 3
-			if (language != 1) set_msg("Max framerate => 144 FPS")
+			if (language != 1) set_msg(localize_ko("Max framerate => 144 FPS"))
 			else set_msg("帧数上限 => 144 FPS")
 		} else if (refreshrate = 3) {
 			game_set_speed(240,gamespeed_fps)
 			refreshrate = 4
-			if (language != 1) set_msg("Max framerate => 240 FPS")
+			if (language != 1) set_msg(localize_ko("Max framerate => 240 FPS"))
 			else set_msg("帧数上限 => 240 FPS")
 		} else if (refreshrate = 4) {
 			game_set_speed(30,gamespeed_fps)
 			refreshrate = 0
-			if (language != 1) set_msg("Max framerate => 30 FPS")
+			if (language != 1) set_msg(localize_ko("Max framerate => 30 FPS"))
 			else set_msg("帧数上限 => 30 FPS")
 		}
 	}
@@ -1077,7 +1077,7 @@ function control_draw() {
 					marker_prevpos = 0
 					timestoloop = real(loopmax)
 				}
-			} 
+			}
 		}
 	    if (marker_pos > enda + totalcols) {
 	        marker_pos = enda + totalcols
@@ -1278,10 +1278,10 @@ function control_draw() {
 	if (theme = 3 && fdark) draw_set_color(2105376)
 	draw_rectangle(xx, yy, xx + 16, yy + 16, false)
 	if (language != 1) {
-	if (draw_layericon(7 + fullscreen, xx, yy, condstr(!fullscreen, "Expand workspace", "Return"), 0, 0)) {
+	if (draw_layericon(7 + fullscreen, xx, yy, condstr(!fullscreen, localize_ko("Expand workspace"), localize_ko("Return")), 0, 0)) {
 		fullscreen = !fullscreen
-		if (fullscreen) set_msg("Fullscreen => ON")
-		else set_msg("Fullscreen => OFF")
+		if (fullscreen) set_msg(localize_ko("Fullscreen => ON"))
+		else set_msg(localize_ko("Fullscreen => OFF"))
 		dontplace = 1
 	}
 	} else {
@@ -1311,7 +1311,7 @@ function control_draw() {
 			m = mouse_rectangle(x1 + 10, y1 + 10, 75, 13)
 		    draw_sprite(spr_layerbox, 0 + (theme = 2) + (2 + fdark) * (theme = 3), x1, y1)
 			if (window = 0) {
-				if (language != 1) popup_set(x1 + 10, y1 + 10, 75, 13, "The name for this layer")
+				if (language != 1) popup_set(x1 + 10, y1 + 10, 75, 13, localize_ko("The name for this layer"))
 				else popup_set(x1 + 10, y1 + 10, 75, 13, "本层名称")
 			}
 			draw_theme_font(font_small)
@@ -1319,13 +1319,13 @@ function control_draw() {
 			if (theme != 3) {
 			layername[startb + b] = draw_text_edit(400 + startb + b, layername[startb + b], x1 + 11, y1 + 10, 72, 14, 1, 0)
 			} else {
-			if (language != 1) layername[startb + b] = draw_textarea(400 + startb + b, x1 + 9, y1 + 4, 72, 24, string(layername[startb + b]), "The name of this layer.", 3, (0.3 + 0.3 * !fdark) * (acrylic && wpaperexist && can_draw_mica) + (!acrylic || !wpaperexist || !can_draw_mica), 1)
+			if (language != 1) layername[startb + b] = draw_textarea(400 + startb + b, x1 + 9, y1 + 4, 72, 24, string(layername[startb + b]), localize_ko("The name of this layer."), 3, (0.3 + 0.3 * !fdark) * (acrylic && wpaperexist && can_draw_mica) + (!acrylic || !wpaperexist || !can_draw_mica), 1)
 			else layername[startb + b] = draw_textarea(400 + startb + b, x1 + 9, y1 + 4, 72, 24, string(layername[startb + b]), "本层的名称。", 3, (0.3 + 0.3 * !fdark) * (acrylic && wpaperexist && can_draw_mica) + (!acrylic || !wpaperexist || !can_draw_mica), 1)
 			}
 			if (layername[startb + b] = "") {
 		        draw_set_color(c_gray)
 				if(theme = 2 || (fdark && theme = 3)) draw_set_color(make_color_rgb(160, 160, 160))
-		        if (language != 1) draw_text_dynamic(x1 + 11, y1 + 10, "Layer " + string(startb + b + 1))
+		        if (language != 1) draw_text_dynamic(x1 + 11, y1 + 10, localize_ko("Layer ") + string(startb + b + 1))
 		        else draw_text_dynamic(x1 + 11, y1 + 10, "第 " + string(startb + b + 1) + " 层")
 		    }
 			if (prev != layername[startb + b]) changed = 1
@@ -1349,7 +1349,7 @@ function control_draw() {
 					draw_sprite_ext(spr_volume_f_hires, a / 30 + 2, x1 + 91, y1 + 11 - c * 5, 0.25, 0.25, 0, accent[6 - 2 * !fdark], 1)
 				}
 				}
-		        if (language != 1) popup_set(x1 + 90, y1 + 5, 12, 17, "Volume of this layer: " + string(a) + "%\n(Click and drag to change)")
+		        if (language != 1) popup_set(x1 + 90, y1 + 5, 12, 17, localize_ko("Volume of this layer: ") + string(a) + localize_ko("%\n(Click and drag to change)"))
 		        else popup_set(x1 + 90, y1 + 5, 12, 17, "本层的音量: " + string(a) + "%\n（拖拽来修改）")
 		        if (c) {
 		        draw_theme_font(font_small)
@@ -1386,15 +1386,15 @@ function control_draw() {
 				}
 				var stereostr
 				if (a > 100) { stereostr = "R " + string(a-100) }
-				if (a = 100) { stereostr = condstr(language != 1, "Center", "中央") }
+				if (a = 100) { stereostr = condstr(language != 1, localize_ko("Center"), "中央") }
 				if (a < 100) { stereostr = "L " + string(-(a-100)) }
-		        if (language != 1) popup_set(x1 + 110, y1 + 5, 12, 17, "Stereo pan: " + stereostr + "\n(Click and drag to change)")
+		        if (language != 1) popup_set(x1 + 110, y1 + 5, 12, 17, localize_ko("Stereo pan: ") + stereostr + localize_ko("\n(Click and drag to change)"))
 		        else popup_set(x1 + 110, y1 + 5, 12, 17, "立体声声道: " + stereostr + "\n（拖拽来修改）")
 		        if (c) {
 		            draw_theme_font(font_small)
 		            draw_set_halign(fa_center)
 					if a > 100 {draw_text_dynamic(x1 + 116, y1 + 18, "R " + string(a-100))}
-					if a = 100 {draw_text_dynamic(x1 + 116, y1 + 18, condstr(language != 1, "MONO", "单声道"))}
+					if a = 100 {draw_text_dynamic(x1 + 116, y1 + 18, condstr(language != 1, localize_ko("MONO"), "单声道"))}
 					if a < 100 {draw_text_dynamic(x1 + 116, y1 + 18, "L " + string((a-100)*-1))	}
 		            draw_set_halign(fa_left)
 		            draw_theme_font(font_small)
@@ -1428,9 +1428,9 @@ function control_draw() {
 				changed = 1
 		    }
 			// Select all
-		    if (draw_layericon(2, x1 + 162 - !realvolume-realstereo * 10, y1 + 8, condstr(language != 1, "Select all note blocks in this layer\n(Click and drag to select multiple; click again to deselect)", "选择本层所有方块\n（拖拽可批量选择，再次点选取消选择）"), 0, 0)) {
+		    if (draw_layericon(2, x1 + 162 - !realvolume-realstereo * 10, y1 + 8, condstr(language != 1, localize_ko("Select all note blocks in this layer\n(Click and drag to select multiple; click again to deselect)"), "选择本层所有方块\n（拖拽可批量选择，再次点选取消选择）"), 0, 0)) {
 		        playing = 0
-				
+
 				// TODO: replace with array_contains() if we ever upgrade GameMaker...
 				var layer_id = startb + b
 				var layer_selected = ds_list_find_index(selected_layers, layer_id) > -1
@@ -1443,22 +1443,22 @@ function control_draw() {
 				}
 			}
 			// Add layer
-		    if (draw_layericon(3, x1 + 180 - !realvolume-realstereo * 10, y1 + 8, condstr(language != 1, "Add empty layer here\n(Click and drag to add multiple layers)", "新建层\n（拖拽可批量添加）"), 0, 0)) {
+		    if (draw_layericon(3, x1 + 180 - !realvolume-realstereo * 10, y1 + 8, condstr(language != 1, localize_ko("Add empty layer here\n(Click and drag to add multiple layers)"), "新建层\n（拖拽可批量添加）"), 0, 0)) {
 		        playing = 0
 				add_layer(startb + b, false)
 		    }
 			// Remove layer
-			if (draw_layericon(4, x1 + 198 - !realvolume-realstereo * 10, y1 + 8, condstr(language != 1, "Remove this layer\n(Click and drag to remove multiple layers)", "删除层\n（拖拽可批量删除）"), 0, 0)) {
+			if (draw_layericon(4, x1 + 198 - !realvolume-realstereo * 10, y1 + 8, condstr(language != 1, localize_ko("Remove this layer\n(Click and drag to remove multiple layers)"), "删除层\n（拖拽可批量删除）"), 0, 0)) {
 		        playing = 0
 				remove_layer(startb + b, false)
 			}
 			// Shift layer up
-			if ((startb + b > 0) && draw_layericon(5, x1 + 216 - !realvolume-realstereo * 10, y1 + 8, condstr(language != 1, "Shift layer up\n(Click and drag to shift multiple layers)", "上移本层\n（拖拽可上移多层）"), 0, 0)) {
+			if ((startb + b > 0) && draw_layericon(5, x1 + 216 - !realvolume-realstereo * 10, y1 + 8, condstr(language != 1, localize_ko("Shift layer up\n(Click and drag to shift multiple layers)"), "上移本层\n（拖拽可上移多层）"), 0, 0)) {
 			    playing = 0
 				shift_layers(startb + b, startb + b - 1, false)
 			}
 			// Shift layer down
-			if (draw_layericon(6, x1 + 234 - !realvolume-realstereo * 10 - (startb + b = 0) * 8, y1 + 8, condstr(language != 1, "Shift layer down\n(Click and drag to shift multiple layers)", "下移本层\n（拖拽可下移多层）"), 0, 0)) {
+			if (draw_layericon(6, x1 + 234 - !realvolume-realstereo * 10 - (startb + b = 0) * 8, y1 + 8, condstr(language != 1, localize_ko("Shift layer down\n(Click and drag to shift multiple layers)"), "下移本层\n（拖拽可下移多层）"), 0, 0)) {
 			    playing = 0
 				shift_layers(startb + b, startb + b + 1, false)
 			}
@@ -1512,26 +1512,26 @@ function control_draw() {
 		xx = x1 + 6
 		var yy = y1+37
 		if (!show_layers) yy += 18
-		if (draw_macroicon(0, xx, yy, "Tremolo...", 0, 0)) {playing = 0 window = w_tremolo} xx += 25
-		if (draw_macroicon(1, xx, yy, "Stereo...", 0, 0)) {playing = 0 window = w_stereo} xx += 25
-		if (draw_macroicon(2, xx, yy, "Arpeggio...", 0, 0)) {playing = 0 window = w_arpeggio} xx += 25
-		if (draw_macroicon(3, xx, yy, "Portamento...", 0, 0)) {playing = 0 window = w_portamento} xx += 25
-		if (draw_macroicon(4, xx, yy, "Vibrato", 0, 0)) {playing = 0 macro_vibrato()} xx += 25
-		if (draw_macroicon(5, xx, yy, "Stagger...", 0, 0)) {playing = 0 window = w_stagger} xx += 25
-		if (draw_macroicon(6, xx, yy, "Chorus", 0, 0)) {playing = 0 macro_chorus()} xx += 25
-		if (draw_macroicon(7, xx, yy, "Volume LFO", 0, 0)) {playing = 0 macro_velocitylfo()} xx += 25
+		if (draw_macroicon(0, xx, yy, localize_ko("Tremolo..."), 0, 0)) {playing = 0 window = w_tremolo} xx += 25
+		if (draw_macroicon(1, xx, yy, localize_ko("Stereo..."), 0, 0)) {playing = 0 window = w_stereo} xx += 25
+		if (draw_macroicon(2, xx, yy, localize_ko("Arpeggio..."), 0, 0)) {playing = 0 window = w_arpeggio} xx += 25
+		if (draw_macroicon(3, xx, yy, localize_ko("Portamento..."), 0, 0)) {playing = 0 window = w_portamento} xx += 25
+		if (draw_macroicon(4, xx, yy, localize_ko("Vibrato"), 0, 0)) {playing = 0 macro_vibrato()} xx += 25
+		if (draw_macroicon(5, xx, yy, localize_ko("Stagger..."), 0, 0)) {playing = 0 window = w_stagger} xx += 25
+		if (draw_macroicon(6, xx, yy, localize_ko("Chorus"), 0, 0)) {playing = 0 macro_chorus()} xx += 25
+		if (draw_macroicon(7, xx, yy, localize_ko("Volume LFO"), 0, 0)) {playing = 0 macro_velocitylfo()} xx += 25
 		if (language != 1) {
-			if (draw_macroicon(8, xx, yy, "Fade in", 0, 0)) {playing = 0 macro_fadein()} xx += 25
-			if (draw_macroicon(9, xx, yy, "Fade out", 0, 0)) {playing = 0 macro_fadeout()} xx += 25
+			if (draw_macroicon(8, xx, yy, localize_ko("Fade in"), 0, 0)) {playing = 0 macro_fadein()} xx += 25
+			if (draw_macroicon(9, xx, yy, localize_ko("Fade out"), 0, 0)) {playing = 0 macro_fadeout()} xx += 25
 			if (show_layers) {
 				xx = x1 + 6
 				yy += 16
 			}
-			if (draw_macroicon(10, xx, yy, "Replace key", 0, 0)) {playing = 0 macro_replacekey()} xx += 25
-			if (draw_macroicon(11, xx, yy, "Set velocity...", 0, 0)) {playing = 0 window = w_setvelocity} xx += 25
-			if (draw_macroicon(12, xx, yy, "Set panning...", 0, 0)) {playing = 0 window = w_setpanning} xx += 25
-			if (draw_macroicon(13, xx, yy, "Set pitch...", 0, 0)) {playing = 0 window = w_setpitch} xx += 25
-			if (draw_macroicon(14, xx, yy, "Reset all properties", 0, 0)) {playing = 0 macro_reset()} xx += 25
+			if (draw_macroicon(10, xx, yy, localize_ko("Replace key"), 0, 0)) {playing = 0 macro_replacekey()} xx += 25
+			if (draw_macroicon(11, xx, yy, localize_ko("Set velocity..."), 0, 0)) {playing = 0 window = w_setvelocity} xx += 25
+			if (draw_macroicon(12, xx, yy, localize_ko("Set panning..."), 0, 0)) {playing = 0 window = w_setpanning} xx += 25
+			if (draw_macroicon(13, xx, yy, localize_ko("Set pitch..."), 0, 0)) {playing = 0 window = w_setpitch} xx += 25
+			if (draw_macroicon(14, xx, yy, localize_ko("Reset all properties"), 0, 0)) {playing = 0 macro_reset()} xx += 25
 		} else {
 			if (draw_macroicon(8, xx, yy, "淡入", 0, 0)) {playing = 0 macro_fadein()} xx += 25
 			if (draw_macroicon(9, xx, yy, "淡出", 0, 0)) {playing = 0 macro_fadeout()} xx += 25
@@ -1547,7 +1547,7 @@ function control_draw() {
 		}
 	}
 	} //from the if (!isplayer) up there
-	
+
 	if (dropmode && theme = 3) {
 		draw_set_color(0)
 		draw_set_alpha(0.2 * dropalpha)
@@ -1563,68 +1563,68 @@ function control_draw() {
 	draw_theme_color()
 	if (isplayer && blackout) draw_set_color(c_white)
 	if (language != 1) {
-		if (draw_tab("File")) {
+		if (draw_tab(localize_ko("File"))) {
 		    str = ""
 		    for (b = 0; b < 11; b += 1) {
 		        if (recent_song[b] = "") break
 		        c = floor(date_second_span(recent_song_time[b], date_current_datetime()))
 		        str += seconds_to_str(c) + "$" + string_truncate(clean(filename_name(recent_song[b])), 310) + "|"
 		    }
-		    if (!isplayer) show_menu_ext("file", 0, 19, icon(icons.NEW)+"Ctrl + N$New song|"+
-		                             icon(icons.OPEN)+"Ctrl+O$Open song...|Recent songs...|\\|" + str + condstr(recent_song[0] != "", "-|Clear recent songs") + condstr(recent_song[0] = "", "^!No recent songs") + "|/|-|"+
-		                             icon(icons.SAVE)+"Ctrl+S$Save song|"+
-		                             icon(icons.SAVE_AS)+"Save song as a new file...|" +
-									 inactive(totalblocks = 0 || ds_list_size(instrument_list) <= first_custom_index) + icon(icons.INSTRUMENTS) + "Save song with custom sounds...|Save options...|Restore unsaved files...|-|"+
-		                             inactive(selected != 0)+"Import pattern...|"+
-									 inactive(selected = 0)+"Export pattern...|"+"Import from MIDI...|Import from schematic...|-|"+
+		    if (!isplayer) show_menu_ext("file", 0, 19, icon(icons.NEW)+localize_ko("Ctrl + N$New song|")+
+		                             icon(icons.OPEN)+localize_ko("Ctrl+O$Open song...|Recent songs...|\\|") + str + condstr(recent_song[0] != "", localize_ko("-|Clear recent songs")) + condstr(recent_song[0] = "", localize_ko("^!No recent songs")) + "|/|-|"+
+		                             icon(icons.SAVE)+localize_ko("Ctrl+S$Save song|")+
+		                             icon(icons.SAVE_AS)+localize_ko("Save song as a new file...|") +
+									 inactive(totalblocks = 0 || ds_list_size(instrument_list) <= first_custom_index) + icon(icons.INSTRUMENTS) + localize_ko("Save song with custom sounds...|Save options...|Restore unsaved files...|-|")+
+		                             inactive(selected != 0)+localize_ko("Import pattern...|")+
+									 inactive(selected = 0)+localize_ko("Export pattern...|")+localize_ko("Import from MIDI...|Import from schematic...|-|")+
 		                             inactive(totalblocks = 0) + "Export as audio track...|"+
-		                             inactive(totalblocks = 0) + "Export as schematic...|"+
+		                             inactive(totalblocks = 0) + localize_ko("Export as schematic...|")+
 		                             inactive(totalblocks = 0) + "Export as track schematic...|"+
-		                             inactive(totalblocks = 0) + "Export as branch schematic...|"+
-									 inactive(totalblocks = 0) + "Export as data pack...|-|" + 
-		                             "Alt + F4$Exit")
-			else show_menu_ext("filep", 0, 19, icon(icons.OPEN)+"Ctrl+O$Open song...|Recent songs...|\\|" + str + condstr(recent_song[0] != "", "-|Clear recent songs") + condstr(recent_song[0] = "", "^!No recent songs") + "|/|-|"+"Import from MIDI...|Import from schematic...|-|" + "Alt + F4$Exit")
-							
+		                             inactive(totalblocks = 0) + localize_ko("Export as branch schematic...|")+
+									 inactive(totalblocks = 0) + localize_ko("Export as data pack...|-|") +
+		                             localize_ko("Alt + F4$Exit"))
+			else show_menu_ext("filep", 0, 19, icon(icons.OPEN)+localize_ko("Ctrl+O$Open song...|Recent songs...|\\|") + str + condstr(recent_song[0] != "", localize_ko("-|Clear recent songs")) + condstr(recent_song[0] = "", localize_ko("^!No recent songs")) + "|/|-|"+localize_ko("Import from MIDI...|Import from schematic...|-|") + localize_ko("Alt + F4$Exit"))
+
 		}
-		if (!isplayer) if (draw_tab("Edit")) {
+		if (!isplayer) if (draw_tab(localize_ko("Edit"))) {
 		    str = ""
 		    customstr = ""
 			insmenu = 1
 		    for (a = 0; a < ds_list_size(instrument_list); a += 1) {
 		        var ins = instrument_list[| a];
 		        if (ins.user)
-		            customstr += "...to " + clean(ins.name) + "|"
+		            customstr += localize_ko("...to ") + clean(ins.name) + "|"
 		        else
-		            str += "...to " + clean(ins.name) + "|"
+		            str += localize_ko("...to ") + clean(ins.name) + "|"
 				if (a % 25 == 0 && a > 1 && a < ds_list_size(instrument_list) - 1) {
-					customstr += "-|More...|\\|"
+					customstr += localize_ko("-|More...|\\|")
 					insmenu++
 				}
 		    }
-		    show_menu_ext("edit", 29, 19, inactive(historypos = historylen) + icon(icons.UNDO - (historypos = historylen)) + "Ctrl+Z$Undo|"+
-		                              inactive(historypos = 0) + icon(icons.REDO - (historypos = 0)) + "Ctrl+Y$Redo|-|"+
-		                              inactive(selected = 0) + icon(icons.COPY - (selected = 0)) + "Ctrl+C$Copy|"+
-		                              inactive(selected = 0) + icon(icons.CUT - (selected = 0)) + "Ctrl+X$Cut|"+
-		                              inactive(selection_copied = "") + icon(icons.PASTE - (selection_copied = "")) + "Ctrl+V$Paste|"+
-		                              inactive(selected = 0) + icon(icons.DELETE - (selected = 0)) + "Delete$Delete|-|"+
-		                              inactive(totalblocks = 0) + "Ctrl+A$Select all|"+
-		                              inactive(selected = 0) + "Deselect all|"+
-		                              inactive(selected = 0 && totalblocks = 0) + "Ctrl+I$Invert selection|-|"+
-		                              inactive(instrument.num_blocks = 0) + "Select all " + clean(instrument.name) + "|"+
-		                              inactive(instrument.num_blocks = totalblocks) + "Select all but " + clean(instrument.name) + "|-|"+
+		    show_menu_ext("edit", 29, 19, inactive(historypos = historylen) + icon(icons.UNDO - (historypos = historylen)) + localize_ko("Ctrl+Z$Undo|")+
+		                              inactive(historypos = 0) + icon(icons.REDO - (historypos = 0)) + localize_ko("Ctrl+Y$Redo|-|")+
+		                              inactive(selected = 0) + icon(icons.COPY - (selected = 0)) + localize_ko("Ctrl+C$Copy|")+
+		                              inactive(selected = 0) + icon(icons.CUT - (selected = 0)) + localize_ko("Ctrl+X$Cut|")+
+		                              inactive(selection_copied = "") + icon(icons.PASTE - (selection_copied = "")) + localize_ko("Ctrl+V$Paste|")+
+		                              inactive(selected = 0) + icon(icons.DELETE - (selected = 0)) + localize_ko("Delete$Delete|-|")+
+		                              inactive(totalblocks = 0) + localize_ko("Ctrl+A$Select all|")+
+		                              inactive(selected = 0) + localize_ko("Deselect all|")+
+		                              inactive(selected = 0 && totalblocks = 0) + localize_ko("Ctrl+I$Invert selection|-|")+
+		                              inactive(instrument.num_blocks = 0) + localize_ko("Select all ") + clean(instrument.name) + "|"+
+		                              inactive(instrument.num_blocks = totalblocks) + localize_ko("Select all but ") + clean(instrument.name) + "|-|"+
 		                                inactive(selected = 0) + "Ctrl+E$" + get_mode_actions(1) + "|"+
 		                                inactive(selected = 0) + "Ctrl+D$" + get_mode_actions(2) + "|"+
 		                                inactive(selected = 0) + "Ctrl+R$" + get_mode_actions(3) + "|"+
 		                                inactive(selected = 0) + "Ctrl+F$" + get_mode_actions(4) + "|"+
 												condstr((editmode != m_key), inactive(selected = 0) + "Ctrl+T$" + get_mode_actions(5) + "|") +
 												condstr((editmode != m_key), inactive(selected = 0) + "Ctrl+G$" + get_mode_actions(6) + "|") +
-		                                inactive(selected = 0) + "Change instrument...|\\|" + str + condstr(customstr != "", "-|") + customstr + string_repeat("/|", insmenu) + "-|" +
-		                                inactive(selected = 0 || selection_l = 0) + "Expand selection|"+
-		                                inactive(selected = 0 || selection_l = 0) + "Compress selection|"+
-		                                inactive(selected = 0 || selection_l = 0) + "Macros...|\\||"+ "Tremolo...|"+ "Stereo...|"+ "Arpeggio...|"+ "Portamento...|"+ "Vibrato|"+ "Stagger...|"+ "Chorus|"+ "Volume LFO|"+ "Fade in|"+ "Fade out|"+ "Replace key|"+ "Set velocity...|"+ "Set panning...|"+ "Set pitch...|"+ "Reset all properties|"+ "/|-|"+
-		                                inactive(selected = 0) + "Transpose notes outside octave range")
+		                                inactive(selected = 0) + localize_ko("Change instrument...|\\|") + str + condstr(customstr != "", "-|") + customstr + string_repeat("/|", insmenu) + "-|" +
+		                                inactive(selected = 0 || selection_l = 0) + localize_ko("Expand selection|")+
+		                                inactive(selected = 0 || selection_l = 0) + localize_ko("Compress selection|")+
+		                                inactive(selected = 0 || selection_l = 0) + localize_ko("Macros...|\\||")+ localize_ko("Tremolo...|")+ localize_ko("Stereo...|")+ localize_ko("Arpeggio...|")+ localize_ko("Portamento...|")+ localize_ko("Vibrato|")+ localize_ko("Stagger...|")+ localize_ko("Chorus|")+ localize_ko("Volume LFO|")+ localize_ko("Fade in|")+ localize_ko("Fade out|")+ localize_ko("Replace key|")+ localize_ko("Set velocity...|")+ localize_ko("Set panning...|")+ localize_ko("Set pitch...|")+ localize_ko("Reset all properties|")+ "/|-|"+
+		                                inactive(selected = 0) + localize_ko("Transpose notes outside octave range"))
 		}
-		if (draw_tab("Settings")) {
+		if (draw_tab(localize_ko("Settings"))) {
 		    str = ""
 		    customstr = ""
 			insmenu = 1
@@ -1640,16 +1640,16 @@ function control_draw() {
 					}
 				}
 				if (a % 25 == 0 && a > 1 && a < ds_list_size(instrument_list) - 1) {
-					customstr += "-|More...|\\|"
+					customstr += localize_ko("-|More...|\\|")
 					insmenu++
 				}
 		    }
-		    if (!isplayer) show_menu_ext("settings", 59, 19, "Instrument|\\|" + str + condstr(customstr != "", "-|") + customstr + string_repeat("/|", insmenu) +
-		                        icon(icons.INSTRUMENTS)+"Instrument settings...|Import sounds from Minecraft...|/|-|" + icon(icons.INFORMATION) + "Song info...|" + icon(icons.PROPERTIES) + "Song properties...|Song stats...|-|" + icon(icons.MIDI_INPUT) + "MIDI device manager|Ctrl+P$Preferences...")
-			else show_menu_ext("settingsp", 29, 19, icon(icons.INFORMATION) + "Song info...|" + "Song stats...|-|" + "Ctrl+P$Preferences...")
+		    if (!isplayer) show_menu_ext("settings", 59, 19, localize_ko("Instrument|\\|") + str + condstr(customstr != "", "-|") + customstr + string_repeat("/|", insmenu) +
+		                        icon(icons.INSTRUMENTS)+localize_ko("Instrument settings...|Import sounds from Minecraft...|/|-|") + icon(icons.INFORMATION) + localize_ko("Song info...|") + icon(icons.PROPERTIES) + localize_ko("Song properties...|Song stats...|-|") + icon(icons.MIDI_INPUT) + localize_ko("MIDI device manager|Ctrl+P$Preferences..."))
+			else show_menu_ext("settingsp", 29, 19, icon(icons.INFORMATION) + localize_ko("Song info...|") + localize_ko("Song stats...|-|") + localize_ko("Ctrl+P$Preferences..."))
 		}
-		if (draw_tab("Help")) {
-		    show_menu_ext("help", 109 - 30 * isplayer, 19, icon(icons.HELP) + "Tutorial videos|\\|Part 1: Composing note block music|Part 2: Opening MIDI files|Part 3: Importing songs into Minecraft|Part 4: Editing songs made in Minecraft     |-|F1$View all|/|-|" + icon(icons.INTERNET) + "Website...|GitHub...|Discord server...|Report a bug...|Donate...|-|Changelist...|About...")
+		if (draw_tab(localize_ko("Help"))) {
+		    show_menu_ext("help", 109 - 30 * isplayer, 19, icon(icons.HELP) + localize_ko("Tutorial videos|\\|Part 1: Composing note block music|Part 2: Opening MIDI files|Part 3: Importing songs into Minecraft|Part 4: Editing songs made in Minecraft     |-|F1$View all|/|-|") + icon(icons.INTERNET) + localize_ko("Website...|GitHub...|Discord server...|Report a bug...|Donate...|-|Changelist...|About..."))
 		}
 	} else {
 		if (draw_tab("文件")) {
@@ -1670,10 +1670,10 @@ function control_draw() {
 		                             inactive(totalblocks = 0) + "导出为 schematic......|"+
 		                             inactive(totalblocks = 0) + "导出为直轨 schematic......|"+
 		                             inactive(totalblocks = 0) + "导出为分支 schematic......|"+
-									 inactive(totalblocks = 0) + "导出为数据包......|-|" + 
+									 inactive(totalblocks = 0) + "导出为数据包......|-|" +
 		                             "Alt + F4$退出")
 			else show_menu_ext("filep", 0, 19, icon(icons.OPEN)+"Ctrl+O$打开歌曲......|最近歌曲......|\\|" + str + condstr(recent_song[0] != "", "-|清除最近歌曲") + condstr(recent_song[0] = "", "^!无最近歌曲") + "|/|-|"+"从 MIDI 文件导入......|从 Schematic 文件导入......|-|" + "Alt + F4$退出")
-							
+
 		}
 		if (!isplayer) if (draw_tab("编辑")) {
 		    str = ""
@@ -1695,7 +1695,7 @@ function control_draw() {
 		                              inactive(selected = 0) + icon(icons.COPY - (selected = 0)) + "Ctrl+C$复制|"+
 		                              inactive(selected = 0) + icon(icons.CUT - (selected = 0)) + "Ctrl+X$剪切|"+
 		                              inactive(selection_copied = "") + icon(icons.PASTE - (selection_copied = "")) + "Ctrl+V$粘贴|"+
-		                              inactive(selected = 0) + icon(icons.DELETE - (selected = 0)) + "Delete$删除|-|"+
+		                              inactive(selected = 0) + icon(icons.DELETE - (selected = 0)) + localize_ko("Delete$删除|-|")+
 		                              inactive(totalblocks = 0) + "Ctrl+A$全选|"+
 		                              inactive(selected = 0) + "全不选|"+
 		                              inactive(selected = 0 && totalblocks = 0) + "Ctrl+I$选择反转|-|"+
@@ -1710,7 +1710,7 @@ function control_draw() {
 		                                inactive(selected = 0) + "更改音色......|\\|" + str + condstr(customstr != "", "-|") + customstr + string_repeat("/|", insmenu) + "-|" +
 		                                inactive(selected = 0 || selection_l = 0) + "扩展选区|"+
 		                                inactive(selected = 0 || selection_l = 0) + "压缩选区|"+
-		                                inactive(selected = 0 || selection_l = 0) + "快捷键......|\\||"+ "Tremolo...|"+ "Stereo...|"+ "Arpeggio...|"+ "Portamento...|"+ "Vibrato|"+ "Stagger...|"+ "Chorus|"+ "Volume LFO|"+ "淡入|"+ "淡出|"+ "替换音|"+ "设定音量......|"+ "设定声道......|"+ "设定音高......|"+ "重置所有属性|"+ "/|-|"+
+		                                inactive(selected = 0 || selection_l = 0) + "快捷键......|\\||"+ localize_ko("Tremolo...|")+ localize_ko("Stereo...|")+ localize_ko("Arpeggio...|")+ localize_ko("Portamento...|")+ localize_ko("Vibrato|")+ localize_ko("Stagger...|")+ localize_ko("Chorus|")+ localize_ko("Volume LFO|")+ "淡入|"+ "淡出|"+ "替换音|"+ "设定音量......|"+ "设定声道......|"+ "设定音高......|"+ "重置所有属性|"+ "/|-|"+
 		                                inactive(selected = 0) + "转换所有超出八度范围的音符")
 		}
 		if (draw_tab("设置")) {
@@ -1757,37 +1757,37 @@ function control_draw() {
 	xx = 6
 	yy = 23
 	if (language != 1) {
-	if (!isplayer) if (draw_icon(icons.NEW, xx, yy, "New song", 0, 0)) {new_song()} if (!isplayer) xx += 25
-	if (draw_icon(icons.OPEN, xx, yy, "Open song", 0, 0)) {playing = 0 load_song("")} xx += 25 + isplayer * 4
-	if (!isplayer) if (draw_icon(icons.SAVE, xx, yy, "Save song", 0, 0)) {save_song(filename)} if (!isplayer) xx += 25 + 4
+	if (!isplayer) if (draw_icon(icons.NEW, xx, yy, localize_ko("New song"), 0, 0)) {new_song()} if (!isplayer) xx += 25
+	if (draw_icon(icons.OPEN, xx, yy, localize_ko("Open song"), 0, 0)) {playing = 0 load_song("")} xx += 25 + isplayer * 4
+	if (!isplayer) if (draw_icon(icons.SAVE, xx, yy, localize_ko("Save song"), 0, 0)) {save_song(filename)} if (!isplayer) xx += 25 + 4
 	draw_separator(xx, yy + 3) xx += 4
-	if (draw_icon(icons.PLAY + playing, xx, yy, "Play / Pause song", 0, 0)) toggle_playing(totalcols)
-	if (isplayer && !dropmode) if (draw_icon(icons.PLAY + playing, centerx - 12, centery + 50, "Play / Pause song", 0, 0)) toggle_playing(totalcols)
+	if (draw_icon(icons.PLAY + playing, xx, yy, localize_ko("Play / Pause song"), 0, 0)) toggle_playing(totalcols)
+	if (isplayer && !dropmode) if (draw_icon(icons.PLAY + playing, centerx - 12, centery + 50, localize_ko("Play / Pause song"), 0, 0)) toggle_playing(totalcols)
 	xx += 25
-	if (draw_icon(icons.STOP, xx, yy, "Stop song", 0, 0)) {playing = 0 marker_pos = 0 marker_prevpos = 0 timestoloop = real(loopmax)} xx += 25
-	if (isplayer && !dropmode) if (draw_icon(icons.STOP, centerx - 12 - 100, centery + 50, "Stop song", 0, 0)) {playing = 0 marker_pos = 0 marker_prevpos = 0 timestoloop = real(loopmax)}
+	if (draw_icon(icons.STOP, xx, yy, localize_ko("Stop song"), 0, 0)) {playing = 0 marker_pos = 0 marker_prevpos = 0 timestoloop = real(loopmax)} xx += 25
+	if (isplayer && !dropmode) if (draw_icon(icons.STOP, centerx - 12 - 100, centery + 50, localize_ko("Stop song"), 0, 0)) {playing = 0 marker_pos = 0 marker_prevpos = 0 timestoloop = real(loopmax)}
 	forward = 0
-	if (draw_icon(icons.BACK, xx, yy, "Rewind song", 0, 0)) {forward = -1} xx += 25
-	if (isplayer && !dropmode) if (draw_icon(icons.BACK, centerx - 12 - 50, centery + 50, "Rewind song", 0, 0)) {forward = -1}
-	if (draw_icon(icons.FORWARD, xx, yy, "Fast-forward song", 0, 0)) {forward = 1} xx += 25
-	if (isplayer && !dropmode) if (draw_icon(icons.FORWARD, centerx - 12 + 50, centery + 50, "Fast-forward song", 0, 0)) {forward = 1}
-	if (!isplayer) if (draw_icon(icons.RECORD, xx, yy, "Record key presses", 0, playing > 0 && record)) {playing = 0.25 record=!record} if (!isplayer) xx += 25 
-	if (draw_icon(icons.LOOP_INACTIVE + loop_session, xx, yy, "Toggle looping", 0, 0)) loop_session = !loop_session if (!isplayer) xx += 25
-	if (isplayer && !dropmode) if (draw_icon(icons.LOOP_INACTIVE + loop_session, centerx - 12 + 100, centery + 50, "Toggle looping", 0, 0)) loop_session = !loop_session if (!isplayer)
+	if (draw_icon(icons.BACK, xx, yy, localize_ko("Rewind song"), 0, 0)) {forward = -1} xx += 25
+	if (isplayer && !dropmode) if (draw_icon(icons.BACK, centerx - 12 - 50, centery + 50, localize_ko("Rewind song"), 0, 0)) {forward = -1}
+	if (draw_icon(icons.FORWARD, xx, yy, localize_ko("Fast-forward song"), 0, 0)) {forward = 1} xx += 25
+	if (isplayer && !dropmode) if (draw_icon(icons.FORWARD, centerx - 12 + 50, centery + 50, localize_ko("Fast-forward song"), 0, 0)) {forward = 1}
+	if (!isplayer) if (draw_icon(icons.RECORD, xx, yy, localize_ko("Record key presses"), 0, playing > 0 && record)) {playing = 0.25 record=!record} if (!isplayer) xx += 25
+	if (draw_icon(icons.LOOP_INACTIVE + loop_session, xx, yy, localize_ko("Toggle looping"), 0, 0)) loop_session = !loop_session if (!isplayer) xx += 25
+	if (isplayer && !dropmode) if (draw_icon(icons.LOOP_INACTIVE + loop_session, centerx - 12 + 100, centery + 50, localize_ko("Toggle looping"), 0, 0)) loop_session = !loop_session if (!isplayer)
 	if metronome {
 		if (metronome_played == -1 || (metronome_played - 1) mod 8 == 0) metricon = icons.METRONOME_1
 		else metricon = icons.METRONOME_2
 	} else {
 		metricon = icons.METRONOME_INACTIVE
 	}
-	if (!isplayer) if(draw_icon(metricon, xx, yy, "Toggle metronome", 0, 0)) metronome = !metronome
+	if (!isplayer) if(draw_icon(metricon, xx, yy, localize_ko("Toggle metronome"), 0, 0)) metronome = !metronome
 	xx += 25 + 4
 	if (playing = 0) record = 0
 	draw_separator(xx, yy + 3) xx += 4
-	if (!isplayer) if (draw_icon(icons.EDITMODE_KEY, xx, yy, "Edit note key", 0, editmode = 0)) {editmode = 0} if (!isplayer) xx += 25
-	if (!isplayer) if (draw_icon(icons.EDITMODE_VEL, xx, yy, "Edit note velocity", 0, editmode = 1)) {editmode = 1}  if (!isplayer) xx += 25
-	if (!isplayer) if (draw_icon(icons.EDITMODE_PAN, xx, yy, "Edit note panning", 0, editmode = 2)) {editmode = 2} if (!isplayer) xx += 25
-	if (!isplayer) if (draw_icon(icons.EDITMODE_PIT, xx, yy, "Edit note pitch", 0, editmode = 3)) {editmode = 3} if (!isplayer) xx += 25 + 4
+	if (!isplayer) if (draw_icon(icons.EDITMODE_KEY, xx, yy, localize_ko("Edit note key"), 0, editmode = 0)) {editmode = 0} if (!isplayer) xx += 25
+	if (!isplayer) if (draw_icon(icons.EDITMODE_VEL, xx, yy, localize_ko("Edit note velocity"), 0, editmode = 1)) {editmode = 1}  if (!isplayer) xx += 25
+	if (!isplayer) if (draw_icon(icons.EDITMODE_PAN, xx, yy, localize_ko("Edit note panning"), 0, editmode = 2)) {editmode = 2} if (!isplayer) xx += 25
+	if (!isplayer) if (draw_icon(icons.EDITMODE_PIT, xx, yy, localize_ko("Edit note pitch"), 0, editmode = 3)) {editmode = 3} if (!isplayer) xx += 25 + 4
 	if (!isplayer) draw_separator(xx, yy + 3) if (!isplayer) xx += 4
 	} else {
 	if (!isplayer) if (draw_icon(icons.NEW, xx, yy, "新文件", 0, 0)) {new_song()} if (!isplayer) xx += 25
@@ -1804,7 +1804,7 @@ function control_draw() {
 	if (isplayer && !dropmode) if (draw_icon(icons.BACK, centerx - 12 - 50, centery + 50, "快退", 0, 0)) {forward = -1}
 	if (draw_icon(icons.FORWARD, xx, yy, "快进", 0, 0)) {forward = 1} xx += 25
 	if (isplayer && !dropmode) if (draw_icon(icons.FORWARD, centerx - 12 + 50, centery + 50, "快进", 0, 0)) {forward = 1}
-	if (!isplayer) if (draw_icon(icons.RECORD, xx, yy, "录制按键", 0, playing > 0 && record)) {playing = 0.25 record=!record} if (!isplayer) xx += 25 
+	if (!isplayer) if (draw_icon(icons.RECORD, xx, yy, "录制按键", 0, playing > 0 && record)) {playing = 0.25 record=!record} if (!isplayer) xx += 25
 	if (draw_icon(icons.LOOP_INACTIVE + loop_session, xx, yy, "开关循环", 0, 0)) loop_session = !loop_session if (!isplayer) xx += 25
 	if (isplayer && !dropmode) if (draw_icon(icons.LOOP_INACTIVE + loop_session, centerx - 12 + 100, centery + 50, "开关循环", 0, 0)) loop_session = !loop_session if (!isplayer)
 	if metronome {
@@ -1838,7 +1838,7 @@ function control_draw() {
 				var insindex = (a * ins_icons + b)
 				if (insindex >= ds_list_size(instrument_list)) break
 				var ins = instrument_list[| insindex];
-				if (draw_icon_insbox(insindex, xx + b * 25, yy + a * 25, condstr(language != 1, "Change instrument to ", "更改音色为") + ins.name, true, false, instrument = ins)) {
+				if (draw_icon_insbox(insindex, xx + b * 25, yy + a * 25, condstr(language != 1, localize_ko("Change instrument to "), "更改音色为") + ins.name, true, false, instrument = ins)) {
 					play_sound(ins, selected_key, 100, 100, 0)
 					instrument = ins
 					selected_vel = 100
@@ -1856,7 +1856,7 @@ function control_draw() {
 		}
 		xx += ins_icons * 25
 		// 'Collapse' button
-		if (language != 1) draw_icon_insbox(icons.INSBOX_COLLAPSE, xx, yy, "Less instruments", true) // it's a fake button since clicking anywhere works :D
+		if (language != 1) draw_icon_insbox(icons.INSBOX_COLLAPSE, xx, yy, localize_ko("Less instruments"), true) // it's a fake button since clicking anywhere works :D
 		else draw_icon_insbox(icons.INSBOX_COLLAPSE, xx, yy, "收回音色", true)
 		xx += 25
 	} else {
@@ -1873,7 +1873,7 @@ function control_draw() {
 		insbox_start = median(0, insbox_start, ds_list_size(instrument_list) - ins_icons)
 		for (a = insbox_start; a < insbox_start + ins_icons; a += 1) {
 		    var ins = instrument_list[| a];
-		    if (draw_icon_insbox(a, xx, yy, condstr(language != 1, "Change instrument to ", "更改音色为") + ins.name, false, false, instrument = ins)) {
+		    if (draw_icon_insbox(a, xx, yy, condstr(language != 1, localize_ko("Change instrument to "), "更改音色为") + ins.name, false, false, instrument = ins)) {
 				play_sound(ins, selected_key, 100, 100, 0)
 				instrument = ins
 				selected_vel = 100
@@ -1883,32 +1883,32 @@ function control_draw() {
 			xx += 25
 		}
 		if (ins_icons < ds_list_size(instrument_list)) {
-			if (draw_icon_insbox(icons.INSBOX_EXPAND, xx, yy, condstr(language != 1, "More instruments...", "展开音色......"), false, true, 0)) {showinsbox = 1}
+			if (draw_icon_insbox(icons.INSBOX_EXPAND, xx, yy, condstr(language != 1, localize_ko("More instruments..."), "展开音色......"), false, true, 0)) {showinsbox = 1}
 			xx += 25
 		}
 	}
 	if (!isplayer) {xx += 4 draw_separator(xx, yy + 3) xx += 4}
 	if (language != 1) {
 	while (1) {
-	if (!isplayer) {if (draw_icon(icons.UNDO, xx, yy, "Undo the last change", historypos = historylen, 0)) {playing = 0 action_undo()} xx += 25 if (xx > rw - 312) break}
-	if (!isplayer) {if (draw_icon(icons.REDO, xx, yy, "Redo the last undo", historypos = 0, 0)) {playing = 0 action_redo()} xx += 25 if (xx > rw - 312) break}
-	if (!isplayer) {if (draw_icon(icons.COPY, xx, yy, "Copy the selected note blocks", selected = 0, 0)) {playing = 0 action_copy()} xx += 25 if (xx > rw - 312) break}
-	if (!isplayer) {if (draw_icon(icons.CUT, xx, yy, "Cut the selected note blocks", selected = 0, 0)) {playing = 0 action_cut()} xx += 25 if (xx > rw - 312) break}
-	if (!isplayer) {if (draw_icon(icons.PASTE, xx, yy, "Paste the copied note blocks", selection_copied = "", 0)) {playing = 0 action_paste(starta, startb)} xx += 25 if (xx > rw - 312) break}
-	if (!isplayer) {if (draw_icon(icons.DELETE, xx, yy, "Delete the selected note blocks", selected = 0, 0)) {playing = 0 action_delete()} xx += 25 if (xx > rw - 312) break}
+	if (!isplayer) {if (draw_icon(icons.UNDO, xx, yy, localize_ko("Undo the last change"), historypos = historylen, 0)) {playing = 0 action_undo()} xx += 25 if (xx > rw - 312) break}
+	if (!isplayer) {if (draw_icon(icons.REDO, xx, yy, localize_ko("Redo the last undo"), historypos = 0, 0)) {playing = 0 action_redo()} xx += 25 if (xx > rw - 312) break}
+	if (!isplayer) {if (draw_icon(icons.COPY, xx, yy, localize_ko("Copy the selected note blocks"), selected = 0, 0)) {playing = 0 action_copy()} xx += 25 if (xx > rw - 312) break}
+	if (!isplayer) {if (draw_icon(icons.CUT, xx, yy, localize_ko("Cut the selected note blocks"), selected = 0, 0)) {playing = 0 action_cut()} xx += 25 if (xx > rw - 312) break}
+	if (!isplayer) {if (draw_icon(icons.PASTE, xx, yy, localize_ko("Paste the copied note blocks"), selection_copied = "", 0)) {playing = 0 action_paste(starta, startb)} xx += 25 if (xx > rw - 312) break}
+	if (!isplayer) {if (draw_icon(icons.DELETE, xx, yy, localize_ko("Delete the selected note blocks"), selected = 0, 0)) {playing = 0 action_delete()} xx += 25 if (xx > rw - 312) break}
 	if (!isplayer) {xx += 4 draw_separator(xx, yy + 3) xx += 4 if (xx > rw - 312) break}
-	if (draw_icon(icons.INFORMATION, xx, yy, "View song info")) {if (!isplayer) playing = 0 window = w_songinfoedit * !isplayer + w_songinfo * isplayer} xx += 25 if (xx > rw - 312) break
-	if (!isplayer) {if (draw_icon(icons.PROPERTIES, xx, yy, "Edit song properties")) {playing = 0 window = w_properties} xx += 25 if (xx > rw - 312) break}
-	if (!isplayer) {if (draw_icon(icons.INSTRUMENTS, xx, yy, "Edit instruments")) {playing = 0 window = w_instruments} xx += 25 if (xx > rw - 312) break}
-	if (!isplayer) {if (draw_icon(icons.MIDI_INPUT, xx, yy, "MIDI device manager")) {playing = 0 window = w_mididevices} xx += 25 if (xx > rw - 312) break}
+	if (draw_icon(icons.INFORMATION, xx, yy, localize_ko("View song info"))) {if (!isplayer) playing = 0 window = w_songinfoedit * !isplayer + w_songinfo * isplayer} xx += 25 if (xx > rw - 312) break
+	if (!isplayer) {if (draw_icon(icons.PROPERTIES, xx, yy, localize_ko("Edit song properties"))) {playing = 0 window = w_properties} xx += 25 if (xx > rw - 312) break}
+	if (!isplayer) {if (draw_icon(icons.INSTRUMENTS, xx, yy, localize_ko("Edit instruments"))) {playing = 0 window = w_instruments} xx += 25 if (xx > rw - 312) break}
+	if (!isplayer) {if (draw_icon(icons.MIDI_INPUT, xx, yy, localize_ko("MIDI device manager"))) {playing = 0 window = w_mididevices} xx += 25 if (xx > rw - 312) break}
 	xx += 4 draw_separator(xx, yy + 3) xx += 4 if (xx > rw - 312) break
-	if (draw_icon(icons.HELP, xx, yy, "Watch tutorial videos")) {
+	if (draw_icon(icons.HELP, xx, yy, localize_ko("Watch tutorial videos"))) {
 	    open_url("http://www.youtube.com/playlist?list=PL7EA4F0D271DA6E86")
 	} xx += 25 if (xx > rw - 312) break
-	if (draw_icon(icons.INTERNET, xx, yy, "Visit the Note Block Studio website")) {open_url(link_website)} xx += 25 if (xx > rw - 312) break
+	if (draw_icon(icons.INTERNET, xx, yy, localize_ko("Visit the Note Block Studio website"))) {open_url(link_website)} xx += 25 if (xx > rw - 312) break
 	break
 	}
-	if (isplayer) if (draw_icon(icons.EDITMODE_KEY, xx, yy, condstr(dropmode, "Exit", "Enter") + " the drop mode", 0, dropmode)) {dropmode = !dropmode if (dropmode) window_maximize() else window_setnormal()} if (isplayer) xx += 25
+	if (isplayer) if (draw_icon(icons.EDITMODE_KEY, xx, yy, condstr(dropmode, localize_ko("Exit"), "Enter") + " the drop mode", 0, dropmode)) {dropmode = !dropmode if (dropmode) window_maximize() else window_setnormal()} if (isplayer) xx += 25
 	} else {
 	while (1) {
 	if (!isplayer) {if (draw_icon(icons.UNDO, xx, yy, "撤销", historypos = historylen, 0)) {playing = 0 action_undo()} xx += 25 if (xx > rw - 312) break}
@@ -1935,7 +1935,7 @@ function control_draw() {
 		play_sound(soundding, 45, 100, 100, 0)
 	}
 	xx += 8
-	mastervol = floor(draw_dragbar(mastervol, 1, xx, yy + 10, 100, 2, clamp(mouse_x - xx, 0, 100), condstr(language != 1, "Master Volume: ", "主音量：") + string(floor(mastervol * 100)), 0) * 100 + 0.5) / 100
+	mastervol = floor(draw_dragbar(mastervol, 1, xx, yy + 10, 100, 2, clamp(mouse_x - xx, 0, 100), condstr(language != 1, localize_ko("Master Volume: "), "主音量：") + string(floor(mastervol * 100)), 0) * 100 + 0.5) / 100
 	if (mouse_rectangle(xx - 11, yy, 122, 22) && window = 0) {
 		volume_scroll = 1
 		if (mouse_wheel_up() && mastervol + 0.02 <= 1) mastervol += 0.02
@@ -1969,11 +1969,11 @@ function control_draw() {
 		}
 		draw_set_color(c_green)
 		if (theme == 2 || (theme == 3 && fdark)) draw_set_color(c_lime)
-		if (language != 1) draw_text_dynamic(rw - 65, 28, "Fully compatible")
+		if (language != 1) draw_text_dynamic(rw - 65, 28, localize_ko("Fully compatible"))
 		else draw_text_dynamic(rw - 65, 28, "完全兼容")
 		draw_theme_color()
 		draw_theme_font(font_main)
-		if (language != 1) popup_set(rw - compx, 24, compx, 25, "This song is compatible with both schematics and data packs.\n(Click for more info.)")
+		if (language != 1) popup_set(rw - compx, 24, compx, 25, localize_ko("This song is compatible with both schematics and data packs.\n(Click for more info.)"))
 		else popup_set(rw - compx, 24, compx, 25, "此歌曲兼容 schematic 和数据包。\n（点击查看更多）")
 	} else if (compatible = 2) {
 		if (theme != 3) {
@@ -1993,11 +1993,11 @@ function control_draw() {
 			}
 		}
 		draw_set_color(c_orange)
-		if (language != 1) draw_text_dynamic(rw - 65, 28, "Data pack only")
+		if (language != 1) draw_text_dynamic(rw - 65, 28, localize_ko("Data pack only"))
 		else draw_text_dynamic(rw - 65, 28, "仅限数据包")
 		draw_theme_color()
 		draw_theme_font(font_main)
-		if (language != 1) popup_set(rw - compx, 24, compx, 25, "This song is only compatible with data packs.\n(Click for more info.)")
+		if (language != 1) popup_set(rw - compx, 24, compx, 25, localize_ko("This song is only compatible with data packs.\n(Click for more info.)"))
 		else popup_set(rw - compx, 24, compx, 25, "此歌曲仅兼容数据包。\n（点击查看更多）")
 	} else {
 		if (theme != 3) {
@@ -2017,11 +2017,11 @@ function control_draw() {
 			}
 		}
 		draw_set_color(c_red)
-		if (language != 1) draw_text_dynamic(rw - 65, 28, "Resource pack only")
+		if (language != 1) draw_text_dynamic(rw - 65, 28, localize_ko("Resource pack only"))
 		else draw_text_dynamic(rw - 65, 28, "仅限资源包")
 		draw_theme_color()
 		draw_theme_font(font_main)
-		if (language != 1) popup_set(rw - compx, 24, compx, 25, "This song is compatible with data packs using a resource pack.\n(Click for more info.)")
+		if (language != 1) popup_set(rw - compx, 24, compx, 25, localize_ko("This song is compatible with data packs using a resource pack.\n(Click for more info.)"))
 		else popup_set(rw - compx, 24, compx, 25, "此歌曲仅兼容带资源包的数据包。\n（点击查看更多）")
 	}
 	draw_set_halign(fa_left)
@@ -2045,51 +2045,51 @@ function control_draw() {
 	draw_theme_color()
 	xx = 4
 
-	if (language != 1) {draw_text_dynamic(xx, rh - 18, "Instrument: " + instrument.name) xx += 180}
+	if (language != 1) {draw_text_dynamic(xx, rh - 18, localize_ko("Instrument: ") + instrument.name) xx += 180}
 	else {draw_text_dynamic(xx, rh - 18, "音色: " + instrument.name) xx += 180}
 	draw_separator(xx, rh - 20)
 	draw_theme_color()
 
 	xx += 4
-	if (language != 1) {draw_text_dynamic(xx, rh - 18, "Key: " + get_keyname(selected_key, 1)) xx += 75}
+	if (language != 1) {draw_text_dynamic(xx, rh - 18, localize_ko("Key: ") + get_keyname(selected_key, 1)) xx += 75}
 	else {draw_text_dynamic(xx, rh - 18, "音: " + get_keyname(selected_key, 1)) xx += 75}
 	draw_separator(xx, rh - 20)
 	draw_theme_color()
-	
+
 	if (selected_vel != 100 || selected_pan != 100 || selected_pit != 0) {
 		xx += 4
-		if (language != 1) {draw_text_dynamic(xx, rh - 18, "Velocity: " + string(selected_vel)) xx += 100}
+		if (language != 1) {draw_text_dynamic(xx, rh - 18, localize_ko("Velocity: ") + string(selected_vel)) xx += 100}
 		else {draw_text_dynamic(xx, rh - 18, "音量: " + string(selected_vel)) xx += 100}
 		draw_separator(xx, rh - 20)
 		draw_theme_color()
-	
+
 		xx += 4
-		if (language != 1) {draw_text_dynamic(xx, rh - 18, "Panning: " + string(selected_pan - 100)) xx += 95}
+		if (language != 1) {draw_text_dynamic(xx, rh - 18, localize_ko("Panning: ") + string(selected_pan - 100)) xx += 95}
 		else {draw_text_dynamic(xx, rh - 18, "声道: " + string(selected_pan - 100)) xx += 95}
 		draw_separator(xx, rh - 20)
 		draw_theme_color()
-	
+
 		xx += 4
-		if (language != 1) {draw_text_dynamic(xx, rh - 18, "Pitch: " + string(selected_pit)) xx += 85}
+		if (language != 1) {draw_text_dynamic(xx, rh - 18, localize_ko("Pitch: ") + string(selected_pit)) xx += 85}
 		else {draw_text_dynamic(xx, rh - 18, "音高: " + string(selected_pit)) xx += 85}
 		draw_separator(xx, rh - 20)
 		draw_theme_color()
 	}
 
 	xx += 4
-	if (language != 1) {draw_text_dynamic(xx, rh - 18, "Tick: " + test(selbx = -1, "None", string(selbx))) xx += 90}
+	if (language != 1) {draw_text_dynamic(xx, rh - 18, localize_ko("Tick: ") + test(selbx = -1, localize_ko("None"), string(selbx))) xx += 90}
 	else {draw_text_dynamic(xx, rh - 18, "位置: " + test(selbx = -1, "无", string(selbx))) xx += 90}
 	draw_separator(xx, rh - 20)
 	draw_theme_color()
 
 	xx += 4
-	if (language != 1) {draw_text_dynamic(xx, rh - 18, "Layer: " + test(selby = -1, "None", string(selby + 1))) xx += 90}
+	if (language != 1) {draw_text_dynamic(xx, rh - 18, localize_ko("Layer: ") + test(selby = -1, localize_ko("None"), string(selby + 1))) xx += 90}
 	else {draw_text_dynamic(xx, rh - 18, "层: " + test(selby = -1, "无", string(selby + 1))) xx += 90}
 	draw_separator(xx, rh - 20)
 	draw_theme_color()
 
 	xx += 4
-	if (language != 1) {draw_text_dynamic(xx, rh - 18, "Selected: " + string(selected) + " / " + string(totalblocks + selected)) xx += 160}
+	if (language != 1) {draw_text_dynamic(xx, rh - 18, localize_ko("Selected: ") + string(selected) + " / " + string(totalblocks + selected)) xx += 160}
 	else {draw_text_dynamic(xx, rh - 18, "已选择: " + string(selected) + " / " + string(totalblocks + selected)) xx += 160}
 	draw_separator(xx, rh - 20)
 	draw_theme_color()
@@ -2100,13 +2100,13 @@ function control_draw() {
 			if (song_exists[selbx, selby]) {
 				hovernote = 1
 				xx += 4
-				if (language != 1) draw_text_dynamic(xx, rh - 18, "Key: " + get_keyname(song_key[selbx, selby], 1))
+				if (language != 1) draw_text_dynamic(xx, rh - 18, localize_ko("Key: ") + get_keyname(song_key[selbx, selby], 1))
 				else draw_text_dynamic(xx, rh - 18, "音: " + get_keyname(song_key[selbx, selby], 1))
 				xx += 90
 				draw_separator(xx, rh - 20)
 				draw_theme_color()
 				xx += 4
-				if (language != 1) draw_text_dynamic(xx, rh - 18, "Velocity: " + string_format(song_vel[selbx, selby], 1, 0))
+				if (language != 1) draw_text_dynamic(xx, rh - 18, localize_ko("Velocity: ") + string_format(song_vel[selbx, selby], 1, 0))
 				else draw_text_dynamic(xx, rh - 18, "音量: " + string_format(song_vel[selbx, selby], 1, 0))
 				xx += 110
 				draw_separator(xx, rh - 20)
@@ -2114,9 +2114,9 @@ function control_draw() {
 				xx += 4
 				if (language != 1) {
 				if (song_pan[selbx, selby] != 100) {
-					draw_text_dynamic(xx, rh - 18, "Panning: " + condstr(song_pan[selbx, selby] < 100, "L ", "R ") + " " + string(abs(song_pan[selbx, selby] - 100)))
+					draw_text_dynamic(xx, rh - 18, localize_ko("Panning: ") + condstr(song_pan[selbx, selby] < 100, "L ", "R ") + " " + string(abs(song_pan[selbx, selby] - 100)))
 				} else {
-					draw_text_dynamic(xx, rh - 18, "Panning: Center")
+					draw_text_dynamic(xx, rh - 18, localize_ko("Panning: Center"))
 				}
 				} else {
 				if (song_pan[selbx, selby] != 100) {
@@ -2129,7 +2129,7 @@ function control_draw() {
 				draw_separator(xx, rh - 20)
 				draw_theme_color()
 				xx += 4
-				if (language != 1) draw_text_dynamic(xx, rh - 18, "Pitch: " + condstr(song_pit[selbx, selby] > 0, "+") + string_format(song_pit[selbx, selby], 1, 0) + " cents")
+				if (language != 1) draw_text_dynamic(xx, rh - 18, localize_ko("Pitch: ") + condstr(song_pit[selbx, selby] > 0, "+") + string_format(song_pit[selbx, selby], 1, 0) + localize_ko(" cents"))
 				else draw_text_dynamic(xx, rh - 18, "音高: " + condstr(song_pit[selbx, selby] > 0, "+") + string_format(song_pit[selbx, selby], 1, 0) + "微分")
 				draw_theme_color()
 			}
@@ -2140,7 +2140,7 @@ function control_draw() {
 		if (autosave && filename_ext(filename) = ".nbs") {
 			draw_theme_color()
 			xx += 4
-			if (language != 1) draw_text_dynamic(xx, rh - 18, "Next auto-save: " + string(ceil(tonextsave)) + " minute" + condstr(ceil(tonextsave)<>1, "s"))
+			if (language != 1) draw_text_dynamic(xx, rh - 18, localize_ko("Next auto-save: ") + string(ceil(tonextsave)) + localize_ko(" minute") + condstr(ceil(tonextsave)<>1, "s"))
 			else draw_text_dynamic(xx, rh - 18, "下次自动保存: " + string(ceil(tonextsave)) + " 分钟")
 			xx += 210
 			draw_separator(xx, rh - 20)
@@ -2152,7 +2152,7 @@ function control_draw() {
 			if (sounds > channels) {
 				draw_set_color(c_red)
 			}
-			if (language != 1) draw_text_dynamic(xx, rh - 18, "Sounds: " + string(sounds) + " / " + string(channels))
+			if (language != 1) draw_text_dynamic(xx, rh - 18, localize_ko("Sounds: ") + string(sounds) + " / " + string(channels))
 			else draw_text_dynamic(xx, rh - 18, "声音数: " + string(sounds) + " / " + string(channels))
 			draw_theme_color()
 		}
@@ -2162,8 +2162,8 @@ function control_draw() {
 	str = ""
 	for (a = 0; a < midi_devices; a += 1) str += condstr(a > 0, ", ") + midi_input_device_name(a)
 	if (language != 1) {
-	if (midi_devices = 0) str = "No connected MIDI devices"
-	else str = "MIDI devices: " + str
+	if (midi_devices = 0) str = localize_ko("No connected MIDI devices")
+	else str = localize_ko("MIDI devices: ") + str
 	} else {
 	if (midi_devices = 0) str = "无 MIDI 设备"
 	else str = "MIDI 设备: " + str
@@ -2171,7 +2171,7 @@ function control_draw() {
 	draw_text_dynamic(rw - 6, rh - 18, str)
 	draw_set_halign(fa_left)
 	}
-	
+
 	}
 
 	if (!fullscreen && show_layers) {
@@ -2204,11 +2204,11 @@ function control_draw() {
 		draw_theme_font(font_main)
 		draw_set_halign(fa_left)
 		draw_set_alpha(1)
-		
+
 		if (isplayer) {
 			if (!dropmode) {
 
-				marker_pos = draw_dragbar(marker_pos, enda + totalcols, centerx - 200, centery + 25, 400, 1, time_str((clamp(((mouse_x - (centerx - 200)) / 400) * enda, 0, enda)) / tempo), condstr(language != 1, "Song Position", "当前位置"), 0)
+				marker_pos = draw_dragbar(marker_pos, enda + totalcols, centerx - 200, centery + 25, 400, 1, time_str((clamp(((mouse_x - (centerx - 200)) / 400) * enda, 0, enda)) / tempo), condstr(language != 1, localize_ko("Song Position"), "当前位置"), 0)
 				draw_set_halign(fa_left)
 				draw_theme_color()
 				if (blackout) draw_set_color(c_white)
@@ -2216,7 +2216,7 @@ function control_draw() {
 				var offset = 0;
 				if (song_author != "") offset += 20
 				if (song_orauthor != "") offset += 15
-				
+
 				var title_str = "";
 				if (song_name != "") {
 					title_str = song_name
@@ -2227,7 +2227,7 @@ function control_draw() {
 				} else if (midiname != "") {
 					title_str = filename_change_ext(midiname, "")
 				}
-				
+
 				draw_text_dynamic(centerx - 200, centery - 80 - offset, title_str, true)
 				if (song_author != "") {
 					draw_theme_font(font_main_bold)
@@ -2237,16 +2237,16 @@ function control_draw() {
 					if (song_author == "") offset += 15
 					draw_theme_font(font_main)
 					draw_set_color(c_gray)
-					draw_text_dynamic(centerx - 200, centery - 45 - offset, (language != 1 ? "original by " : "原作者 "), true)
+					draw_text_dynamic(centerx - 200, centery - 45 - offset, (language != 1 ? localize_ko("original by ") : "原作者 "), true)
 					draw_theme_font(font_main_bold)
-					draw_text_dynamic(centerx - 200 + string_width_dynamic(language != 1 ? "original by " : "原作者 "), centery - 45 - offset, song_orauthor, true)
+					draw_text_dynamic(centerx - 200 + string_width_dynamic(language != 1 ? localize_ko("original by ") : "原作者 "), centery - 45 - offset, song_orauthor, true)
 				}
 				draw_theme_font(font_main)
 				draw_set_color(c_white)
 				dropalpha = 1
 			} else {
 				draw_set_alpha(dropalpha)
-				marker_pos = draw_dragbar(marker_pos, enda + totalcols, 93 - 84 + 100, 52 + 15, 400, 1, time_str((clamp(((mouse_x - (93 - 84 + 100)) / 400) * enda, 0, enda)) / tempo), condstr(language != 1, "Song Position", "当前位置"), 0)
+				marker_pos = draw_dragbar(marker_pos, enda + totalcols, 93 - 84 + 100, 52 + 15, 400, 1, time_str((clamp(((mouse_x - (93 - 84 + 100)) / 400) * enda, 0, enda)) / tempo), condstr(language != 1, localize_ko("Song Position"), "当前位置"), 0)
 				draw_set_alpha(1)
 				if (mouse_x != mouse_xprev || mouse_y != mouse_yprev || mouse_rectangle(0, 0, 530, 90) || window != 0) {
 					dropalpha = 1
@@ -2270,7 +2270,7 @@ function control_draw() {
 		draw_text_dynamic(210, 60, floor(marker_pos / (timesignature * 4)) + 1)
 		draw_text_dynamic(225, 60, floor((marker_pos / 4) mod timesignature) + 1)
 		draw_text_dynamic(240, 60, floor(marker_pos mod 4) + 1)
-		if (language != 1) popup_set(184, 57, 64, 22, "Position of the marker in bars, beats and sixteenths.")
+		if (language != 1) popup_set(184, 57, 64, 22, localize_ko("Position of the marker in bars, beats and sixteenths."))
 		else popup_set(184, 57, 64, 22, "歌曲的进度（全音、四分、十六分）")
 
 		// Tempo
@@ -2282,16 +2282,16 @@ function control_draw() {
 			if (!hires || theme != 3) draw_sprite(spr_tempobox, 2 * (theme = 3) + 2 * (fdark && theme = 3), 108, 57)
 			else draw_sprite_ext(spr_tempobox_hires, 2 * (theme = 3) + 2 * (fdark && theme = 3), 108, 57, 0.25, 0.25, 0, -1, 1)
 		}
-		
+
 		if (window != w_settempo) {
 		if (language != 1) {
 		if (use_bpm) {
 			bpm = tempo * 15
 			draw_text_dynamic(136, 60, string_format(bpm, 4, 2) + " BPM")
-			popup_set(108, 57, 64, 22, "Tempo of the song (measured in beats per minute).\nClick and drag to change. Click to enter value. Right-click for more options.")
+			popup_set(108, 57, 64, 22, localize_ko("Tempo of the song (measured in beats per minute).\nClick and drag to change. Click to enter value. Right-click for more options."))
 		} else {
 			draw_text_dynamic(136, 60, string_format(tempo, 4, 2) + " t / s")
-			popup_set(108, 57, 64, 22, "Tempo of the song (measured in ticks per second).\nClick and drag to change. Click to enter value. Right-click for more options.")
+			popup_set(108, 57, 64, 22, localize_ko("Tempo of the song (measured in ticks per second).\nClick and drag to change. Click to enter value. Right-click for more options."))
 		}
 		} else {
 		if (use_bpm) {
@@ -2308,7 +2308,7 @@ function control_draw() {
 		var bpm_multiplier = use_bpm ? 15 : 1
 		if (a && window = 0) {
 			curs = cr_handpoint
-			
+
 			// Input
 			if (mouse_check_button_released(mb_left)) {
 		        window = w_settempo
@@ -2321,15 +2321,15 @@ function control_draw() {
 				tempodrag = tempo
 		        window = w_dragtempo
 				if (tutorial_tempobox == 0) {
-					if (language != 1) set_msg("Tip: click the tempo box\nto enter a value!", 7.0, 208, 118)
+					if (language != 1) set_msg(localize_ko("Tip: click the tempo box\nto enter a value!"), 7.0, 208, 118)
 					else set_msg("小贴士：单击速度框可以手动输入！", 7.0, 208, 118)
 					tutorial_tempobox = 1
 				}
 			}
 
 		    if (mouse_check_button_pressed(mb_right)) {
-				if (language != 1) menu = show_menu_ext("tempo", mouse_x, mouse_y, check(!use_bpm) + "Ticks per second (t/s)|" +
-																check(use_bpm) + "Beats per minute (BPM)|-|" +
+				if (language != 1) menu = show_menu_ext("tempo", mouse_x, mouse_y, check(!use_bpm) + localize_ko("Ticks per second (t/s)|") +
+																check(use_bpm) + localize_ko("Beats per minute (BPM)|-|") +
 																check(tempo = 10) + string(10 * bpm_multiplier) + condstr(use_bpm, " BPM", " t/s") + "|" +
 																check(tempo = 12) + string(12 * bpm_multiplier) + condstr(use_bpm, " BPM", " t/s") + "|" +
 																check(tempo = 14) + string(14 * bpm_multiplier) + condstr(use_bpm, " BPM", " t/s") + "|" +
@@ -2338,7 +2338,7 @@ function control_draw() {
 																check(tempo = 20) + string(20 * bpm_multiplier) + condstr(use_bpm, " BPM", " t/s") + "|" +
 																check(tempo = 30) + string(30 * bpm_multiplier) + condstr(use_bpm, " BPM", " t/s") + "|" +
 																check(tempo = 60) + string(60 * bpm_multiplier) + condstr(use_bpm, " BPM", " t/s") + "|-|" +
-																"Tempo tapper...")
+																localize_ko("Tempo tapper..."))
 				else menu = show_menu_ext("tempo", mouse_x, mouse_y, check(!use_bpm) + "红石刻/秒 (t/s)|" +
 																check(use_bpm) + "拍数/分钟 (BPM)|-|" +
 																check(tempo = 10) + string(10 * bpm_multiplier) + condstr(use_bpm, " BPM", " t/s") + "|" +
@@ -2351,7 +2351,7 @@ function control_draw() {
 																check(tempo = 60) + string(60 * bpm_multiplier) + condstr(use_bpm, " BPM", " t/s") + "|-|" +
 																"速度测量器......")
 				if (tutorial_tempobox == 2) {
-					if (language != 1) set_msg("Way to go!", 5.0, 158, 118)
+					if (language != 1) set_msg(localize_ko("Way to go!"), 5.0, 158, 118)
 					else set_msg("干得好！", 5.0, 158, 118)
 					tutorial_tempobox = 3
 				}
@@ -2424,24 +2424,24 @@ function control_draw() {
 	// Draw update progress bar
 	if (update == 4) {
 		window = -1
-		if (language != 1) draw_downloadprogress("Update", "Downloading update...", downloaded_size, total_size)
+		if (language != 1) draw_downloadprogress(localize_ko("Update"), localize_ko("Downloading update..."), downloaded_size, total_size)
 		else draw_downloadprogress("更新", "正在下载更新......", downloaded_size, total_size)
 	}
-	
+
 	// Draw song download progress bar
 	if (protocol_data != pointer_null && song_download_status < 2) {
 		window = -1
-		if (language != 1) draw_downloadprogress("Download", "Downloading song...", song_downloaded_size, song_total_size)
+		if (language != 1) draw_downloadprogress(localize_ko("Download"), localize_ko("Downloading song..."), song_downloaded_size, song_total_size)
 		else draw_downloadprogress("下载", "正在下载乐曲......", song_downloaded_size, song_total_size)
 	}
-	
+
 	// Draw debug overlay
 	if (debug_overlay) draw_debug_overlay()
-	
+
 	if (display_mouse_get_x() - window_get_x() >= 0 && display_mouse_get_y() - window_get_y() >= 0 && display_mouse_get_x() - window_get_x() < 0 + window_width && display_mouse_get_y() - window_get_y() < 0 + window_height) window_set_cursor(curs)
 	mouse_xprev = mouse_x
 	mouse_yprev = mouse_y
-	
+
 	// Detect when windows have changed
 	/*if window != prevwindow {
 		show_debug_message(string(window) + " " + string(prevwindow))

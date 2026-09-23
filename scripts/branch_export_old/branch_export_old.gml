@@ -1,7 +1,7 @@
 function branch_export_old() {
 	// branch_export()
 	var fn, a, b, o, z, sch_len, nblocks, nblockins, nblockvel, zvel, pass, tags, sch_layer1, sch_layer2, sch_layer3, entries
-	fn = string(get_save_filename_ext("Minecraft Schematics (*.schematic)|*.schematic", filename_new_ext(filename, ""), "", "Export Schematic"))
+	fn = string(get_save_filename_ext(localize_ko("Minecraft Schematics (*.schematic)|*.schematic"), filename_new_ext(filename, ""), "", localize_ko("Export Schematic")))
 	if (fn = "") return 0
 	//fn = string_replace_all(fn, ".schematic", "")
 	//fn += ".schematic"
@@ -90,7 +90,7 @@ function branch_export_old() {
 
 		for (a = 0; a <= (b - 1) * 2; a++) {
 			if a % 2 == 0 {
-				if nblockkey[z, nblocks] != 0 { 
+				if nblockkey[z, nblocks] != 0 {
 					if sch_exp_velocity = 0 {
 						if z = 1 {
 							schematic_cell_set(mySchematic, lineloc + 1, a + 2, 1, 25, 0)
@@ -121,7 +121,7 @@ function branch_export_old() {
 										schematic_block_set(mySchematic, zvel + (c - zvel), a + 2, 1, 55)
 									}
 								}
-							} 
+							}
 							if zvel < 17 {
 								var c
 								for (c = lineloc - 1; c >= zvel; c--) {
@@ -140,13 +140,13 @@ function branch_export_old() {
 							schematic_cell_set(mySchematic, zvel, a + 1, 1, 25, 0)
 							schematic_cell_set(mySchematic, zvel, a + 1, 2, 0, 0)
 							schematic_cell_set(mySchematic, zvel, a + 1, 0, sch_exp_ins_block[nblockins[z, nblocks]], 0)
-							
+
 						    noteblockx[z, nblocks] = a + 1
 						} else {
 							schematic_cell_set(mySchematic, zvel, a + 2, 1, 25, 0)
 							schematic_cell_set(mySchematic, zvel, a + 2, 2, 0, 0)
 							schematic_cell_set(mySchematic, zvel, a + 2, 0, sch_exp_ins_block[nblockins[z, nblocks]], 0)
-							
+
 						    noteblockx[z, nblocks] = a + 2
 						}
 						noteblockz[z, nblocks] = zvel
@@ -210,7 +210,7 @@ function branch_export_old() {
 							nblocks ++
 						}
 					} else {
-					message("Error: Some notes are out of range!\nFix the fine pitch, or change it to a custom instrument with a higher/lower sound.", "Error")
+					message(localize_ko("Error: Some notes are out of range!\nFix the fine pitch, or change it to a custom instrument with a higher/lower sound."), localize_ko("Error"))
 					window = w_branch_export
 					return 0
 				}
@@ -227,7 +227,7 @@ function branch_export_old() {
 
 		for (a = 0; a <= (b - 1) * 2; a++) {
 			if a % 2 == 0 {
-				if nblockkey[z, nblocks] != 0 { 
+				if nblockkey[z, nblocks] != 0 {
 					var nudge = 0
 					if sch_exp_velocity = 0 {
 						if z = 1 {
@@ -261,7 +261,7 @@ function branch_export_old() {
 								}
 							}
 							nudge = 1
-						} 
+						}
 						if zvel < 17 {
 							var c
 							for (c = lineloc - 1; c >= zvel; c--) {
@@ -360,7 +360,7 @@ function branch_export_old() {
 
 		for (a = 0; a <= (b - 1) * 2; a++) {
 			if a % 2 == 0 {
-				if nblockkey[z, nblocks] != 0 { 
+				if nblockkey[z, nblocks] != 0 {
 					if sch_exp_velocity = 0 {
 						if z = 1 {
 							schematic_cell_set(mySchematic, lineloc + 1, a + 2, 1, 25, 0)
@@ -397,7 +397,7 @@ function branch_export_old() {
 										schematic_block_set(mySchematic, zvel + (c - zvel) + 1, a + 2, 2, 55)
 									}
 								}
-							} 
+							}
 							if zvel < 17 {
 								nudge = -1
 								var c
@@ -424,7 +424,7 @@ function branch_export_old() {
 							schematic_cell_set(mySchematic, zvel, a + 1, 1, 25, 0)
 							schematic_cell_set(mySchematic, zvel, a + 1, 2, 0, 0)
 							schematic_cell_set(mySchematic, zvel, a + 1, 0, sch_exp_ins_block[nblockins[z, nblocks]], 0)
-							
+
 						    noteblockx[z, nblocks] = a + 1
 						} else {
 							if (schematic_block_get(mySchematic, zvel, a + 2, 1) = 55) { // stop the note block blocking other notes further down the branch
@@ -446,16 +446,16 @@ function branch_export_old() {
 									schematic_cell_set(mySchematic, zvel, a + 3, 0, sch_exp_ins_block[nblockins[z, nblocks]], 0)
 									noteblockx[z, nblocks] = a + 3
 									//show_debug_message("note block in way")
-								} else { 
+								} else {
 								schematic_cell_set(mySchematic, zvel, a + 2, 1, 25, 0)
 								schematic_cell_set(mySchematic, zvel, a + 2, 2, 0, 0)
 								schematic_cell_set(mySchematic, zvel, a + 2, 0, sch_exp_ins_block[nblockins[z, nblocks]], 0)
-							
+
 							    noteblockx[z, nblocks] = a + 2
-							} 
+							}
 						}
 						noteblockz[z, nblocks] = zvel
-					} 
+					}
 			    noteblocky[z, nblocks] = 1
 				noteblocknote[z, nblocks] = nblockkey[z, nblocks] - 33
 				}
@@ -469,7 +469,7 @@ function branch_export_old() {
 
 	for (a = rangestart; a <= rangeend; a ++) {
 		if sch_exp_polyphony = 1 {
-			if nblockkey[real(sch_exp_layer1) - 1, a] != 0 { 
+			if nblockkey[real(sch_exp_layer1) - 1, a] != 0 {
 				if sch_exp_stereo = 4 noteblocks++
 				if sch_exp_stereo = 3 && o.song_pan[a, real(sch_exp_layer1) - 1] = 100 noteblocks++
 				if sch_exp_stereo = 2 && o.song_pan[a, real(sch_exp_layer1) - 1] < 100 noteblocks++
@@ -483,7 +483,7 @@ function branch_export_old() {
 				if sch_exp_stereo = 2 && o.song_pan[a, real(sch_exp_layer1) - 1] < 100 noteblocks++
 				if sch_exp_stereo = 1 && o.song_pan[a, real(sch_exp_layer1) - 1] > 100 noteblocks++
 			}
-			if o.song_exists[a, real(sch_exp_layer2) - 1] { 
+			if o.song_exists[a, real(sch_exp_layer2) - 1] {
 				if sch_exp_stereo = 4 noteblocks++
 				if sch_exp_stereo = 3 && o.song_pan[a, real(sch_exp_layer2) - 1] = 100 noteblocks++
 				if sch_exp_stereo = 2 && o.song_pan[a, real(sch_exp_layer2) - 1] < 100 noteblocks++
@@ -491,41 +491,41 @@ function branch_export_old() {
 			}
 		}
 		if sch_exp_polyphony = 3 {
-			if o.song_exists[a, real(sch_exp_layer1) - 1] { 
+			if o.song_exists[a, real(sch_exp_layer1) - 1] {
 				if sch_exp_stereo = 4 noteblocks++
 				if sch_exp_stereo = 3 && o.song_pan[a, real(sch_exp_layer1) - 1] = 100 {
-					noteblocks++ 
+					noteblocks++
 					//show_debug_message(string(a) + " " + string(real(sch_exp_layerX) - 1) + " hit")
 				}
 				if sch_exp_stereo = 2 && o.song_pan[a, real(sch_exp_layer1) - 1] < 100 {
-					noteblocks++ 
+					noteblocks++
 				}
 				if sch_exp_stereo = 1 && o.song_pan[a, real(sch_exp_layer1) - 1] > 100 {
-					noteblocks++ 
+					noteblocks++
 				}
 			}
-			if o.song_exists[a, real(sch_exp_layer2) - 1] { 
+			if o.song_exists[a, real(sch_exp_layer2) - 1] {
 				if sch_exp_stereo = 4 noteblocks++
 				if sch_exp_stereo = 3 && o.song_pan[a, real(sch_exp_layer2) - 1] = 100 {
-					noteblocks++ 
+					noteblocks++
 				}
 				if sch_exp_stereo = 2 && o.song_pan[a, real(sch_exp_layer2) - 1] < 100 {
-					noteblocks++ 
+					noteblocks++
 				}
 				if sch_exp_stereo = 1 && o.song_pan[a, real(sch_exp_layer2) - 1] > 100 {
-					noteblocks++ 
+					noteblocks++
 				}
 			}
-			if o.song_exists[a, real(sch_exp_layer3) - 1] { 
+			if o.song_exists[a, real(sch_exp_layer3) - 1] {
 				if sch_exp_stereo = 4 noteblocks++
 				if sch_exp_stereo = 3 && o.song_pan[a, real(sch_exp_layer3) - 1] = 100 {
-					noteblocks++ 
+					noteblocks++
 				}
 				if sch_exp_stereo = 2 && o.song_pan[a, real(sch_exp_layer3) - 1] < 100 {
-					noteblocks++ 
+					noteblocks++
 				}
 				if sch_exp_stereo = 1 && o.song_pan[a, real(sch_exp_layer3) - 1] > 100 {
-					noteblocks++ 
+					noteblocks++
 				}
 			}
 		}
@@ -534,7 +534,7 @@ function branch_export_old() {
 	entries = rangeend - rangestart
 	for (c = 0; c < sch_exp_polyphony; c ++) { // Corrections hack
 		for (a = 0; a <= entries; a ++) {
-			if o.song_exists[rangestart + a, c] { 
+			if o.song_exists[rangestart + a, c] {
 				if (schematic_block_get(mySchematic, noteblockz[c, a], noteblockx[c, a], 1) = 25) {
 					schematic_block_set(mySchematic, noteblockz[c, a], noteblockx[c, a], 2, 0)
 				}
@@ -549,7 +549,7 @@ function branch_export_old() {
 				}
 			}
 		}
-	}	
+	}
 
 	show_debug_message(sch_layer1)
 	show_debug_message(sch_layer2)
@@ -559,7 +559,7 @@ function branch_export_old() {
 	schematic_save(mySchematic, fn);
 	schematic_destroy(mySchematic);
 	schematic_end();
-	message("Schematic saved!", "Schematic Export")
+	message(localize_ko("Schematic saved!"), localize_ko("Schematic Export"))
 	window = w_branch_export
 
 

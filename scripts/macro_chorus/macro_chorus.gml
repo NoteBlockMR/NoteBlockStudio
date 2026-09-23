@@ -14,7 +14,7 @@ function macro_chorus() {
 		arr_data[real(val)] = arr_data[real(val)] + real(5)
 		val ++
 		if arr_data[val] = -1 {
-			if (language != 1) message("There must be exactly two layers worth of note blocks in every applicable tick!", "Error")
+			if (language != 1) message(localize_ko("There must be exactly two layers worth of note blocks in every applicable tick!"), localize_ko("Error"))
 			else message("应用的每刻内必须有两层方块！", "错误")
 			return 1
 		}

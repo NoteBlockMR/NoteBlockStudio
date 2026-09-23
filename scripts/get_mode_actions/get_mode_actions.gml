@@ -7,46 +7,46 @@ function get_mode_actions(argument0) {
 	if (language != 1) switch editmode {
 		case m_key: {
 			switch num {
-				case 1: return "Transpose one octave up" break
-				case 2: return "Transpose one octave down" break
-				case 3: return "Transpose up" break
-				case 4: return "Transpose down" break
+				case 1: return localize_ko("Transpose one octave up") break
+				case 2: return localize_ko("Transpose one octave down") break
+				case 3: return localize_ko("Transpose up") break
+				case 4: return localize_ko("Transpose down") break
 				default: return ""
 			}
 			break
 		}
 		case m_vel: {
 			switch num {
-				case 1: return "Increase velocity by 10" break
-				case 2: return "Decrease velocity by 10" break
-				case 3: return "Increase velocity" break
-				case 4: return "Decrease velocity" break
-				case 5: return "Set velocity..." break
-				case 6: return "Reset velocity" break
+				case 1: return localize_ko("Increase velocity by 10") break
+				case 2: return localize_ko("Decrease velocity by 10") break
+				case 3: return localize_ko("Increase velocity") break
+				case 4: return localize_ko("Decrease velocity") break
+				case 5: return localize_ko("Set velocity...") break
+				case 6: return localize_ko("Reset velocity") break
 				default: return ""
 			}
 			break
 		}
 		case m_pan: {
 			switch num {
-				case 1: return "Pan right by 10" break
-				case 2: return "Pan left by 10" break
-				case 3: return "Pan right" break
-				case 4: return "Pan left" break
-				case 5: return "Set panning..." break
-				case 6: return "Reset panning" break
+				case 1: return localize_ko("Pan right by 10") break
+				case 2: return localize_ko("Pan left by 10") break
+				case 3: return localize_ko("Pan right") break
+				case 4: return localize_ko("Pan left") break
+				case 5: return localize_ko("Set panning...") break
+				case 6: return localize_ko("Reset panning") break
 				default: return ""
 			}
 			break
 		}
 		case m_pit: {
 			switch num {
-				case 1: return "Detune +10 cents" break
-				case 2: return "Detune -10 cents" break
-				case 3: return "Detune +1 cent" break
-				case 4: return "Detune -1 cent" break
-				case 5: return "Set pitch..." break
-				case 6: return "Reset pitch" break
+				case 1: return localize_ko("Detune +10 cents") break
+				case 2: return localize_ko("Detune -10 cents") break
+				case 3: return localize_ko("Detune +1 cent") break
+				case 4: return localize_ko("Detune -1 cent") break
+				case 5: return localize_ko("Set pitch...") break
+				case 6: return localize_ko("Reset pitch") break
 				default: return ""
 			}
 			break

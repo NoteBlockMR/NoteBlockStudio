@@ -13,7 +13,7 @@ function instrument_load(custom_sounds_path = "") {
 		fn = sounds_directory + filename;
 	} else {
 		var custom_fn = custom_sounds_path + filename;
-		
+
 		if (file_exists_lib(custom_fn)) {
 			fn = custom_fn;
 		} else {
@@ -32,7 +32,7 @@ function instrument_load(custom_sounds_path = "") {
 	log("audio_file_decode")
 	var ret = audio_file_decode(fn, temp_file);
 	if (ret < 0) {
-	    if (language != 1) message("Couldn't load the file " + fn + "! Error: " + string(ret), "Error")
+	    if (language != 1) message(localize_ko("Couldn't load the file ") + fn + localize_ko("! Error: ") + string(ret), localize_ko("Error"))
 	    else message("找不到文件" + fn + "！错误代码：" + string(ret), "错误")
 	    return 0
 	}

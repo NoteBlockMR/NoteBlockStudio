@@ -6,7 +6,7 @@ function draw_window_update() {
 	if (window = w_update && theme != 3) windowopen = 1
 	fullstr = changelogstr
 	if (fullstr = 0) {
-		if (language != 1) show_message("Changelist not found!")
+		if (language != 1) show_message(localize_ko("Changelist not found!"))
 		else show_message("找不到更新历史！")
 		if (window = w_update) {
 	        window = w_greeting
@@ -20,13 +20,13 @@ function draw_window_update() {
 	y1 = floor(rh / 2 - 200) + windowoffset
 	draw_window(x1, y1, x1 + 500 + theme_offset, y1 + 400)
 	draw_theme_font(font_main_bold)
-	
+
 	if (language != 1) {
 	if (RUN_FROM_IDE != 1) {
-		draw_text_dynamic(x1 + 8, y1 + 8, "Changelist (You're running from the IDE!)")
+		draw_text_dynamic(x1 + 8, y1 + 8, localize_ko("Changelist (You're running from the IDE!)"))
 	} else {
-		if (window = w_update) draw_text_dynamic(x1 + 8, y1 + 8, "Update")
-		else draw_text_dynamic(x1 + 8, y1 + 8, "Changelist")
+		if (window = w_update) draw_text_dynamic(x1 + 8, y1 + 8, localize_ko("Update"))
+		else draw_text_dynamic(x1 + 8, y1 + 8, localize_ko("Changelist"))
 	}
 	} else {
 	if (RUN_FROM_IDE != 1) {
@@ -36,29 +36,29 @@ function draw_window_update() {
 		else draw_text_dynamic(x1 + 8, y1 + 8, "更新历史")
 	}
 	}
-	
+
 	draw_theme_font(font_main)
-	
+
 	// Refresh changelog button (debug)
 	if (RUN_FROM_IDE != 1) {
-		if (draw_button2(x1 + 500 - 144 - 16, y1 + 8 + 24, 72, "Open file")) {
+		if (draw_button2(x1 + 500 - 144 - 16, y1 + 8 + 24, 72, localize_ko("Open file"))) {
 			open_url(data_directory + "changelog.txt");
 		}
-		if (draw_button2(x1 + 500 - 72 - 8, y1 + 8 + 24, 72, "Refresh")) {
+		if (draw_button2(x1 + 500 - 72 - 8, y1 + 8 + 24, 72, localize_ko("Refresh"))) {
 			changelogstr = load_text(data_directory + "changelog.txt");
 		}
 	}
-	
+
 	if (language != 1) {
 		if (window = w_update) {
-			draw_text_dynamic(x1 + 32, y1 + 32, "Thank you for upgrading to version " + version + "!")
+			draw_text_dynamic(x1 + 32, y1 + 32, localize_ko("Thank you for upgrading to version ") + version + "!")
 		}
 	} else {
 		if (window = w_update) {
 			draw_text_dynamic(x1 + 32, y1 + 32, "感谢你更新到 " + version + " 版本！")
 		}
 	}
-	if (draw_button2(x1 + 500 - 120 - 8, y1 + 8, 120, language != 1 ? "Watch release video" : "观看更新视频")) {
+	if (draw_button2(x1 + 500 - 120 - 8, y1 + 8, 120, language != 1 ? localize_ko("Watch release video") : "观看更新视频")) {
 		if (language != 1) {
 			open_url("https://youtu.be/gya4NAQunEc");
 		} else {
@@ -66,7 +66,7 @@ function draw_window_update() {
 		}
 	}
 	draw_area(x1 + 16, y1 + 58, x1 + 487 + theme_offset, y1 + 357)
-	n = string_count("\n", fullstr) 
+	n = string_count("\n", fullstr)
 	for (a = 0; a < n; a += 1) {
 	    str[a] = string_copy(fullstr, 1, string_pos("\n", fullstr) - 1)
 	    strb[a] = 0
@@ -82,10 +82,10 @@ function draw_window_update() {
 	}
 	draw_theme_font(font_main)
 	draw_scrollbar(update_scrollbar, x1 + 470 + theme_offset, y1 + 60, 12, 22, n, 0, 1)
-	if (draw_button2(x1 + 16, y1 + 365, 96, condstr(language != 1, "Older versions...", "查看更旧版本…"))) {
+	if (draw_button2(x1 + 16, y1 + 365, 96, condstr(language != 1, localize_ko("Older versions..."), "查看更旧版本…"))) {
 		open_url(link_changelog)
 	}
-	if (draw_button2(x1 + 487 - 72 + theme_offset, y1 + 365, 72, condstr(language != 1, "OK", "确认")) && (windowopen = 1 || theme != 3)) {
+	if (draw_button2(x1 + 487 - 72 + theme_offset, y1 + 365, 72, condstr(language != 1, localize_ko("OK"), "确认")) && (windowopen = 1 || theme != 3)) {
 	    if (window = w_update) {
 	        window = w_greeting
 			save_settings() // Save new version number

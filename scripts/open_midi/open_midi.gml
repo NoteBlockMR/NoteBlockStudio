@@ -7,8 +7,8 @@ function open_midi(argument0) {
 	fn = argument0
 	if (confirm() < 0) return 0
 	if (fn = "") {
-		if (language != 1) fn = string(get_open_filename_ext("MIDI Sequences (*.mid)|*.midi;*.mid", "", "", "Import from MIDI"))
-		else fn = string(get_open_filename_ext("MIDI Sequences (*.mid)|*.midi;*.mid", "", "", "从 MIDI 导入"))
+		if (language != 1) fn = string(get_open_filename_ext(localize_ko("MIDI Sequences (*.mid)|*.midi;*.mid"), "", "", localize_ko("Import from MIDI")))
+		else fn = string(get_open_filename_ext(localize_ko("MIDI Sequences (*.mid)|*.midi;*.mid"), "", "", "从 MIDI 导入"))
 	}
 	if (fn = "" || !file_exists_lib(fn)) return 0
 	reset()
@@ -16,16 +16,16 @@ function open_midi(argument0) {
 
 	r = buffer_read_string_byte(4)
 	if (r != "MThd") {
-	    if (!question("Error loading MIDI file:\n\nFirst 4 bytes must be MThd.\n\nContinue anyway?", "Error")) {
+	    if (!question(localize_ko("Error loading MIDI file:\n\nFirst 4 bytes must be MThd.\n\nContinue anyway?"), localize_ko("Error"))) {
 	        reset_midi() buffer_delete(buffer) return 0
 	    }
 	}
 
 	r = buffer_read_int_be()
-	if (r!=$6) {message("Error loading MIDI file:\n\nHeader size must be 00 00 00 06", "Error") reset_midi() buffer_delete(buffer) return 0}
+	if (r!=$6) {message(localize_ko("Error loading MIDI file:\n\nHeader size must be 00 00 00 06"), localize_ko("Error")) reset_midi() buffer_delete(buffer) return 0}
 
 	r = buffer_read_short_be()
-	if (r != 0 && r != 1 && r != 2) {message("Error loading MIDI file:\n\nFormat not supported.", "Error") reset_midi() buffer_delete(buffer) return 0}
+	if (r != 0 && r != 1 && r != 2) {message(localize_ko("Error loading MIDI file:\n\nFormat not supported."), localize_ko("Error")) reset_midi() buffer_delete(buffer) return 0}
 
 	midi_tracks = buffer_read_short_be()
 	midifile = filename_name(fn)
@@ -37,8 +37,8 @@ function open_midi(argument0) {
 	// screen_redraw()
 	for (t = 0; t < midi_tracks; t += 1) {
 	    // draw_loading("Loading MIDI", "", file_bin_position(f) / totalsize)
-	    r = buffer_read_string_byte(4) 
-	    if (r != "MTrk") {message("Error loading MIDI file:\n\nTrack chunk must begin with MTrk.", "Error") reset_midi() buffer_delete(buffer) return 0}
+	    r = buffer_read_string_byte(4)
+	    if (r != "MTrk") {message(localize_ko("Error loading MIDI file:\n\nTrack chunk must begin with MTrk."), localize_ko("Error")) reset_midi() buffer_delete(buffer) return 0}
 	    r = buffer_read_int_be()
 	    trackend = buffer_tell(buffer) + r
 	    p = 0
@@ -47,7 +47,7 @@ function open_midi(argument0) {
 	        delta = buffer_read_varlen()
 	        p += delta
 	        // Event type and channel
-	        event = buffer_read_byte() 
+	        event = buffer_read_byte()
 	        if (event = $FF) { // Meta event
 	            meta = buffer_read_byte()
 	            switch (meta) {
@@ -157,7 +157,7 @@ function open_midi(argument0) {
 	                    var note, vel;
 	                    note = buffer_read_byte()
 	                    vel = buffer_read_byte()
-                    
+
 	                    if (vel > 0)
 	                        midi_add_note(channel, t, p, note, vel) //-21
 	                    break
@@ -183,7 +183,7 @@ function open_midi(argument0) {
 	                    break
 	                }
 	                default: { // Unknown
-	                    message("Error loading MIDI file:\n\nUnknown MIDI event", "Error")
+	                    message(localize_ko("Error loading MIDI file:\n\nUnknown MIDI event"), localize_ko("Error"))
 	                    reset_midi()
 	                    buffer_delete(buffer)
 	                    return 0

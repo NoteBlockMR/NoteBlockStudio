@@ -9,29 +9,29 @@ function check_updates() {
 	// 4: downloading update
 
 	if (async_load[? "id"] = update_http) {
-		
+
 		// CHECK RECEIVED DATA:
 		// show_debug_message(async_load[? "result"])
 		// show_debug_message(async_load[? "status"])
 		// show_debug_message(async_load[? "http_status"])
-		
+
 		var status = async_load[? "status"];
-		
+
 		if (status == -1) { // error
 			update = -1
 			return;
 		}
-		
+
 		else if (status == 0) { // success
-			
+
 			if (async_load[? "http_status"] != 200) { // other status codes (403 - rate limit, etc.)
 				update = -1;
 				return;
 			}
-			
+
 			else {
 				update_http = -1;
-			
+
 			    var res = async_load[? "result"];
 				res = json_parse(res);
 
@@ -42,13 +42,13 @@ function check_updates() {
 				} else {
 					release = res;
 				}
-			
+
 				if (release != -1) {
 					var new_version = string_replace(release.tag_name, "v", "");
 					if (new_version == version) {
 						update = 2;
 					} else {
-						if (question(condstr(language != 1, "Version " + new_version + " is available! Do you want to download it?", "版本 " + new_version + " 可用！是否现在下载？"), condstr(language != 1, "Update available!", "更新可用！"))) {
+						if (question(condstr(language != 1, localize_ko("Version ") + new_version + localize_ko(" is available! Do you want to download it?"), "版本 " + new_version + " 可用！是否现在下载？"), condstr(language != 1, localize_ko("Update available!"), "更新可用！"))) {
 							var download_url = release.assets[0].browser_download_url;
 							update_download = http_get_file(download_url, update_file);
 							update = 4;
@@ -57,7 +57,7 @@ function check_updates() {
 						}
 					}
 				} else update = -1;
-			
+
 			}
 		}
 	}
