@@ -18,7 +18,8 @@ function sprite_create_blur_alt(sprite, downamount, width, height, blurradius, q
 		//return sprite_create_blur(sprite, downamount, width, height, blurradius, quality, directions);
 		return blur_sprite_create(sprite, 0, BLUR_TYPE.GAUSSIAN, width, height, blurradius, downamount)
 	} catch (exc) {
-		return sprite;
+		// A failed blur must not expose the unblurred desktop wallpaper.
+		return -1;
 	}
 }
 

@@ -32,5 +32,7 @@ function wallpaper_init(wallpaper_path = "") {
 		}
 		surface_free(tempsurf)
 		wpaperblur = sprite_create_blur_alt(wpaper, 0.25, sprite_get_width(wpaper), sprite_get_height(wpaper), 300, 8, 16)
+		// Missing optional blur support uses the opaque theme background.
+		can_draw_mica = can_draw_mica && sprite_exists(wpaperblur) && wpaperblur != wpaper
 	}
 }
