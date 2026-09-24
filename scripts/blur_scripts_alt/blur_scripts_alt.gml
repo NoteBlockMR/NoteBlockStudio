@@ -23,34 +23,50 @@ function sprite_create_blur_alt(sprite, downamount, width, height, blurradius, q
 }
 
 function draw_surface_blur_alt(surface, x, y, w, h, downamount) {
+	// The paid blur extension is optional in public-source builds.
+	static blur_available = true;
+	if (!blur_available || !surface_exists(surface) || w <= 0 || h <= 0) return;
+
+	var temp_surface = -1;
+	var area_id = -1;
+	var target_pushed = false;
+	var previous_filter = gpu_get_tex_filter();
+	var previous_blend = gpu_get_blendenable();
 	try {
-		if (true) {
-			var scale_factor = 0.25
-			obj_controller.blur_temp_surface = surface_create(w * obj_controller.window_scale, h * obj_controller.window_scale)
-			obj_controller.blur_area_id = blur_area_create()
-			var temp_tex_filter = gpu_get_tex_filter()
-			surface_set_target(obj_controller.blur_temp_surface)
-			draw_surface_part(surface, x * obj_controller.window_scale, y * obj_controller.window_scale, w * obj_controller.window_scale, h * obj_controller.window_scale, 0, 0)
-			//draw_surface_blur(obj_controller.blur_temp_surface, 0, 0, w * obj_controller.window_scale, h * obj_controller.window_scale, downamount * (1 / obj_controller.window_scale));
-			blur_area_draw(obj_controller.blur_area_id, obj_controller.blur_temp_surface, BLUR_TYPE.GAUSSIAN, 0, 0, w * obj_controller.window_scale, h * obj_controller.window_scale, 0, 0, scale_factor * downamount * obj_controller.window_scale)
-			surface_reset_target()
-			surface_set_target(surface)
-			gpu_set_tex_filter(true)
-			draw_rectangle_color(x, y, x + w - 1, y + h - 1, 0, 0, 0, 0, 0)
-			draw_surface_stretched(obj_controller.blur_temp_surface, x, y, w, h)
-			gpu_set_tex_filter(temp_tex_filter)
-			surface_reset_target()
-			surface_free(obj_controller.blur_temp_surface)
-			blur_area_destroy(obj_controller.blur_area_id)
-			gpu_set_blendenable(true)
-		}
+		var scale = obj_controller.window_scale;
+		var pixel_w = max(1, ceil(w * scale));
+		var pixel_h = max(1, ceil(h * scale));
+		temp_surface = surface_create(pixel_w, pixel_h);
+		if (!surface_exists(temp_surface)) return;
+		area_id = blur_area_create();
+		surface_set_target(temp_surface);
+		target_pushed = true;
+		draw_surface_part(surface, x * scale, y * scale, pixel_w, pixel_h, 0, 0);
+		blur_area_draw(area_id, temp_surface, BLUR_TYPE.GAUSSIAN, 0, 0, pixel_w, pixel_h, 0, 0, 0.25 * downamount * scale);
+		surface_reset_target();
+		target_pushed = false;
+		surface_set_target(surface);
+		target_pushed = true;
+		gpu_set_tex_filter(true);
+		draw_rectangle_color(x, y, x + w - 1, y + h - 1, 0, 0, 0, 0, 0);
+		draw_surface_stretched(temp_surface, x, y, w, h);
 	} catch (exc) {
-		if (surface_get_target() != application_surface) surface_reset_target()
-		if (surface_exists(obj_controller.blur_temp_surface)) surface_free(obj_controller.blur_temp_surface)
-		if (blur_area_exists(obj_controller.blur_area_id)) blur_area_destroy(obj_controller.blur_area_id)
-		gpu_set_blendenable(true)
-		//if (surface_exists(obj_controller.blur_temp_surface_scaled)) surface_free(obj_controller.blur_temp_surface_scaled)
-		return;
+		// Do not retry a missing or failing extension for every popup frame.
+		blur_available = false;
+	}
+
+	// Only release resources and targets acquired by this call. In particular,
+	// never access controller fields that may not have been initialized.
+	if (target_pushed) surface_reset_target();
+	gpu_set_tex_filter(previous_filter);
+	gpu_set_blendenable(previous_blend);
+	if (surface_exists(temp_surface)) surface_free(temp_surface);
+	if (area_id != -1) {
+		try {
+			blur_area_destroy(area_id);
+		} catch (cleanup_exc) {
+			blur_available = false;
+		}
 	}
 }
 
